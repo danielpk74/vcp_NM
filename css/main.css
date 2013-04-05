@@ -4,6 +4,8 @@ body
 	padding: 0;
 	color: #555;
 	font: normal 10pt Arial,Helvetica,sans-serif;
+        background: url(../images/fondo.png);
+        background-repeat:repeat;
 	background: #EFEFEF;
 }
 
@@ -12,7 +14,11 @@ body
 	margin-top: 5px;
 	margin-bottom: 5px;
 	background: white;
-	border: 1px solid #C9E0ED;
+	border: 0.5px solid #888888;
+        
+        -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        -moz-box-shadow: 0 15px 10px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 15px 10px rgba(0, 0, 0, 0.2);
 }
 
 #header
