@@ -56,7 +56,7 @@ return array(
                         'connectionString' => 'mssql:host=localhost;dbname=PORTAL_GI',
                         'username' => 'prueba',
                         'password' => 'prueba',
-                        //			'charset' => 'utf8',
+                        'charset' => 'utf8',
                 ),
 
 		

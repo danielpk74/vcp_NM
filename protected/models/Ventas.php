@@ -12,58 +12,58 @@ class Ventas extends CFormModel {
                 ->select('*')
                 ->from('TMP_VENTAS')
                 ->queryAll();
-//
-////          $comando = Yii::app()-> db->createCommand('SP_Ingresadas_X_Plaza_X_Dias(1)')->queryColumn();
-//        //executar e pegar o resultado
-////      $command = Yii::app()->db->createCommand("SP_Ingresadas_X_Plaza_X_Dias(:dias,@out)");
-//        
-////        $command = Yii::app()->db->createCommand("SP_Ingresadas_X_Plaza_X_Dias(:dias)")->queryAll(true, array(':dias'=>50));
-//        
-//        $command = Yii::app()->db->createCommand("SP_Ingresadas_X_Plaza_X_Dias(?)");
-//        $value = 50;
-//        $command->bindParam(1, $value, PDO::PARAM_INT, 4000); 
-//        $command->queryAll();
-//        var_dump($command);
         
-//      $command->excecute();
-//      var_dump($command->fecthAll());
-//      $resultado = Yii::app()->db->createCommand("select @out as result;")->queryScalar();
+        $dias = 10;
+//      $ventas = Yii::app()->db->createCommand("SP_Ingresadas_X_Plaza_X_Dias '$dias'")->queryAll();
+        
+        return $ventas;
+    }
 
-        return $ventas;     
+    public function get_Ingresadas_Plaza_Fecha($plaza,$fecha_ingreso)
+    {
+        $plaza = (string)"''".$plaza."''";
+        $fecha_ingreso = (string)"''".$fecha_ingreso."''";
+        
+        $ventas = Yii::app()->db->createCommand("SP_Ingresadas_X_Plaza_X_Fecha '$plaza','$fecha_ingreso'")->queryRow();
+        return $ventas;
     }
     
-    public function get_Ingresadas($dias = 7)
+    public function get_Instaladas_Plaza_Fecha($plaza,$fecha_ingreso)
     {
-        $ventas = Yii::app()->db->createCommand()
-                ->select('*')
-                ->from('V_INGRESADAS_7')
-                ->queryAll();
+        $plaza = (string)"''".$plaza."''";
+        $fecha_ingreso = (string)"''".$fecha_ingreso."''";
         
-        return $ventas;     
+        $ventas = Yii::app()->db->createCommand("SP_Instaladas_X_Plaza_X_Fecha '$plaza','$fecha_ingreso'")->queryRow();
+        return $ventas;
     }
     
-     public function get_Instaladas($dias = 7)
-    {
-        $ventas = Yii::app()->db->createCommand()
-                ->select('*')
-                ->from('V_INSTALADAS_7')
-                ->queryAll();
-        
-        return $ventas;     
+    /**
+     * Devuelve los pedidos ingresados
+     * @param type $dias
+     * @return type
+     */
+    public function get_Ingresadas($dias) {
+//        $ventas = Yii::app()->db->createCommand()
+//                ->select('*')
+//                ->from('V_INGRESADAS_7')
+//                ->queryAll();
+
+        $ventas = Yii::app()->db->createCommand("SP_Ingresadas_X_Plaza_X_Dias '$dias'")->queryAll();
+        return $ventas;
     }
 
     /**
-     * Devuelve el total de ingresos para la plaza enviada por parametros
-     * @param string $plaza
-     * @return array
+     * 
+     * @param type $dias
+     * @return type
      */
-    public function IngresadasPlaza($plaza, $dias) {
-        $ingresadasPlaza = Yii::app()->db->createCommand()
-                ->select('*')
-                ->from('V_INGRESADAS_' . $dias)
-                ->where('PLAZA=:plaza', array(':plaza' => $plaza))
-                ->queryAll();
+    public function get_Instaladas($dias) {
+//        $ventas = Yii::app()->db->createCommand()
+//                ->select('*')
+//                ->from('V_INSTALADAS_7')
+//                ->queryAll();
 
+        $ventas = Yii::app()->db->createCommand("SP_Instaladas_X_Plaza_X_Dias '$dias'")->queryAll();
         return $ventas;
     }
 
@@ -72,5 +72,17 @@ class Ventas extends CFormModel {
      */
     public function TruncateTemporalVentas($nombreTabla) {
         $ingresadasPlaza = Yii::app()->db->createCommand()->truncateTable((string) $nombreTabla);
+    }
+    
+    /**
+     * Truncate a la tabla
+     */
+    public function set_Ingresadas_Instaladas($plaza,$totaIngresadas,$totalInstaladas) {
+        $command = Yii::app()->db->createCommand();
+        $command->insert('TMP_VENTAS', array(
+                         'PLAZA'=>$plaza,
+                         'INGRESADAS'=>$totaIngresadas,
+                         'INSTALADAS'=>$totalInstaladas,
+        ));
     }
 }

@@ -1,9 +1,11 @@
 <?php /* @var $this Controller */ ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es" lang="es">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="language" content="en" />
+	<meta name="language" content="es" />
+        
+        <link rel="shortcut icon" href="<?php echo Yii::app()->request->baseUrl; ?>/images/favicon.ico">
 
 	<!-- blueprint CSS framework -->
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/screen.css" media="screen, projection" />
@@ -31,7 +33,7 @@
 
 	<div id="header">
 		<!--<div id="logo"><?php echo CHtml::encode(Yii::app()->name); ?></div>-->
-                <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/une.png" width="200px"/>
+                <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/logovcp.png" width="100%"/>
 	</div><!-- header -->
 
 	<div id="mainmenu">
@@ -41,6 +43,7 @@
 				array('label'=>'Retiros', 'url'=>array('/site/page', 'view'=>'about')),
 				array('label'=>'Anuladas', 'url'=>array('/site/contact')),
 				array('label'=>'Pendientes', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
+				array('label'=>'Actualizar', 'url'=>array('/site/page/administracion', 'view'=>'actualizar'), 'visible'=>Yii::app()->user->isGuest),
 //				array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)
 			),
 		)); ?>
@@ -56,8 +59,7 @@
 	<div class="clear"></div>
 
 	<div id="footer">
-		Copyright &copy; <?php echo date('Y'); ?> by My Company.<br/>
-		All Rights Reserved.<br/>
+		Vicepresidencia de Nuevos Mercados - UNE Telecomunicaciones.<br/>
 		<?php echo Yii::powered(); ?>
 	</div><!-- footer -->
 

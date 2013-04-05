@@ -25,8 +25,11 @@ class SiteController extends Controller {
      * when an action is not explicitly requested by users.
      */
     public function actionIndex() {
+        
+        $temporalVentas = new TemporalVentas();
+        $temporalVentas->ActualizarTemporal();
+        
         $ventas = new Ventas();
-
         $ventasTotales = new CArrayDataProvider($ventas->Ingresadas(), array(
             'id' => 'PLAZA',
             'sort' => array(
@@ -39,22 +42,11 @@ class SiteController extends Controller {
             ),
         ));
         
-         $ventas = new Ventas();
-         $ventasIngresadas = $ventas->get_Ingresadas(7);
-         $ventasInstaladas = $ventas->get_Instaladas();
-
-        $this->render('index', array('ventas' => $ventasTotales,'ventasIngresadas'=>$ventasIngresadas,'ventasInstaladas'=>$ventasInstaladas));
-    }
-    
-    
-    protected function ActualizarTemporal()
-    {
-        $plazas = new Plazas();
-        $plazas = new get_Plazas();
+        $ventas = new Ventas();
+        $ventasIngresadas = $ventas->get_Ingresadas(7);
+        $ventasInstaladas = $ventas->get_Instaladas(7);
         
-        foreach ($plazas as $plaza) {
-            
-        }
+        $this->render('index', array('ventas' => $ventasTotales,'ventasIngresadas'=>$ventasIngresadas,'ventasInstaladas'=>$ventasInstaladas));
     }
 
     /**

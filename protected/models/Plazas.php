@@ -9,10 +9,10 @@ class Plazas extends CFormModel {
 
     public function get_Plazas() {
         $Plazas = Yii::app()->db->createCommand()
-                -> selectDistinct('PLAZAS')
-                ->from('MOVILIDAD_4G-LTE_INFORME_DIARIO')
+                ->selectDistinct('PLAZA')
+                ->from('PLAZAS')
                 ->queryAll();
-        
+
         return $Plazas;
     }
 }
