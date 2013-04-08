@@ -3,35 +3,34 @@ $this->pageTitle = Yii::app()->name;
 require_once ('/protected/components/FusionCharts.php');
 ?>
 
-<h3>Estado Actual de Ventas <input type="date" name="filtro_fecha_venta" value="<?php echo date('Y-m-d'); ?>" style="float: right"/></h3>
+<h3>Estado Actual de Ventas Diarias <input type="date" name="filtro_fecha_venta" value="<?php echo date('Y-m-d'); ?>" style="float: right"/></h3>
 <hr>
 
-
 <table  class="table table-striped table-bordered table-condensed"> 
-        <tr>
-            <th>PLAZA</th>
-            <th>INGRESADAS</th>
-            <th>INSTALADAS</th>                
-        </tr>
+    <tr>
+        <th>PLAZA</th>
+        <th>INGRESADAS</th>
+        <th>INSTALADAS</th>                
+    </tr>
 
-        <?php foreach ($ventas as $venta) { ?>
-            <tr>
-                <td><?php echo CHtml::encode($venta['PLAZA']); ?></td>
-                <td><?php echo CHtml::encode($venta['INGRESADAS']); ?></td>
-                <td><?php echo CHtml::encode($venta['INSTALADAS']); ?></td>
-            </tr>   
+    <?php foreach ($ventas as $venta) { ?>
+        <tr>
+            <td><?php echo $venta['PLAZA']; ?></td>
+            <td><?php echo CHtml::encode($venta['INGRESADAS']); ?></td>
+            <td><?php echo CHtml::encode($venta['INSTALADAS']); ?></td>
+        </tr>   
     <?php } ?>
 
     <tfoot>
         <tr>
-            <td>Total Mes<?PHP date('M')?></td>
-            <td><span class="label label-info">Info</span></td>
-            <td><span class="label label-info">Info</span></td>
+            <td class='td-footer'>Total Mes Actual</td>
+            <td><?php echo CHtml::encode($ingresadasMesActual); ?></span></td>
+            <td><?php echo CHtml::encode($instaladasMesActual); ?></span></td>
         </tr>
         <tr>
-            <td>Pentientes Totales</td>
-            <td><span class="label label-info">Info</span></td>
-            <td><span class="label label-info">Info</span></td>
+            <td class='td-footer'><b>Pentientes Totales</td>
+            <td class='td-numeros'><?php echo CHtml::encode($totalPendientes); ?></span></td>
+            <td class='td-numeros'></td>
         </tr>
     </tfoot>
 

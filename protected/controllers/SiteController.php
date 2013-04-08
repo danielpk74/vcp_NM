@@ -30,10 +30,11 @@ class SiteController extends Controller {
         $this->ActualizarTemporal();
 
         $ventas = new Ventas();
-        $ventasTotales = $ventas->Ingresadas(); //new CArrayDataProvider($ventas->Ingresadas(), array(
+        $ventasTotales = $ventas->Ingresadas(); 
+        $totalIngresadasMesActual = $ventas->TotalIngresadasMes();
+        $totalInstaladasMesActual = $ventas->TotalInstaladasMes();      
+        $totalPendientes = $ventas->TotalPendientes();
         
-        $totalMesActual = $ventas->TotalIngrsadasMes();
-        $totalPendientes = $ventas->Pendientes();
 //        $ventasTotales = new CArrayDataProvider($ventas->Ingresadas(), array(
 //            'id' => 'PLAZA',
 //            'sort' => array(
@@ -45,41 +46,49 @@ class SiteController extends Controller {
 //                'pageSize' => 100,
 //            ),
 //        ));
-
+        
         $ventas = new Ventas();
         $ventasIngresadas = $ventas->get_Ingresadas(7);
         $ventasInstaladas = $ventas->get_Instaladas(7);
 
         $this->render('index', array('ventas' => $ventasTotales, 
                                      'ventasIngresadas' => $ventasIngresadas, 
+                                     'ingresadasMesActual' => $totalIngresadasMesActual, 
+                                     'instaladasMesActual' => $totalInstaladasMesActual, 
+                                     'totalPendientes' => $totalPendientes, 
                                      'ventasInstaladas' => $ventasInstaladas));
     }
     
     
-      /**
+    /**
      * Actualiza la tabla temporal de ventas del dia
      * */
     public function ActualizarTemporal() {
         $temporalVentas = new TemporalVentas();
         $temporalVentas->TruncateTemporal();
 
-        $ventas = new Ventas();
-
         $plazas = new Plazas();
         $plazas = $plazas->get_Plazas();
-
+        
+        $ingresadasOtros = 0;
+        $instaladasOtros = 0;
+        
+        $ventas = new Ventas();
         foreach ($plazas as $plaza) {
-            $ingresadas_plaza = $ventas->get_Ingresadas_Plaza_Fecha($plaza['PLAZA'], '2013-04-07');
-            $instaladas_plaza = $ventas->get_Instaladas_Plaza_Fecha($plaza['PLAZA'], '2013-04-07');
+            $ingresadasPlaza = $ventas->get_Ingresadas_Plaza_Fecha($plaza['PLAZA'], '2013-04-07');
+            $instaladasPlaza = $ventas->get_Instaladas_Plaza_Fecha($plaza['PLAZA'], '2013-04-07');
 
             if (PlazasSeparadas::get_PlazaSeparada($plaza['PLAZA']))
-                $ventas->set_Ingresadas_Instaladas($plaza['PLAZA'], $ingresadas_plaza['TOTAL_INGRESADA'], $instaladas_plaza['TOTAL_INSTALADA']);
-            else
-                $ventas->set_Ingresadas_Instaladas_Otros($ingresadas_plaza['TOTAL_INGRESADA'], $instaladas_plaza['TOTAL_INSTALADA']);
+                $ventas->set_Ingresadas_Instaladas($plaza['PLAZA'], $ingresadasPlaza['TOTAL_INGRESADA'], $instaladasPlaza['TOTAL_INSTALADA']);
+            else {
+               $ingresadasOtros += $ingresadasPlaza['TOTAL_INGRESADA'];
+               $instaladasOtros += $instaladasPlaza['TOTAL_INSTALADA'];
+            }
         }
+        
+        $ventas->set_Ingresadas_Instaladas_Otros($ingresadasOtros, $instaladasOtros);
     }
     
-
     /**
      * This is the action to handle external exceptions.
      */

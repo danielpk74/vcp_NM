@@ -1999,6 +1999,10 @@ table {
   background-color: transparent;
   border-collapse: collapse;
   border-spacing: 0;
+  
+   -webkit-box-shadow: 3px 2px 13px rgba(0, 0, 0, 0.1);
+     -moz-box-shadow: 3px 2px 13px rgba(0, 0, 0, 0.1);
+          box-shadow: 3px 2px 13px rgba(0, 0, 0, 0.1);
 }
 
 .table {
@@ -6155,4 +6159,20 @@ a.badge:focus {
 
 .affix {
   position: fixed;
+}
+
+
+/** PROPIOS */
+
+.td-footer { 
+    font-weight: bold;
+    /*color: white;*/
+    background-color: #e6e6e6;
+    border-width: 0px;
+    border-color: white;
+    border-style: dashed;
+}
+
+.td-numeros {
+    text-align: right;animation-direction:alternate; 
 }
