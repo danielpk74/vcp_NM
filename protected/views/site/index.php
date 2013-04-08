@@ -3,18 +3,55 @@ $this->pageTitle = Yii::app()->name;
 require_once ('/protected/components/FusionCharts.php');
 ?>
 
-<h3>Estado Actual de Ventas <input type="date" name="filtro_fecha_venta" value="<?php echo date('Y-m-d');?>" style="float: right"/></h3>
+<h3>Estado Actual de Ventas <input type="date" name="filtro_fecha_venta" value="<?php echo date('Y-m-d'); ?>" style="float: right"/></h3>
 <hr>
 
-<?php
 
-$this->widget('zii.widgets.grid.CGridView', array(
-    'cssFile' => Yii::app()->request->baseUrl."/css/gridview.css",
-//    'content:html',
-    'enablePagination' => 'false',
-    'dataProvider' => $ventas,
-));
+<table  class="table table-striped table-bordered table-condensed"> 
+        <tr>
+            <th>PLAZA</th>
+            <th>INGRESADAS</th>
+            <th>INSTALADAS</th>                
+        </tr>
+
+        <?php foreach ($ventas as $venta) { ?>
+            <tr>
+                <td><?php echo CHtml::encode($venta['PLAZA']); ?></td>
+                <td><?php echo CHtml::encode($venta['INGRESADAS']); ?></td>
+                <td><?php echo CHtml::encode($venta['INSTALADAS']); ?></td>
+            </tr>   
+    <?php } ?>
+
+    <tfoot>
+        <tr>
+            <td>Total Mes<?PHP date('M')?></td>
+            <td><span class="label label-info">Info</span></td>
+            <td><span class="label label-info">Info</span></td>
+        </tr>
+        <tr>
+            <td>Pentientes Totales</td>
+            <td><span class="label label-info">Info</span></td>
+            <td><span class="label label-info">Info</span></td>
+        </tr>
+    </tfoot>
+
+</table>    
+
+
+<?php
+//$this->widget('zii.widgets.grid.CGridView', array(
+//    'cssFile' => Yii::app()->request->baseUrl."/css/gridview.css",
+//    'dataProvider'=>$ventas,
+//    'columns'=>array(
+//        'PLAZA',         
+//        'INGRESADAS',    
+//        'INSTALADAS',    
+//    ),
+//));
 ?>
+
+
+
 
 <?php
 // Categoria de la grafica

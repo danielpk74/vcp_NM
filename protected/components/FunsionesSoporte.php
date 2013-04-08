@@ -42,7 +42,7 @@ class FunsionesSoporte {
 //    public static function GenerarXML_Chart()
     public static function GenerarXML_Chart($titulo,$subTitulo,$categorias,$dataSets,$TituloX,$TituloY)
     {
-        $strXML .="<chart caption='$titulo' subcaption='$subTitulo' linethickness='1' showvalues='1' formatnumberscale='0' anchorradius='1' divlinealpha='20' divlinecolor='CC3300' divlineisdashed='1' showalternatehgridcolor='1' alternatehgridalpha='5' alternatehgridcolor='CC3300' shadowalpha='40' labelstep='1' numvdivlines='5' chartrightmargin='35' bgcolor='FFFFFF,CC3300' bgangle='270' bgalpha='10,10' decimalprecision='2' palette='1' xaxisname='Fecha de registro Monitoreo de novedades' yaxisname='Variaciones de Cojinetes'>";
+        $strXML .="<chart caption='$titulo' subcaption='$subTitulo' linethickness='1' showvalues='1' formatnumberscale='0' anchorradius='1' divlinealpha='20' divlinecolor='CC3300' divlineisdashed='1' showalternatehgridcolor='1' alternatehgridalpha='5' alternatehgridcolor='CC3300' shadowalpha='40' labelstep='1' numvdivlines='5' chartrightmargin='35' bgcolor='FFFFFF,CC3300' bgangle='270' bgalpha='10,10' decimalprecision='2' palette='1' xaxisname='Fecha de registro Monitoreo de novedades' yaxisname='Variaciones'>";
             // Categorias
             $strXML .=$categorias;
                 

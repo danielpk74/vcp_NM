@@ -53,10 +53,10 @@ return array(
 		// uncomment the following to use a MySQL database
 		
             'db'=>array(
-                        'connectionString' => 'mssql:host=localhost;dbname=PORTAL_GI',
+                        'connectionString' => 'mssql:host=DMONTOL;dbname=PORTAL_GI',
                         'username' => 'prueba',
                         'password' => 'prueba',
-                        'charset' => 'utf8',
+                        'charset' => 'UTF-8',
                 ),
 
 		

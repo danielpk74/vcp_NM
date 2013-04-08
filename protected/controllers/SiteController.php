@@ -25,29 +25,60 @@ class SiteController extends Controller {
      * when an action is not explicitly requested by users.
      */
     public function actionIndex() {
-        
+
         $temporalVentas = new TemporalVentas();
-        $temporalVentas->ActualizarTemporal();
-        
+        $this->ActualizarTemporal();
+
         $ventas = new Ventas();
-        $ventasTotales = new CArrayDataProvider($ventas->Ingresadas(), array(
-            'id' => 'PLAZA',
-            'sort' => array(
-                'attributes' => array(
-                    'PLAZA', 'INSTALADAS','INGRESADAS'
-                ),
-            ),
-            'pagination' => array(
-                'pageSize' => 100,
-            ),
-        ));
+        $ventasTotales = $ventas->Ingresadas(); //new CArrayDataProvider($ventas->Ingresadas(), array(
         
+        $totalMesActual = $ventas->TotalIngrsadasMes();
+        $totalPendientes = $ventas->Pendientes();
+//        $ventasTotales = new CArrayDataProvider($ventas->Ingresadas(), array(
+//            'id' => 'PLAZA',
+//            'sort' => array(
+//                'attributes' => array(
+//                   'PLAZA', 'INGRESADAS', 'INSTALADAS'
+//                ),
+//            ),
+//            'pagination' => array(
+//                'pageSize' => 100,
+//            ),
+//        ));
+
         $ventas = new Ventas();
         $ventasIngresadas = $ventas->get_Ingresadas(7);
         $ventasInstaladas = $ventas->get_Instaladas(7);
-        
-        $this->render('index', array('ventas' => $ventasTotales,'ventasIngresadas'=>$ventasIngresadas,'ventasInstaladas'=>$ventasInstaladas));
+
+        $this->render('index', array('ventas' => $ventasTotales, 
+                                     'ventasIngresadas' => $ventasIngresadas, 
+                                     'ventasInstaladas' => $ventasInstaladas));
     }
+    
+    
+      /**
+     * Actualiza la tabla temporal de ventas del dia
+     * */
+    public function ActualizarTemporal() {
+        $temporalVentas = new TemporalVentas();
+        $temporalVentas->TruncateTemporal();
+
+        $ventas = new Ventas();
+
+        $plazas = new Plazas();
+        $plazas = $plazas->get_Plazas();
+
+        foreach ($plazas as $plaza) {
+            $ingresadas_plaza = $ventas->get_Ingresadas_Plaza_Fecha($plaza['PLAZA'], '2013-04-07');
+            $instaladas_plaza = $ventas->get_Instaladas_Plaza_Fecha($plaza['PLAZA'], '2013-04-07');
+
+            if (PlazasSeparadas::get_PlazaSeparada($plaza['PLAZA']))
+                $ventas->set_Ingresadas_Instaladas($plaza['PLAZA'], $ingresadas_plaza['TOTAL_INGRESADA'], $instaladas_plaza['TOTAL_INSTALADA']);
+            else
+                $ventas->set_Ingresadas_Instaladas_Otros($ingresadas_plaza['TOTAL_INGRESADA'], $instaladas_plaza['TOTAL_INSTALADA']);
+        }
+    }
+    
 
     /**
      * This is the action to handle external exceptions.
