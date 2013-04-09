@@ -15,7 +15,7 @@ require_once ('/protected/components/FusionCharts.php');
 
     <?php foreach ($ventas as $venta) { ?>
         <tr>
-            <td><?php echo $venta['PLAZA']; ?></td>
+            <td><?php echo CHtml::decode($venta['PLAZA']); ?></td>
             <td><?php echo CHtml::encode($venta['INGRESADAS']); ?></td>
             <td><?php echo CHtml::encode($venta['INSTALADAS']); ?></td>
         </tr>   

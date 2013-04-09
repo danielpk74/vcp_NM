@@ -7,13 +7,16 @@
  */
 class Ventas extends CFormModel {
 
+    /**
+     * Consulta la tabla temporal de resumen de ventas.
+     * @return type
+     */
     public function Ingresadas() {
         $ventas = Yii::app()->db->createCommand()
                 ->select('*')
                 ->from('TMP_VENTAS')
                 ->queryAll();
-
-//      $ventas = Yii::app()->db->createCommand("SP_Ingresadas_X_Plaza_X_Dias '$dias'")->queryAll();
+        
         return $ventas;
     }
 
@@ -56,9 +59,10 @@ class Ventas extends CFormModel {
     }
 
     /**
-     * 
-     * @param type $dias
-     * @return type
+     * Obtiene el numero de pedidos instalados por plaza agrupado por fecha, partiendo desde 
+     * el numero de dias enviados por parametros, hasta la fecha actual.
+     * @param integer $dias el numero de dias desde que se debe traer el historial
+     * @return array con los datos de los ingresos agrupados por fecha
      */
     public function get_Instaladas($dias) {
         $ventas = Yii::app()->db->createCommand("SP_Instaladas_X_Plaza_X_Dias '$dias'")->queryAll();
@@ -73,7 +77,10 @@ class Ventas extends CFormModel {
     }
 
     /**
-     * Truncate a la tabla
+     * * Inserta los pedidos ingresados e instaladas en una plaza determinada
+     * @param string $plaza La plaza a insertar
+     * @param integer $totaIngresadas El numero de pedidos ingresados de la plaza
+     * @param integer $totalInstaladas El numero de pedidos instalados de la plaza
      */
     public function set_Ingresadas_Instaladas($plaza, $totaIngresadas, $totalInstaladas) {
         $command = Yii::app()->db->createCommand();
@@ -131,7 +138,7 @@ class Ventas extends CFormModel {
 
     /**
      * Devuelve el numero de 
-     * @return type
+     * @return string Con el numero de pedidos pendientes por gestionar
      */
     public function TotalPendientes() {
         $ventas = Yii::app()->db->createCommand()

@@ -56,7 +56,7 @@ return array(
                         'connectionString' => 'mssql:host=DMONTOL;dbname=PORTAL_GI',
                         'username' => 'prueba',
                         'password' => 'prueba',
-                        'charset' => 'UTF-8',
+                        'charset'=>'utf16',
                 ),
 
 		
