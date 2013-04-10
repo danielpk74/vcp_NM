@@ -2964,14 +2964,20 @@ table th[class*="span"],
 .dropdown-submenu:focus > a {
   color: #ffffff;
   text-decoration: none;
-  background-color: #0081c2;
-  background-image: -moz-linear-gradient(top, #0088cc, #0077b3);
+  background:transparent url(../images/barra.jpg);
+  background-repeat: repeat-x;
+  /*background-color: #0081c2;*/
+/*  background-image: -moz-linear-gradient(top, #0088cc, #0077b3);
   background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#0088cc), to(#0077b3));
   background-image: -webkit-linear-gradient(top, #0088cc, #0077b3);
   background-image: -o-linear-gradient(top, #0088cc, #0077b3);
   background-image: linear-gradient(to bottom, #0088cc, #0077b3);
   background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff0077b3', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff0077b3', GradientType=0);*/
+  /*background: url(../images/barra.jpg) repeat-x scroll left top white;*/
+  /* if IE */
+  
+  /* endif*/
 }
 
 .dropdown-menu > .active > a,
@@ -6171,8 +6177,22 @@ a.badge:focus {
     border-width: 0px;
     border-color: white;
     border-style: dashed;
+    text-align: right;
 }
 
-.td-numeros {
-    text-align: right;animation-direction:alternate; 
+.numeros{
+    text-align-last: right;
+    text-align: right;
 }
+
+#page
+{
+	margin-top: 5px;
+	margin-bottom: 5px;
+	background: white;
+	border: 0.5px solid #888888;
+        
+        -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        -moz-box-shadow: 0 15px 10px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 15px 10px rgba(0, 0, 0, 0.2);
+}   

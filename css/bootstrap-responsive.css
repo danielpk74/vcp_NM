@@ -970,6 +970,7 @@
   .navbar .container {
     width: auto;
     padding: 0;
+    color:red;
   }
   .navbar .brand {
     padding-right: 10px;
