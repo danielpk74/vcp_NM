@@ -34,20 +34,27 @@ class FunsionesSoporte {
         return $strSetValue;
     }
 
-//  public static function GenerarXML_Chart()
-    public static function GenerarXML_Chart($titulo, $subTitulo, $categorias, $dataSets, $TituloX, $TituloY) {
+    public static function GenerarXML_Chart($titulo, $subTitulo, $categorias, $dataSets, $TituloX="", $TituloY="") {
         $strXML .="<chart caption='$titulo' canvasborderalpha='0' subcaption='$subTitulo' linethickness='3' 
                    showvalues='1' formatnumberscale='0' anchorradius='3' divlinealpha='20' stack100percent='0'
                    divlinecolor='0' chartbottommargin='35' divlineisdashed='1' showalternatehgridcolor='0' 
-                   alternatehgridalpha='5' alternatehgridcolor='CC3300' shadowalpha='40' labelstep='1' 
-                   numvdivlines='5' chartrightmargin='35' bgcolor='FFFFFF,CC3300' bgangle='270' bgalpha='10,10' 
-                   decimalprecision='2' palette='1' xaxisname='Fecha de registro Monitoreo de novedades' 
-                   yaxisname='Variaciones'>";
+                   alternatehgridalpha='0' alternatehgridcolor='CC3300' shadowalpha='40' labelstep='1' 
+                   numvdivlines='0' chartrightmargin='35' bgcolor='FFFFFF,CC3300' bgangle='270' bgalpha='10,10' 
+                   decimalprecision='2' palette='1' xaxisname='$TituloX' yaxisname='$TituloY'>";
+        
         // Categorias
         $strXML .=$categorias;
 
         // DataSets
         $strXML .= $dataSets;
+        
+//animation='1' showvalues='0' caption='' subcaption='' 
+//       numberprefix='' chartrightmargin='15' xaxisname='' 
+//       yaxisname='' pyaxisname=''  bgcolor='FFFFFF' 
+//       bgratio='0' bgalpha='50' showalternatehgridcolor='0' numdivlines='0' 
+//       showyaxisvalues='0' showlegend='0' chartleftmargin='35' charttopmargin='25'
+//       chartbottommargin='35' drawanchors='0' bordercolor='970000' borderalpha='31' 
+//       stack100percent='0' linethickness='3' basefontsize='12'        
         
 //////////////// MS LINE
 //        $strXML .= "<styles>";

@@ -22,15 +22,18 @@ class Ventas extends CFormModel {
 
     /**
      * Devuelve el numero de pedidos ingresados para una plaza en una fecha determinada
+     * <br><b>Utiliza el SP_Ingresadas_X_Plaza_X_Fecha</b>
      * @param string $plaza
      * @param string $fecha_ingreso
+     * @param string $producto
      * @return string Numero total de ingresadas
      */
-    public function get_Ingresadas_Plaza_Fecha($plaza, $fecha_ingreso) {
+    public function get_Ingresadas_Plaza_Fecha($plaza, $fecha_ingreso,$tipoElemento) {
         $plaza = (string) "''" . $plaza . "''";
         $fecha_ingreso = (string) "''" . $fecha_ingreso . "''";
+        $tipoElemento = (string) "''" . $tipoElemento . "''";
 
-        $ventas = Yii::app()->db->createCommand("SP_Ingresadas_X_Plaza_X_Fecha '$plaza','$fecha_ingreso'")->queryRow();
+        $ventas = Yii::app()->db->createCommand("SP_Ingresadas_X_Plaza_X_Fecha '$plaza','$fecha_ingreso','$tipoElemento'")->queryRow();
         return $ventas;
     }
 
@@ -40,11 +43,12 @@ class Ventas extends CFormModel {
      * @param string $fecha_ingreso
      * @return string Numero total de instaladas
      */
-    public function get_Instaladas_Plaza_Fecha($plaza, $fecha_ingreso) {
+    public function get_Instaladas_Plaza_Fecha($plaza, $fecha_ingreso,$tipoElemento) {
         $plaza = (string) "''" . $plaza . "''";
         $fecha_ingreso = (string) "''" . $fecha_ingreso . "''";
+        $tipoElemento = (string) "''" . $tipoElemento . "''";
 
-        $ventas = Yii::app()->db->createCommand("SP_Instaladas_X_Plaza_X_Fecha '$plaza','$fecha_ingreso'")->queryRow();
+        $ventas = Yii::app()->db->createCommand("SP_Instaladas_X_Plaza_X_Fecha '$plaza','$fecha_ingreso','$tipoElemento'")->queryRow();
         return $ventas;
     }
 
@@ -53,8 +57,9 @@ class Ventas extends CFormModel {
      * @param type $dias
      * @return objeto
      */
-    public function get_Ingresadas($dias) {
-        $ventas = Yii::app()->db->createCommand("SP_Ingresadas_X_Plaza_X_Dias '$dias'")->queryAll();
+    public function get_Ingresadas($dias,$tipoElemento) {
+        $tipoElemento = (string) "''" . $tipoElemento . "''";
+        $ventas = Yii::app()->db->createCommand("SP_Ingresadas_X_Plaza_X_Dias '$dias','$tipoElemento'")->queryAll();
         return $ventas;
     }
 
@@ -64,8 +69,9 @@ class Ventas extends CFormModel {
      * @param integer $dias el numero de dias desde que se debe traer el historial
      * @return array con los datos de los ingresos agrupados por fecha
      */
-    public function get_Instaladas($dias) {
-        $ventas = Yii::app()->db->createCommand("SP_Instaladas_X_Plaza_X_Dias '$dias'")->queryAll();
+    public function get_Instaladas($dias,$tipoElemento) {
+        $tipoElemento = (string) "''" . $tipoElemento . "''";
+        $ventas = Yii::app()->db->createCommand("SP_Instaladas_X_Plaza_X_Dias '$dias','$tipoElemento'")->queryAll();
         return $ventas;
     }
 
@@ -101,7 +107,7 @@ class Ventas extends CFormModel {
         $otros = Yii::app()->db->createCommand()
                 ->select('COUNT(*)')
                 ->from('TMP_VENTAS')
-                ->where("PLAZA = 'OTROS'")
+                ->where('PLAZA = :plaza',array('plaza'=>'OTROS'))
                 ->queryScalar();
 
         if ($otros == 0) {
@@ -122,8 +128,9 @@ class Ventas extends CFormModel {
      * Devuelve el numero de pedidos ingresados en el mes actual
      * @return string numero de ingresados
      */
-    public function TotalIngresadasMes() {
-        $ventasIngresadasMes = Yii::app()->db->createCommand("SP_Ingresadas_X_Mes")->queryScalar();
+    public function TotalIngresadasMes($tipoElemento) {
+        $tipoElemento = (string) "''" . $tipoElemento . "''";
+        $ventasIngresadasMes = Yii::app()->db->createCommand("SP_Ingresadas_X_Mes '$tipoElemento'")->queryScalar();
         return $ventasIngresadasMes;
     }
 
@@ -131,8 +138,9 @@ class Ventas extends CFormModel {
      * Devuelve el numero de pedidos instalados en el mes actual
      * @return string numero de instalados
      */
-    public function TotalInstaladasMes() {
-        $ventasInstaladasMes = Yii::app()->db->createCommand("SP_Instaladas_X_Mes")->queryScalar();
+    public function TotalInstaladasMes($tipoElemento) {
+        $tipoElemento = (string) "''" . $tipoElemento . "''";
+        $ventasInstaladasMes = Yii::app()->db->createCommand("SP_Instaladas_X_Mes '$tipoElemento'")->queryScalar();
         return $ventasInstaladasMes;
     }
 
@@ -140,12 +148,13 @@ class Ventas extends CFormModel {
      * Devuelve el numero de 
      * @return string Con el numero de pedidos pendientes por gestionar
      */
-    public function TotalPendientes() {
+    public function TotalPendientes($tipoElemento) {
         $ventas = Yii::app()->db->createCommand()
                 ->select('COUNT(PEDIDO_ID) as TOTAL')
-                ->from('MOVILIDAD_4G-LTE_INFORME_DIARIO')
+                ->from('PEDIDOS_MOVILIDAD')
                 ->where('ESTADO=:estado',array(':estado'=>'Pendiente'))
                 ->andwhere('TIPO_SOLICITUD=:tipoSolicitud',array(':tipoSolicitud'=>'NUEVO'))
+                ->andwhere('TIPO_ELEMENTO_ID=:tipoElemento',array(':tipoElemento'=>$tipoElemento))
                 ->queryScalar();
         
         return $ventas;

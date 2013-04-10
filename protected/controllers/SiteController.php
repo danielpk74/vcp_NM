@@ -26,32 +26,33 @@ class SiteController extends Controller {
      */
     public function actionIndex() {
 
+        $producto = "4G";
+        
+        // Definimos el tipo elemento a consultar, si no esta dado por get,  asume 4G por defecto
+        if (isset($_GET['tid']))  {
+            $this->setPageState('tipo_elemento',$_GET['tid']);
+            
+            if($_GET['tid'] != 'NUMMOV')
+                $producto = "3G";
+        }
+        else 
+            $this->setPageState('tipo_elemento','NUMMOV');
+        
         $temporalVentas = new TemporalVentas();
         $this->ActualizarTemporal();
 
         $ventas = new Ventas();
         $ventasTotales = $ventas->Ingresadas();
-        $totalIngresadasMesActual = $ventas->TotalIngresadasMes();
-        $totalInstaladasMesActual = $ventas->TotalInstaladasMes();
-        $totalPendientes = $ventas->TotalPendientes();
-
-//        $ventasTotales = new CArrayDataProvider($ventas->Ingresadas(), array(
-//            'id' => 'PLAZA',
-//            'sort' => array(
-//                'attributes' => array(
-//                   'PLAZA', 'INGRESADAS', 'INSTALADAS'
-//                ),
-//            ),
-//            'pagination' => array(
-//                'pageSize' => 100,
-//            ),
-//        ));
-
+        $totalIngresadasMesActual = $ventas->TotalIngresadasMes($this->getPageState('tipo_elemento'));
+        $totalInstaladasMesActual = $ventas->TotalInstaladasMes($this->getPageState('tipo_elemento'));
+        $totalPendientes = $ventas->TotalPendientes($this->getPageState('tipo_elemento'));
+        
         $ventas = new Ventas();
-        $ventasIngresadas = $ventas->get_Ingresadas(7);
-        $ventasInstaladas = $ventas->get_Instaladas(7);
+        $ventasIngresadas = $ventas->get_Ingresadas(7,$this->getPageState('tipo_elemento'));
+        $ventasInstaladas = $ventas->get_Instaladas(7,$this->getPageState('tipo_elemento'));
 
-        $this->render('index', array('ventas' => $ventasTotales,
+        $this->render('index', array('producto'=>$producto,
+            'ventas' => $ventasTotales,
             'ventasIngresadas' => $ventasIngresadas,
             'ingresadasMesActual' => $totalIngresadasMesActual,
             'instaladasMesActual' => $totalInstaladasMesActual,
@@ -73,11 +74,11 @@ class SiteController extends Controller {
         $instaladasOtros = 0;
 
         $ventas = new Ventas();
-        
-        $ayer = date('Y-m-d',strtotime( "-1 day", strtotime(date('Y-m-d') ) ));
+
+        $ayer = date('Y-m-d', strtotime("-1 day", strtotime(date('Y-m-d'))));
         foreach ($plazas as $plaza) {
-            $ingresadasPlaza = $ventas->get_Ingresadas_Plaza_Fecha($plaza['PLAZA'], $ayer);
-            $instaladasPlaza = $ventas->get_Instaladas_Plaza_Fecha($plaza['PLAZA'], $ayer);
+            $ingresadasPlaza = $ventas->get_Ingresadas_Plaza_Fecha($plaza['PLAZA'], $ayer,$this->GetPageState('tipo_elemento'));
+            $instaladasPlaza = $ventas->get_Instaladas_Plaza_Fecha($plaza['PLAZA'], $ayer,$this->GetPageState('tipo_elemento'));
 
             if (PlazasSeparadas::get_PlazaSeparada($plaza['PLAZA'])) {
                 $ventas->set_Ingresadas_Instaladas(FunsionesSoporte::QuitarAcentos($plaza['PLAZA']), $ingresadasPlaza['TOTAL_INGRESADA'], $instaladasPlaza['TOTAL_INSTALADA']);
