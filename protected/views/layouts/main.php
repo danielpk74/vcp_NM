@@ -8,14 +8,14 @@
         <link rel="shortcut icon" href="<?php echo Yii::app()->request->baseUrl; ?>/images/favicon.ico">
 
             <!-- blueprint CSS framework -->
-            <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/screen.css" media="screen, projection" />
-            <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/print.css" media="print" />
+            <!--<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/screen.css" media="screen, projection" />-->
+            <!--<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/print.css" media="print" />-->
             <!--[if lt IE 8]>
             <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/ie.css" media="screen, projection" />
             <![endif]-->
 
-            <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/main.css" />
-            <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/form.css" />
+<!--            <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/main.css" />
+            <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/form.css" />-->
             <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/bootstrap-responsive.css" />
             <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/bootstrap.css" />
 
@@ -30,7 +30,7 @@
 
             <div id="header">
                     <!--<div id="logo"><?php echo CHtml::encode(Yii::app()->name); ?></div>-->
-                <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/logovcp.png" width="100%"/>
+                <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/logovcp.png" width="100%" style="margin-top: 10px;"/>
             </div><!-- header -->
 
             <div>
@@ -48,6 +48,7 @@
                                     <li class="dropdown">
                                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Ventas <b class="caret"></b></a>
                                         <ul class="dropdown-menu">
+                                            <li><a href="#">Ver Detalles</a></li>
                                             <li><a href="#">Presupuestos</a></li>
                                         </ul>
                                     </li>
@@ -59,13 +60,12 @@
                                         </ul>
                                     </li>
                                     
-                                    <li class="dropdown">
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Actualizar <b class="caret"></b></a>
+<!--                                    <li class="dropdown">
+                                        <?php echo CHtml::linkButton('Actualizar',array('submit'=>array('Actualizar')));?>
                                         <ul class="dropdown-menu">
-                                            <li><a href="#">Pendientes</a></li>
-                                            <li><a href="#">Retiros</a></li>
+                                            <li></li>
                                         </ul>
-                                    </li>
+                                    </li>-->
                                 </ul>
                             </div><!-- /.nav-collapse -->
                         </div>

@@ -5,61 +5,75 @@
  * LoginForm is the data structure for keeping
  * user login form data. It is used by the 'login' action of 'SiteController'.
  */
-class Ventas extends CFormModel {
+class Actualizar extends CFormModel {
 
-//    public function Ingresadas() {
-//        $ventas = Yii::app()->db->createCommand()
-//                ->select('*')
-//                ->from('TMP_VENTAS')
-//                ->queryAll();
-//        
-//        $dias = 10;
-////        $ventas = Yii::app()->db->createCommand("SP_Ingresadas_X_Plaza_X_Dias '$dias'")->queryAll();
-//        
-//        return $ventas;
-//    }
-//
-//    public function get_Ingresadas($dias = 1) {
-////        $ventas = Yii::app()->db->createCommand()
-////                ->select('*')
-////                ->from('V_INGRESADAS_7')
-////                ->queryAll();
-//
-////        $ventas = Yii::app()->db->createCommand("SP_Ingresadas_X_Plaza_X_Dias '$dias'")->queryAll();
-//        $ventas = Yii::app()->db->createCommand("SP_Ingresadas_X_Plaza_X_Dias '$dias'")->queryAll();
-//        return $ventas;
-//    }
-//
-//    public function get_Instaladas($dias = 1) {
-////        $ventas = Yii::app()->db->createCommand()
-////                ->select('*')
-////                ->from('V_INSTALADAS_7')
-////                ->queryAll();
-//
-//        $ventas = Yii::app()->db->createCommand("SP_Instaladas_X_Plaza_X_Dias '$dias'")->queryAll();
-//        return $ventas;
-//    }
-//
-//    /**
-//     * Devuelve el total de ingresos para la plaza enviada por parametros
-//     * @param string $plaza
-//     * @return array
-//     */
-//    public function IngresadasPlaza($plaza, $dias) {
-//        $ingresadasPlaza = Yii::app()->db->createCommand()
-//                ->select('*')
-//                ->from('V_INGRESADAS_' . $dias)
-//                ->where('PLAZA=:plaza', array(':plaza' => $plaza))
-//                ->queryAll();
-//
-//        return $ventas;
-//    }
-//
-//    /**
-//     * Truncate a la tabla
-//     */
-//    public function TruncateTemporalVentas($nombreTabla) {
-//        $ingresadasPlaza = Yii::app()->db->createCommand()->truncateTable((string) $nombreTabla);
-//    }
+    public function get_FechaActualizacion() {
+        $configuracion = Yii::app()->db->createCommand()
+                ->select('FECHA_ACTUALIZACION')
+                ->from('CONFIGURACION')
+                ->queryScalar();
+
+        return $configuracion;
+    }
+
+    /**
+     * Actualiza la tabla temporal de ventas del dia
+     * */
+    public function ActualizarTemporal($fechaActualizacion) {
+        if ($fechaActualizacion != date('Y-m-d')) {
+
+            $tiposElementos = array('NUMMOV', 'INTMOV');
+            
+            $temporalVentas = new TemporalVentas();
+            $temporalVentas->TruncateTemporal();
+
+            for ($i = 0; $i < Count($tiposElementos); $i++) {
+                
+                $tipoElemento = $tiposElementos[$i];
+                
+                
+
+                $plazas = new Plazas();
+                $plazas = $plazas->get_Plazas();
+
+                $ingresadasOtros = 0;
+                $instaladasOtros = 0;
+
+                $ventas = new Ventas();
+
+                if(date('H') < '12')
+                    $ayer = date('Y-m-d', strtotime("-1 day", strtotime(date('Y-m-d'))));
+                else
+                    $ayer = date('Y-m-d');
+                
+                foreach ($plazas as $plaza) {
+                    $ingresadasPlaza = $ventas->get_Ingresadas_Plaza_Fecha($plaza['PLAZA'], $ayer, $tipoElemento);
+                    $instaladasPlaza = $ventas->get_Instaladas_Plaza_Fecha($plaza['PLAZA'], $ayer, $tipoElemento);
+
+                    if (PlazasSeparadas::get_PlazaSeparada($plaza['PLAZA'])) {
+                        $ventas->set_Ingresadas_Instaladas(FunsionesSoporte::QuitarAcentos($plaza['PLAZA']), $ingresadasPlaza['TOTAL_INGRESADA'], $instaladasPlaza['TOTAL_INSTALADA'], $tipoElemento);
+                    } else {
+                        $ingresadasOtros += $ingresadasPlaza['TOTAL_INGRESADA'];
+                        $instaladasOtros += $instaladasPlaza['TOTAL_INSTALADA'];
+                    }
+                }
+
+                $ventas->set_Ingresadas_Instaladas_Otros($ingresadasOtros, $instaladasOtros, $tipoElemento);
+            }
+
+            $this->ActualizarFecha();
+        }
+
+        return true;
+    }
+
+    /**
+     * Actualiza el campo de la fecha de la ultima carga de informacion
+     */
+    public function ActualizarFecha() {
+        Yii::app()->db->createCommand()->update('CONFIGURACION', array(
+            'FECHA_ACTUALIZACION' => date('Y-m-d'),
+                ), 'CONFIGURACION_ID=:id', array(':id' => '1'));
+    }
 
 }

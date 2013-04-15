@@ -11,10 +11,11 @@ class Ventas extends CFormModel {
      * Consulta la tabla temporal de resumen de ventas.
      * @return type
      */
-    public function Ingresadas() {
+    public function Ingresadas($tipoElemento) {
         $ventas = Yii::app()->db->createCommand()
                 ->select('*')
                 ->from('TMP_VENTAS')
+                 ->where('TIPO_ELEMENTO_ID = :tipoelemento',array('tipoelemento'=>$tipoElemento))
                 ->queryAll();
         
         return $ventas;
@@ -47,7 +48,7 @@ class Ventas extends CFormModel {
         $plaza = (string) "''" . $plaza . "''";
         $fecha_ingreso = (string) "''" . $fecha_ingreso . "''";
         $tipoElemento = (string) "''" . $tipoElemento . "''";
-
+        
         $ventas = Yii::app()->db->createCommand("SP_Instaladas_X_Plaza_X_Fecha '$plaza','$fecha_ingreso','$tipoElemento'")->queryRow();
         return $ventas;
     }
@@ -88,12 +89,13 @@ class Ventas extends CFormModel {
      * @param integer $totaIngresadas El numero de pedidos ingresados de la plaza
      * @param integer $totalInstaladas El numero de pedidos instalados de la plaza
      */
-    public function set_Ingresadas_Instaladas($plaza, $totaIngresadas, $totalInstaladas) {
+    public function set_Ingresadas_Instaladas($plaza, $totaIngresadas, $totalInstaladas,$tipoElemento) {
         $command = Yii::app()->db->createCommand();
         $command->insert('TMP_VENTAS', array(
             'PLAZA' => $plaza,
             'INGRESADAS' => $totaIngresadas,
             'INSTALADAS' => $totalInstaladas,
+            'TIPO_ELEMENTO_ID' => $tipoElemento,
         ));
     }
 
@@ -101,13 +103,14 @@ class Ventas extends CFormModel {
      * Inserta o actualiza(si fue insertado un registro previamente) los pedidos ingresados o instalados
      * en las plazas que no son consideradas como principales(entidad PLAZAS_SEPARADAS)
      */
-    public function set_Ingresadas_Instaladas_Otros($totaIngresadas, $totalInstaladas) {
+    public function set_Ingresadas_Instaladas_Otros($totaIngresadas, $totalInstaladas,$tipoElemento) {
         $command = Yii::app()->db->createCommand();
 
         $otros = Yii::app()->db->createCommand()
                 ->select('COUNT(*)')
                 ->from('TMP_VENTAS')
                 ->where('PLAZA = :plaza',array('plaza'=>'OTROS'))
+                ->andwhere('TIPO_ELEMENTO_ID = :tipoelemento',array('tipoelemento'=>$tipoElemento))
                 ->queryScalar();
 
         if ($otros == 0) {
@@ -115,11 +118,13 @@ class Ventas extends CFormModel {
                 'PLAZA' => 'Otros',
                 'INGRESADAS' => $totaIngresadas,
                 'INSTALADAS' => $totalInstaladas,
+                'TIPO_ELEMENTO_ID' => $tipoElemento,
             ));
         } else {
             $command->update('TMP_VENTAS', array(
                 'INGRESADAS' => $otros['INGRESADAS'] + $totaIngresadas,
                 'INSTALADAS' => $otros['INSTALADAS'] + $totalInstaladas,
+                'TIPO_ELEMENTO_ID' => $tipoElemento,
                     ), 'PLAZA=:plaza', array(':plaza' => 'OTROS'));
         }
     }

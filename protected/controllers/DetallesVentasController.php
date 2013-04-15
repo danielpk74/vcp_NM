@@ -43,6 +43,6 @@ class SiteController extends Controller {
          $ventasIngresadas = $ventas->get_Ingresadas(1);
          $ventasInstaladas = $ventas->get_Instaladas(1);
 
-        $this->render('indexs', array('ventas' => $ventasTotales,'ventasIngresadas'=>$ventasIngresadas,'ventasInstaladas'=>$ventasInstaladas));
+        $this->render('index', array('ventas' => $ventasTotales,'ventasIngresadas'=>$ventasIngresadas,'ventasInstaladas'=>$ventasInstaladas));
     }
 }
