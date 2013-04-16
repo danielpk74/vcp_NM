@@ -2,8 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es" lang="es">
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <meta name="language" content="es" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <meta name="language" content="es"/>
 
         <link rel="shortcut icon" href="<?php echo Yii::app()->request->baseUrl; ?>/images/favicon.ico">
 
@@ -59,13 +59,23 @@
                                             <li><a href="#">Retiros</a></li>
                                         </ul>
                                     </li>
+                                     
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Descargar <b class="caret"></b></a>
+                                        <ul class="dropdown-menu">
+                                            <?php 
+                                               for($año=2012;$año<=date('Y');$año++)
+                                                   echo "<li><a id='$año' href='../movilidad/$año.xlsx'/>Detalles $año</a></li>" ;  
+                                            ?>
+                                        </ul>
+                                    </li>
                                     
-<!--                                    <li class="dropdown">
+                                    <li class="dropdown">
                                         <?php echo CHtml::linkButton('Actualizar',array('submit'=>array('Actualizar')));?>
                                         <ul class="dropdown-menu">
                                             <li></li>
                                         </ul>
-                                    </li>-->
+                                    </li>
                                 </ul>
                             </div><!-- /.nav-collapse -->
                         </div>
@@ -99,7 +109,7 @@
 
             <div id="footer">
                 Vicepresidencia de Nuevos Mercados - UNE Telecomunicaciones.<br/>
-                <?php echo Yii::powered(); ?>
+                <?php echo Yii::powered(); ?> - se ve mejor con navegador Chrome
             </div><!-- footer -->
 
         </div><!-- page -->

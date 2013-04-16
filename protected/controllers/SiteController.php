@@ -2,9 +2,12 @@
 
 class SiteController extends Controller {
 
+    /**
+     * Carga al dropdownlist de subproductos los pertenecientes a un producto enviado por parametro
+     */
     public function actionCargarSubProductos() {
         if (Yii::app()->request->isAjaxRequest) {
-            $producto = Yii::app()->getRequest()->getParam('color');
+            $producto = Yii::app()->getRequest()->getParam('producto');
             $producto_ = new Productos();
 
             if ($producto != '') {
@@ -17,9 +20,22 @@ class SiteController extends Controller {
             }
         }
     }
-    
-    public function actionDetallesVentas() {
-        
+
+    /**
+     * 
+     */
+    public function actionActualizarDetallesVentas() {
+        if (Yii::app()->request->isAjaxRequest) {
+            $producto = Yii::app()->getRequest()->getParam('color');
+            $producto_ = new Productos();
+
+            if ($producto != '') {
+                $subProductos = $producto_->get_SubProductos($producto);
+                $subProducto_ = new SubProductos();
+
+                $this->renderPartial('plantillas/ventasGeneral', array('subProductos' => $subProductos, 'subProducto_' => $subProducto_));
+            }
+        }
     }
 
     /**
@@ -27,8 +43,8 @@ class SiteController extends Controller {
      * when an action is not explicitly requested by users.
      */
     public function actionIndex() {
-        $fechaActualizacion = new Actualizar();
-        $fechaActualizacion = $fechaActualizacion->get_FechaActualizacion();
+        $configuracion = new Configuracion();
+        $fechaActualizacion = $configuracion->get_FechaActualizacion();
 
         $producto_ = new Productos();
         $productos = $producto_->get_Productos();
@@ -36,53 +52,77 @@ class SiteController extends Controller {
 
         // Producto a consultar por defecto
         $productoConsulta = "4G";
+        $subProductoQuery = "";
+        if (Yii::app()->request->isAjaxRequest) {
 
-        // Definimos el tipo elemento a consultar, si no esta dado por get,  asume 4G por defecto
-        if (isset($_GET['tid'])) {
-            $this->setPageState('tipo_elemento', $_GET['tid']);
+            // Si consulta solo por producto
+            if (Yii::app()->getRequest()->getParam('subproducto') == "") {
+                $this->setPageState('producto', Yii::app()->getRequest()->getParam('producto'));
+            } else { // Consultamos por subproducto {
+                $this->setPageState('producto', Yii::app()->getRequest()->getParam('subproducto'));
+                echo Yii::app()->getRequest()->getParam('subproducto');
+            }
 
-            if ($_GET['tid'] != 'NUMMOV')
+            if (Yii::app()->getRequest()->getParam('producto') != 'NUMMOV')
                 $productoConsulta = "3G";
         }
-        else
-            $this->setPageState('tipo_elemento', 'NUMMOV');
+        else {
+            $subProductos = $producto_->get_SubProductos('');
+
+            $this->setPageState('producto', 'NUMMOV');
+        }
 
         $ventas = new Ventas();
 
         /// TOTAL INGRESADAS E INSTALADAS MES
-        $totalIngresadasMesActual = $ventas->TotalIngresadasMes($this->getPageState('tipo_elemento'));
-        $totalInstaladasMesActual = $ventas->TotalInstaladasMes($this->getPageState('tipo_elemento'));
-        $totalPendientes = $ventas->TotalPendientes($this->getPageState('tipo_elemento'));
+        $totalIngresadasMesActual = $ventas->TotalIngresadasMes($this->getPageState('producto'));
+        $totalInstaladasMesActual = $ventas->TotalInstaladasMes($this->getPageState('producto'));
+        $totalPendientes = $ventas->TotalPendientes($this->getPageState('producto'));
 
         /// TOTAL INSTALADAS E INGRESADAS POR DIA - GRAFICO
-        $ventasIngresadas = $ventas->get_Ingresadas(7, $this->getPageState('tipo_elemento'));
-        $ventasInstaladas = $ventas->get_Instaladas(7, $this->getPageState('tipo_elemento'));
+        $ventasIngresadas = $ventas->get_Ingresadas(7, $this->getPageState('producto'));
+        $ventasInstaladas = $ventas->get_Instaladas(7, $this->getPageState('producto'));
 
         // INGRESADAS E INSTALADAS TMP_VENTAS
-        $ventasTotales = $ventas->Ingresadas($this->getPageState('tipo_elemento'));
+        $ventasTotales = $ventas->Ingresadas($this->getPageState('producto'));
 
-        $subProductos = $producto_->get_SubProductos($this->getPageState('tipo_elemento'));
-        $this->render('index', array(
-            'fechaactualizacion' => $fechaActualizacion,
-            'producto' => $productoConsulta,
-            'productomodel' => $producto_,
-            'subProducto_' => $subProducto_,
-            'productos' => $productos,
-            'subProductos' => $subProductos,
-            'ventas' => $ventasTotales,
-            'ventasIngresadas' => $ventasIngresadas,
-            'ingresadasMesActual' => $totalIngresadasMesActual,
-            'instaladasMesActual' => $totalInstaladasMesActual,
-            'totalPendientes' => $totalPendientes,
-            'ventasInstaladas' => $ventasInstaladas));
+        if (!Yii::app()->request->isAjaxRequest) {
+            $this->render('index', array(
+                'fechaactualizacion' => $fechaActualizacion,
+                'producto' => $productoConsulta,
+                'productomodel' => $producto_,
+                'subProducto_' => $subProducto_,
+                'productos' => $productos,
+                'subProductos' => $subProductos,
+                'ventas' => $ventasTotales,
+                'ventasIngresadas' => $ventasIngresadas,
+                'ingresadasMesActual' => $totalIngresadasMesActual,
+                'instaladasMesActual' => $totalInstaladasMesActual,
+                'totalPendientes' => $totalPendientes,
+                'ventasInstaladas' => $ventasInstaladas));
+        } else {
+            $this->renderPartial('plantillas/ventasGeneral', array(
+                'fechaactualizacion' => $fechaActualizacion,
+                'producto' => $productoConsulta,
+                'productomodel' => $producto_,
+                'subProducto_' => $subProducto_,
+                'productos' => $productos,
+                'subProductos' => $subProductos,
+                'ventas' => $ventasTotales,
+                'ventasIngresadas' => $ventasIngresadas,
+                'ingresadasMesActual' => $totalIngresadasMesActual,
+                'instaladasMesActual' => $totalInstaladasMesActual,
+                'totalPendientes' => $totalPendientes,
+                'ventasInstaladas' => $ventasInstaladas));
+        }
     }
 
     public function actionActualizar() {
-        $fechaActualizacion = new Actualizar();
+        $fechaActualizacion = new Configuracion();
         $fechaActualizacion = $fechaActualizacion->get_FechaActualizacion();
-        
+
         $Actualizar = new Actualizar();
-        $Actualizar->ActualizarTemporal($fechaActualizacion,$this->getPageState('tipo_elemento'));
+        $Actualizar->ActualizarTemporal($fechaActualizacion, $this->getPageState('producto'));
 
         $this->render('actualizar', array('fechaactualizacion' => $fechaActualizacion));
     }

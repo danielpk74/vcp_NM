@@ -8612,3 +8612,1446 @@ Stack trace:
 REQUEST_URI=/vcp_nuevosmercados/index.php?r=site/Actualizar
 HTTP_REFERER=http://localhost:8080/vcp_nuevosmercados/index.php?r=site/index
 ---
+2013/04/15 11:02:30 [error] [exception.CException] exception 'CException' with message 'Property "SubProductos./vcp_nuevosmercados/index.php?r=Site/cargarSubProductos" is not defined.' in C:\xampp\htdocs\yii\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\helpers\CHtml.php(2255): CComponent->__get('/vcp_nuevosmerc...')
+#1 C:\xampp\htdocs\yii\framework\web\helpers\CHtml.php(1565): CHtml::resolveValue(Object(SubProductos), '/vcp_nuevosmerc...')
+#2 C:\xampp\htdocs\vcp_nuevosmercados\protected\views\site\index.php(35): CHtml::activeDropDownList(Object(SubProductos), '/vcp_nuevosmerc...', Array, Array)
+#3 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require('C:\xampp\htdocs...')
+#4 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\xampp\htdocs...', Array, true)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\xampp\htdocs...', Array, true)
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(782): CController->renderPartial('index', Array, true)
+#7 C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php(73): CController->render('index', Array)
+#8 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionIndex()
+#9 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#10 C:\xampp\htdocs\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('')
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('')
+#14 C:\xampp\htdocs\yii\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#15 C:\xampp\htdocs\vcp_nuevosmercados\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/vcp_nuevosmercados/
+---
+2013/04/15 11:02:32 [error] [exception.CException] exception 'CException' with message 'Property "SubProductos./vcp_nuevosmercados/index.php?r=Site/cargarSubProductos" is not defined.' in C:\xampp\htdocs\yii\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\helpers\CHtml.php(2255): CComponent->__get('/vcp_nuevosmerc...')
+#1 C:\xampp\htdocs\yii\framework\web\helpers\CHtml.php(1565): CHtml::resolveValue(Object(SubProductos), '/vcp_nuevosmerc...')
+#2 C:\xampp\htdocs\vcp_nuevosmercados\protected\views\site\index.php(35): CHtml::activeDropDownList(Object(SubProductos), '/vcp_nuevosmerc...', Array, Array)
+#3 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require('C:\xampp\htdocs...')
+#4 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\xampp\htdocs...', Array, true)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\xampp\htdocs...', Array, true)
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(782): CController->renderPartial('index', Array, true)
+#7 C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php(73): CController->render('index', Array)
+#8 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionIndex()
+#9 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#10 C:\xampp\htdocs\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('')
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('')
+#14 C:\xampp\htdocs\yii\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#15 C:\xampp\htdocs\vcp_nuevosmercados\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/vcp_nuevosmercados/
+---
+2013/04/15 11:02:33 [error] [exception.CException] exception 'CException' with message 'Property "SubProductos./vcp_nuevosmercados/index.php?r=Site/cargarSubProductos" is not defined.' in C:\xampp\htdocs\yii\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\helpers\CHtml.php(2255): CComponent->__get('/vcp_nuevosmerc...')
+#1 C:\xampp\htdocs\yii\framework\web\helpers\CHtml.php(1565): CHtml::resolveValue(Object(SubProductos), '/vcp_nuevosmerc...')
+#2 C:\xampp\htdocs\vcp_nuevosmercados\protected\views\site\index.php(35): CHtml::activeDropDownList(Object(SubProductos), '/vcp_nuevosmerc...', Array, Array)
+#3 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require('C:\xampp\htdocs...')
+#4 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\xampp\htdocs...', Array, true)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\xampp\htdocs...', Array, true)
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(782): CController->renderPartial('index', Array, true)
+#7 C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php(73): CController->render('index', Array)
+#8 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionIndex()
+#9 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#10 C:\xampp\htdocs\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('')
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('')
+#14 C:\xampp\htdocs\yii\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#15 C:\xampp\htdocs\vcp_nuevosmercados\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/vcp_nuevosmercados/
+---
+2013/04/15 11:03:06 [error] [exception.CException] exception 'CException' with message 'Property "SubProductos./vcp_nuevosmercados/index.php?r=Site/cargarSubProductos" is not defined.' in C:\xampp\htdocs\yii\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\helpers\CHtml.php(2255): CComponent->__get('/vcp_nuevosmerc...')
+#1 C:\xampp\htdocs\yii\framework\web\helpers\CHtml.php(1565): CHtml::resolveValue(Object(SubProductos), '/vcp_nuevosmerc...')
+#2 C:\xampp\htdocs\vcp_nuevosmercados\protected\views\site\index.php(35): CHtml::activeDropDownList(Object(SubProductos), '/vcp_nuevosmerc...', Array, Array)
+#3 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require('C:\xampp\htdocs...')
+#4 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\xampp\htdocs...', Array, true)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\xampp\htdocs...', Array, true)
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(782): CController->renderPartial('index', Array, true)
+#7 C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php(73): CController->render('index', Array)
+#8 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionIndex()
+#9 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#10 C:\xampp\htdocs\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('')
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('')
+#14 C:\xampp\htdocs\yii\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#15 C:\xampp\htdocs\vcp_nuevosmercados\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/vcp_nuevosmercados/
+---
+2013/04/15 11:03:22 [error] [exception.CException] exception 'CException' with message 'Property "SubProductos./vcp_nuevosmercados/index.php?r=Site/cargarSubProductos" is not defined.' in C:\xampp\htdocs\yii\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\helpers\CHtml.php(2255): CComponent->__get('/vcp_nuevosmerc...')
+#1 C:\xampp\htdocs\yii\framework\web\helpers\CHtml.php(1565): CHtml::resolveValue(Object(SubProductos), '/vcp_nuevosmerc...')
+#2 C:\xampp\htdocs\vcp_nuevosmercados\protected\views\site\index.php(35): CHtml::activeDropDownList(Object(SubProductos), '/vcp_nuevosmerc...', Array, Array)
+#3 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require('C:\xampp\htdocs...')
+#4 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\xampp\htdocs...', Array, true)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\xampp\htdocs...', Array, true)
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(782): CController->renderPartial('index', Array, true)
+#7 C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php(73): CController->render('index', Array)
+#8 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionIndex()
+#9 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#10 C:\xampp\htdocs\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('')
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('')
+#14 C:\xampp\htdocs\yii\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#15 C:\xampp\htdocs\vcp_nuevosmercados\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/vcp_nuevosmercados/
+---
+2013/04/15 11:03:24 [error] [exception.CException] exception 'CException' with message 'Property "SubProductos./vcp_nuevosmercados/index.php?r=Site/cargarSubProductos" is not defined.' in C:\xampp\htdocs\yii\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\helpers\CHtml.php(2255): CComponent->__get('/vcp_nuevosmerc...')
+#1 C:\xampp\htdocs\yii\framework\web\helpers\CHtml.php(1565): CHtml::resolveValue(Object(SubProductos), '/vcp_nuevosmerc...')
+#2 C:\xampp\htdocs\vcp_nuevosmercados\protected\views\site\index.php(35): CHtml::activeDropDownList(Object(SubProductos), '/vcp_nuevosmerc...', Array, Array)
+#3 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require('C:\xampp\htdocs...')
+#4 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\xampp\htdocs...', Array, true)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\xampp\htdocs...', Array, true)
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(782): CController->renderPartial('index', Array, true)
+#7 C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php(73): CController->render('index', Array)
+#8 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionIndex()
+#9 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#10 C:\xampp\htdocs\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('')
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('')
+#14 C:\xampp\htdocs\yii\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#15 C:\xampp\htdocs\vcp_nuevosmercados\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/vcp_nuevosmercados/
+---
+2013/04/15 11:03:43 [error] [exception.CException] exception 'CException' with message 'Property "SubProductos./vcp_nuevosmercados/index.php?r=Site/cargarSubProductos" is not defined.' in C:\xampp\htdocs\yii\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\helpers\CHtml.php(2255): CComponent->__get('/vcp_nuevosmerc...')
+#1 C:\xampp\htdocs\yii\framework\web\helpers\CHtml.php(1565): CHtml::resolveValue(Object(SubProductos), '/vcp_nuevosmerc...')
+#2 C:\xampp\htdocs\vcp_nuevosmercados\protected\views\site\index.php(35): CHtml::activeDropDownList(Object(SubProductos), '/vcp_nuevosmerc...', Array, Array)
+#3 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require('C:\xampp\htdocs...')
+#4 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\xampp\htdocs...', Array, true)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\xampp\htdocs...', Array, true)
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(782): CController->renderPartial('index', Array, true)
+#7 C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php(73): CController->render('index', Array)
+#8 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionIndex()
+#9 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#10 C:\xampp\htdocs\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('')
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('')
+#14 C:\xampp\htdocs\yii\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#15 C:\xampp\htdocs\vcp_nuevosmercados\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/vcp_nuevosmercados/
+---
+2013/04/15 11:06:40 [error] [exception.CException] exception 'CException' with message 'Property "SubProductos./vcp_nuevosmercados/index.php?r=Site/cargarSubProductos" is not defined.' in C:\xampp\htdocs\yii\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\helpers\CHtml.php(2255): CComponent->__get('/vcp_nuevosmerc...')
+#1 C:\xampp\htdocs\yii\framework\web\helpers\CHtml.php(1565): CHtml::resolveValue(Object(SubProductos), '/vcp_nuevosmerc...')
+#2 C:\xampp\htdocs\vcp_nuevosmercados\protected\views\site\index.php(35): CHtml::activeDropDownList(Object(SubProductos), '/vcp_nuevosmerc...', Array, Array)
+#3 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require('C:\xampp\htdocs...')
+#4 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\xampp\htdocs...', Array, true)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\xampp\htdocs...', Array, true)
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(782): CController->renderPartial('index', Array, true)
+#7 C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php(73): CController->render('index', Array)
+#8 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionIndex()
+#9 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#10 C:\xampp\htdocs\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('')
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('')
+#14 C:\xampp\htdocs\yii\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#15 C:\xampp\htdocs\vcp_nuevosmercados\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/vcp_nuevosmercados/
+---
+2013/04/15 11:10:11 [error] [exception.CException] exception 'CException' with message 'Property "SubProductos./vcp_nuevosmercados/index.php?r=Site/cargarSubProductos" is not defined.' in C:\xampp\htdocs\yii\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\helpers\CHtml.php(2255): CComponent->__get('/vcp_nuevosmerc...')
+#1 C:\xampp\htdocs\yii\framework\web\helpers\CHtml.php(1565): CHtml::resolveValue(Object(SubProductos), '/vcp_nuevosmerc...')
+#2 C:\xampp\htdocs\vcp_nuevosmercados\protected\views\site\index.php(21): CHtml::activeDropDownList(Object(SubProductos), '/vcp_nuevosmerc...', Array, Array)
+#3 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require('C:\xampp\htdocs...')
+#4 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\xampp\htdocs...', Array, true)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\xampp\htdocs...', Array, true)
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(782): CController->renderPartial('index', Array, true)
+#7 C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php(73): CController->render('index', Array)
+#8 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionIndex()
+#9 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#10 C:\xampp\htdocs\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('')
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('')
+#14 C:\xampp\htdocs\yii\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#15 C:\xampp\htdocs\vcp_nuevosmercados\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/vcp_nuevosmercados/
+---
+2013/04/15 11:10:13 [error] [exception.CException] exception 'CException' with message 'Property "SubProductos./vcp_nuevosmercados/index.php?r=Site/cargarSubProductos" is not defined.' in C:\xampp\htdocs\yii\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\helpers\CHtml.php(2255): CComponent->__get('/vcp_nuevosmerc...')
+#1 C:\xampp\htdocs\yii\framework\web\helpers\CHtml.php(1565): CHtml::resolveValue(Object(SubProductos), '/vcp_nuevosmerc...')
+#2 C:\xampp\htdocs\vcp_nuevosmercados\protected\views\site\index.php(21): CHtml::activeDropDownList(Object(SubProductos), '/vcp_nuevosmerc...', Array, Array)
+#3 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require('C:\xampp\htdocs...')
+#4 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\xampp\htdocs...', Array, true)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\xampp\htdocs...', Array, true)
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(782): CController->renderPartial('index', Array, true)
+#7 C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php(73): CController->render('index', Array)
+#8 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionIndex()
+#9 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#10 C:\xampp\htdocs\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('')
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('')
+#14 C:\xampp\htdocs\yii\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#15 C:\xampp\htdocs\vcp_nuevosmercados\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/vcp_nuevosmercados/
+---
+2013/04/15 11:10:28 [error] [exception.CException] exception 'CException' with message 'Property "SubProductos./vcp_nuevosmercados/index.php?r=Site/cargarSubProductos" is not defined.' in C:\xampp\htdocs\yii\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\helpers\CHtml.php(2255): CComponent->__get('/vcp_nuevosmerc...')
+#1 C:\xampp\htdocs\yii\framework\web\helpers\CHtml.php(1565): CHtml::resolveValue(Object(SubProductos), '/vcp_nuevosmerc...')
+#2 C:\xampp\htdocs\vcp_nuevosmercados\protected\views\site\index.php(21): CHtml::activeDropDownList(Object(SubProductos), '/vcp_nuevosmerc...', Array, Array)
+#3 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require('C:\xampp\htdocs...')
+#4 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\xampp\htdocs...', Array, true)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\xampp\htdocs...', Array, true)
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(782): CController->renderPartial('index', Array, true)
+#7 C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php(74): CController->render('index', Array)
+#8 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionIndex()
+#9 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#10 C:\xampp\htdocs\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('')
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('')
+#14 C:\xampp\htdocs\yii\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#15 C:\xampp\htdocs\vcp_nuevosmercados\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/vcp_nuevosmercados/
+---
+2013/04/15 11:10:36 [error] [exception.CException] exception 'CException' with message 'Property "SubProductos./vcp_nuevosmercados/index.php?r=Site/cargarSubProductos" is not defined.' in C:\xampp\htdocs\yii\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\helpers\CHtml.php(2255): CComponent->__get('/vcp_nuevosmerc...')
+#1 C:\xampp\htdocs\yii\framework\web\helpers\CHtml.php(1565): CHtml::resolveValue(Object(SubProductos), '/vcp_nuevosmerc...')
+#2 C:\xampp\htdocs\vcp_nuevosmercados\protected\views\site\index.php(21): CHtml::activeDropDownList(Object(SubProductos), '/vcp_nuevosmerc...', Array, Array)
+#3 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require('C:\xampp\htdocs...')
+#4 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\xampp\htdocs...', Array, true)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\xampp\htdocs...', Array, true)
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(782): CController->renderPartial('index', Array, true)
+#7 C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php(77): CController->render('index', Array)
+#8 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionIndex()
+#9 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#10 C:\xampp\htdocs\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('')
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('')
+#14 C:\xampp\htdocs\yii\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#15 C:\xampp\htdocs\vcp_nuevosmercados\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/vcp_nuevosmercados/
+---
+2013/04/15 11:32:00 [error] [php] Invalid argument supplied for foreach() (C:\xampp\htdocs\vcp_nuevosmercados\protected\views\site\plantillas\ventasGeneral.php:9)
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CController.php(869): SiteController->renderFile()
+#1 C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php(30): SiteController->renderPartial()
+#2 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionActualizarDetallesVentas()
+#3 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#4 C:\xampp\htdocs\yii\framework\web\CController.php(286): SiteController->runAction()
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#6 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): SiteController->run()
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#8 C:\xampp\htdocs\yii\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#9 C:\xampp\htdocs\vcp_nuevosmercados\index.php(13): CWebApplication->run()
+REQUEST_URI=/vcp_nuevosmercados/index.php?r=Site/ActualizarDetallesVentas
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\views\site\plantillas\ventasGeneral.php (9)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (30)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/04/15 11:36:24 [error] [php] Invalid argument supplied for foreach() (C:\xampp\htdocs\vcp_nuevosmercados\protected\views\site\plantillas\ventasGeneral.php:9)
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CController.php(869): SiteController->renderFile()
+#1 C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php(30): SiteController->renderPartial()
+#2 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionActualizarDetallesVentas()
+#3 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#4 C:\xampp\htdocs\yii\framework\web\CController.php(286): SiteController->runAction()
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#6 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): SiteController->run()
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#8 C:\xampp\htdocs\yii\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#9 C:\xampp\htdocs\vcp_nuevosmercados\index.php(13): CWebApplication->run()
+REQUEST_URI=/vcp_nuevosmercados/index.php?r=Site/ActualizarDetallesVentas
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\views\site\plantillas\ventasGeneral.php (9)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (30)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/04/15 11:37:46 [error] [php] Invalid argument supplied for foreach() (C:\xampp\htdocs\vcp_nuevosmercados\protected\views\site\plantillas\ventasGeneral.php:9)
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CController.php(869): SiteController->renderFile()
+#1 C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php(30): SiteController->renderPartial()
+#2 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionActualizarDetallesVentas()
+#3 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#4 C:\xampp\htdocs\yii\framework\web\CController.php(286): SiteController->runAction()
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#6 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): SiteController->run()
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#8 C:\xampp\htdocs\yii\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#9 C:\xampp\htdocs\vcp_nuevosmercados\index.php(13): CWebApplication->run()
+REQUEST_URI=/vcp_nuevosmercados/index.php?r=Site/ActualizarDetallesVentas
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\views\site\plantillas\ventasGeneral.php (9)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (30)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/04/15 11:42:15 [error] [php] Invalid argument supplied for foreach() (C:\xampp\htdocs\vcp_nuevosmercados\protected\views\site\plantillas\ventasGeneral.php:9)
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CController.php(869): SiteController->renderFile()
+#1 C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php(30): SiteController->renderPartial()
+#2 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionActualizarDetallesVentas()
+#3 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#4 C:\xampp\htdocs\yii\framework\web\CController.php(286): SiteController->runAction()
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#6 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): SiteController->run()
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#8 C:\xampp\htdocs\yii\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#9 C:\xampp\htdocs\vcp_nuevosmercados\index.php(13): CWebApplication->run()
+REQUEST_URI=/vcp_nuevosmercados/index.php?r=Site/ActualizarDetallesVentas
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\views\site\plantillas\ventasGeneral.php (9)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (30)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/04/15 11:42:49 [error] [php] Invalid argument supplied for foreach() (C:\xampp\htdocs\vcp_nuevosmercados\protected\views\site\plantillas\ventasGeneral.php:9)
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CController.php(869): SiteController->renderFile()
+#1 C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php(30): SiteController->renderPartial()
+#2 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionActualizarDetallesVentas()
+#3 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#4 C:\xampp\htdocs\yii\framework\web\CController.php(286): SiteController->runAction()
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#6 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): SiteController->run()
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#8 C:\xampp\htdocs\yii\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#9 C:\xampp\htdocs\vcp_nuevosmercados\index.php(13): CWebApplication->run()
+REQUEST_URI=/vcp_nuevosmercados/index.php?r=Site/ActualizarDetallesVentas
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\views\site\plantillas\ventasGeneral.php (9)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (30)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/04/15 11:54:24 [error] [php] Invalid argument supplied for foreach() (C:\xampp\htdocs\vcp_nuevosmercados\protected\views\site\plantillas\ventasGeneral.php:11)
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CController.php(869): SiteController->renderFile()
+#1 C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php(106): SiteController->renderPartial()
+#2 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionIndex()
+#3 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#4 C:\xampp\htdocs\yii\framework\web\CController.php(286): SiteController->runAction()
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#6 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): SiteController->run()
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#8 C:\xampp\htdocs\yii\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#9 C:\xampp\htdocs\vcp_nuevosmercados\index.php(13): CWebApplication->run()
+REQUEST_URI=/vcp_nuevosmercados/index.php?r=Site/Index
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\views\site\plantillas\ventasGeneral.php (11)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (106)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/04/15 11:54:49 [error] [php] Invalid argument supplied for foreach() (C:\xampp\htdocs\vcp_nuevosmercados\protected\views\site\plantillas\ventasGeneral.php:11)
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CController.php(869): SiteController->renderFile()
+#1 C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php(106): SiteController->renderPartial()
+#2 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionIndex()
+#3 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#4 C:\xampp\htdocs\yii\framework\web\CController.php(286): SiteController->runAction()
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#6 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): SiteController->run()
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#8 C:\xampp\htdocs\yii\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#9 C:\xampp\htdocs\vcp_nuevosmercados\index.php(13): CWebApplication->run()
+REQUEST_URI=/vcp_nuevosmercados/index.php?r=Site/Index
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\views\site\plantillas\ventasGeneral.php (11)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (106)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/04/15 11:55:50 [error] [php] Invalid argument supplied for foreach() (C:\xampp\htdocs\vcp_nuevosmercados\protected\views\site\plantillas\ventasGeneral.php:11)
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CController.php(869): SiteController->renderFile()
+#1 C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php(106): SiteController->renderPartial()
+#2 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionIndex()
+#3 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#4 C:\xampp\htdocs\yii\framework\web\CController.php(286): SiteController->runAction()
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#6 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): SiteController->run()
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#8 C:\xampp\htdocs\yii\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#9 C:\xampp\htdocs\vcp_nuevosmercados\index.php(13): CWebApplication->run()
+REQUEST_URI=/vcp_nuevosmercados/index.php?r=Site/Index
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\views\site\plantillas\ventasGeneral.php (11)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (106)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/04/15 11:57:12 [error] [php] Invalid argument supplied for foreach() (C:\xampp\htdocs\vcp_nuevosmercados\protected\views\site\plantillas\ventasGeneral.php:11)
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CController.php(869): SiteController->renderFile()
+#1 C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php(106): SiteController->renderPartial()
+#2 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionIndex()
+#3 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#4 C:\xampp\htdocs\yii\framework\web\CController.php(286): SiteController->runAction()
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#6 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): SiteController->run()
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#8 C:\xampp\htdocs\yii\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#9 C:\xampp\htdocs\vcp_nuevosmercados\index.php(13): CWebApplication->run()
+REQUEST_URI=/vcp_nuevosmercados/index.php?r=Site/Index
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\views\site\plantillas\ventasGeneral.php (11)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (106)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/04/15 12:27:23 [error] [php] include(ActualizarController.php) [<a href='function.include'>function.include</a>]: failed to open stream: No such file or directory (C:\xampp\htdocs\yii\framework\YiiBase.php:421)
+Stack trace:
+#0 C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php(114): spl_autoload_call()
+#1 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionActualizar()
+#2 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#3 C:\xampp\htdocs\yii\framework\web\CController.php(286): SiteController->runAction()
+#4 C:\xampp\htdocs\yii\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#5 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): SiteController->run()
+#6 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#7 C:\xampp\htdocs\yii\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#8 C:\xampp\htdocs\vcp_nuevosmercados\index.php(13): CWebApplication->run()
+REQUEST_URI=/vcp_nuevosmercados/index.php?r=site/Actualizar
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (114)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/04/15 13:13:04 [error] [php] Invalid argument supplied for foreach() (C:\xampp\htdocs\yii\framework\web\helpers\CHtml.php:1841)
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): SiteController->renderInternal()
+#1 C:\xampp\htdocs\yii\framework\web\CController.php(869): SiteController->renderFile()
+#2 C:\xampp\htdocs\yii\framework\web\CController.php(782): SiteController->renderPartial()
+#3 C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php(99): SiteController->render()
+#4 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionIndex()
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(286): SiteController->runAction()
+#7 C:\xampp\htdocs\yii\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): SiteController->run()
+#9 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#10 C:\xampp\htdocs\yii\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#11 C:\xampp\htdocs\vcp_nuevosmercados\index.php(13): CWebApplication->run()
+REQUEST_URI=/vcp_nuevosmercados/index.php?r=site/index
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\views\site\index.php (35)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (99)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/04/15 13:13:31 [error] [php] Invalid argument supplied for foreach() (C:\xampp\htdocs\yii\framework\web\helpers\CHtml.php:1841)
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): SiteController->renderInternal()
+#1 C:\xampp\htdocs\yii\framework\web\CController.php(869): SiteController->renderFile()
+#2 C:\xampp\htdocs\yii\framework\web\CController.php(782): SiteController->renderPartial()
+#3 C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php(99): SiteController->render()
+#4 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionIndex()
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(286): SiteController->runAction()
+#7 C:\xampp\htdocs\yii\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): SiteController->run()
+#9 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#10 C:\xampp\htdocs\yii\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#11 C:\xampp\htdocs\vcp_nuevosmercados\index.php(13): CWebApplication->run()
+REQUEST_URI=/vcp_nuevosmercados/index.php?r=site/index
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\views\site\index.php (35)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (99)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/04/15 13:15:52 [error] [php] Invalid argument supplied for foreach() (C:\xampp\htdocs\yii\framework\web\helpers\CHtml.php:1841)
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): SiteController->renderInternal()
+#1 C:\xampp\htdocs\yii\framework\web\CController.php(869): SiteController->renderFile()
+#2 C:\xampp\htdocs\yii\framework\web\CController.php(782): SiteController->renderPartial()
+#3 C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php(99): SiteController->render()
+#4 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionIndex()
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(286): SiteController->runAction()
+#7 C:\xampp\htdocs\yii\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): SiteController->run()
+#9 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#10 C:\xampp\htdocs\yii\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#11 C:\xampp\htdocs\vcp_nuevosmercados\index.php(13): CWebApplication->run()
+REQUEST_URI=/vcp_nuevosmercados/
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\views\site\index.php (35)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (99)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/04/15 13:18:29 [error] [php] include(ActualizarController.php) [<a href='function.include'>function.include</a>]: failed to open stream: No such file or directory (C:\xampp\htdocs\yii\framework\YiiBase.php:421)
+Stack trace:
+#0 C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php(115): spl_autoload_call()
+#1 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionActualizar()
+#2 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#3 C:\xampp\htdocs\yii\framework\web\CController.php(286): SiteController->runAction()
+#4 C:\xampp\htdocs\yii\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#5 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): SiteController->run()
+#6 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#7 C:\xampp\htdocs\yii\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#8 C:\xampp\htdocs\vcp_nuevosmercados\index.php(13): CWebApplication->run()
+REQUEST_URI=/vcp_nuevosmercados/index.php?r=site/Actualizar
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (115)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/04/16 08:57:24 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in C:\xampp\htdocs\yii\framework\web\CController.php:336
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 C:\xampp\htdocs\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#2 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#3 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('Index')
+#4 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('Site/Index')
+#5 C:\xampp\htdocs\yii\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#6 C:\xampp\htdocs\vcp_nuevosmercados\index.php(13): CApplication->run()
+#7 {main}
+REQUEST_URI=/vcp_nuevosmercados/index.php?r=Site/Index
+HTTP_REFERER=http://localhost:8080/vcp_nuevosmercados/index.php?r=site/index
+---
+2013/04/16 08:57:37 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in C:\xampp\htdocs\yii\framework\web\CController.php:336
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 C:\xampp\htdocs\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#2 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#3 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('Index')
+#4 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('Site/Index')
+#5 C:\xampp\htdocs\yii\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#6 C:\xampp\htdocs\vcp_nuevosmercados\index.php(13): CApplication->run()
+#7 {main}
+REQUEST_URI=/vcp_nuevosmercados/index.php?r=Site/Index
+HTTP_REFERER=http://localhost:8080/vcp_nuevosmercados/index.php?r=site/index
+---
+2013/04/16 09:25:22 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[HY000]: General error: 10007 Incorrect syntax near 'INTMOV'. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_X_Mes '''''INTMOV'',''INTMOV'''''.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (138)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (87)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/04/16 09:25:22 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[HY000]: General error: 10007 Incorrect syntax near 'INTMOV'. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_X_Mes '''''INTMOV'',''INTMOV'''''' in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:541
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(432): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php(138): CDbCommand->queryScalar()
+#2 C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php(87): Ventas->TotalIngresadasMes('''INTMOV'',''IN...')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionIndex()
+#4 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('Index')
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('Site/Index')
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\vcp_nuevosmercados\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/vcp_nuevosmercados/index.php?r=Site/Index
+HTTP_REFERER=http://localhost:8080/vcp_nuevosmercados/index.php?r=site/index
+---
+2013/04/16 09:25:45 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[HY000]: General error: 10007 Incorrect syntax near 'INTMOV'. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_X_Mes '''''INTMOV'',''INTMOV'''''.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (138)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (87)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/04/16 09:25:45 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[HY000]: General error: 10007 Incorrect syntax near 'INTMOV'. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_X_Mes '''''INTMOV'',''INTMOV'''''' in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:541
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(432): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php(138): CDbCommand->queryScalar()
+#2 C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php(87): Ventas->TotalIngresadasMes('''INTMOV'',''IN...')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionIndex()
+#4 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('Index')
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('Site/Index')
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\vcp_nuevosmercados\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/vcp_nuevosmercados/index.php?r=Site/Index
+HTTP_REFERER=http://localhost:8080/vcp_nuevosmercados/index.php?r=site/index
+---
+2013/04/16 09:25:47 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[HY000]: General error: 10007 Incorrect syntax near 'INTMOV'. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_X_Mes '''''INTMOV'',''INTMOV'''''.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (138)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (87)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/04/16 09:25:47 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[HY000]: General error: 10007 Incorrect syntax near 'INTMOV'. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_X_Mes '''''INTMOV'',''INTMOV'''''' in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:541
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(432): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php(138): CDbCommand->queryScalar()
+#2 C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php(87): Ventas->TotalIngresadasMes('''INTMOV'',''IN...')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionIndex()
+#4 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('Index')
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('Site/Index')
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\vcp_nuevosmercados\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/vcp_nuevosmercados/index.php?r=Site/Index
+HTTP_REFERER=http://localhost:8080/vcp_nuevosmercados/index.php?r=site/index
+---
+2013/04/16 09:26:02 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[HY000]: General error: 10007 Incorrect syntax near 'INTMOV'. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_X_Mes '''''INTMOV'',''INTMOV'''''.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (138)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (87)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/04/16 09:26:02 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[HY000]: General error: 10007 Incorrect syntax near 'INTMOV'. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_X_Mes '''''INTMOV'',''INTMOV'''''' in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:541
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(432): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php(138): CDbCommand->queryScalar()
+#2 C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php(87): Ventas->TotalIngresadasMes('''INTMOV'',''IN...')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionIndex()
+#4 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('Index')
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('Site/Index')
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\vcp_nuevosmercados\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/vcp_nuevosmercados/index.php?r=Site/Index
+HTTP_REFERER=http://localhost:8080/vcp_nuevosmercados/index.php?r=site/index
+---
+2013/04/16 09:26:04 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[HY000]: General error: 10007 Incorrect syntax near 'INTMOV'. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_X_Mes '''''INTMOV'',''INTMOV'''''.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (138)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (87)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/04/16 09:26:04 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[HY000]: General error: 10007 Incorrect syntax near 'INTMOV'. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_X_Mes '''''INTMOV'',''INTMOV'''''' in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:541
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(432): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php(138): CDbCommand->queryScalar()
+#2 C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php(87): Ventas->TotalIngresadasMes('''INTMOV'',''IN...')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionIndex()
+#4 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('Index')
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('Site/Index')
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\vcp_nuevosmercados\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/vcp_nuevosmercados/index.php?r=Site/Index
+HTTP_REFERER=http://localhost:8080/vcp_nuevosmercados/index.php?r=site/index
+---
+2013/04/16 09:27:28 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[HY000]: General error: 10007 Incorrect syntax near '''. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_X_Mes '''INTMOV',INTMOV''''.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (138)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (87)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/04/16 09:27:28 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[HY000]: General error: 10007 Incorrect syntax near '''. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_X_Mes '''INTMOV',INTMOV''''' in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:541
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(432): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php(138): CDbCommand->queryScalar()
+#2 C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php(87): Ventas->TotalIngresadasMes('INTMOV',INTMOV'')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionIndex()
+#4 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('Index')
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('Site/Index')
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\vcp_nuevosmercados\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/vcp_nuevosmercados/index.php?r=Site/Index
+HTTP_REFERER=http://localhost:8080/vcp_nuevosmercados/index.php?r=site/index
+---
+2013/04/16 09:27:59 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[HY000]: General error: 10007 Incorrect syntax near 'INTMOV'. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_X_Mes '''''INTMOV'',''INTMOV'''''.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (138)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (87)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/04/16 09:27:59 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[HY000]: General error: 10007 Incorrect syntax near 'INTMOV'. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_X_Mes '''''INTMOV'',''INTMOV'''''' in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:541
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(432): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php(138): CDbCommand->queryScalar()
+#2 C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php(87): Ventas->TotalIngresadasMes('''INTMOV'',''IN...')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionIndex()
+#4 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('Index')
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('Site/Index')
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\vcp_nuevosmercados\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/vcp_nuevosmercados/index.php?r=Site/Index
+HTTP_REFERER=http://localhost:8080/vcp_nuevosmercados/index.php?r=site/index
+---
+2013/04/16 09:28:00 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[HY000]: General error: 10007 Incorrect syntax near 'INTMOV'. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_X_Mes '''''INTMOV'',''INTMOV'''''.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (138)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (87)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/04/16 09:28:00 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[HY000]: General error: 10007 Incorrect syntax near 'INTMOV'. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_X_Mes '''''INTMOV'',''INTMOV'''''' in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:541
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(432): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php(138): CDbCommand->queryScalar()
+#2 C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php(87): Ventas->TotalIngresadasMes('''INTMOV'',''IN...')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionIndex()
+#4 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('Index')
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('Site/Index')
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\vcp_nuevosmercados\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/vcp_nuevosmercados/index.php?r=Site/Index
+HTTP_REFERER=http://localhost:8080/vcp_nuevosmercados/index.php?r=site/index
+---
+2013/04/16 09:28:42 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[HY000]: General error: 10007 Incorrect syntax near 'INTMOV'. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_X_Mes '''''INTMOV'',''INTMOV'''''.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (138)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (87)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/04/16 09:28:42 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[HY000]: General error: 10007 Incorrect syntax near 'INTMOV'. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_X_Mes '''''INTMOV'',''INTMOV'''''' in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:541
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(432): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php(138): CDbCommand->queryScalar()
+#2 C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php(87): Ventas->TotalIngresadasMes('''INTMOV'',''IN...')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionIndex()
+#4 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('Index')
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('Site/Index')
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\vcp_nuevosmercados\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/vcp_nuevosmercados/index.php?r=Site/Index
+HTTP_REFERER=http://localhost:8080/vcp_nuevosmercados/index.php?r=site/index
+---
+2013/04/16 09:29:00 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[HY000]: General error: 10007 Incorrect syntax near 'INTMOV'. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_X_Mes '''''INTMOV'',''INTMOV'''''.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (138)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (87)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/04/16 09:29:00 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[HY000]: General error: 10007 Incorrect syntax near 'INTMOV'. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_X_Mes '''''INTMOV'',''INTMOV'''''' in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:541
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(432): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php(138): CDbCommand->queryScalar()
+#2 C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php(87): Ventas->TotalIngresadasMes('''INTMOV'',''IN...')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionIndex()
+#4 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('Index')
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('Site/Index')
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\vcp_nuevosmercados\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/vcp_nuevosmercados/index.php?r=Site/Index
+HTTP_REFERER=http://localhost:8080/vcp_nuevosmercados/index.php?r=site/index
+---
+2013/04/16 09:29:25 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[HY000]: General error: 10007 Incorrect syntax near 'INTMOV'. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_X_Mes ''''INTMOV','INTMOV''''.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (138)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (87)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/04/16 09:29:25 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[HY000]: General error: 10007 Incorrect syntax near 'INTMOV'. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_X_Mes ''''INTMOV','INTMOV''''' in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:541
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(432): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php(138): CDbCommand->queryScalar()
+#2 C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php(87): Ventas->TotalIngresadasMes(''INTMOV','INTMO...')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionIndex()
+#4 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('Index')
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('Site/Index')
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\vcp_nuevosmercados\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/vcp_nuevosmercados/index.php?r=Site/Index
+HTTP_REFERER=http://localhost:8080/vcp_nuevosmercados/index.php?r=site/index
+---
+2013/04/16 09:29:40 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[HY000]: General error: 10007 Incorrect syntax near 'INTMOV'. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_X_Mes '''''INTMOV'',''INTMOV'''''.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (138)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (87)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/04/16 09:29:40 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[HY000]: General error: 10007 Incorrect syntax near 'INTMOV'. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_X_Mes '''''INTMOV'',''INTMOV'''''' in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:541
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(432): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php(138): CDbCommand->queryScalar()
+#2 C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php(87): Ventas->TotalIngresadasMes('''INTMOV'',''IN...')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionIndex()
+#4 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('Index')
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('Site/Index')
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\vcp_nuevosmercados\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/vcp_nuevosmercados/index.php?r=Site/Index
+HTTP_REFERER=http://localhost:8080/vcp_nuevosmercados/index.php?r=site/index
+---
+2013/04/16 09:30:16 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[HY000]: General error: 10007 Incorrect syntax near 'INTMOV'. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Instaladas_X_Mes '''''INTMOV'',''INTMOV'''''.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (148)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (88)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/04/16 09:30:16 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[HY000]: General error: 10007 Incorrect syntax near 'INTMOV'. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Instaladas_X_Mes '''''INTMOV'',''INTMOV'''''' in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:541
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(432): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php(148): CDbCommand->queryScalar()
+#2 C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php(88): Ventas->TotalInstaladasMes('''INTMOV'',''IN...')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionIndex()
+#4 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('Index')
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('Site/Index')
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\vcp_nuevosmercados\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/vcp_nuevosmercados/index.php?r=Site/Index
+HTTP_REFERER=http://localhost:8080/vcp_nuevosmercados/index.php?r=site/index
+---
+2013/04/16 09:30:18 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[HY000]: General error: 10007 Incorrect syntax near 'INTMOV'. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Instaladas_X_Mes '''''INTMOV'',''INTMOV'''''.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (148)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (88)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/04/16 09:30:18 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[HY000]: General error: 10007 Incorrect syntax near 'INTMOV'. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Instaladas_X_Mes '''''INTMOV'',''INTMOV'''''' in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:541
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(432): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php(148): CDbCommand->queryScalar()
+#2 C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php(88): Ventas->TotalInstaladasMes('''INTMOV'',''IN...')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionIndex()
+#4 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('Index')
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('Site/Index')
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\vcp_nuevosmercados\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/vcp_nuevosmercados/index.php?r=Site/Index
+HTTP_REFERER=http://localhost:8080/vcp_nuevosmercados/index.php?r=site/index
+---
+2013/04/16 09:30:19 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[HY000]: General error: 10007 Incorrect syntax near 'INTMOV'. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Instaladas_X_Mes '''''INTMOV'',''INTMOV'''''.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (148)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (88)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/04/16 09:30:19 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[HY000]: General error: 10007 Incorrect syntax near 'INTMOV'. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Instaladas_X_Mes '''''INTMOV'',''INTMOV'''''' in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:541
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(432): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php(148): CDbCommand->queryScalar()
+#2 C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php(88): Ventas->TotalInstaladasMes('''INTMOV'',''IN...')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionIndex()
+#4 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('Index')
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('Site/Index')
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\vcp_nuevosmercados\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/vcp_nuevosmercados/index.php?r=Site/Index
+HTTP_REFERER=http://localhost:8080/vcp_nuevosmercados/index.php?r=site/index
+---
+2013/04/16 09:30:36 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[HY000]: General error: 10007 Incorrect syntax near 'INTMOV'. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_X_Mes ''INTMOV','INTMOV''.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (138)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (87)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/04/16 09:30:36 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[HY000]: General error: 10007 Incorrect syntax near 'INTMOV'. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_X_Mes ''INTMOV','INTMOV''' in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:541
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(432): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php(138): CDbCommand->queryScalar()
+#2 C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php(87): Ventas->TotalIngresadasMes(''INTMOV','INTMO...')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionIndex()
+#4 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('Index')
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('Site/Index')
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\vcp_nuevosmercados\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/vcp_nuevosmercados/index.php?r=Site/Index
+HTTP_REFERER=http://localhost:8080/vcp_nuevosmercados/index.php?r=site/index
+---
+2013/04/16 09:30:37 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[HY000]: General error: 10007 Incorrect syntax near 'INTMOV'. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_X_Mes ''INTMOV','INTMOV''.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (138)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (87)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/04/16 09:30:37 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[HY000]: General error: 10007 Incorrect syntax near 'INTMOV'. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_X_Mes ''INTMOV','INTMOV''' in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:541
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(432): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php(138): CDbCommand->queryScalar()
+#2 C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php(87): Ventas->TotalIngresadasMes(''INTMOV','INTMO...')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionIndex()
+#4 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('Index')
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('Site/Index')
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\vcp_nuevosmercados\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/vcp_nuevosmercados/index.php?r=Site/Index
+HTTP_REFERER=http://localhost:8080/vcp_nuevosmercados/index.php?r=site/index
+---
+2013/04/16 09:30:38 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[HY000]: General error: 10007 Incorrect syntax near 'INTMOV'. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_X_Mes ''INTMOV','INTMOV''.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (138)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (87)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/04/16 09:30:38 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[HY000]: General error: 10007 Incorrect syntax near 'INTMOV'. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_X_Mes ''INTMOV','INTMOV''' in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:541
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(432): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php(138): CDbCommand->queryScalar()
+#2 C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php(87): Ventas->TotalIngresadasMes(''INTMOV','INTMO...')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionIndex()
+#4 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('Index')
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('Site/Index')
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\vcp_nuevosmercados\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/vcp_nuevosmercados/index.php?r=Site/Index
+HTTP_REFERER=http://localhost:8080/vcp_nuevosmercados/index.php?r=site/index
+---
+2013/04/16 09:30:38 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[HY000]: General error: 10007 Incorrect syntax near 'INTMOV'. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_X_Mes ''INTMOV','INTMOV''.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (138)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (87)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/04/16 09:30:38 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[HY000]: General error: 10007 Incorrect syntax near 'INTMOV'. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_X_Mes ''INTMOV','INTMOV''' in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:541
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(432): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php(138): CDbCommand->queryScalar()
+#2 C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php(87): Ventas->TotalIngresadasMes(''INTMOV','INTMO...')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionIndex()
+#4 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('Index')
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('Site/Index')
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\vcp_nuevosmercados\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/vcp_nuevosmercados/index.php?r=Site/Index
+HTTP_REFERER=http://localhost:8080/vcp_nuevosmercados/index.php?r=site/index
+---
+2013/04/16 09:30:38 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[HY000]: General error: 10007 Incorrect syntax near 'INTMOV'. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_X_Mes ''INTMOV','INTMOV''.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (138)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (87)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/04/16 09:30:38 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[HY000]: General error: 10007 Incorrect syntax near 'INTMOV'. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_X_Mes ''INTMOV','INTMOV''' in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:541
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(432): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php(138): CDbCommand->queryScalar()
+#2 C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php(87): Ventas->TotalIngresadasMes(''INTMOV','INTMO...')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionIndex()
+#4 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('Index')
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('Site/Index')
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\vcp_nuevosmercados\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/vcp_nuevosmercados/index.php?r=Site/Index
+HTTP_REFERER=http://localhost:8080/vcp_nuevosmercados/index.php?r=site/index
+---
+2013/04/16 09:30:38 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[HY000]: General error: 10007 Incorrect syntax near 'INTMOV'. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_X_Mes ''INTMOV','INTMOV''.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (138)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (87)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/04/16 09:30:38 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[HY000]: General error: 10007 Incorrect syntax near 'INTMOV'. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_X_Mes ''INTMOV','INTMOV''' in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:541
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(432): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php(138): CDbCommand->queryScalar()
+#2 C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php(87): Ventas->TotalIngresadasMes(''INTMOV','INTMO...')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionIndex()
+#4 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('Index')
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('Site/Index')
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\vcp_nuevosmercados\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/vcp_nuevosmercados/index.php?r=Site/Index
+HTTP_REFERER=http://localhost:8080/vcp_nuevosmercados/index.php?r=site/index
+---
+2013/04/16 09:30:39 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[HY000]: General error: 10007 Incorrect syntax near 'INTMOV'. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_X_Mes ''INTMOV','INTMOV''.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (138)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (87)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/04/16 09:30:39 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[HY000]: General error: 10007 Incorrect syntax near 'INTMOV'. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_X_Mes ''INTMOV','INTMOV''' in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:541
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(432): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php(138): CDbCommand->queryScalar()
+#2 C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php(87): Ventas->TotalIngresadasMes(''INTMOV','INTMO...')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionIndex()
+#4 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('Index')
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('Site/Index')
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\vcp_nuevosmercados\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/vcp_nuevosmercados/index.php?r=Site/Index
+HTTP_REFERER=http://localhost:8080/vcp_nuevosmercados/index.php?r=site/index
+---
+2013/04/16 09:30:39 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[HY000]: General error: 10007 Incorrect syntax near 'INTMOV'. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_X_Mes ''INTMOV','INTMOV''.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (138)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (87)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/04/16 09:30:39 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[HY000]: General error: 10007 Incorrect syntax near 'INTMOV'. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_X_Mes ''INTMOV','INTMOV''' in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:541
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(432): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php(138): CDbCommand->queryScalar()
+#2 C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php(87): Ventas->TotalIngresadasMes(''INTMOV','INTMO...')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionIndex()
+#4 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('Index')
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('Site/Index')
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\vcp_nuevosmercados\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/vcp_nuevosmercados/index.php?r=Site/Index
+HTTP_REFERER=http://localhost:8080/vcp_nuevosmercados/index.php?r=site/index
+---
+2013/04/16 09:30:39 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[HY000]: General error: 10007 Incorrect syntax near 'INTMOV'. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_X_Mes ''INTMOV','INTMOV''.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (138)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (87)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/04/16 09:30:39 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[HY000]: General error: 10007 Incorrect syntax near 'INTMOV'. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_X_Mes ''INTMOV','INTMOV''' in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:541
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(432): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php(138): CDbCommand->queryScalar()
+#2 C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php(87): Ventas->TotalIngresadasMes(''INTMOV','INTMO...')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionIndex()
+#4 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('Index')
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('Site/Index')
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\vcp_nuevosmercados\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/vcp_nuevosmercados/index.php?r=Site/Index
+HTTP_REFERER=http://localhost:8080/vcp_nuevosmercados/index.php?r=site/index
+---
+2013/04/16 09:30:40 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[HY000]: General error: 10007 Incorrect syntax near 'INTMOV'. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_X_Mes ''INTMOV','INTMOV''.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (138)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (87)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/04/16 09:30:40 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[HY000]: General error: 10007 Incorrect syntax near 'INTMOV'. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_X_Mes ''INTMOV','INTMOV''' in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:541
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(432): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php(138): CDbCommand->queryScalar()
+#2 C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php(87): Ventas->TotalIngresadasMes(''INTMOV','INTMO...')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionIndex()
+#4 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('Index')
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('Site/Index')
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\vcp_nuevosmercados\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/vcp_nuevosmercados/index.php?r=Site/Index
+HTTP_REFERER=http://localhost:8080/vcp_nuevosmercados/index.php?r=site/index
+---
+2013/04/16 09:30:54 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[HY000]: General error: 10007 Incorrect syntax near 'INTMOV'. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_X_Mes ''INTMOV'','INTMOV'''.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (138)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (87)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/04/16 09:30:54 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[HY000]: General error: 10007 Incorrect syntax near 'INTMOV'. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_X_Mes ''INTMOV'','INTMOV'''' in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:541
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(432): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php(138): CDbCommand->queryScalar()
+#2 C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php(87): Ventas->TotalIngresadasMes(''INTMOV'','INTM...')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionIndex()
+#4 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('Index')
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('Site/Index')
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\vcp_nuevosmercados\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/vcp_nuevosmercados/index.php?r=Site/Index
+HTTP_REFERER=http://localhost:8080/vcp_nuevosmercados/index.php?r=site/index
+---
+2013/04/16 09:31:04 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[HY000]: General error: 10007 Incorrect syntax near 'INTMOV'. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_X_Mes '''INTMOV''',''INTMOV''''.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (138)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (87)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/04/16 09:31:04 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[HY000]: General error: 10007 Incorrect syntax near 'INTMOV'. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_X_Mes '''INTMOV''',''INTMOV''''' in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:541
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(432): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php(138): CDbCommand->queryScalar()
+#2 C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php(87): Ventas->TotalIngresadasMes('''INTMOV''',''I...')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionIndex()
+#4 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('Index')
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('Site/Index')
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\vcp_nuevosmercados\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/vcp_nuevosmercados/index.php?r=Site/Index
+HTTP_REFERER=http://localhost:8080/vcp_nuevosmercados/index.php?r=site/index
+---
+2013/04/16 09:31:06 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[HY000]: General error: 10007 Incorrect syntax near 'INTMOV'. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_X_Mes '''INTMOV''',''INTMOV''''.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (138)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (87)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/04/16 09:31:06 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[HY000]: General error: 10007 Incorrect syntax near 'INTMOV'. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_X_Mes '''INTMOV''',''INTMOV''''' in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:541
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(432): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php(138): CDbCommand->queryScalar()
+#2 C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php(87): Ventas->TotalIngresadasMes('''INTMOV''',''I...')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionIndex()
+#4 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('Index')
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('Site/Index')
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\vcp_nuevosmercados\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/vcp_nuevosmercados/index.php?r=Site/Index
+HTTP_REFERER=http://localhost:8080/vcp_nuevosmercados/index.php?r=site/index
+---
+2013/04/16 09:31:15 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[HY000]: General error: 10007 Incorrect syntax near 'INTMOV'. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Instaladas_X_Mes '''''INTMOV'',''INTMOV'''''.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (148)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (88)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/04/16 09:31:15 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[HY000]: General error: 10007 Incorrect syntax near 'INTMOV'. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Instaladas_X_Mes '''''INTMOV'',''INTMOV'''''' in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:541
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(432): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php(148): CDbCommand->queryScalar()
+#2 C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php(88): Ventas->TotalInstaladasMes('''INTMOV'',''IN...')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionIndex()
+#4 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('Index')
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('Site/Index')
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\vcp_nuevosmercados\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/vcp_nuevosmercados/index.php?r=Site/Index
+HTTP_REFERER=http://localhost:8080/vcp_nuevosmercados/index.php?r=site/index
+---
+2013/04/16 09:32:57 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[HY000]: General error: 10007 Invalid column name 'NUMMOV'. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_X_Mes 'NUMMOV'.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (138)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (87)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/04/16 09:32:57 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[HY000]: General error: 10007 Invalid column name 'NUMMOV'. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_X_Mes 'NUMMOV'' in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:541
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(432): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php(138): CDbCommand->queryScalar()
+#2 C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php(87): Ventas->TotalIngresadasMes('NUMMOV')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionIndex()
+#4 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('index')
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/index')
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\vcp_nuevosmercados\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/vcp_nuevosmercados/index.php?r=site/index&tid=INTMOV
+HTTP_REFERER=http://localhost:8080/vcp_nuevosmercados/index.php?r=site/index
+---
+2013/04/16 09:33:06 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[HY000]: General error: 10007 Incorrect syntax near 'INTMOV'. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Instaladas_X_Mes '''''INTMOV'',''INTMOV'''''.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (148)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (88)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/04/16 09:33:06 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[HY000]: General error: 10007 Incorrect syntax near 'INTMOV'. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Instaladas_X_Mes '''''INTMOV'',''INTMOV'''''' in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:541
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(432): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php(148): CDbCommand->queryScalar()
+#2 C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php(88): Ventas->TotalInstaladasMes('''INTMOV'',''IN...')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionIndex()
+#4 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('Index')
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('Site/Index')
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\vcp_nuevosmercados\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/vcp_nuevosmercados/index.php?r=Site/Index
+HTTP_REFERER=http://localhost:8080/vcp_nuevosmercados/index.php?r=site/index
+---
+2013/04/16 09:46:09 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[HY000]: General error: 10007 Incorrect syntax near 'INTMOV'. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Instaladas_X_Mes '''''INTMOV'',''INTMOV'''''.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (148)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (88)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/04/16 09:46:09 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[HY000]: General error: 10007 Incorrect syntax near 'INTMOV'. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Instaladas_X_Mes '''''INTMOV'',''INTMOV'''''' in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:541
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(432): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php(148): CDbCommand->queryScalar()
+#2 C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php(88): Ventas->TotalInstaladasMes('''INTMOV'',''IN...')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionIndex()
+#4 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('Index')
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('Site/Index')
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\vcp_nuevosmercados\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/vcp_nuevosmercados/index.php?r=Site/Index
+HTTP_REFERER=http://localhost:8080/vcp_nuevosmercados/index.php?r=site/index
+---
+2013/04/16 10:09:39 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[HY000]: General error: 10007 Invalid column name 'NUMMOV'. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_X_Mes 'NUMMOV'.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (138)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (87)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/04/16 10:09:39 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[HY000]: General error: 10007 Invalid column name 'NUMMOV'. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_X_Mes 'NUMMOV'' in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:541
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(432): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php(138): CDbCommand->queryScalar()
+#2 C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php(87): Ventas->TotalIngresadasMes('NUMMOV')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionIndex()
+#4 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('')
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('')
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\vcp_nuevosmercados\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/vcp_nuevosmercados/
+---
+2013/04/16 10:10:41 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[HY000]: General error: 10007 Incorrect syntax near ')'. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_X_Mes ''.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (138)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (87)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/04/16 10:10:41 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[HY000]: General error: 10007 Incorrect syntax near ')'. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_X_Mes ''' in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:541
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(432): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php(138): CDbCommand->queryScalar()
+#2 C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php(87): Ventas->TotalIngresadasMes(NULL)
+#3 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionIndex()
+#4 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('Index')
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('Site/Index')
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\vcp_nuevosmercados\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/vcp_nuevosmercados/index.php?r=Site/Index
+HTTP_REFERER=http://localhost:8080/vcp_nuevosmercados/index.php?r=site/index
+---
+2013/04/16 10:10:46 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[HY000]: General error: 10007 Invalid column name 'NUMMOV'. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_X_Mes 'NUMMOV'.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (138)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (87)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/04/16 10:10:46 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[HY000]: General error: 10007 Invalid column name 'NUMMOV'. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_X_Mes 'NUMMOV'' in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:541
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(432): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php(138): CDbCommand->queryScalar()
+#2 C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php(87): Ventas->TotalIngresadasMes('NUMMOV')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionIndex()
+#4 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('')
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('')
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\vcp_nuevosmercados\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/vcp_nuevosmercados/
+---
+2013/04/16 10:10:47 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[HY000]: General error: 10007 Invalid column name 'NUMMOV'. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_X_Mes 'NUMMOV'.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (138)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (87)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/04/16 10:10:47 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[HY000]: General error: 10007 Invalid column name 'NUMMOV'. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_X_Mes 'NUMMOV'' in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:541
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(432): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php(138): CDbCommand->queryScalar()
+#2 C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php(87): Ventas->TotalIngresadasMes('NUMMOV')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionIndex()
+#4 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('')
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('')
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\vcp_nuevosmercados\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/vcp_nuevosmercados/
+---
+2013/04/16 10:13:24 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[HY000]: General error: 10007 Incorrect syntax near 'INTMOV'. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_X_Mes '''''INTMOV'',''INTMOV'''''.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (139)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (87)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/04/16 10:13:24 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[HY000]: General error: 10007 Incorrect syntax near 'INTMOV'. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_X_Mes '''''INTMOV'',''INTMOV'''''' in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:541
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(432): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php(139): CDbCommand->queryScalar()
+#2 C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php(87): Ventas->TotalIngresadasMes('''INTMOV'',''IN...')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionIndex()
+#4 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('Index')
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('Site/Index')
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\vcp_nuevosmercados\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/vcp_nuevosmercados/index.php?r=Site/Index
+HTTP_REFERER=http://localhost:8080/vcp_nuevosmercados/
+---
+2013/04/16 10:16:00 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[HY000]: General error: 10007 Incorrect syntax near 'INTMOV'. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_X_Mes '''''INTMOV'',''INTMOV'''''.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (139)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (90)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/04/16 10:16:00 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[HY000]: General error: 10007 Incorrect syntax near 'INTMOV'. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_X_Mes '''''INTMOV'',''INTMOV'''''' in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:541
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(432): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php(139): CDbCommand->queryScalar()
+#2 C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php(90): Ventas->TotalIngresadasMes('''INTMOV'',''IN...')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionIndex()
+#4 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('Index')
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('Site/Index')
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\vcp_nuevosmercados\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/vcp_nuevosmercados/index.php?r=Site/Index
+HTTP_REFERER=http://localhost:8080/vcp_nuevosmercados/
+---
+2013/04/16 10:16:05 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[HY000]: General error: 10007 Incorrect syntax near 'INTMOV'. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_X_Mes '''''INTMOV'',''INTMOV'''''.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (139)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (90)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/04/16 10:16:05 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[HY000]: General error: 10007 Incorrect syntax near 'INTMOV'. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_X_Mes '''''INTMOV'',''INTMOV'''''' in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:541
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(432): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php(139): CDbCommand->queryScalar()
+#2 C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php(90): Ventas->TotalIngresadasMes('''INTMOV'',''IN...')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionIndex()
+#4 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('Index')
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('Site/Index')
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\vcp_nuevosmercados\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/vcp_nuevosmercados/index.php?r=Site/Index
+HTTP_REFERER=http://localhost:8080/vcp_nuevosmercados/
+---
+2013/04/16 10:17:38 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[HY000]: General error: 10007 Incorrect syntax near 'INTMOV'. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_X_Mes '''''INTMOV'',''INTMOV'''''.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (139)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (90)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/04/16 10:17:38 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[HY000]: General error: 10007 Incorrect syntax near 'INTMOV'. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_X_Mes '''''INTMOV'',''INTMOV'''''' in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:541
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(432): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php(139): CDbCommand->queryScalar()
+#2 C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php(90): Ventas->TotalIngresadasMes('''INTMOV'',''IN...')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionIndex()
+#4 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('Index')
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('Site/Index')
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\vcp_nuevosmercados\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/vcp_nuevosmercados/index.php?r=Site/Index
+HTTP_REFERER=http://localhost:8080/vcp_nuevosmercados/
+---
+2013/04/16 10:17:41 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[HY000]: General error: 10007 Incorrect syntax near 'INTMOV'. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_X_Mes '''''INTMOV'',''INTMOV'''''.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (139)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (90)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/04/16 10:17:41 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[HY000]: General error: 10007 Incorrect syntax near 'INTMOV'. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_X_Mes '''''INTMOV'',''INTMOV'''''' in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:541
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(432): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php(139): CDbCommand->queryScalar()
+#2 C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php(90): Ventas->TotalIngresadasMes('''INTMOV'',''IN...')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionIndex()
+#4 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('Index')
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('Site/Index')
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\vcp_nuevosmercados\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/vcp_nuevosmercados/index.php?r=Site/Index
+HTTP_REFERER=http://localhost:8080/vcp_nuevosmercados/
+---
+2013/04/16 10:17:52 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[HY000]: General error: 10007 Incorrect syntax near 'INTMOV'. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_X_Mes '''''INTMOV'',''INTMOV'''''.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (139)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (90)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/04/16 10:17:52 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[HY000]: General error: 10007 Incorrect syntax near 'INTMOV'. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_X_Mes '''''INTMOV'',''INTMOV'''''' in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:541
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(432): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php(139): CDbCommand->queryScalar()
+#2 C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php(90): Ventas->TotalIngresadasMes('''INTMOV'',''IN...')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionIndex()
+#4 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('Index')
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('Site/Index')
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\vcp_nuevosmercados\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/vcp_nuevosmercados/index.php?r=Site/Index
+HTTP_REFERER=http://localhost:8080/vcp_nuevosmercados/
+---
+2013/04/16 16:05:56 [error] [php] filesize() [<a href='function.filesize'>function.filesize</a>]: stat failed for C://xampp/htdocs/movilidad/\ (C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php:140)
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#1 C:\xampp\htdocs\yii\framework\web\CController.php(286): SiteController->runAction()
+#2 C:\xampp\htdocs\yii\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#3 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): SiteController->run()
+#4 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#5 C:\xampp\htdocs\yii\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#6 C:\xampp\htdocs\vcp_nuevosmercados\index.php(13): CWebApplication->run()
+REQUEST_URI=/vcp_nuevosmercados/index.php?r=Site/DescargarArchivo&ajax=true
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (140)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/04/16 16:06:02 [error] [php] filesize() [<a href='function.filesize'>function.filesize</a>]: stat failed for C://xampp/htdocs/movilidad/\ (C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php:140)
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#1 C:\xampp\htdocs\yii\framework\web\CController.php(286): SiteController->runAction()
+#2 C:\xampp\htdocs\yii\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#3 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): SiteController->run()
+#4 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#5 C:\xampp\htdocs\yii\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#6 C:\xampp\htdocs\vcp_nuevosmercados\index.php(13): CWebApplication->run()
+REQUEST_URI=/vcp_nuevosmercados/index.php?r=Site/DescargarArchivo&ajax=true
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (140)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/04/16 16:06:15 [error] [php] filesize() [<a href='function.filesize'>function.filesize</a>]: stat failed for C://xampp/htdocs/movilidad/\ (C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php:140)
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#1 C:\xampp\htdocs\yii\framework\web\CController.php(286): SiteController->runAction()
+#2 C:\xampp\htdocs\yii\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#3 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): SiteController->run()
+#4 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#5 C:\xampp\htdocs\yii\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#6 C:\xampp\htdocs\vcp_nuevosmercados\index.php(13): CWebApplication->run()
+REQUEST_URI=/vcp_nuevosmercados/index.php?r=Site/DescargarArchivo&ajax=true
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (140)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/04/16 16:11:17 [error] [php] filesize() [<a href='function.filesize'>function.filesize</a>]: stat failed for C://xampp/htdocs/movilidad/2012.xlsx (C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php:144)
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#1 C:\xampp\htdocs\yii\framework\web\CController.php(286): SiteController->runAction()
+#2 C:\xampp\htdocs\yii\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#3 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): SiteController->run()
+#4 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#5 C:\xampp\htdocs\yii\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#6 C:\xampp\htdocs\vcp_nuevosmercados\index.php(13): CWebApplication->run()
+REQUEST_URI=/vcp_nuevosmercados/index.php?r=Site/DescargarArchivo&informeid=2012&ajax=true
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (144)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/04/16 16:12:32 [error] [php] filesize() [<a href='function.filesize'>function.filesize</a>]: stat failed for C://xampp/htdocs/movilidad/2013.xlsx (C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php:144)
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#1 C:\xampp\htdocs\yii\framework\web\CController.php(286): SiteController->runAction()
+#2 C:\xampp\htdocs\yii\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#3 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): SiteController->run()
+#4 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#5 C:\xampp\htdocs\yii\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#6 C:\xampp\htdocs\vcp_nuevosmercados\index.php(13): CWebApplication->run()
+REQUEST_URI=/vcp_nuevosmercados/index.php?r=Site/DescargarArchivo&informeid=2013&ajax=true
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (144)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)

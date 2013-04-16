@@ -7,22 +7,13 @@
  */
 class Actualizar extends CFormModel {
 
-    public function get_FechaActualizacion() {
-        $configuracion = Yii::app()->db->createCommand()
-                ->select('FECHA_ACTUALIZACION')
-                ->from('CONFIGURACION')
-                ->queryScalar();
-
-        return $configuracion;
-    }
-
     /**
      * Actualiza la tabla temporal de ventas del dia
      * */
     public function ActualizarTemporal($fechaActualizacion) {
         if ($fechaActualizacion != date('Y-m-d')) {
 
-            $tiposElementos = array('NUMMOV', 'INTMOV');
+            $tiposElementos = array('NUMMOV', 'INTMOV','LIMOV');
             
             $temporalVentas = new TemporalVentas();
             $temporalVentas->TruncateTemporal();
@@ -30,8 +21,6 @@ class Actualizar extends CFormModel {
             for ($i = 0; $i < Count($tiposElementos); $i++) {
                 
                 $tipoElemento = $tiposElementos[$i];
-                
-                
 
                 $plazas = new Plazas();
                 $plazas = $plazas->get_Plazas();
