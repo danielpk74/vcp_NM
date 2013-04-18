@@ -13,7 +13,7 @@ class Actualizar extends CFormModel {
     public function ActualizarTemporal($fechaActualizacion) {
         if ($fechaActualizacion != date('Y-m-d')) {
 
-            $tiposElementos = array('NUMMOV', 'INTMOV','LIMOV');
+            $tiposElementos = array('NUMMOV', 'INTMOV','LIMOV','ALL');
             
             $temporalVentas = new TemporalVentas();
             $temporalVentas->TruncateTemporal();

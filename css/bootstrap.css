@@ -904,7 +904,7 @@ dd {
 }
 
 hr {
-    margin: 20px 0;
+    margin: 10px 0;
     border: 0;
     border-top: 1px solid #eeeeee;
     border-bottom: 1px solid #ffffff;
@@ -4376,7 +4376,7 @@ input[type="submit"].btn.btn-mini {
 .navbar {
     *position: relative;
     *z-index: 2;
-    margin-bottom: 20px;
+    margin-bottom: 2px;
     overflow: visible;
 }
 
@@ -6251,4 +6251,8 @@ to {
 .izquierda
 {
     float: left;
+}
+
+select {
+    height: 28px;
 }

@@ -60,7 +60,6 @@ class SiteController extends Controller {
                 $this->setPageState('producto', Yii::app()->getRequest()->getParam('producto'));
             } else { // Consultamos por subproducto {
                 $this->setPageState('producto', Yii::app()->getRequest()->getParam('subproducto'));
-                echo Yii::app()->getRequest()->getParam('subproducto');
             }
 
             if (Yii::app()->getRequest()->getParam('producto') != 'NUMMOV')

@@ -18,6 +18,7 @@ class Productos extends CFormModel {
         $productos = Yii::app()->db->createCommand()
                 ->select('*')
                 ->from('PRODUCTOS')
+                ->order('DESCRIPCION ASC')
                 ->queryAll();
 
         return $productos;

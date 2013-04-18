@@ -41,13 +41,13 @@
         </tfoot>
     </table>    
 
-    <div class="derecha">
+<!--    <div class="derecha">
         <a href="#" onClick="javascript:$('#descargarDetalles').toggle('slow');">Descargar Detalles</a>
 
         <div class="descargas derecha" id="descargarDetalles">
             <?php echo CHtml::imageButton(Yii::app()->request->baseUrl . "/images/excel.png"); ?>
         </div>
-    </div>
+    </div>-->
 
     <?php
     // Categoria de la grafica
