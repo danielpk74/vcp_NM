@@ -14,6 +14,7 @@ class Uen extends CFormModel {
         $uen = Yii::app()->db->createCommand()
                 ->select('UEN_ID, DESCRIPCION')
                 ->from('UEN')
+                ->order('DESCRIPCION')
                 ->queryAll();
         
         return $uen;
