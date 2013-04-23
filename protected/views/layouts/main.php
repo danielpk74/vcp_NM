@@ -48,11 +48,10 @@
                                     <li class="dropdown">
                                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Ventas <b class="caret"></b></a>
                                         <ul class="dropdown-menu">
-                                            <li><a href="#">Ver Detalles</a></li>
-                                            <li><a href="#">Presupuestos</a></li>
+                                             <li><?php echo CHtml::linkButton('Presupuestos',array('submit'=>array('Presupuestos')));?></li>
                                         </ul>
                                     </li>
-                                    <li class="dropdown">
+                                    <li class="dropdown" style="display: none">
                                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pedidos <b class="caret"></b></a>
                                         <ul class="dropdown-menu">
                                             <li><a href="#">Pendientes</a></li>
@@ -63,10 +62,11 @@
                                     <li class="dropdown">
                                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Descargar <b class="caret"></b></a>
                                         <ul class="dropdown-menu">
+                                            <li><a id='detalles' href='\\C:\Movilidad.xlsx'/>Detalles</a></li>
                                             <?php 
-                                               for($año=2012;$año<=date('Y');$año++)
-                                                   echo "<li><a id='$año' href='../movilidad/$año.xlsx'/>Detalles $año</a></li>" ;  
-                                            ?>
+//                                               for($año=2012;$año<=date('Y');$año++)
+//                                                   echo "<li><a id='$año' href='../movilidad/$año.xlsx'/>Detalles $año</a></li>" ;  
+//                                          ?>
                                         </ul>
                                     </li>
                                     

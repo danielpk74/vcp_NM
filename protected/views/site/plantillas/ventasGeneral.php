@@ -10,7 +10,7 @@
 
         <?php foreach ($ventas as $venta) { ?>
             <tr>
-                <td><?php echo CHtml::encode($venta['PLAZA']); ?></td>
+                <td><?php echo FunsionesSoporte::QuitarAcentos($venta['PLAZA']); ?></td>
                 <td style='text-align: right'><?php
                     echo CHtml::encode($venta['INGRESADAS']);
                     $totalIngresadas += $venta['INGRESADAS'];
@@ -20,7 +20,21 @@
                     $totalInstaladas += $venta['INSTALADAS'];
                     ?></td>
             </tr>   
-<?php } ?>
+        <?php } ?>
+            
+        <?php foreach ($ventasOtros as $venta) { ?>
+          <tr>
+               <td><?php echo FunsionesSoporte::QuitarAcentos($venta['PLAZA']); ?></td>
+               <td style='text-align: right'><?php
+                   echo CHtml::encode($venta['INGRESADAS']);
+                   $totalIngresadas += $venta['INGRESADAS'];
+                   ?></td>
+               <td style='text-align: right'><?php
+                   echo CHtml::encode($venta['INSTALADAS']);
+                   $totalInstaladas += $venta['INSTALADAS'];
+                   ?></td>
+           </tr>   
+       <?php } ?>
 
         <tfoot>
             <tr>

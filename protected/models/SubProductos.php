@@ -15,11 +15,18 @@ class SubProductos extends CFormModel {
      * @return type
      */
     public function get_SubProductos($subProductoID) {
-        $subProductos = Yii::app()->db->createCommand()
-                ->select('*')
-                ->from('SUB_PRODUCTOS')
-                ->where('PRODUCTO_ID_FK=:producto_id', array(':producto_id' => $subProductoID))
-                ->queryAll();
+      if ($subProductoID != '') {
+            $subProductos = Yii::app()->db->createCommand()
+                    ->select('*')
+                    ->from('SUB_PRODUCTOS')
+                    ->where('PRODUCTO_ID_FK=:producto_id', array(':producto_id' => $subProductoID))
+                    ->queryAll();
+        } else {
+            $subProductos = Yii::app()->db->createCommand()
+                    ->select('*')
+                    ->from('SUB_PRODUCTOS')
+                    ->queryAll();
+        }
 
         return $subProductos;
     }

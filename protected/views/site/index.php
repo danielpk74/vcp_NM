@@ -1,4 +1,5 @@
 <?php
+
 $this->pageTitle = Yii::app()->name;
 require_once ('/protected/components/FusionCharts.php');
 ?>
@@ -16,24 +17,39 @@ require_once ('/protected/components/FusionCharts.php');
                 select.options[0] = new Option('Sub Producto', '');
 
                 $("select#sub_productos").append(j);
-
+                
+                if($('#productos').val() != "") {
+                    $('#sub_productos').attr("disabled", false);
+                    $('#uen').attr("disabled", false);
+                    $('#btnDetallesVentas').attr("disabled", false);
+                }
+                else {
+                    $('#sub_productos').attr("disabled", true);
+                    $('#uen').attr("disabled", true);
+                    $('#btnDetallesVentas').attr("disabled", true);
+                }
             })
         });
+        
+        $('#sub_productos').attr("disabled", true);
+        $('#uen').attr("disabled", true);
+        $('#btnDetallesVentas').attr("disabled", true);
     })
 </script>
 
 <?php
 echo CHtml::activeDropDownList($productomodel, 'DESCRIPCION', CHtml::listData($productos, 'PRODUCTO_ID_PK', 'DESCRIPCION'), array('name' => 'productos', 'prompt' => 'Producto','class'=>'select'));
 echo CHtml::activeDropDownList($subProducto_, 'DESCRIPCION', CHtml::listData($subProductos, 'SUB_PRODUCTO_ID_PK', 'DESCRIPCION'), array('name' => 'sub_productos', 'prompt' => 'Sub Producto',));
+echo CHtml::activeDropDownList($uenmodel, 'DESCRIPCION', CHtml::listData($uens, 'UEN_ID', 'DESCRIPCION'), array('name' => 'uen', 'prompt' => 'UEN','enabled'=>false));
 
 $option = array('type' => 'POST',
     'url' => CController::createUrl('Site/Index'),
-    'data' => array('producto' => 'js:productos.value', 'subproducto' => 'js:sub_productos.value'),
+    'data' => array('producto' => 'js:productos.value', 'subproducto' => 'js:sub_productos.value','uen' =>'js:uen.value'),
     'update' => '#detallesVentas',
     'success' => 'function(data) {
                             $(\'#detallesVentas\').html(data);
                         }');
-echo CHtml::ajaxButton('FILTRAR', CController::createUrl('Site/Index'), $option, array('name' => 'actualizarDetallesVentas', 'class' => 'btn btn-mini'));
+echo CHtml::ajaxButton('FILTRAR', CController::createUrl('Site/Index'), $option, array('name' => 'btnDetallesVentas', 'class' => 'btn btn-mini'));
 ?>
 <hr>
 
@@ -51,7 +67,7 @@ echo CHtml::ajaxButton('FILTRAR', CController::createUrl('Site/Index'), $option,
 
             <?php foreach ($ventas as $venta) { ?>
                 <tr>
-                    <td><?php echo CHtml::encode($venta['PLAZA']); ?></td>
+                    <td><?php echo FunsionesSoporte::QuitarAcentos($venta['PLAZA']); ?></td>
                     <td style='text-align: right'><?php
                         echo CHtml::encode($venta['INGRESADAS']);
                         $totalIngresadas += $venta['INGRESADAS'];
@@ -61,8 +77,22 @@ echo CHtml::ajaxButton('FILTRAR', CController::createUrl('Site/Index'), $option,
                         $totalInstaladas += $venta['INSTALADAS'];
                         ?></td>
                 </tr>   
-<?php } ?>
-
+            <?php } ?>
+            
+            <?php foreach ($ventasOtros as $venta) { ?>
+               <tr>
+                    <td><?php echo FunsionesSoporte::QuitarAcentos($venta['PLAZA']); ?></td>
+                    <td style='text-align: right'><?php
+                        echo CHtml::encode($venta['INGRESADAS']);
+                        $totalIngresadas += $venta['INGRESADAS'];
+                        ?></td>
+                    <td style='text-align: right'><?php
+                        echo CHtml::encode($venta['INSTALADAS']);
+                        $totalInstaladas += $venta['INSTALADAS'];
+                        ?></td>
+                </tr>   
+            <?php } ?>
+                
             <tfoot>
                 <tr>
                     <td class='td-footer'>Total </td>
@@ -91,6 +121,7 @@ echo CHtml::ajaxButton('FILTRAR', CController::createUrl('Site/Index'), $option,
         $dataSets .=FunsionesSoporte::GenerarValueXMLChart($ventasInstaladas, 'Instaladas', 'TOTAL_INSTALADA');
 
         $strXML = FunsionesSoporte::GenerarXML_Chart('Evolución Ventas Diarias', 'Hasta el ' . date('Y-m-d'), $categorias, $dataSets, "", "");
-        echo "<center>" . renderChart(Yii::app()->request->baseUrl . "/utilidades/fusionchart/MSLine.swf", "", $strXML, "Vibraciones", "100%", 435, false, false) . "</center>";
+        echo "<center>" . renderChart(Yii::app()->request->baseUrl . "/utilidades/fusionchart/MSLine.swf", "", $strXML, "Ventas", "100%", 435, false, false) . "</center>";
         ?>
+
     </div>

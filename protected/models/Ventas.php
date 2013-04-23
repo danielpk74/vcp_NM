@@ -11,13 +11,28 @@ class Ventas extends CFormModel {
      * Consulta la tabla temporal de resumen de ventas.
      * @return type
      */
-    public function Ingresadas($tipoElemento) {
+    public function Ingresadas($dias, $tipoElemento,$plaza='',$fecha='',$uen='',$tipo_solicitud='Nuevo') {
         if ($tipoElemento != "ALL") {
+            $ventas = Yii::app()->db->createCommand("SP_Consultas_Ingresos_Retiros '3','$dias','$tipoElemento','$plaza','$fecha','$uen','$tipo_solicitud'")->queryAll();
+        } else {
             $ventas = Yii::app()->db->createCommand()
-                    ->select('*')
+                    ->select('PLAZA, SUM(INGRESADAS) AS INGRESADAS, SUM(INSTALADAS) AS INSTALADAS')
                     ->from('TMP_VENTAS')
-                    ->where('TIPO_ELEMENTO_ID = :tipoelemento', array('tipoelemento' => $tipoElemento))
+                    ->where('TIPO_ELEMENTO_ID <> :tipoelemento', array('tipoelemento' => $tipoElemento))
+                    ->group('PLAZA')
                     ->queryAll();
+        }
+
+        return $ventas;
+    }
+    
+    /**
+     * Consulta la tabla temporal de resumen de ventas.
+     * @return type
+     */
+    public function IngresadasOtros($dias, $tipoElemento,$plaza='',$fecha='',$uen='',$tipo_solicitud='Nuevo') {
+        if ($tipoElemento != "ALL") {
+            $ventas = Yii::app()->db->createCommand("SP_Consultas_Ingresos_Retiros '4','$dias','$tipoElemento','$plaza','$fecha','$uen','$tipo_solicitud'")->queryAll();
         } else {
             $ventas = Yii::app()->db->createCommand()
                     ->select('PLAZA, SUM(INGRESADAS) AS INGRESADAS, SUM(INSTALADAS) AS INSTALADAS')
@@ -70,20 +85,19 @@ class Ventas extends CFormModel {
         }
         return $ventas;
     }
-
+    
     /**
-     * Devuelve los pedidos ingresados
-     * @param type $dias
-     * @return objeto
+     * Obtiene el numero de pedidos ingresadss por plaza agrupado por fecha, partiendo desde 
+     * el numero de dias enviados por parametros, hasta la fecha actual.
+     * @param integer $dias el numero de dias desde que se debe traer el historial
+     * @return array con los datos de los ingresos agrupados por fecha
      */
-    public function get_Ingresadas($dias, $tipoElemento) {
+    public function get_Ingresadas($dias, $tipoElemento,$plaza=NULL,$fecha=NULL,$uen=NULL,$tipo_solicitud='Nuevo') {
         if ($tipoElemento != "ALL") {
-            $tipoElemento = (string) "''" . $tipoElemento . "''";
-            $ventas = Yii::app()->db->createCommand("SP_Ingresadas_X_Plaza_X_Dias '$dias','$tipoElemento'")->queryAll();
+            $ventas = Yii::app()->db->createCommand("SP_Consultas_Ingresos_Retiros '1','$dias','$tipoElemento','$plaza','$fecha','$uen','$tipo_solicitud'")->queryAll();
         } else { // Consolidado
             $ventas = Yii::app()->db->createCommand("SP_Ingresadas_X_Plaza_X_Dias_Consolidado '$dias'")->queryAll();
         }
-
         return $ventas;
     }
 
@@ -93,36 +107,36 @@ class Ventas extends CFormModel {
      * @param integer $dias el numero de dias desde que se debe traer el historial
      * @return array con los datos de los ingresos agrupados por fecha
      */
-    public function get_Instaladas($dias, $tipoElemento) {
+    public function get_Instaladas($dias, $tipoElemento,$plaza=NULL,$fecha=NULL,$uen=NULL,$tipo_solicitud='Nuevo') {
         if ($tipoElemento != "ALL") {
-            $tipoElemento = (string) "''" . $tipoElemento . "''";
-            $ventas = Yii::app()->db->createCommand("SP_Instaladas_X_Plaza_X_Dias '$dias','$tipoElemento'")->queryAll();
+            $ventas = Yii::app()->db->createCommand("SP_Consultas_Ingresos_Retiros '2','$dias','$tipoElemento','$plaza','$fecha','$uen','$tipo_solicitud'")->queryAll();
         } else { // Consolidado
             $ventas = Yii::app()->db->createCommand("SP_Instaladas_X_Plaza_X_Dias_Consolidado '$dias'")->queryAll();
         }
         return $ventas;
     }
-
+   
     /**
      * Truncate a la tabla
-     */
+     **/
     public function TruncateTemporalVentas($nombreTabla) {
         $ingresadasPlaza = Yii::app()->db->createCommand()->truncateTable((string) $nombreTabla);
     }
 
     /**
-     * * Inserta los pedidos ingresados e instaladas en una plaza determinada
+     * Inserta los pedidos ingresados e instaladas en una plaza determinada
      * @param string $plaza La plaza a insertar
      * @param integer $totaIngresadas El numero de pedidos ingresados de la plaza
      * @param integer $totalInstaladas El numero de pedidos instalados de la plaza
-     */
-    public function set_Ingresadas_Instaladas($plaza, $totaIngresadas, $totalInstaladas, $tipoElemento) {
+     **/
+    public function set_Ingresadas_Instaladas($plaza, $totaIngresadas, $totalInstaladas, $tipoElemento,$uen=NULL) {
         $command = Yii::app()->db->createCommand();
         $command->insert('TMP_VENTAS', array(
             'PLAZA' => $plaza,
             'INGRESADAS' => $totaIngresadas,
             'INSTALADAS' => $totalInstaladas,
             'TIPO_ELEMENTO_ID' => $tipoElemento,
+            'UEN' => $uen,
         ));
     }
 
@@ -130,7 +144,7 @@ class Ventas extends CFormModel {
      * Inserta o actualiza(si fue insertado un registro previamente) los pedidos ingresados o instalados
      * en las plazas que no son consideradas como principales(entidad PLAZAS_SEPARADAS)
      */
-    public function set_Ingresadas_Instaladas_Otros($totaIngresadas, $totalInstaladas, $tipoElemento) {
+    public function set_Ingresadas_Instaladas_Otros($totaIngresadas, $totalInstaladas, $tipoElemento,$uen=NULL) {
         $command = Yii::app()->db->createCommand();
 
         $otros = Yii::app()->db->createCommand()
@@ -146,12 +160,14 @@ class Ventas extends CFormModel {
                 'INGRESADAS' => $totaIngresadas,
                 'INSTALADAS' => $totalInstaladas,
                 'TIPO_ELEMENTO_ID' => $tipoElemento,
+                'UEN' => $uen,
             ));
         } else {
             $command->update('TMP_VENTAS', array(
                 'INGRESADAS' => $otros['INGRESADAS'] + $totaIngresadas,
                 'INSTALADAS' => $otros['INSTALADAS'] + $totalInstaladas,
                 'TIPO_ELEMENTO_ID' => $tipoElemento,
+                'UEN' => $uen,
                     ), 'PLAZA=:plaza', array(':plaza' => 'OTROS'));
         }
     }
