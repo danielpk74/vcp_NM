@@ -49,6 +49,8 @@
                                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Ventas <b class="caret"></b></a>
                                         <ul class="dropdown-menu">
                                              <li><?php echo CHtml::linkButton('Presupuestos',array('submit'=>array('Presupuestos')));?></li>
+                                             <li><?php echo CHtml::linkButton('Proyecciones','');?></li>
+                                             <li><?php echo CHtml::linkButton('Cumplimientos','');?></li>
                                         </ul>
                                     </li>
                                     <li class="dropdown" style="display: none">
@@ -62,7 +64,7 @@
                                     <li class="dropdown">
                                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Descargar <b class="caret"></b></a>
                                         <ul class="dropdown-menu">
-                                            <li><a id='detalles' href='\\C:\Movilidad.xlsx'/>Detalles</a></li>
+                                            <li><a id='detalles' href="<?php echo Yii::app()->request->baseUrl; ?>/utilidades/archivosdetalles/DetallesMovilidad_4G_3G.xlsx"/>Detalles</a></li>
                                             <?php 
 //                                               for($año=2012;$año<=date('Y');$año++)
 //                                                   echo "<li><a id='$año' href='../movilidad/$año.xlsx'/>Detalles $año</a></li>" ;  
@@ -70,7 +72,7 @@
                                         </ul>
                                     </li>
                                     
-                                    <li class="dropdown">
+                                    <li class="dropdown" style="display: none">
                                         <?php echo CHtml::linkButton('Actualizar',array('submit'=>array('Actualizar')));?>
                                         <ul class="dropdown-menu">
                                             <li></li>
