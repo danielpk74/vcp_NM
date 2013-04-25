@@ -55,10 +55,10 @@ class SiteController extends Controller {
         $productoConsulta = "4G";
         $subProductoQuery = "";
 
-        $tipoElemento = '';
-        $plaza = NULL;
-        $fecha = NULL;
-        $uenp = NULL;
+        $tipoElemento = "";
+        $plaza = "";
+        $fecha = "";
+        $uenp  = "";
         $tipo_solicitud = 'Nuevo';
 
         // ACCION FILTRAR
@@ -85,22 +85,22 @@ class SiteController extends Controller {
         $ventas = new Ventas();
 
         /// TOTAL INGRESADAS E INSTALADAS MES
-        $totalIngresadasMesActual = $ventas->TotalIngresadasMes($this->getPageState('producto'));
-        $totalInstaladasMesActual = $ventas->TotalInstaladasMes($this->getPageState('producto'));
-        $totalPendientes = $ventas->TotalPendientes($this->getPageState('producto'));
+        $totalIngresadasMesActual = $ventas->TotalIngresadasMes($this->getPageState('producto'), $uenp, 'Nuevo');
+        $totalInstaladasMesActual = $ventas->TotalInstaladasMes($this->getPageState('producto'), $uenp, 'Nuevo');
+        $totalPendientes = $ventas->TotalPendientes($this->getPageState('producto'), $uenp, 'Nuevo');
 
         /// TOTAL INSTALADAS E INGRESADAS POR DIA - GRAFICO
         $ventasIngresadas = $ventas->get_Ingresadas(15, $this->getPageState('producto'), '', '', $uenp, 'Nuevo');
         $ventasInstaladas = $ventas->get_Instaladas(15, $this->getPageState('producto'), '', '', $uenp, 'Nuevo');
 
         // INGRESADAS E INSTALADAS DEL DIA/DIA ANTERIOR
-        if (date('H:i') < '16:50')
-            $fecha = date('Y-m-d', strtotime("-1 day", strtotime(date('Y-m-d'))));
+        if (date('H:i') < '18:50')
+            $fechaConsulta = date('Y-m-d', strtotime("-1 day", strtotime(date('Y-m-d'))));
         else
-            $fecha = date('Y-m-d');
+            $fechaConsulta = date('Y-m-d');
         
-        $ventasTotales = $ventas->Ingresadas('', $this->getPageState('producto'), '', $fecha, $uenp, 'Nuevo');
-        $ventasTotalesOtros = $ventas->IngresadasOtros('', $this->getPageState('producto'), '', $fecha, $uenp, 'Nuevo');
+        $ventasTotales = $ventas->Ingresadas('', $this->getPageState('producto'), '', $fechaConsulta, $uenp, 'Nuevo');
+        $ventasTotalesOtros = $ventas->IngresadasOtros('', $this->getPageState('producto'), '', $fechaConsulta, $uenp, 'Nuevo');
        
         $totalInstaladas = 0;
         $totalIngresadas = 0;
@@ -114,6 +114,7 @@ class SiteController extends Controller {
         if (!Yii::app()->request->isAjaxRequest) {
             $this->render('index', array(
                 'fechaactualizacion' => $fechaActualizacion,
+                'fechaConsulta' => $fechaConsulta,
                 'producto' => $productoConsulta,
                 'productomodel' => $producto_,
                 'subProducto_' => $subProducto,
@@ -131,6 +132,7 @@ class SiteController extends Controller {
         } else {
             $this->renderPartial('plantillas/ventasGeneral', array(
                 'fechaactualizacion' => $fechaActualizacion,
+                'fechaConsulta' => $fechaConsulta,
                 'producto' => $productoConsulta,
                 'productomodel' => $producto_,
                 'subProducto_' => $subProducto,
