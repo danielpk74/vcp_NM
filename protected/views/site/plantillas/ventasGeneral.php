@@ -1,6 +1,8 @@
 <?php require_once ('/protected/components/FusionCharts.php');?>
 
 <div id="filtro">
+    <hr>
+    <h5  style="text-align: right">Ingresos del día: <?php echo date('d-m-Y', strtotime($fechaConsulta)) ?></h5>
     <table  class="table table-striped table-bordered table-condensed"> 
         <tr>
             <th style='text-align: center'>PLAZA</th>
@@ -54,23 +56,19 @@
             </tr>
         </tfoot>
     </table>    
+    
+    <hr>
 
-<!--    <div class="derecha">
-        <a href="#" onClick="javascript:$('#descargarDetalles').toggle('slow');">Descargar Detalles</a>
-
-        <div class="descargas derecha" id="descargarDetalles">
-            <?php echo CHtml::imageButton(Yii::app()->request->baseUrl . "/images/excel.png"); ?>
-        </div>
-    </div>-->
-
-    <?php
-    // Categoria de la grafica
-    $categorias = FunsionesSoporte::GenerarCategoryXMLChart($ventasIngresadas, 'FECHA_INGRESO');
+  <?php
+     if(Count($ventasIngresadas) >= Count($ventasInstaladas))
+        $categorias = FunsionesSoporte::GenerarCategoryXMLChart($ventasIngresadas, 'FECHA_INGRESO');
+    else
+        $categorias = FunsionesSoporte::GenerarCategoryXMLChart($ventasInstaladas, 'FECHA_INSTALACION');
 
     // Dataset de la grafica
     $dataSets = FunsionesSoporte::GenerarValueXMLChart($ventasIngresadas, 'Ingresadas', 'TOTAL_INGRESADA');
     $dataSets .=FunsionesSoporte::GenerarValueXMLChart($ventasInstaladas, 'Instaladas', 'TOTAL_INSTALADA');
 
-    $strXML = FunsionesSoporte::GenerarXML_Chart('Evolución Ventas Diarias', date('Y-m-d'), $categorias, $dataSets, "", "");
-    echo "<center>" . renderChart(Yii::app()->request->baseUrl . "/utilidades/fusionchart/MSLine.swf", "", $strXML, "Vibraciones", "100%", 435, false, false) . "</center>";
+    $strXML = FunsionesSoporte::GenerarXML_Chart('Evolución Ventas', 'Últimos 15 días Hasta el ' . date('d-m-Y h:i', strtotime($fechaactualizacion)), $categorias, $dataSets, "", "");
+    echo "<center>" . renderChart(Yii::app()->request->baseUrl . "/utilidades/fusionchart/MSLine.swf", "", $strXML, "Ventas", "100%", 435, false, false) . "</center>";
     ?>

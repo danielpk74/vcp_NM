@@ -4,9 +4,7 @@ $this->pageTitle = Yii::app()->name;
 require_once ('/protected/components/FusionCharts.php');
 ?>
 
-<h4>Estado Actual de Ventas Diarias - <span id="producto" class="label label-important" style='font-size: 15px;'><?php echo CHtml::encode($producto) ?></span></h4>
-<br>
-
+<h4>Estado Actual de Ventas Diarias - <?php echo "última Actualización " . date('d-m-Y h:i', strtotime($fechaactualizacion)) ?> </h4>
 <script type="text/javascript">
     $().ready(function() {
         $('#productos').live('change', function() {
@@ -36,7 +34,7 @@ require_once ('/protected/components/FusionCharts.php');
         $('#btnDetallesVentas').attr("disabled", true);
     })
 </script>
-
+<hr>
 <?php
 echo CHtml::activeDropDownList($productomodel, 'DESCRIPCION', CHtml::listData($productos, 'PRODUCTO_ID_PK', 'DESCRIPCION'), array('name' => 'productos', 'prompt' => 'Producto','class'=>'select'));
 echo CHtml::activeDropDownList($subProducto_, 'DESCRIPCION', CHtml::listData($subProductos, 'SUB_PRODUCTO_ID_PK', 'DESCRIPCION'), array('name' => 'sub_productos', 'prompt' => 'Sub Producto',));
@@ -51,13 +49,15 @@ $option = array('type' => 'POST',
                         }');
 echo CHtml::ajaxButton('FILTRAR', CController::createUrl('Site/Index'), $option, array('name' => 'btnDetallesVentas', 'class' => 'btn btn-mini'));
 ?>
-<hr>
 
-<h5 style="text-align: right"><?php echo "Última Actualización " . $fechaactualizacion ?></h5>
 
-<div id="detallesVentas"
+<h5 style="text-align: right"></h5>
 
+<div id="detallesVentas">
+     
      <div id="filtro">
+         <hr>
+         <h5  style="text-align: right">Ingresos del día: <?php echo date('d-m-Y', strtotime($fechaConsulta)) ?></h5>
         <table  class="table table-striped table-bordered table-condensed"> 
             <tr>
                 <th style='text-align: center'>PLAZA</th>
@@ -100,7 +100,7 @@ echo CHtml::ajaxButton('FILTRAR', CController::createUrl('Site/Index'), $option,
                     <td style='text-align: right'><?php echo CHtml::encode($totalInstaladas); ?></span></td>
                 </tr>
                 <tr>
-                    <td class='td-footer'>Total Mes Actual</td>
+                    <td class='td-footer'>Total Mes</td>
                     <td style='text-align: right'><?php echo CHtml::encode($ingresadasMesActual); ?></span></td>
                     <td style='text-align: right'><?php echo CHtml::encode($instaladasMesActual); ?></span></td>
                 </tr>
@@ -112,15 +112,23 @@ echo CHtml::ajaxButton('FILTRAR', CController::createUrl('Site/Index'), $option,
             </tfoot>
         </table>    
 
+        <hr>
+        
+     
+       
         <?php
+        
         // Categoria de la grafica
+    if(Count($ventasIngresadas) >= Count($ventasInstaladas))
         $categorias = FunsionesSoporte::GenerarCategoryXMLChart($ventasIngresadas, 'FECHA_INGRESO');
-
+    else
+        $categorias = FunsionesSoporte::GenerarCategoryXMLChart($ventasInstaladas, 'FECHA_INSTALACION');
+    
         // Dataset de la grafica
         $dataSets = FunsionesSoporte::GenerarValueXMLChart($ventasIngresadas, 'Ingresadas', 'TOTAL_INGRESADA');
         $dataSets .=FunsionesSoporte::GenerarValueXMLChart($ventasInstaladas, 'Instaladas', 'TOTAL_INSTALADA');
 
-        $strXML = FunsionesSoporte::GenerarXML_Chart('Evolución Ventas Diarias', 'Hasta el ' . date('Y-m-d'), $categorias, $dataSets, "", "");
+        $strXML = FunsionesSoporte::GenerarXML_Chart('Evolución Ventas', 'Últimos 15 días Hasta el ' . date('d-m-Y h:i', strtotime($fechaactualizacion)), $categorias, $dataSets, "", "");
         echo "<center>" . renderChart(Yii::app()->request->baseUrl . "/utilidades/fusionchart/MSLine.swf", "", $strXML, "Ventas", "100%", 435, false, false) . "</center>";
         ?>
 

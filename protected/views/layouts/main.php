@@ -64,7 +64,7 @@
                                     <li class="dropdown">
                                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Descargar <b class="caret"></b></a>
                                         <ul class="dropdown-menu">
-                                            <li><a id='detalles' href="<?php echo Yii::app()->request->baseUrl; ?>/utilidades/archivosdetalles/DetallesMovilidad_4G_3G.xlsx"/>Detalles</a></li>
+                                            <li><a id='detalles' href="<?php echo Yii::app()->request->baseUrl; ?>../../archivosdetalles/DetallesMovilidad_4G_3G.xlsx"/>Detalles</a></li>
                                             <?php 
 //                                               for($año=2012;$año<=date('Y');$año++)
 //                                                   echo "<li><a id='$año' href='../movilidad/$año.xlsx'/>Detalles $año</a></li>" ;  
@@ -111,7 +111,7 @@
 
             <div id="footer">
                 Vicepresidencia de Nuevos Mercados - UNE Telecomunicaciones.<br/>
-                <?php echo Yii::powered(); ?> - se ve mejor con navegador Chrome
+                <?php echo Yii::powered(); ?> 
             </div><!-- footer -->
 
         </div><!-- page -->
