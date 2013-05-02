@@ -53,7 +53,7 @@ return array(
 		// uncomment the following to use a MySQL database
 		
             'db'=>array(
-                        'connectionString' => 'mssql:host=DMONTOL;dbname=PORTAL_GI',
+                        'connectionString' => 'mssql:host=DMONTOL;dbname=DESARROLLO',
                         'username' => 'prueba',
                         'password' => 'prueba',
                         'charset'=>'utf8',
@@ -85,6 +85,6 @@ return array(
 	// using Yii::app()->params['paramName']
 	'params'=>array(
 		// this is used in contact page
-		'adminEmail'=>'webmaster@example.com',
+		'adminEmail'=>'Daniel.MontoyaL@Asesor.une.com.co',
 	),
 );

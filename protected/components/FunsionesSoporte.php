@@ -37,7 +37,7 @@ class FunsionesSoporte {
      * @return string
      */
     public static function GenerarValueXMLChart($datos, $nombreDataSet, $nombreCampo) {
-//         color='1D8BD1' anchorbordercolor='1D8BD1' anchorbgcolor='1D8BD1'
+//      color='1D8BD1' anchorbordercolor='1D8BD1' anchorbgcolor='1D8BD1'
         $strSetValue = "<dataset seriesname='$nombreDataSet' >";
 //        $strSetValue = "";
         foreach ($datos as $dato) {
@@ -49,13 +49,13 @@ class FunsionesSoporte {
 
     /**
      * Genera el string necesario para crear el grafico MSLine
-     * @param type $titulo
-     * @param type $subTitulo
-     * @param type $categorias
-     * @param type $dataSets
-     * @param type $TituloX
-     * @param type $TituloY
-     * @return string
+     * @param string $titulo
+     * @param string $subTitulo
+     * @param array $categorias
+     * @param array $dataSets
+     * @param string $TituloX
+     * @param string $TituloY
+     * @return string XML para generar grafico FusionChart
      */
     public static function GenerarXML_Chart($titulo, $subTitulo, $categorias, $dataSets, $TituloX = "", $TituloY = "") {
         $strXML .="<chart caption='$titulo' canvasborderalpha='0' subcaption='$subTitulo' linethickness='3' 
@@ -148,6 +148,188 @@ class FunsionesSoporte {
         return strtr($incoming_string, utf8_decode($tofind), $replac);
     }
 
+    /**
+     * Devuelve el nombre del dia de la semana
+     * @param date $fecha
+     * @return string
+     */
+    public static function get_NombreDia($fecha) {
+        $dia = date("N", strtotime($fecha));
+
+        $dias = array('1' => 'Lun', '2' => 'Mar', '3' => 'Mie', '4' => 'Jue', '5' => 'Vie', '6' => 'Sab', '7' => 'Dom');
+
+        $nombreDia = $dias[$dia];
+        return $nombreDia;
+    }
+
+    /**
+     * Devuelve el nombre del mes
+     * @param date $fecha
+     * @return string
+     */
+    public static function get_NombreMes($fecha) {
+        $mes = date("m", strtotime($fecha));
+
+        $meses = array('01' => 'Enero', '02' => 'Febrero', '03' => 'Marzo', '04' => 'Abril', '05' => 'Mayo', '06' => 'Junio',
+            '07' => 'Julio', '08' => 'Agosto', '09' => 'Septiembre', '10' => 'Octubre', '11' => 'Noviembre', '12' => 'Diciembre');
+
+        $nombreMes = $meses[$mes];
+        return $nombreMes;
+    }
+
+    /**
+     * Determina el numero de dias que faltan para terminar el mes actual
+     * se cuentan los festivos y los fines de semana juntos, pues tienen un comportamiento similiar.
+     * @param integer $tipoDias Determina si se van a generar los dias habiles (1) o los dias festivos(2)
+     * @return integer numero de dias faltantes.
+     */
+    public static function get_DiasFaltantesMes($tipoDias = 1) {
+        $fecha = date('Y-m-d', strtotime("0 day", strtotime(date('Y-m-d'))));
+        $mes = date('n', strtotime(date('Y-m-d')));
+        $totalDiasHabilesFaltantes = 0;
+        $totalDiasFestivosFaltantes = 0;
+
+        while (date('n', strtotime($fecha)) <= $mes) {
+            if (self::get_EsFestivo($fecha) || self::get_EsFinSemana($fecha))
+                $totalDiasFestivosFaltantes++;
+            else  // Habiles
+                $totalDiasHabilesFaltantes++;
+
+            $fecha = date('Y-m-d', strtotime("+1 day", strtotime($fecha)));
+        }
+
+        if ($tipoDias == 1) // Habiles
+            return $totalDiasHabilesFaltantes;
+        else// Festivos
+            return $totalDiasFestivosFaltantes;
+    }
+
+    /**
+     * Determina si una fecha es dia festivo
+     * @param date $fecha
+     * @return boolean
+     */
+    public static function get_EsFestivo($fecha) {
+        $festivo = Yii::app()->db->createCommand()
+                ->select('*')
+                ->from('DIAS_FESTIVO')
+                ->where('FECHA IN(:fecha)', array('fecha' => $fecha))
+                ->queryAll();
+
+        if (Count($festivo) != 0)
+            return true;
+        else
+            return false;
+    }
+
+    /**
+     * Determina si una fecha es dia festivo
+     * @param date $fecha
+     * @return boolean
+     */
+    public static function get_EsFinSemana($fecha) {
+        $date = date('N', mktime(0, 0, 0, date('n', strtotime($fecha)), date('d', strtotime($fecha)), date('Y', strtotime($fecha))));
+        if ($date == 6 && $date == 7)
+            return true;
+        else
+            return false;
+    }
+
+    /**
+     * Determina el numero de dias que faltan para terminar el mes actual
+     * @param type $cantidad
+     * @return boolean
+     */
+    public static function get_DiasFaltantesMes2() {
+
+//        $fecha = date('Y-m-d');
+//        $mes = date('m', date('Y-m-d'));
+//        $totalDiasFaltantes = 0;
+//
+//        $i = 0;
+//        do {
+//            $fecha = date('Y-m-d', strtotime("+1 day",  strtotime($time)));
+//            if(self::get_EsFestivo($fecha))
+//              $festivo++;
+//            
+//            echo $fecha . " - ";
+//        }while(date('m', $fecha) == $mes);
+//        $habiles = 0;
+//        $selectDias = "";
+//        $ret = array();
+//        for ($i = 1; $habiles < $cantidad; $i++) {
+//            $date = date('N', mktime(0, 0, 0, date('n'), date('d') + $i, date('Y')));
+//            $diames = date('d/m', mktime(0, 0, 0, date('n'), date('d') + $i, date('Y')));
+//            if ($date != 6 && $date != 7) { // ME FIJO QUE NO SEA SABADO O DOMINGO
+//                /*
+//                  dias festivos
+//                 */
+//                $habiles++;
+//                $ret[$habiles] = $diames;
+//            }
+//        }
+//        return $ret;
+    }
+
+    /**
+     * Completa los dias que faltan en un rango de fechas generado desde Sql server
+     * @param array $datosInstalaciones array con los ingresos/retiros dados en un rango de tiempo
+     * @param intger $opcion Determina con que valor se van a completar los: 1 Instaladas, 2 Ingresadas
+     * @return array Total Array con la cantidad de dias a completar.
+     */
+    public static function CompletarDias($datosInstalaciones, $opcion, $numeroDias) {
+        // Como sql server no muestra los dias en lo que no hubo ingresos/instalaciones, se crean los 15 dias por defecto
+        // y se muestran en el grafico con valor cero
+        $dias = array();
+        
+        if (Configuracion::get_HoraActualizacion() < '12:')
+            $hasta = 0;
+        else
+            $hasta = 1;
+        
+        for ($i = $numeroDias; $i >= $hasta; $i--)
+            $dias[] = date('Y-m-d', strtotime("-$i day", strtotime(date('Y-m-d'))));
+
+        if ($opcion == 1) {
+            foreach ($dias as $fecha) {
+                $arrayIndex = 0;
+                $esta = false;
+                foreach ($datosInstalaciones as $dato) {
+                    if ($fecha == $dato['FECHA_INSTALACION']) {
+                        $cantidad = $dato['TOTAL_INSTALADA'];
+                        $esta = true;
+                    }
+
+                    $arrayIndex++;
+                }
+                if ($esta) {
+                    $Total[] = array('FECHA_INSTALACION' => self::get_NombreDia($fecha) . "-" . date('d-m', strtotime($fecha)), 'TOTAL_INSTALADA' => $cantidad);
+                } else {
+                    $Total[] = array('TOTAL_INSTALADA' => self::get_NombreDia($fecha) . "-" . date('d-m', strtotime($fecha)), 'TOTAL_INSTALADA' => '0');
+                }
+            }
+        } else {
+            foreach ($dias as $fecha) {
+                $arrayIndex = 0;
+                $esta = false;
+                foreach ($datosInstalaciones as $dato) {
+                    if ($fecha == $dato['FECHA_INGRESO']) {
+                        $cantidad = $dato['TOTAL_INGRESADA'];
+                        $esta = true;
+                    }
+
+                    $arrayIndex++;
+                }
+                if ($esta) {
+                    $Total[] = array('FECHA_INGRESO' => self::get_NombreDia($fecha) . "-" . date('d-m', strtotime($fecha)), 'TOTAL_INGRESADA' => $cantidad);
+                } else {
+                    $Total[] = array('FECHA_INGRESO' => self::get_NombreDia($fecha) . "-" . date('d-m', strtotime($fecha)), 'TOTAL_INGRESADA' => '0');
+                }
+            }
+        }
+
+        return $Total;
+    }
 }
 
 ?>

@@ -12,7 +12,7 @@ class Uen extends CFormModel {
 
     public function get_UEN_Todas() {
         $uen = Yii::app()->db->createCommand()
-                ->select('UEN_ID, DESCRIPCION')
+                ->select('CODIGO_UEN_PK, DESCRIPCION')
                 ->from('UEN')
                 ->order('DESCRIPCION')
                 ->queryAll();

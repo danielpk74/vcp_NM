@@ -10,9 +10,9 @@
             <!-- blueprint CSS framework -->
             <!--<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/screen.css" media="screen, projection" />-->
             <!--<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/print.css" media="print" />-->
-            <!--[if lt IE 8]>
-            <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/ie.css" media="screen, projection" />
-            <![endif]-->
+            <!-- [if IE] -->
+            <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/ie.css"  />
+            <!-- [endif] -->
 
 <!--            <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/main.css" />
             <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/form.css" />-->
@@ -64,11 +64,7 @@
                                     <li class="dropdown">
                                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Descargar <b class="caret"></b></a>
                                         <ul class="dropdown-menu">
-                                            <li><a id='detalles' href="<?php echo Yii::app()->request->baseUrl; ?>../../archivosdetalles/DetallesMovilidad_4G_3G.xlsx"/>Detalles</a></li>
-                                            <?php 
-//                                               for($año=2012;$año<=date('Y');$año++)
-//                                                   echo "<li><a id='$año' href='../movilidad/$año.xlsx'/>Detalles $año</a></li>" ;  
-//                                          ?>
+                                            <li><a id='detalles' href="<?php echo Yii::app()->request->baseUrl; ?>../../archivosdetalles/MOVILIDAD_4G_LTE_y_3G.xlsx"/>Detalles</a></li>
                                         </ul>
                                     </li>
                                     
@@ -83,18 +79,6 @@
                         </div>
                     </div><!-- /navbar-inner -->
                 </div><!-- /navbar -->
-                <?php
-//                $this->widget('zii.widgets.CMenu', array(
-//                    'items' => array(
-//                        array('label' => 'Ventas', 'url' => array('/site/index')),
-//                        array('label' => 'Retiros', 'url' => array('/site/page', 'view' => 'about')),
-//                        array('label' => 'Anuladas', 'url' => array('/site/contact')),
-//                        array('label' => 'Pendientes', 'url' => array('/site/login'), 'visible' => Yii::app()->user->isGuest),
-//                        array('label' => 'Actualizar', 'url' => array('/site/page/administracion', 'view' => 'actualizar'), 'visible' => Yii::app()->user->isGuest),
-////				array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)
-//                    ),
-//                ));
-                ?>
             </div><!-- mainmenu -->
 
             <?php if (isset($this->breadcrumbs)): ?>

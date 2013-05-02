@@ -14,6 +14,19 @@ class Configuracion extends CFormModel {
 
         return $configuracion;
     }
+    
+     /**
+     * Devuelve la ultima fecha de actualizacion de la base de pedidos.
+     * @return array
+     */
+    public static function get_HoraActualizacion() {
+        $fechaActualizacion = Yii::app()->db->createCommand()
+                            ->select('FECHA_ACTUALIZACION')
+                            ->from('CONFIGURACION')
+                            ->queryAll();
+        
+        return date('g',  $fechaActualizacion['FECHA_ACTUALIZACION']);
+    }
 
     /**
      * Devuelve la ruta fisica donde se encuentras los archivos de los detalles

@@ -64,5 +64,4 @@ class Actualizar extends CFormModel {
             'FECHA_ACTUALIZACION' =>date('Y-m-d H:i:s'),
                 ), 'CONFIGURACION_ID=:id', array(':id' => '1'));
     }
-
 }

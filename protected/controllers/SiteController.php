@@ -1,7 +1,7 @@
 <?php
 
 class SiteController extends Controller {
-
+    
     /**
      * Carga al dropdownlist de subproductos los pertenecientes a un producto enviado por parametro
      */
@@ -14,7 +14,7 @@ class SiteController extends Controller {
                 $subProductos = $subProducto->get_SubProductos($productoID);
 
                 foreach ($subProductos as $value)
-                    $listado .= CHtml::tag('option', array('value' => $value['SUB_PRODUCTO_ID_PK']), $value['DESCRIPCION'], true);
+                    $listado .= CHtml::tag('option', array('value' => $value['CODIGO_SUB_PRODUCTO_PK']), $value['DESCRIPCION'], true);
 
                 echo $listado;
             }
@@ -41,8 +41,19 @@ class SiteController extends Controller {
      * when an action is not explicitly requested by users.
      */
     public function actionIndex() {
+//        if(Yii::app()->user->isGuest) {
+//            $usuario = new Usuarios();
+//            if(!$usuario->login(getenv("username"))) {
+//                echo "NO ES UN USUARIO VALIDO";
+//                return false;
+//            }
+//        }
+//        else 
+//            echo "el usuario actual es : ". Yii::app()->user->name;
+        
         $configuracion = new Configuracion();
         $fechaActualizacion = $configuracion->get_FechaActualizacion();
+        
 
         $producto_ = new Productos();
         $productos = $producto_->get_Productos();
@@ -90,11 +101,17 @@ class SiteController extends Controller {
         $totalPendientes = $ventas->TotalPendientes($this->getPageState('producto'), $uenp, 'Nuevo');
 
         /// TOTAL INSTALADAS E INGRESADAS POR DIA - GRAFICO
-        $ventasIngresadas = $ventas->get_Ingresadas(15, $this->getPageState('producto'), '', '', $uenp, 'Nuevo');
-        $ventasInstaladas = $ventas->get_Instaladas(15, $this->getPageState('producto'), '', '', $uenp, 'Nuevo');
-
+        $numeroDias = 15;
+        $ventasIngresadas = $ventas->get_Ingresadas($numeroDias, $this->getPageState('producto'), '', '', $uenp, 'Nuevo');
+        $ventasInstaladas = $ventas->get_Instaladas($numeroDias, $this->getPageState('producto'), '', '', $uenp, 'Nuevo');
+        
+        $ventasIngresadas = FunsionesSoporte::CompletarDias($ventasIngresadas,2,$numeroDias);
+        $ventasInstaladas = FunsionesSoporte::CompletarDias($ventasInstaladas,1,$numeroDias);
+        
+        $proyectadoCierre = $ventas->get_ProyectadoMes($this->getPageState('producto'), $uenp, 'Nuevo');
+        
         // INGRESADAS E INSTALADAS DEL DIA/DIA ANTERIOR
-        if (date('H:i') < '18:50')
+        if (date('g',  strtotime($fechaActualizacion)) < '12')
             $fechaConsulta = date('Y-m-d', strtotime("-1 day", strtotime(date('Y-m-d'))));
         else
             $fechaConsulta = date('Y-m-d');
@@ -123,11 +140,13 @@ class SiteController extends Controller {
                 'ventas' => $ventasTotales,
                 'ventasOtros' => $TotalesOtros,
                 'ventasIngresadas' => $ventasIngresadas,
-                'ingresadasMesActual' => $totalIngresadasMesActual,
-                'instaladasMesActual' => $totalInstaladasMesActual,
-                'totalPendientes' => $totalPendientes,
-                'uenmodel' => $uen,
+                'ingresadasMesActual' =>  number_format($totalIngresadasMesActual, '0', ',', '.'),
+                'instaladasMesActual' => number_format($totalInstaladasMesActual, '0', ',', '.'),
+                'totalPendientes' => number_format($totalPendientes, '0', ',', '.'),
+                'proyectadoMesActual' => number_format($proyectadoCierre, '0', ',', '.'),
+//                'proyectadoMesActual' => number_format($proyectadoCierre, '0', ',', '.'),
                 'uens' => $uens,
+                'uenmodel' => $uen,
                 'ventasInstaladas' => $ventasInstaladas));
         } else {
             $this->renderPartial('plantillas/ventasGeneral', array(
@@ -141,9 +160,10 @@ class SiteController extends Controller {
                 'ventas' => $ventasTotales,
                 'ventasOtros' => $TotalesOtros,
                 'ventasIngresadas' => $ventasIngresadas,
-                'ingresadasMesActual' => $totalIngresadasMesActual,
-                'instaladasMesActual' => $totalInstaladasMesActual,
-                'totalPendientes' => $totalPendientes,
+                'ingresadasMesActual' => number_format($totalIngresadasMesActual, '0', ',', '.'),
+                'instaladasMesActual' => number_format($totalInstaladasMesActual, '0', ',', '.'),
+                'totalPendientes' => number_format($totalPendientes, '0', ',', '.'),
+                'proyectadoMesActual' => number_format($proyectadoCierre, '0', ',', '.'),
                 'uenmodel' => $uens,
                 'uens' => $uens,
                 'ventasInstaladas' => $ventasInstaladas));
@@ -151,11 +171,8 @@ class SiteController extends Controller {
     }
 
     public function actionActualizar() {
-        $fechaActualizacion = new Configuracion();
-        $fechaActualizacion = $fechaActualizacion->get_FechaActualizacion();
-
         $Actualizar = new Actualizar();
-        $Actualizar->ActualizarTemporal($fechaActualizacion, $this->getPageState('producto'));
+        $Actualizar->ActualizarTemporal();
 
         $fechaActualizacion = date('Y-m-d');
 

@@ -7,7 +7,7 @@
  */
 class Productos extends CFormModel {
 
-    public $PRODUCTO_ID_PK;
+    public $CODIGO_PRODUCTO_PK;
     public $DESCRIPCION;
 
     /**
@@ -29,7 +29,7 @@ class Productos extends CFormModel {
             $subProductos = Yii::app()->db->createCommand()
                     ->select('*')
                     ->from('SUB_PRODUCTOS')
-                    ->where('PRODUCTO_ID_FK=:producto_id', array(':producto_id' => $subProductoID))
+                    ->where('CODIGO_PRODUCTO_FK=:producto_id', array(':producto_id' => $subProductoID))
                     ->queryAll();
         } else {
             $subProductos = Yii::app()->db->createCommand()
