@@ -51,7 +51,7 @@ class Ventas {
      * Devuelve el numero de pedidos ingresados en el mes actual
      * @return string numero de ingresados
      */
-    public function TotalIngresadasMes($tipoElemento, $uen = '', $tipo_solicitud = 'Nuevo') {
+    public function get_TotalIngresadasMes($tipoElemento, $uen = '', $tipo_solicitud = 'Nuevo') {
         $ventasIngresadasMes = Yii::app()->db->createCommand("SP_Ingresadas_Instaladas_X_Mes '1','$tipoElemento','$uen','$tipo_solicitud'")->queryScalar();
         return $ventasIngresadasMes;
     }
@@ -60,8 +60,8 @@ class Ventas {
      * Devuelve el numero de pedidos instalados en el mes actual
      * @return string numero de instalados
      */
-    public function TotalInstaladasMes($tipoElemento, $uen = '', $tipo_solicitud = 'Nuevo',$tipoDia='') {
-        $ventasInstaladasMes = Yii::app()->db->createCommand("SP_Ingresadas_Instaladas_X_Mes '2','$tipoElemento','$uen','$tipo_solicitud','$tipoDia'")->queryScalar();
+    public function get_TotalInstaladasMes($tipoElemento, $uen = '', $tipo_solicitud = 'Nuevo',$tipoDia='',$plaza='') {
+        $ventasInstaladasMes = Yii::app()->db->createCommand("SP_Ingresadas_Instaladas_X_Mes '2','$tipoElemento','$uen','$tipo_solicitud','$tipoDia','$plaza'")->queryScalar();
         return $ventasInstaladasMes;
     }
 

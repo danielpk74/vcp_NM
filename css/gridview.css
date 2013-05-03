@@ -75,12 +75,12 @@
 
 .grid-view table.items tr.selected
 {
-	/*background: #BCE774;*/
+	background: #BCE774;
 }
 
 .grid-view table.items tr:hover.selected
 {
-	/*background: #FFF6BF;*/
+	background: #FFF6BF;
 }
 
 .grid-view table.items tbody tr:hover

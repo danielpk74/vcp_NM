@@ -3032,3 +3032,382 @@ Stack trace:
 REQUEST_URI=/vcp_nuevosmercados/index.php?r=Site/Index
 HTTP_REFERER=http://localhost:8080/vcp_nuevosmercados/index.php?r=site/index
 ---
+2013/05/02 12:25:23 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[HY000]: General error: 10007 Procedure or function SP_Ingresadas_Instaladas_X_Mes has too many arguments specified. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_Instaladas_X_Mes '2','NUMMOV','','Nuevo',''.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (64)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (100)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/05/02 12:25:23 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[HY000]: General error: 10007 Procedure or function SP_Ingresadas_Instaladas_X_Mes has too many arguments specified. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_Instaladas_X_Mes '2','NUMMOV','','Nuevo',''' in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:541
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(432): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php(64): CDbCommand->queryScalar()
+#2 C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php(100): Ventas->TotalInstaladasMes('NUMMOV', '', 'Nuevo')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionIndex()
+#4 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('index')
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/index')
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\vcp_nuevosmercados\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/vcp_nuevosmercados/index.php?r=site/index
+HTTP_REFERER=http://localhost:8080/vcp_nuevosmercados/index.php?r=site/index
+---
+2013/05/02 12:25:45 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[HY000]: General error: 10007 Procedure or function SP_Ingresadas_Instaladas_X_Mes has too many arguments specified. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_Instaladas_X_Mes '2','NUMMOV','','Nuevo',''.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (64)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (100)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/05/02 12:25:45 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[HY000]: General error: 10007 Procedure or function SP_Ingresadas_Instaladas_X_Mes has too many arguments specified. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_Instaladas_X_Mes '2','NUMMOV','','Nuevo',''' in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:541
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(432): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php(64): CDbCommand->queryScalar()
+#2 C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php(100): Ventas->TotalInstaladasMes('NUMMOV', '', 'Nuevo')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionIndex()
+#4 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('index')
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/index')
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\vcp_nuevosmercados\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/vcp_nuevosmercados/index.php?r=site/index
+---
+2013/05/02 12:27:49 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[HY000]: General error: 10007 Procedure or function SP_Ingresadas_Instaladas_X_Mes has too many arguments specified. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_Instaladas_X_Mes '2','NUMMOV','','Nuevo',''.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (64)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (100)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/05/02 12:32:13 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[HY000]: General error: 10007 Procedure or function SP_Ingresadas_Instaladas_X_Mes has too many arguments specified. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_Instaladas_X_Mes '2','NUMMOV','','Nuevo',''.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (64)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (100)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/05/02 12:32:28 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[HY000]: General error: 10007 Procedure or function SP_Ingresadas_Instaladas_X_Mes has too many arguments specified. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_Instaladas_X_Mes '2','NUMMOV','','Nuevo',''.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (64)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (100)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/05/02 12:34:10 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[HY000]: General error: 10007 Procedure or function SP_Ingresadas_Instaladas_X_Mes has too many arguments specified. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_Instaladas_X_Mes '2','NUMMOV','','Nuevo',''.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (64)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (100)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/05/02 12:34:11 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[HY000]: General error: 10007 Procedure or function SP_Ingresadas_Instaladas_X_Mes has too many arguments specified. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_Instaladas_X_Mes '2','NUMMOV','','Nuevo',''.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (64)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (100)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/05/02 12:34:14 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[HY000]: General error: 10007 Procedure or function SP_Ingresadas_Instaladas_X_Mes has too many arguments specified. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_Instaladas_X_Mes '2','NUMMOV','','Nuevo',''.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (64)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (100)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/05/02 12:34:21 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[HY000]: General error: 10007 Procedure or function SP_Ingresadas_Instaladas_X_Mes has too many arguments specified. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_Instaladas_X_Mes '2','NUMMOV','','Nuevo',''.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (64)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (100)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/05/02 12:34:32 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[HY000]: General error: 10007 Procedure or function SP_Ingresadas_Instaladas_X_Mes has too many arguments specified. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_Instaladas_X_Mes '2','NUMMOV','','Nuevo',''.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (64)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (100)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/05/02 12:34:54 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[HY000]: General error: 10007 Procedure or function SP_Ingresadas_Instaladas_X_Mes has too many arguments specified. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_Instaladas_X_Mes '2','NUMMOV','','Nuevo',''.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (64)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (100)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/05/02 12:35:01 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[HY000]: General error: 10007 Procedure or function SP_Ingresadas_Instaladas_X_Mes has too many arguments specified. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_Instaladas_X_Mes '2','NUMMOV','','Nuevo',''.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (64)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (100)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/05/02 12:35:30 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[HY000]: General error: 10007 Procedure or function SP_Ingresadas_Instaladas_X_Mes has too many arguments specified. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_Instaladas_X_Mes '2','NUMMOV','','Nuevo',''.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (64)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (100)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/05/02 12:35:37 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[HY000]: General error: 10007 Procedure or function SP_Ingresadas_Instaladas_X_Mes has too many arguments specified. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_Instaladas_X_Mes '2','NUMMOV','','Nuevo',''.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (64)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (100)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/05/02 12:37:09 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[HY000]: General error: 10007 Procedure or function SP_Ingresadas_Instaladas_X_Mes has too many arguments specified. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_Instaladas_X_Mes '2','NUMMOV','','Nuevo',''.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (64)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (100)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/05/02 12:37:32 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[HY000]: General error: 10007 Procedure or function SP_Ingresadas_Instaladas_X_Mes has too many arguments specified. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_Instaladas_X_Mes '2','NUMMOV','','Nuevo',''.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (64)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (100)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/05/02 12:40:37 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[HY000]: General error: 10007 Procedure or function SP_Ingresadas_Instaladas_X_Mes has too many arguments specified. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_Instaladas_X_Mes '2','NUMMOV','','Nuevo',''.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (64)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (100)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/05/02 12:40:43 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[HY000]: General error: 10007 Procedure or function SP_Ingresadas_Instaladas_X_Mes has too many arguments specified. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_Instaladas_X_Mes '2','NUMMOV','','Nuevo',''.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (64)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (100)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/05/02 12:40:57 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[HY000]: General error: 10007 Procedure or function SP_Ingresadas_Instaladas_X_Mes has too many arguments specified. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_Instaladas_X_Mes '2','NUMMOV','','Nuevo',''.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (64)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (100)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/05/02 12:41:07 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[HY000]: General error: 10007 Procedure or function SP_Ingresadas_Instaladas_X_Mes has too many arguments specified. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_Instaladas_X_Mes '2','NUMMOV','','Nuevo',''.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (64)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (100)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/05/02 12:41:19 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[HY000]: General error: 10007 Procedure or function SP_Ingresadas_Instaladas_X_Mes has too many arguments specified. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_Instaladas_X_Mes '2','NUMMOV','','Nuevo',''.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (64)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (100)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/05/02 12:41:31 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[HY000]: General error: 10007 Procedure or function SP_Ingresadas_Instaladas_X_Mes has too many arguments specified. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_Instaladas_X_Mes '2','NUMMOV','','Nuevo',''.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (64)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (100)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/05/02 12:42:16 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[HY000]: General error: 10007 Procedure or function SP_Ingresadas_Instaladas_X_Mes has too many arguments specified. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_Instaladas_X_Mes '2','NUMMOV','','Nuevo',''.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (64)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (100)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/05/02 12:42:20 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[HY000]: General error: 10007 Procedure or function SP_Ingresadas_Instaladas_X_Mes has too many arguments specified. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_Instaladas_X_Mes '2','NUMMOV','','Nuevo',''.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (64)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (100)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/05/02 12:45:06 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[HY000]: General error: 10007 Procedure or function SP_Ingresadas_Instaladas_X_Mes has too many arguments specified. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_Instaladas_X_Mes '2','NUMMOV','','Nuevo',''.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (64)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (104)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/05/02 12:45:06 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[HY000]: General error: 10007 Procedure or function SP_Ingresadas_Instaladas_X_Mes has too many arguments specified. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_Instaladas_X_Mes '2','NUMMOV','','Nuevo',''' in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:541
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(432): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php(64): CDbCommand->queryScalar()
+#2 C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php(104): Ventas->TotalInstaladasMes('NUMMOV', '', 'Nuevo')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionIndex()
+#4 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('index')
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/index')
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\vcp_nuevosmercados\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/vcp_nuevosmercados/index.php?r=site/index
+HTTP_REFERER=http://localhost:8080/vcp_nuevosmercados/index.php?r=site/index
+---
+2013/05/02 12:45:18 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[HY000]: General error: 10007 Procedure or function SP_Ingresadas_Instaladas_X_Mes has too many arguments specified. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_Instaladas_X_Mes '2','NUMMOV','','Nuevo',''.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (64)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (100)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/05/02 12:45:27 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[HY000]: General error: 10007 Procedure or function SP_Ingresadas_Instaladas_X_Mes has too many arguments specified. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_Instaladas_X_Mes '2','NUMMOV','','Nuevo',''.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (64)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (100)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/05/02 12:45:29 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[HY000]: General error: 10007 Procedure or function SP_Ingresadas_Instaladas_X_Mes has too many arguments specified. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_Instaladas_X_Mes '2','NUMMOV','','Nuevo',''.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (64)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (100)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/05/02 12:47:52 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[HY000]: General error: 10007 Procedure or function SP_Ingresadas_Instaladas_X_Mes has too many arguments specified. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_Instaladas_X_Mes '2','NUMMOV','','Nuevo',''.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (64)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (100)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/05/02 12:49:11 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[HY000]: General error: 10007 Procedure or function SP_Ingresadas_Instaladas_X_Mes has too many arguments specified. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_Instaladas_X_Mes '2','NUMMOV','','Nuevo',''.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (64)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (100)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/05/02 12:49:35 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[HY000]: General error: 10007 Procedure or function SP_Ingresadas_Instaladas_X_Mes has too many arguments specified. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_Instaladas_X_Mes '2','NUMMOV','','Nuevo',''.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (64)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (100)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/05/02 12:49:46 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[HY000]: General error: 10007 Procedure or function SP_Ingresadas_Instaladas_X_Mes has too many arguments specified. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_Instaladas_X_Mes '2','NUMMOV','','Nuevo',''.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (64)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (100)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/05/02 12:50:09 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[HY000]: General error: 10007 Procedure or function SP_Ingresadas_Instaladas_X_Mes has too many arguments specified. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_Instaladas_X_Mes '2','NUMMOV','','Nuevo',''.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (64)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (100)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/05/02 12:50:25 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[HY000]: General error: 10007 Procedure or function SP_Ingresadas_Instaladas_X_Mes has too many arguments specified. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_Instaladas_X_Mes '2','NUMMOV','','Nuevo',''.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (64)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (100)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/05/02 12:50:36 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[HY000]: General error: 10007 Procedure or function SP_Ingresadas_Instaladas_X_Mes has too many arguments specified. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_Instaladas_X_Mes '2','NUMMOV','','Nuevo',''.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (64)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (100)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/05/02 12:50:38 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[HY000]: General error: 10007 Procedure or function SP_Ingresadas_Instaladas_X_Mes has too many arguments specified. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_Instaladas_X_Mes '2','NUMMOV','','Nuevo',''.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (64)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (100)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/05/02 12:51:30 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[HY000]: General error: 10007 Procedure or function SP_Ingresadas_Instaladas_X_Mes has too many arguments specified. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_Instaladas_X_Mes '2','NUMMOV','','Nuevo',''.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (64)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (100)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/05/02 12:51:48 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[HY000]: General error: 10007 Procedure or function SP_Ingresadas_Instaladas_X_Mes has too many arguments specified. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_Instaladas_X_Mes '2','NUMMOV','','Nuevo',''.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (64)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (100)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/05/02 12:51:54 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[HY000]: General error: 10007 Procedure or function SP_Ingresadas_Instaladas_X_Mes has too many arguments specified. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_Instaladas_X_Mes '2','NUMMOV','','Nuevo',''.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (64)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (100)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/05/02 12:52:14 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[HY000]: General error: 10007 Procedure or function SP_Ingresadas_Instaladas_X_Mes has too many arguments specified. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_Instaladas_X_Mes '2','NUMMOV','','Nuevo',''.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (64)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (100)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/05/02 12:52:35 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[HY000]: General error: 10007 Procedure or function SP_Ingresadas_Instaladas_X_Mes has too many arguments specified. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_Instaladas_X_Mes '2','NUMMOV','','Nuevo',''.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (64)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (100)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/05/02 12:53:59 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[HY000]: General error: 10007 Procedure or function SP_Ingresadas_Instaladas_X_Mes has too many arguments specified. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_Instaladas_X_Mes '2','NUMMOV','','Nuevo',''.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (64)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (100)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/05/02 12:53:59 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[HY000]: General error: 10007 Procedure or function SP_Ingresadas_Instaladas_X_Mes has too many arguments specified. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_Instaladas_X_Mes '2','NUMMOV','','Nuevo',''.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (64)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (100)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/05/02 12:54:45 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[HY000]: General error: 10007 Procedure or function SP_Ingresadas_Instaladas_X_Mes has too many arguments specified. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_Instaladas_X_Mes '2','NUMMOV','','Nuevo',''.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (64)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (100)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/05/02 12:54:56 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[HY000]: General error: 10007 Procedure or function SP_Ingresadas_Instaladas_X_Mes has too many arguments specified. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_Instaladas_X_Mes '2','NUMMOV','','Nuevo',''.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (64)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (100)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/05/02 12:55:25 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[HY000]: General error: 10007 Procedure or function SP_Ingresadas_Instaladas_X_Mes has too many arguments specified. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_Instaladas_X_Mes '2','NUMMOV','','Nuevo',''.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (64)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (100)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/05/02 12:55:30 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[HY000]: General error: 10007 Procedure or function SP_Ingresadas_Instaladas_X_Mes has too many arguments specified. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_Instaladas_X_Mes '2','NUMMOV','','Nuevo',''.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (64)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (100)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/05/02 12:55:52 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[HY000]: General error: 10007 Procedure or function SP_Ingresadas_Instaladas_X_Mes has too many arguments specified. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_Instaladas_X_Mes '2','NUMMOV','','Nuevo',''.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (64)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (100)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/05/02 12:56:05 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[HY000]: General error: 10007 Procedure or function SP_Ingresadas_Instaladas_X_Mes has too many arguments specified. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_Instaladas_X_Mes '2','NUMMOV','','Nuevo',''.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (64)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (100)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/05/02 12:56:33 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[HY000]: General error: 10007 Procedure or function SP_Ingresadas_Instaladas_X_Mes has too many arguments specified. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_Instaladas_X_Mes '2','NUMMOV','','Nuevo',''.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (64)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (100)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/05/02 12:56:44 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[HY000]: General error: 10007 Procedure or function SP_Ingresadas_Instaladas_X_Mes has too many arguments specified. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_Instaladas_X_Mes '2','NUMMOV','','Nuevo',''.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (64)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (100)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/05/02 12:57:05 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[HY000]: General error: 10007 Procedure or function SP_Ingresadas_Instaladas_X_Mes has too many arguments specified. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_Instaladas_X_Mes '2','NUMMOV','','Nuevo',''.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (64)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (100)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/05/02 12:57:56 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[HY000]: General error: 10007 Procedure or function SP_Ingresadas_Instaladas_X_Mes has too many arguments specified. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_Instaladas_X_Mes '2','NUMMOV','','Nuevo',''.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (64)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (100)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/05/02 12:57:57 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[HY000]: General error: 10007 Procedure or function SP_Ingresadas_Instaladas_X_Mes has too many arguments specified. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_Instaladas_X_Mes '2','NUMMOV','','Nuevo',''.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (64)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (100)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/05/02 12:58:17 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[HY000]: General error: 10007 Procedure or function SP_Ingresadas_Instaladas_X_Mes has too many arguments specified. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_Instaladas_X_Mes '2','NUMMOV','','Nuevo',''.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (64)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (100)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/05/02 12:58:18 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[HY000]: General error: 10007 Procedure or function SP_Ingresadas_Instaladas_X_Mes has too many arguments specified. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_Instaladas_X_Mes '2','NUMMOV','','Nuevo',''.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (64)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (100)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/05/02 12:58:21 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[HY000]: General error: 10007 Procedure or function SP_Ingresadas_Instaladas_X_Mes has too many arguments specified. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_Instaladas_X_Mes '2','NUMMOV','','Nuevo',''.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (64)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (100)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/05/02 12:58:30 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[HY000]: General error: 10007 Procedure or function SP_Ingresadas_Instaladas_X_Mes has too many arguments specified. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_Instaladas_X_Mes '2','NUMMOV','','Nuevo',''.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (64)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (100)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/05/02 12:58:39 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[HY000]: General error: 10007 Procedure or function SP_Ingresadas_Instaladas_X_Mes has too many arguments specified. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_Instaladas_X_Mes '2','NUMMOV','','Nuevo',''.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (64)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (100)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/05/02 12:58:49 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[HY000]: General error: 10007 Procedure or function SP_Ingresadas_Instaladas_X_Mes has too many arguments specified. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_Instaladas_X_Mes '2','NUMMOV','','Nuevo',''.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (64)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (100)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/05/02 12:59:07 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[HY000]: General error: 10007 Procedure or function SP_Ingresadas_Instaladas_X_Mes has too many arguments specified. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_Instaladas_X_Mes '2','NUMMOV','','Nuevo',''.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (64)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (100)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/05/02 12:59:22 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[HY000]: General error: 10007 Procedure or function SP_Ingresadas_Instaladas_X_Mes has too many arguments specified. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_Instaladas_X_Mes '2','NUMMOV','','Nuevo',''.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (64)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (100)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/05/02 13:00:05 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[HY000]: General error: 10007 Procedure or function SP_Ingresadas_Instaladas_X_Mes has too many arguments specified. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_Instaladas_X_Mes '2','NUMMOV','','Nuevo',''.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (64)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (100)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/05/02 13:00:16 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[HY000]: General error: 10007 Procedure or function SP_Ingresadas_Instaladas_X_Mes has too many arguments specified. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_Instaladas_X_Mes '2','NUMMOV','','Nuevo',''.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (64)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (100)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/05/02 13:00:24 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[HY000]: General error: 10007 Procedure or function SP_Ingresadas_Instaladas_X_Mes has too many arguments specified. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_Instaladas_X_Mes '2','NUMMOV','','Nuevo',''.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (64)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (100)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/05/02 13:01:37 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[HY000]: General error: 10007 Procedure or function SP_Ingresadas_Instaladas_X_Mes has too many arguments specified. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_Instaladas_X_Mes '2','NUMMOV','','Nuevo',''.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (64)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (100)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/05/02 15:26:22 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[HY000]: General error: 10007 Incorrect syntax near the keyword 'FROM'. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Consultas_Ingresos_Retiros '4','','NUMMOV','','2013-05-01','','Nuevo'.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (24)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (120)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/05/02 15:28:30 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[HY000]: General error: 10007 Incorrect syntax near the keyword 'FROM'. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Consultas_Ingresos_Retiros '3','','NUMMOV','','2013-05-01','','Nuevo'.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (15)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (119)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/05/02 15:28:56 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[HY000]: General error: 10007 Incorrect syntax near the keyword 'FROM'. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Consultas_Ingresos_Retiros '3','','NUMMOV','','2013-05-01','','Nuevo'.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (15)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (119)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/05/02 16:22:33 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[HY000]: General error: 10007 Procedure or function SP_Ingresadas_Instaladas_X_Mes has too many arguments specified. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_Instaladas_X_Mes '2','NUMMOV','','Nuevo','',''.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (64)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (100)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/05/02 16:26:39 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[HY000]: General error: 10007 Procedure or function SP_Ingresadas_Instaladas_X_Mes has too many arguments specified. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Ingresadas_Instaladas_X_Mes '2','NUMMOV','','Nuevo','',''.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (64)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (100)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/05/02 16:54:34 [error] [php] Division by zero (C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php:125)
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CController.php(286): SiteController->runAction()
+#1 C:\xampp\htdocs\yii\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#2 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): SiteController->run()
+#3 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#4 C:\xampp\htdocs\yii\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#5 C:\xampp\htdocs\vcp_nuevosmercados\index.php(13): CWebApplication->run()
+REQUEST_URI=/vcp_nuevosmercados/index.php?r=site/index
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (125)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/05/02 16:55:04 [error] [php] Division by zero (C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php:125)
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CController.php(286): SiteController->runAction()
+#1 C:\xampp\htdocs\yii\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#2 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): SiteController->run()
+#3 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#4 C:\xampp\htdocs\yii\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#5 C:\xampp\htdocs\vcp_nuevosmercados\index.php(13): CWebApplication->run()
+REQUEST_URI=/vcp_nuevosmercados/index.php?r=site/index
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (125)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/05/02 16:55:34 [error] [php] Division by zero (C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php:125)
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CController.php(286): SiteController->runAction()
+#1 C:\xampp\htdocs\yii\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#2 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): SiteController->run()
+#3 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#4 C:\xampp\htdocs\yii\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#5 C:\xampp\htdocs\vcp_nuevosmercados\index.php(13): CWebApplication->run()
+REQUEST_URI=/vcp_nuevosmercados/index.php?r=site/index
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (125)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/05/03 11:44:36 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[HY000]: General error: 10007 Invalid column name 'MES_INSTALACIONDE'. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Consultas_Ingresos_Retiros '4','','NUMMOV','','','','Nuevo'.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (24)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (142)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/05/03 11:46:17 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[HY000]: General error: 10007 Incorrect syntax near the keyword 'AND'. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Consultas_Ingresos_Retiros '4','','NUMMOV','','','','Nuevo'.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (24)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (142)
+in C:\xampp\htdocs\vcp_nuevosmercados\index.php (13)
+2013/05/03 13:09:22 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[HY000]: General error: 10007 Incorrect syntax near 'PRESUPUESTOS'. [10007] (severity 5) [(null)]. The SQL statement executed was: SP_Presupuestos 'NUMMOV','','2013','5',''.
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Presupuestos.php (11)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\models\Ventas.php (103)
+in C:\xampp\htdocs\vcp_nuevosmercados\protected\controllers\SiteController.php (109)

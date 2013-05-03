@@ -281,12 +281,12 @@ class FunsionesSoporte {
         // Como sql server no muestra los dias en lo que no hubo ingresos/instalaciones, se crean los 15 dias por defecto
         // y se muestran en el grafico con valor cero
         $dias = array();
-        
-        if (Configuracion::get_HoraActualizacion() < '12:')
-            $hasta = 0;
-        else
+
+        if (date('A', strtotime(Configuracion::get_FechaActualizacion())) == 'PM' && date('Y-m-d', strtotime(Configuracion::get_FechaActualizacion())) != date('Y-m-d'))
             $hasta = 1;
-        
+        else
+            $hasta = 0;
+
         for ($i = $numeroDias; $i >= $hasta; $i--)
             $dias[] = date('Y-m-d', strtotime("-$i day", strtotime(date('Y-m-d'))));
 
@@ -330,6 +330,14 @@ class FunsionesSoporte {
 
         return $Total;
     }
+
+    public static function get_Presupuesto_X_Plaza($plaza, $uen, $tipoElemento, $anio, $mes) {
+        $presupuesto = new Presupuestos();
+        $cantidadPresupuesto = $presupuesto->get_Presupuesto($tipoElemento, $uen, $anio, $mes, $plaza);
+
+        return $cantidadPresupuesto;
+    }
+
 }
 
 ?>

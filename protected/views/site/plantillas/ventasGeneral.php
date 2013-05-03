@@ -1,13 +1,15 @@
 <?php require_once ('/protected/components/FusionCharts.php');?>
-
-    <div id="filtro">
+  <div id="filtro">
         <hr>
         <h5  style="text-align: right">Ingresos/Instalaciones del día: <?php echo date('d-m-Y', strtotime($fechaConsulta)) ?></h5>
         <table  class="table table-striped table-bordered table-condensed"> 
             <tr>
                 <th style='text-align: center'>PLAZA</th>
-                <th style='text-align: center'>INGRESADAS</th>
-                <th style='text-align: center'>INSTALADAS</th>                
+                <th style='text-align: center'>INGRESADAS - <?php echo CHtml::encode($diaConsulta);?></th>
+                <th style='text-align: center'>INSTALADAS - <?php echo CHtml::encode($diaConsulta);?></th>                
+                <th style='text-align: center'>INSTALADAS MES</th> 
+                <th style='text-align: center'>PRESUPUESTO MES</th>                
+                <th style='text-align: center'>CUMPLIMIENTO</th>      
             </tr>
 
             <?php foreach ($ventas as $venta) { ?>
@@ -23,6 +25,18 @@
                         echo CHtml::encode($venta['INSTALADAS']);
                         $totalInstaladas += $venta['INSTALADAS'];
                         ?></td>
+                    
+                    <td style='text-align: right'><?php 
+                     echo CHtml::encode($venta['TOTAL_PLAZA']);
+                        ?></td>
+                    
+                    <td style='text-align: right'><?php
+                        echo CHtml::encode($venta['PRESUPUESTO']);
+                        ?></td>
+                    
+                    <td style='text-align: right'><?php
+                        echo CHtml::encode($venta['CUMPLIMIENTO']);
+                        ?></td>
                 </tr>   
             <?php } ?>
 
@@ -37,6 +51,18 @@
                         echo CHtml::encode($venta['INSTALADAS']);
                         $totalInstaladas += $venta['INSTALADAS'];
                         ?></td>
+                    
+                    <td style='text-align: right'><?php 
+                     echo CHtml::encode($venta['TOTAL_PLAZA']);
+                        ?></td>
+                    
+                    <td style='text-align: right'><?php
+                        echo CHtml::encode($venta['PRESUPUESTO']);
+                        ?></td>
+                    
+                      <td style='text-align: right'><?php
+                        echo CHtml::encode($venta['CUMPLIMIENTO']);
+                        ?></td>
                 </tr>   
             <?php } ?>
 
@@ -45,22 +71,34 @@
                     <td class='td-footer'>Total </td>
                     <td style='text-align: right'><span class="label label-important"><?php echo CHtml::encode($totalIngresadas); ?></span></td>
                     <td style='text-align: right'><span class="label label-important"><?php echo CHtml::encode($totalInstaladas); ?></span></td>
+                    <td style='text-align: right'></td>
+                    <td style='text-align: right'></td>
+                    <td style='text-align: right'></td>
                 </tr>
                 <tr>
                     <td class='td-footer'>Total Mes de <?php echo FunsionesSoporte::get_NombreMes(date('Y-m-d')) ?></td>
                     <td style='text-align: right'><span class="label label-important"><?php echo CHtml::encode($ingresadasMesActual); ?></span></td>
                     <td style='text-align: right'><span class="label label-important"><?php echo CHtml::encode($instaladasMesActual); ?></span></td>
+                    <td style='text-align: right'></td>
+                    <td style='text-align: right'></td>
+                    <td style='text-align: right'></td>
                 </tr>
                 
                 <tr>
                     <td class='td-footer'>Proyectado Mes <?php echo FunsionesSoporte::get_NombreMes(date('Y-m-d')) ?></td>
                     <td style='text-align: right'><span class="label label-important"></span></td>
                     <td style='text-align: right'><span class="label label-important"><?php echo $proyectadoMesActual ?></span></td>
+                    <td style='text-align: right'></td>
+                    <td style='text-align: right'></td>
+                    <td style='text-align: right'></td>
                 </tr>
 
                 <tr>
                     <td class='td-footer'><b>Pendientes Totales</td>
                     <td style='text-align: right'><span class="label label-important"><?php echo CHtml::encode($totalPendientes); ?></span></td>
+                    <td style='text-align: right'></td>
+                    <td style='text-align: right'></td>
+                    <td style='text-align: right'></td>
                     <td style='text-align: right'></td>
                 </tr>
             </tfoot>

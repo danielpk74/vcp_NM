@@ -5684,6 +5684,7 @@ a.badge:focus {
 .label-important,
 .badge-important {
     background-color: #b94a48;
+    font-size: 12px;
 }
 
 .label-important[href],
