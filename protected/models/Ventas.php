@@ -18,7 +18,13 @@ class Ventas {
 
     /**
      * Consulta los ingresos y las instalaciones de las plazas que no se muestran por separado(Otros).
-     * @return type
+     * @param integer $dias El numero de dias que se desea consultar desde la fecha hacia atras (ejem: los ultimos 7 dias), parametro requerido cuando se quiere generar grafico por dias
+     * @param varchar $tipoElemento Tipo elemento a consultar (ejem: NUMMOV)
+     * @param varchar $plaza La plaza que se desea consultar
+     * @param date $fecha La fecha que se quiere consultar, parametro requerido cuando se desea ver los ingresos e instalaciones de una fecha especifica
+     * @param varchar $uen La uen que se desea consultar (Pymes,Corporativos,Hogares)
+     * @param varchar $tipo_solicitud Tipos de Solicitud (Nuevo,Retiro)
+     * @return array
      */
     public function IngresadasOtros($dias, $tipoElemento, $plaza = '', $fecha = '', $uen = '', $tipo_solicitud = 'Nuevo') {
         $ventas = Yii::app()->db->createCommand("SP_Consultas_Ingresos_Retiros '4','$dias','$tipoElemento','$plaza','$fecha','$uen','$tipo_solicitud'")->queryAll();
