@@ -164,7 +164,7 @@ class FunsionesSoporte {
 
     /**
      * Devuelve el nombre del mes
-     * @param date $fecha
+     * @param date $fecha una fecha
      * @return string
      */
     public static function get_NombreMes($fecha) {
@@ -282,7 +282,7 @@ class FunsionesSoporte {
         // y se muestran en el grafico con valor cero
         $dias = array();
 
-        if (date('A', strtotime(Configuracion::get_FechaActualizacion())) == 'PM' && date('Y-m-d', strtotime(Configuracion::get_FechaActualizacion())) != date('Y-m-d'))
+        if (date('A', strtotime(Configuracion::get_FechaActualizacion())) == 'AM' || date('Y-m-d', strtotime(Configuracion::get_FechaActualizacion())) != date('Y-m-d')) 
             $hasta = 1;
         else
             $hasta = 0;

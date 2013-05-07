@@ -54,8 +54,8 @@ return array(
 		
             'db'=>array(
                         'connectionString' => 'mssql:host=DMONTOL;dbname=DESARROLLO',
-                        'username' => 'prueba',
-                        'password' => 'prueba',
+                        'username' => 'nuevosmercados',
+                        'password' => 'Nuevos Mercados',
                         'charset'=>'utf8',
                 ),
 

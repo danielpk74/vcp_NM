@@ -51,7 +51,7 @@ class SiteController extends Controller {
 //        else 
 //            echo "el usuario actual es : ". Yii::app()->user->name;
         try {
-            $fechaActualizacion =  Configuracion::get_FechaActualizacion();
+            $fechaActualizacion = Configuracion::get_FechaActualizacion();
 
             $producto_ = new Productos();
             $productos = $producto_->get_Productos();
@@ -69,12 +69,14 @@ class SiteController extends Controller {
             $fecha = "";
             $uenp = "";
             $tipo_solicitud = 'Nuevo';
+            $numeroDias = 15;
 
             // ACCION FILTRAR
             if (Yii::app()->request->isAjaxRequest) {
-
                 if (Yii::app()->getRequest()->getParam('uen') != "")
                     $uenp = Yii::app()->getRequest()->getParam('uen');
+
+                $numeroDias = Yii::app()->getRequest()->getParam('periodo');
 
                 // Si consulta solo por producto
                 if (Yii::app()->getRequest()->getParam('subproducto') == "") {
@@ -99,7 +101,7 @@ class SiteController extends Controller {
             $totalPendientes = $ventas->TotalPendientes($this->getPageState('producto'), $uenp, 'Nuevo');
 
             /// TOTAL INSTALADAS E INGRESADAS POR DIA - GRAFICO
-            $numeroDias = 15;
+
             $ventasIngresadas = $ventas->get_Ingresadas($numeroDias, $this->getPageState('producto'), '', '', $uenp, 'Nuevo');
             $ventasInstaladas = $ventas->get_Instaladas($numeroDias, $this->getPageState('producto'), '', '', $uenp, 'Nuevo');
             $ventasIngresadas = FunsionesSoporte::CompletarDias($ventasIngresadas, 2, $numeroDias);
@@ -108,54 +110,61 @@ class SiteController extends Controller {
             $proyectadoCierre = $ventas->get_ProyectadoMes($this->getPageState('producto'), $uenp, 'Nuevo');
 
             // INGRESADAS E INSTALADAS DEL DIA/DIA ANTERIOR                     
-            if (date('A', strtotime($fechaActualizacion)) == 'PM' && date('Y-m-d', strtotime($fechaActualizacion)) != date('Y-m-d')) {
+            if (date('A', strtotime($fechaActualizacion)) == 'AM' || date('Y-m-d', strtotime($fechaActualizacion)) != date('Y-m-d')) {
                 $fechaConsulta = date('Y-m-d', strtotime("-1 day", strtotime(date('Y-m-d'))));
                 $diaConsulta = "AYER";
-            }
-            else {
+            } else {
                 $fechaConsulta = date('Y-m-d');
                 $diaConsulta = "HOY";
             }
 
             /// Ingresadas/Instaladas de plazas principales
             $ingresadas_instaladas = $ventas->Ingresadas('', $this->getPageState('producto'), '', $fechaConsulta, $uenp, 'Nuevo');
-            foreach ($ingresadas_instaladas as $v) {                
-                
+            foreach ($ingresadas_instaladas as $v) {
+
                 $cumplimiento = 0;
-                
                 $presupuesto = round(FunsionesSoporte::get_Presupuesto_X_Plaza($v['PLAZA'], $uenp, $this->getPageState('producto'), date('Y'), date('n')));
                 $presupuestoOtros = round(FunsionesSoporte::get_Presupuesto_X_Plaza('', $uenp, $this->getPageState('producto'), date('Y'), date('n')));
                 $totalInstaladasPlaza = $ventas->get_TotalInstaladasMes($this->getPageState('producto'), $uenp, 'Nuevo', '', $v['PLAZA']);
-                if($presupuesto != 0)
-                    $cumplimiento = ($v['INSTALADAS']/$presupuesto)*100;
-                
+                if ($presupuesto != 0)
+                    $cumplimiento = ($totalInstaladasPlaza / $presupuesto) * 100;
+
                 $ventasTotales[] = array('PLAZA' => $v['PLAZA'],
-                                         'INGRESADAS' => $v['INGRESADAS'],
-                                         'INSTALADAS' => $v['INSTALADAS'],
-                                         'TOTAL_PLAZA' => $totalInstaladasPlaza,
-                                         'PRESUPUESTO'=>number_format($presupuesto, '0', ',', '.'),
-                                         'CUMPLIMIENTO' => number_format($cumplimiento, '0', ',', '.')."%");
+                    'INGRESADAS' => $v['INGRESADAS'],
+                    'INSTALADAS' => $v['INSTALADAS'],
+                    'TOTAL_PLAZA' => $totalInstaladasPlaza,
+                    'PRESUPUESTO' => number_format($presupuesto, '0', ',', '.'),
+                    'CUMPLIMIENTO' => number_format($cumplimiento, '0', ',', '.') . "%");
             }
 
             /// Ingresadas/Instaladas de otras plazas
             $ventasTotalesOtros = $ventas->IngresadasOtros('', $this->getPageState('producto'), '', $fechaConsulta, $uenp, 'Nuevo');
             $ventasTotalesOtrosMes = $ventas->IngresadasOtros('', $this->getPageState('producto'), '', '', $uenp, 'Nuevo');
-            
+
             $totalInstaladas = 0;
             $totalIngresadas = 0;
             foreach ($ventasTotalesOtros as $ventasOtros) {
                 $totalInstaladas += $ventasOtros['INSTALADAS'];
                 $totalIngresadas += $ventasOtros['INGRESADAS'];
             }
-            
+
             foreach ($ventasTotalesOtrosMes as $ventasOtros) {
                 $totalInstaladasOtrosMes += $ventasOtros['INSTALADAS'];
             }
 
-            if($presupuestoOtros != 0)
-                    $cumplimiento = ($totalInstaladas/$presupuestoOtros)*100;
+            if ($presupuestoOtros != 0)
+                $cumplimiento = ($totalInstaladasOtrosMes / $presupuestoOtros) * 100;
+
+            $TotalesOtros[] = array('PLAZA' => 'Otros', 'INGRESADAS' => $totalIngresadas, 'INSTALADAS' => $totalInstaladas, 'TOTAL_PLAZA' => $totalInstaladasOtrosMes, 'PRESUPUESTO' => number_format($presupuestoOtros, '0', ',', '.'), 'CUMPLIMIENTO' => number_format($cumplimiento, '0', ',', '.') . "%");
             
-            $TotalesOtros[] = array('PLAZA' => 'Otros', 'INGRESADAS' => $totalIngresadas, 'INSTALADAS' => $totalInstaladas,'TOTAL_PLAZA'=>$totalInstaladasOtrosMes,'PRESUPUESTO'=>number_format($presupuestoOtros, '0', ',', '.'),'CUMPLIMIENTO' => number_format($cumplimiento, '0', ',', '.')."%");
+            if ($numeroDias == "")
+                $numeroDias = "Mes Actual";
+            else 
+                $numeroDias = "Últimos $numeroDias días Hasta el " . date('d-m-Y h:i', strtotime($fechaActualizacion));
+            
+            if($proyectadoCierre != 0)
+                $totalCumplimiento = ($totalInstaladasMesActual/$proyectadoCierre)* 100;
+            
             if (!Yii::app()->request->isAjaxRequest) {
                 $this->render('index', array(
                     'fechaactualizacion' => $fechaActualizacion,
@@ -172,11 +181,13 @@ class SiteController extends Controller {
                     'instaladasMesActual' => number_format($totalInstaladasMesActual, '0', ',', '.'),
                     'totalPendientes' => number_format($totalPendientes, '0', ',', '.'),
                     'proyectadoMesActual' => number_format($proyectadoCierre, '0', ',', '.'),
+                    'totalCumplimiento' => number_format($totalCumplimiento, '0', ',', '.')."%",
                     'uens' => $uens,
                     'uenmodel' => $uen,
                     'ventasInstaladas' => $ventasInstaladas,
-                    'diaConsulta' => $diaConsulta
-                    ));
+                    'diaConsulta' => $diaConsulta,
+                    'numeroDiasConsulta' => $numeroDias,
+                ));
             } else {
                 $this->renderPartial('plantillas/ventasGeneral', array(
                     'fechaactualizacion' => $fechaActualizacion,
@@ -193,14 +204,16 @@ class SiteController extends Controller {
                     'instaladasMesActual' => number_format($totalInstaladasMesActual, '0', ',', '.'),
                     'totalPendientes' => number_format($totalPendientes, '0', ',', '.'),
                     'proyectadoMesActual' => number_format($proyectadoCierre, '0', ',', '.'),
+                    'totalCumplimiento' => number_format($totalCumplimiento, '0', ',', '.'),
                     'uenmodel' => $uens,
                     'uens' => $uens,
                     'ventasInstaladas' => $ventasInstaladas,
-                    'diaConsulta' => $diaConsulta
-                    ));
+                    'diaConsulta' => $diaConsulta,
+                    'numeroDiasConsulta' => $numeroDias,
+                ));
             }
         } catch (Exception $e) {
-            $this->render('error', array('error' => "En este momento estamos actualizando la plataforma, en breve estaremos en linea.",'detalle'=>$e->getMessage()));
+            $this->render('error', array('error' => "En este momento estamos actualizando la plataforma, en breve estaremos en linea.", 'detalle' => $e->getMessage()));
         }
     }
 

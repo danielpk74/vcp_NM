@@ -6,9 +6,9 @@
  * user login form data. It is used by the 'login' action of 'SiteController'.
  */
 class Presupuestos extends CFormModel {
-    public function get_Presupuesto($tipoElemento, $uen = '', $anio = '', $mes = '', $plaza = '') {
+    public function get_Presupuesto($tipoElemento, $uen = '', $anio = '', $mes = '', $plaza = '',$consulta_general='') {
         // echo $tipoElemento . " - " . $uen . " - ".$anio . " - " . $mes . " - " . $plaza;
-        $presupuesto = Yii::app()->db->createCommand("SP_Presupuestos '$tipoElemento','$uen','$anio','$mes','$plaza'")->queryScalar();
+        $presupuesto = Yii::app()->db->createCommand("SP_Presupuestos '$tipoElemento','$uen','$anio','$mes','$plaza','$consulta_general'")->queryScalar();
         return $presupuesto;
     }
 }

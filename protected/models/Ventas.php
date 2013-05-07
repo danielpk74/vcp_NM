@@ -98,9 +98,12 @@ class Ventas {
         $numeroDiasFestivosFaltantes = FunsionesSoporte::get_DiasFaltantesMes(2);
 
         // Presupuesto Mensual
+        $numeroDiaActual = date('j', strtotime(date('Y-m-d')));
+        
+        $numeroDiaActual;
         if ($numeroDiaActual <= 10) {
             $proyectadoCierre = new Presupuestos();
-            $proyectadoCierre = $proyectadoCierre->get_Presupuesto($tipoElemento, $uen, date('Y'),date('n'),'');
+            $proyectadoCierre = $proyectadoCierre->get_Presupuesto($tipoElemento, $uen, date('Y'),date('n'),'',1);
         }
         // TotalInstaladas en el mes + promedio instalado en dias habiles * dias habiles faltantes + promedio instaladas en dias festivos y fines de semana * Dias festivos faltantes + total de pendientes(restando 25% de estos).
         elseif ($numeroDiaActual >= 11 && $numeroDiaActual <= 26) {
