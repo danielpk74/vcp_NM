@@ -206,7 +206,7 @@ class FunsionesSoporte {
 
     /**
      * Determina si una fecha es dia festivo
-     * @param date $fecha
+     * @param date $fecha Consulta si un dia especifico es o no festivo
      * @return boolean
      */
     public static function get_EsFestivo($fecha) {
@@ -331,9 +331,19 @@ class FunsionesSoporte {
         return $Total;
     }
 
-    public static function get_Presupuesto_X_Plaza($plaza, $uen, $tipoElemento, $anio, $mes) {
+    /**
+     * Devuelve el presupuesto para una plaza.
+     * @param string $plaza La plaza a consultar
+     * @param string $uen 
+     * @param string $tipoElemento Codigo con el que se encuentra en FENIX el producto de 4G O 3G, NUMMOV, LIMOV, TO, ETC
+     * @param integer $anio Año del presupuesto que se desea consultar
+     * @param integer $mes Mes del presupuesto que se desea consultar
+     * @param type $consultaProducto Determina si se va a consultar un producto o un subproducto, en caso de ser producto el sistema buscara todos los registro de los subproductos pertenecientes al producto especificado.
+     * @return array Presupuestos
+     */
+    public static function get_Presupuesto_X_Plaza($plaza, $uen, $tipoElemento, $anio, $mes,$consultaGeneral='1',$consultaProducto='') {
         $presupuesto = new Presupuestos();
-        $cantidadPresupuesto = $presupuesto->get_Presupuesto($tipoElemento, $uen, $anio, $mes, $plaza);
+        $cantidadPresupuesto = $presupuesto->get_Presupuesto($tipoElemento, $uen, $anio, $mes, $plaza,$consultaGeneral,$consultaProducto);
 
         return $cantidadPresupuesto;
     }

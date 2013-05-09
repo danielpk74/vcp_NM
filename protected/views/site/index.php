@@ -35,6 +35,11 @@ require_once ('/protected/components/FusionCharts.php');
         $('#uen').attr("disabled", true);
         $('#btnDetallesVentas').attr("disabled", true);
     })
+    
+    function  Loading(){
+                        $('#fotocargando').hide();
+                        $('#contenidoWeb').fadeIn(500);
+   }
 </script>
 
 <hr>

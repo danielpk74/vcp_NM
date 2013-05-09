@@ -60,6 +60,7 @@ class SiteController extends Controller {
             $uenp = "";
             $tipo_solicitud = 'Nuevo';
             $numeroDias = 15;
+            $consultaProducto='1'; // Determina si va a consultar un producto o un subproducto, esto para definir un filtro en el SP
 
             // ACCION FILTRAR
             // Si la peticion viene por via ajax
@@ -74,9 +75,10 @@ class SiteController extends Controller {
                 if (Yii::app()->getRequest()->getParam('subproducto') == "") {
                     $this->setPageState('producto', Yii::app()->getRequest()->getParam('producto'));
                 }
-                // Consultamos por subproducto
+                // Consulta por subproducto
                 else {
                     $this->setPageState('producto', Yii::app()->getRequest()->getParam('subproducto'));
+                    $consultaProducto='';
                 }
 
                 if (Yii::app()->getRequest()->getParam('producto') != 'NUMMOV')
@@ -88,46 +90,49 @@ class SiteController extends Controller {
                 $subProductos = $subProducto->get_SubProductos('');
                 $this->setPageState('producto', 'NUMMOV');
             }
-
+            
             $ventas = new Ventas();
-
+            
             /// Total Ingresadas e Instaladas por Mes
-            $totalIngresadasMesActual = $ventas->get_TotalIngresadasMes($this->getPageState('producto'), $uenp, 'Nuevo');
-            $totalInstaladasMesActual = $ventas->get_TotalInstaladasMes($this->getPageState('producto'), $uenp, 'Nuevo');
-            $totalPendientes = $ventas->TotalPendientes($this->getPageState('producto'), $uenp, 'Nuevo');
+            $totalIngresadasMesActual = $ventas->get_TotalIngresadasMes($this->getPageState('producto'), $uenp, 'Nuevo','','',$consultaProducto);
+            $totalInstaladasMesActual = $ventas->get_TotalInstaladasMes($this->getPageState('producto'), $uenp, 'Nuevo','','',$consultaProducto);
+            $totalPendientes = $ventas->TotalPendientes($this->getPageState('producto'), $uenp, 'Nuevo',$consultaProducto);
 
             /// Total Ingresadas e Instaladas por dia - Para el grafico
-            $ventasIngresadas = $ventas->get_Ingresadas($numeroDias, $this->getPageState('producto'), '', '', $uenp, 'Nuevo');
-            $ventasInstaladas = $ventas->get_Instaladas($numeroDias, $this->getPageState('producto'), '', '', $uenp, 'Nuevo');
+            $ventasIngresadas = $ventas->get_Ingresadas($numeroDias, $this->getPageState('producto'), '', '', $uenp, 'Nuevo',$consultaProducto);
+            $ventasInstaladas = $ventas->get_Instaladas($numeroDias, $this->getPageState('producto'), '', '', $uenp, 'Nuevo',$consultaProducto);
             $ventasIngresadas = FunsionesSoporte::CompletarDias($ventasIngresadas, 2, $numeroDias);
             $ventasInstaladas = FunsionesSoporte::CompletarDias($ventasInstaladas, 1, $numeroDias);
 
             $proyectadoCierre = $ventas->get_ProyectadoMes($this->getPageState('producto'), $uenp, 'Nuevo');
 
-
+            // --- Define si muestra los datos del dia anterior o del dia en curso
+            // Dia anterior
             if (date('A', strtotime($fechaActualizacion)) == 'AM' || date('Y-m-d', strtotime($fechaActualizacion)) != date('Y-m-d')) {
                 $fechaConsulta = date('Y-m-d', strtotime("-1 day", strtotime(date('Y-m-d'))));
                 $diaConsulta = "AYER";
-            } else {
+            } 
+            // Dia en Curso
+            else {
                 $fechaConsulta = date('Y-m-d');
                 $diaConsulta = "HOY";
             }
 
             ///// Para las Ingresadas e instaladas del dia anterior
             /// Ingresadas/Instaladas de plazas principales
-            $ingresadas_instaladas = $ventas->Ingresadas('', $this->getPageState('producto'), '', $fechaConsulta, $uenp, 'Nuevo');
+            $ingresadas_instaladas = $ventas->Ingresadas('', $this->getPageState('producto'), '', $fechaConsulta, $uenp, 'Nuevo',$consultaProducto);
             foreach ($ingresadas_instaladas as $v) {
 
                 $cumplimiento = 0;
 
                 // Presupuesto por plaza
-                $presupuesto = round(FunsionesSoporte::get_Presupuesto_X_Plaza($v['PLAZA'], $uenp, $this->getPageState('producto'), date('Y'), date('n')));
+                $presupuesto = round(FunsionesSoporte::get_Presupuesto_X_Plaza($v['PLAZA'], $uenp, $this->getPageState('producto'), date('Y'), date('n'),'',$consultaProducto));
 
                 // Presupuesto de las ciudades que no aparecen como plazas
-                $presupuestoOtros = round(FunsionesSoporte::get_Presupuesto_X_Plaza('', $uenp, $this->getPageState('producto'), date('Y'), date('n')));
+                $presupuestoOtros = round(FunsionesSoporte::get_Presupuesto_X_Plaza('', $uenp, $this->getPageState('producto'), date('Y'), date('n'),'',$consultaProducto));
 
                 // Total de instaladas por plaza por mes
-                $totalInstaladasPlaza = $ventas->get_TotalInstaladasMes($this->getPageState('producto'), $uenp, 'Nuevo', '', $v['PLAZA']);
+                $totalInstaladasPlaza = $ventas->get_TotalInstaladasMes($this->getPageState('producto'), $uenp, 'Nuevo', '', $v['PLAZA'],$consultaProducto);
 
                 if ($presupuesto != 0)
                     $cumplimiento = ($totalInstaladasPlaza / $presupuesto) * 100;
@@ -146,7 +151,7 @@ class SiteController extends Controller {
 
             ///---------COMIENZA LA CONSULTA DE LOS DATOS DE LAS CIUDADES QUE NO SON MOSTRADAS COMO PLAZAS.(OTROS)
             // Ingresadas/Instaladas de las ciudades que no aparecen como plazas
-            $ingresadasInstaladasTotalesOtros = $ventas->IngresadasOtros('', $this->getPageState('producto'), '', $fechaConsulta, $uenp, 'Nuevo');
+            $ingresadasInstaladasTotalesOtros = $ventas->IngresadasOtros('', $this->getPageState('producto'), '', $fechaConsulta, $uenp, 'Nuevo',$consultaProducto);
             $totalInstaladas = 0;
             $totalIngresadas = 0;
 
@@ -156,7 +161,7 @@ class SiteController extends Controller {
             }
 
             // Total instaladas en el mes para las ciudades que no aparecen como plaza
-            $instaladasTotalesOtrosMes = $ventas->IngresadasOtros('', $this->getPageState('producto'), '', '', $uenp, 'Nuevo');
+            $instaladasTotalesOtrosMes = $ventas->IngresadasOtros('', $this->getPageState('producto'), '', '', $uenp, 'Nuevo',$consultaProducto);
             foreach ($instaladasTotalesOtrosMes as $ventasOtros) {
                 $totalInstaladasOtrosMes += $ventasOtros['INSTALADAS'];
             }
