@@ -52,8 +52,8 @@ return array(
 //		),
 		// uncomment the following to use a MySQL database
 		
-            'db'=>array(
-                        'connectionString' => 'mssql:host=DMONTOL;dbname=DESARROLLO',
+                'db'=>array(
+                            'connectionString' => 'mssql:host=DMONTOL;dbname=DESARROLLO',
                         'username' => 'nuevosmercados',
                         'password' => 'Nuevos Mercados',
                         'charset'=>'utf8',

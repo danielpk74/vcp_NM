@@ -145,7 +145,7 @@ class SiteController extends Controller {
                     'INSTALADAS' => $v['INSTALADAS'],
                     'TOTAL_PLAZA' => $totalInstaladasPlaza,
                     'PRESUPUESTO' => number_format($presupuesto, '0', ',', '.'),
-                    'CUMPLIMIENTO' => number_format($cumplimiento, '0', ',', '.') . "%");
+                    'CUMPLIMIENTO' => number_format($cumplimiento, '0', ',', '.'));
             }
 
 
@@ -172,7 +172,7 @@ class SiteController extends Controller {
             if ($presupuestoOtros != 0)
                 $cumplimiento = ($totalInstaladasOtrosMes / $presupuestoOtros) * 100;
 
-            $TotalesOtros[] = array('PLAZA' => 'Otros', 'INGRESADAS' => $totalIngresadas, 'INSTALADAS' => $totalInstaladas, 'TOTAL_PLAZA' => $totalInstaladasOtrosMes, 'PRESUPUESTO' => number_format($presupuestoOtros, '0', ',', '.'), 'CUMPLIMIENTO' => number_format($cumplimiento, '0', ',', '.') . "%");
+            $TotalesOtros[] = array('PLAZA' => 'Otros', 'INGRESADAS' => $totalIngresadas, 'INSTALADAS' => $totalInstaladas, 'TOTAL_PLAZA' => $totalInstaladasOtrosMes, 'PRESUPUESTO' => number_format($presupuestoOtros, '0', ',', '.'), 'CUMPLIMIENTO' => number_format($cumplimiento, '0', ',', '.'));
 
             ///----- Ingresadas/Instaladas de otras plazas --------///
             if ($numeroDias == "")
@@ -198,7 +198,7 @@ class SiteController extends Controller {
                 'instaladasMesActual' => number_format($totalInstaladasMesActual, '0', ',', '.'),
                 'totalPendientes' => number_format($totalPendientes, '0', ',', '.'),
                 'proyectadoMesActual' => number_format($proyectadoCierre, '0', ',', '.'),
-                'totalCumplimiento' => number_format($totalCumplimiento, '0', ',', '.') . "%",
+                'totalCumplimiento' => number_format($totalCumplimiento, '0', ',', '.'),
                 'uens' => $uens,
                 'uenmodel' => $uen,
                 'ventasInstaladas' => $ventasInstaladas,
@@ -229,6 +229,13 @@ class SiteController extends Controller {
 
     public function actionPresupuestos() {
         $this->render('ventas/presupuestos');
+    }
+    
+    public function actionDetallesPlaza() {
+        $nombrePlaza = Yii::app()->getRequest()->getParam('plaza');
+        $cumplimiento = Yii::app()->getRequest()->getParam('cumplimiento');        
+        
+        $this->renderPartial('plantillas/detallesPlaza',array('nombrePlaza'=>$nombrePlaza,'cumplimiento'=>$cumplimiento));
     }
 
     /**

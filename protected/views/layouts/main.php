@@ -20,6 +20,7 @@
             <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/bootstrap.css" />
 
             <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery-1.9.1.js"></script>
+            <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery-ui.js"></script>
             <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/bootstrap.js"></script>
             <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/fusionchart/FusionCharts.js"></script>
             <title><?php echo CHtml::encode($this->pageTitle); ?></title>
@@ -101,4 +102,5 @@
         </div><!-- page -->
 
     </body>
+    <div class="ajaxmodal">   <!-- Place at bottom of page --></div>
 </html>

@@ -1,10 +1,5 @@
 <?php
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
  * Description of FunsionesSoporte
  *
@@ -104,20 +99,20 @@ class FunsionesSoporte {
         return $strColorRange;
     }
 
-    public static function GenerarXML_AngularGauge() {
+    public static function GenerarXML_AngularGauge($valorMinimo = 0, $valorMaximo = 120, $valorDial = 0) {
 
-        $strXML = "<chart lowerLimit='0' upperLimit='100' lowerLimitDisplay='Bad' 
-           upperLimitDisplay='Good' gaugeStartAngle='180' gaugeEndAngle='0'
+        $strXML = "<chart lowerLimit='$valorMinimo' upperLimit='$valorMaximo' lowerLimitDisplay='$valorMinimo%' 
+           upperLimitDisplay='$valorMaximo%' gaugeStartAngle='180' gaugeEndAngle='0'
            palette='1' numberSuffix='%' tickValueDistance='20' showValue='1' decimals='0' editMode='1'>
     
-            <colorRange>
+           <colorRange>
                 <color minValue='0' maxValue='75' code='FF654F'/>
-                <color minValue='75' maxValue='90' code='F6BD0F'/>
-                <color minValue='90' maxValue='100' code='8BBA00'/>
+                <color minValue='75' maxValue='100' code='F6BD0F'/>
+                <color minValue='100' maxValue='120' code='8BBA00'/>
             </colorRange>
 
             <dials>
-                <dial id='CS' value='92' rearExtension='10'/>
+                <dial id='CS' value='$valorDial' rearExtension='10'/>
             </dials>
 
             <styles>
@@ -129,7 +124,6 @@ class FunsionesSoporte {
                 </application>
             </styles>
         </chart>";
-
 
         return $strXML;
     }
@@ -229,46 +223,11 @@ class FunsionesSoporte {
      */
     public static function get_EsFinSemana($fecha) {
         $date = date('N', mktime(0, 0, 0, date('n', strtotime($fecha)), date('d', strtotime($fecha)), date('Y', strtotime($fecha))));
-        if ($date == 6 && $date == 7)
+        if ($date == 6 || $date == 7) {
             return true;
+        }
         else
             return false;
-    }
-
-    /**
-     * Determina el numero de dias que faltan para terminar el mes actual
-     * @param type $cantidad
-     * @return boolean
-     */
-    public static function get_DiasFaltantesMes2() {
-
-//        $fecha = date('Y-m-d');
-//        $mes = date('m', date('Y-m-d'));
-//        $totalDiasFaltantes = 0;
-//
-//        $i = 0;
-//        do {
-//            $fecha = date('Y-m-d', strtotime("+1 day",  strtotime($time)));
-//            if(self::get_EsFestivo($fecha))
-//              $festivo++;
-//            
-//            echo $fecha . " - ";
-//        }while(date('m', $fecha) == $mes);
-//        $habiles = 0;
-//        $selectDias = "";
-//        $ret = array();
-//        for ($i = 1; $habiles < $cantidad; $i++) {
-//            $date = date('N', mktime(0, 0, 0, date('n'), date('d') + $i, date('Y')));
-//            $diames = date('d/m', mktime(0, 0, 0, date('n'), date('d') + $i, date('Y')));
-//            if ($date != 6 && $date != 7) { // ME FIJO QUE NO SEA SABADO O DOMINGO
-//                /*
-//                  dias festivos
-//                 */
-//                $habiles++;
-//                $ret[$habiles] = $diames;
-//            }
-//        }
-//        return $ret;
     }
 
     /**
@@ -282,7 +241,7 @@ class FunsionesSoporte {
         // y se muestran en el grafico con valor cero
         $dias = array();
 
-        if (date('A', strtotime(Configuracion::get_FechaActualizacion())) == 'AM' || date('Y-m-d', strtotime(Configuracion::get_FechaActualizacion())) != date('Y-m-d')) 
+        if (date('A', strtotime(Configuracion::get_FechaActualizacion())) == 'AM' || date('Y-m-d', strtotime(Configuracion::get_FechaActualizacion())) != date('Y-m-d'))
             $hasta = 1;
         else
             $hasta = 0;
@@ -341,9 +300,9 @@ class FunsionesSoporte {
      * @param type $consultaProducto Determina si se va a consultar un producto o un subproducto, en caso de ser producto el sistema buscara todos los registro de los subproductos pertenecientes al producto especificado.
      * @return array Presupuestos
      */
-    public static function get_Presupuesto_X_Plaza($plaza, $uen, $tipoElemento, $anio, $mes,$consultaGeneral='1',$consultaProducto='') {
+    public static function get_Presupuesto_X_Plaza($plaza, $uen, $tipoElemento, $anio, $mes, $consultaGeneral = '1', $consultaProducto = '') {
         $presupuesto = new Presupuestos();
-        $cantidadPresupuesto = $presupuesto->get_Presupuesto($tipoElemento, $uen, $anio, $mes, $plaza,$consultaGeneral,$consultaProducto);
+        $cantidadPresupuesto = $presupuesto->get_Presupuesto($tipoElemento, $uen, $anio, $mes, $plaza, $consultaGeneral, $consultaProducto);
 
         return $cantidadPresupuesto;
     }

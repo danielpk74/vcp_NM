@@ -2,7 +2,7 @@
 $this->pageTitle = Yii::app()->name;
 require_once ('/protected/components/FusionCharts.php');
 ?>
-    
+
 <h4>Estado Actual de Ventas - <?php echo "última Actualización " . date('d-m-Y h:i', strtotime($fechaactualizacion)) ?> </h4>
 <script type="text/javascript">
     $().ready(function() {
@@ -29,17 +29,30 @@ require_once ('/protected/components/FusionCharts.php');
                 }
             })
         });
-        
+
         $('#sub_productos').attr("disabled", true);
         $('#cbo_periodo').attr("disabled", true);
         $('#uen').attr("disabled", true);
         $('#btnDetallesVentas').attr("disabled", true);
+        jQuery('body').on('click', '#plaza', function() {
+            //this.parentNode.parentNode this.parentNode.getElementById('tdcumplimiento').firstChild
+            //alert(this.parentNode.parentNode.lastChild.);
+            jQuery.ajax({'type': 'POST', 'url': '<?php echo CController::createUrl('Site/DetallesPlaza'); ?>', 'data': {'plaza': this.text, 'cumplimiento': this.target}, 'success': function(data) {
+                    $('#modalDetallesPlaza').html(data);
+                }, 'cache': false});
+        });
+
+//        $('#uen').multiselect();
+
+        $("body").on({
+            ajaxStart: function() {
+                $(this).addClass("loading");
+            },
+            ajaxStop: function() {
+                $(this).removeClass("loading");
+            }
+        });
     })
-    
-    function  Loading(){
-                        $('#fotocargando').hide();
-                        $('#contenidoWeb').fadeIn(500);
-   }
 </script>
 
 <hr>
@@ -62,11 +75,13 @@ $option = array('type' => 'POST',
     <option value="15" selected="true">Ultimos 15 días</option>
     <option value="30">Ultimos 30 días</option>
 </select>
-    
+
 <?php echo CHtml::ajaxButton('FILTRAR', CController::createUrl('Site/Index'), $option, array('name' => 'btnDetallesVentas', 'class' => 'btn btn-mini')); ?>
 
-
 <div id="detallesVentas" >    
-<h5 style="text-align: right"></h5>
-    <?php require_once ('/plantillas/ventasGeneral.php');?>    
+    <h5 style="text-align: right"></h5>
+    <?php require_once ('/plantillas/ventasGeneral.php'); ?>    
 </div>
+
+<!-- Modal -->
+<div id="modalDetallesPlaza" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" ></div>

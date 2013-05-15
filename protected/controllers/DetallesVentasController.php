@@ -19,4 +19,8 @@ class DetallesVentasController extends Controller {
             ),
         );
     }
+    
+    public static function actionDetallesPlaza() {
+        echo $this->renderPartial('plantillas/detallesPlaza',array('nombrePlaza'=>'NOMBRE DE LA PLAZA'));
+    }
 }
