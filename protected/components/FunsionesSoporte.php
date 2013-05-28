@@ -41,6 +41,42 @@ class FunsionesSoporte {
         $strSetValue .= "</dataset>";
         return $strSetValue;
     }
+    
+     /**
+     * Genera el string necesario para crear el grafico MSLine
+     * @param string $titulo
+     * @param string $subTitulo
+     * @param array $categorias
+     * @param array $dataSets
+     * @param string $TituloX
+     * @param string $TituloY
+     * @return string XML para generar grafico FusionChart
+     */
+    public static function GenerarXML_ChartCombined($titulo, $subTitulo, $categorias, $dataSets, $TituloX = "", $TituloY = "") {
+        $strXML .="<chart canvasBaseColor='D9E5F1' canvasBgColor='D9E5F1' showValues='0' caption='Total crimes for 2005-06' >";
+
+        // Categorias
+        $strXML .= $categorias;
+
+        // DataSets
+        $strXML .= $dataSets;
+
+        $strXML .= "<styles>";
+        $strXML .="<definition>";
+        $strXML . "<style blurY='5' Alpha='50' Color='8F8F8F' Distance='8' name='Shadow_0' type='Shadow'/>";
+        $strXML .="</definition>";
+
+        $strXML .="<application>";
+        $strXML .="<apply styles='Shadow_0' toObject='DATAPLOT'/>";
+        $strXML .="</application>";
+        $strXML .="</styles>";
+        $strXML .="</chart>";
+
+        return $strXML;
+    }
+    
+    
+    
 
     /**
      * Genera el string necesario para crear el grafico MSLine
@@ -161,14 +197,17 @@ class FunsionesSoporte {
      * @param date $fecha una fecha
      * @return string
      */
-    public static function get_NombreMes($fecha) {
-        $mes = date("m", strtotime($fecha));
+    public static function get_NombreMes($fecha,$todos=false) {
+        if(!$todos)
+            $mes = date("m", strtotime($fecha));
 
         $meses = array('01' => 'Enero', '02' => 'Febrero', '03' => 'Marzo', '04' => 'Abril', '05' => 'Mayo', '06' => 'Junio',
             '07' => 'Julio', '08' => 'Agosto', '09' => 'Septiembre', '10' => 'Octubre', '11' => 'Noviembre', '12' => 'Diciembre');
 
-        $nombreMes = $meses[$mes];
-        return $nombreMes;
+        if(!$todos)
+            return $meses[$mes];
+        else
+            return $meses;
     }
 
     /**
@@ -305,6 +344,17 @@ class FunsionesSoporte {
         $cantidadPresupuesto = $presupuesto->get_Presupuesto($tipoElemento, $uen, $anio, $mes, $plaza, $consultaGeneral, $consultaProducto);
 
         return $cantidadPresupuesto;
+    }
+    
+    public function generar_Cadena_Separada($array,$separadorInicial='_',$separadorFinal=',') {
+        $productos = explode("_", $productoID);
+            for ($i = 0; $i < Count($productos); $i++) {
+                if ($productos[$i] != "") {
+                    $producto .= $productos[$i];
+                    if ($i < Count($productos)-1)
+                        $producto.=",";
+                }
+            }
     }
 
 }

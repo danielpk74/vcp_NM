@@ -4,45 +4,34 @@ require_once ('/protected/components/FusionCharts.php');
 ?>
 
 <h4>Estado Actual de Ventas - <?php echo "última Actualización " . date('d-m-Y h:i', strtotime($fechaactualizacion)) ?> </h4>
+
+<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery-ui.js"></script>
+<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery.multiselect.js"></script>
+
+
 <script type="text/javascript">
     $().ready(function() {
-        $('#productos').live('change', function() {
-            $.get("<?php echo CController::createUrl('Site/cargarSubProductos'); ?>", {producto: this.value, ajax: 'true'}, function(j) {
-                $("select#sub_productos").empty();
-
-                select = $("select#sub_productos").get(0);
-                select.options[0] = new Option('Sub Producto', '');
-
-                $("select#sub_productos").append(j);
-
-                if ($('#productos').val() != "") {
-                    $('#sub_productos').attr("disabled", false);
-                    $('#cbo_periodo').attr("disabled", false);
-                    $('#uen').attr("disabled", false);
-                    $('#btnDetallesVentas').attr("disabled", false);
-                }
-                else {
-                    $('#sub_productos').attr("disabled", true);
-                    $('#cbo_periodo').attr("disabled", true);
-                    $('#uen').attr("disabled", true);
-                    $('#btnDetallesVentas').attr("disabled", true);
-                }
-            })
+        $('#productos').multiselect({height: 140, minWidth: 190,noneSelectedText:'--Producto--'});
+        $('#sub_productos').multiselect({height: 140, minWidth: 190,noneSelectedText:'--Sub Producto--'});
+        $('#uen').multiselect({height: 140, minWidth: 190 ,noneSelectedText:'--UEN--'});
+        $('#cbo_periodo').multiselect({
+            multiple: false,
+            header: false,
+            height: 140,
+            minWidth: 190,
+            selectedList: 0,
+            noneSelectedText:'--Periodo--'
         });
 
-        $('#sub_productos').attr("disabled", true);
-        $('#cbo_periodo').attr("disabled", true);
-        $('#uen').attr("disabled", true);
-        $('#btnDetallesVentas').attr("disabled", true);
+        $('#productos').live('change', function() {
+            actualizarSelect("productos", "sub_productos");
+        });
+        
         jQuery('body').on('click', '#plaza', function() {
-            //this.parentNode.parentNode this.parentNode.getElementById('tdcumplimiento').firstChild
-            //alert(this.parentNode.parentNode.lastChild.);
             jQuery.ajax({'type': 'POST', 'url': '<?php echo CController::createUrl('Site/DetallesPlaza'); ?>', 'data': {'plaza': this.text, 'cumplimiento': this.target}, 'success': function(data) {
                     $('#modalDetallesPlaza').html(data);
                 }, 'cache': false});
         });
-
-//        $('#uen').multiselect();
 
         $("body").on({
             ajaxStart: function() {
@@ -52,19 +41,45 @@ require_once ('/protected/components/FusionCharts.php');
                 $(this).removeClass("loading");
             }
         });
+        
+        $("select").multiselect();
     })
+
+    function actualizarSelect(idSelectOrigen, idSelecDetino)
+    {
+        $.get("<?php echo CController::createUrl('Site/cargarSubProductos'); ?>", {producto: $('#productos').val(), ajax: 'true'}, function(j) {
+            $('#' + idSelecDetino).multiselect("destroy");
+            $("select#"+idSelecDetino).empty();
+            $("select#"+idSelecDetino).append(j);
+            $('#' + idSelecDetino).multiselect();
+
+            if ($(idSelectOrigen).val() != "") {
+                $('#' + idSelecDetino).multiselect("enable");
+                $('#uen').multiselect("enable");
+                $('#btnDetallesVentas').attr("disabled", false);
+            }
+            else {
+                $('#sub_productos').attr("disabled", true);
+                $('#cbo_periodo').attr("disabled", true);
+                $('#uen').attr("disabled", true);
+                $('#btnDetallesVentas').attr("disabled", true);
+            }
+        })
+    }
 </script>
 
 <hr>
+<?php
+echo CHtml::activeDropDownList($productomodel, 'DESCRIPCION', CHtml::listData($productos, 'CODIGO_PRODUCTO_PK', 'DESCRIPCION'), array('name' => 'productos','multiple'=>'multiple'));
+echo CHtml::activeDropDownList($subProducto_, 'DESCRIPCION', CHtml::listData($subProductos, 'CODIGO_SUB_PRODUCTO_PK', 'DESCRIPCION'), array('name' => 'sub_productos','multiple'=>'multiple'));
+?>
 
 <?php
-echo CHtml::activeDropDownList($productomodel, 'DESCRIPCION', CHtml::listData($productos, 'CODIGO_PRODUCTO_PK', 'DESCRIPCION'), array('name' => 'productos', 'prompt' => 'Producto', 'class' => 'select'));
-echo CHtml::activeDropDownList($subProducto_, 'DESCRIPCION', CHtml::listData($subProductos, 'CODIGO_SUB_PRODUCTO_PK', 'DESCRIPCION'), array('name' => 'sub_productos', 'prompt' => 'Sub Producto',));
-echo CHtml::activeDropDownList($uenmodel, 'DESCRIPCION', CHtml::listData($uens, 'CODIGO_UEN_PK', 'DESCRIPCION'), array('name' => 'uen', 'prompt' => 'UEN', 'enabled' => false));
+echo CHtml::activeDropDownList($uenmodel, 'DESCRIPCION', CHtml::listData($uens, 'CODIGO_UEN_PK', 'DESCRIPCION'), array('name' => 'uen', 'enabled' => false,'multiple'=>'multiple'));
 
 $option = array('type' => 'POST',
     'url' => CController::createUrl('Site/Index'),
-    'data' => array('producto' => 'js:productos.value', 'subproducto' => 'js:sub_productos.value', 'uen' => 'js:uen.value', 'periodo' => 'js:cbo_periodo.value'),
+    'data' => array('producto' => "js:$('select#productos').val()", 'subproducto' =>  "js:$('select#sub_productos').val()", 'uen' => "js:$('select#uen').val()", 'periodo' => 'js:cbo_periodo.value'),
     'update' => '#detallesVentas',
     'success' => 'function(data) {
                                 $(\'#detallesVentas\').html(data);

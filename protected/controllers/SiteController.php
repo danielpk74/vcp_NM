@@ -10,14 +10,16 @@ class SiteController extends Controller {
             $productoID = Yii::app()->getRequest()->getParam('producto');
             $subProducto = new SubProductos();
 
-            if ($productoID != '') {
-                $subProductos = $subProducto->get_SubProductos($productoID);
+            if ($productoID != '') 
+                $productos = implode(",", $productoID);
+            
+                $subProductos = $subProducto->get_SubProductos($productos);
 
                 foreach ($subProductos as $value)
                     $listado .= CHtml::tag('option', array('value' => $value['CODIGO_SUB_PRODUCTO_PK']), $value['DESCRIPCION'], true);
 
                 echo $listado;
-            }
+//            }
         }
     }
 
@@ -60,25 +62,27 @@ class SiteController extends Controller {
             $uenp = "";
             $tipo_solicitud = 'Nuevo';
             $numeroDias = 15;
-            $consultaProducto='1'; // Determina si va a consultar un producto o un subproducto, esto para definir un filtro en el SP
-
+            $consultaProducto = '1'; // Determina si va a consultar un producto o un subproducto, esto para definir un filtro en el SP
             // ACCION FILTRAR
             // Si la peticion viene por via ajax
             if (Yii::app()->request->isAjaxRequest) {
-                if (Yii::app()->getRequest()->getParam('uen') != "")
+                if (Yii::app()->getRequest()->getParam('uen') != "") {
                     $uenp = Yii::app()->getRequest()->getParam('uen');
+                    $uenp = implode(",",$uenp);
+                }
 
                 // Numero de los ultimos dias a consultar, 7, 15, 30
                 $numeroDias = Yii::app()->getRequest()->getParam('periodo');
 
                 // Si consulta solo por producto
                 if (Yii::app()->getRequest()->getParam('subproducto') == "") {
-                    $this->setPageState('producto', Yii::app()->getRequest()->getParam('producto'));
+                    $this->setPageState('producto', implode(",",Yii::app()->getRequest()->getParam('producto')));
+                    
                 }
                 // Consulta por subproducto
                 else {
-                    $this->setPageState('producto', Yii::app()->getRequest()->getParam('subproducto'));
-                    $consultaProducto='';
+                    $this->setPageState('producto', implode(",",Yii::app()->getRequest()->getParam('subproducto')));
+                    $consultaProducto = '';
                 }
 
                 if (Yii::app()->getRequest()->getParam('producto') != 'NUMMOV')
@@ -90,17 +94,17 @@ class SiteController extends Controller {
                 $subProductos = $subProducto->get_SubProductos('');
                 $this->setPageState('producto', 'NUMMOV');
             }
-            
+
             $ventas = new Ventas();
-            
+
             /// Total Ingresadas e Instaladas por Mes
-            $totalIngresadasMesActual = $ventas->get_TotalIngresadasMes($this->getPageState('producto'), $uenp, 'Nuevo','','',$consultaProducto);
-            $totalInstaladasMesActual = $ventas->get_TotalInstaladasMes($this->getPageState('producto'), $uenp, 'Nuevo','','',$consultaProducto);
-            $totalPendientes = $ventas->TotalPendientes($this->getPageState('producto'), $uenp, 'Nuevo',$consultaProducto);
+            $totalIngresadasMesActual = $ventas->get_TotalIngresadasMes($this->getPageState('producto'), $uenp, 'Nuevo', '', '', $consultaProducto);
+            $totalInstaladasMesActual = $ventas->get_TotalInstaladasMes($this->getPageState('producto'), $uenp, 'Nuevo', '', '', $consultaProducto);
+            $totalPendientes = $ventas->TotalPendientes($this->getPageState('producto'), $uenp, 'Nuevo', $consultaProducto);
 
             /// Total Ingresadas e Instaladas por dia - Para el grafico
-            $ventasIngresadas = $ventas->get_Ingresadas($numeroDias, $this->getPageState('producto'), '', '', $uenp, 'Nuevo',$consultaProducto);
-            $ventasInstaladas = $ventas->get_Instaladas($numeroDias, $this->getPageState('producto'), '', '', $uenp, 'Nuevo',$consultaProducto);
+            $ventasIngresadas = $ventas->get_Ingresadas($numeroDias, $this->getPageState('producto'), '', '', $uenp, 'Nuevo', $consultaProducto);
+            $ventasInstaladas = $ventas->get_Instaladas($numeroDias, $this->getPageState('producto'), '', '', $uenp, 'Nuevo', $consultaProducto);
             $ventasIngresadas = FunsionesSoporte::CompletarDias($ventasIngresadas, 2, $numeroDias);
             $ventasInstaladas = FunsionesSoporte::CompletarDias($ventasInstaladas, 1, $numeroDias);
 
@@ -111,7 +115,7 @@ class SiteController extends Controller {
             if (date('A', strtotime($fechaActualizacion)) == 'AM' || date('Y-m-d', strtotime($fechaActualizacion)) != date('Y-m-d')) {
                 $fechaConsulta = date('Y-m-d', strtotime("-1 day", strtotime(date('Y-m-d'))));
                 $diaConsulta = "AYER";
-            } 
+            }
             // Dia en Curso
             else {
                 $fechaConsulta = date('Y-m-d');
@@ -120,19 +124,19 @@ class SiteController extends Controller {
 
             ///// Para las Ingresadas e instaladas del dia anterior
             /// Ingresadas/Instaladas de plazas principales
-            $ingresadas_instaladas = $ventas->Ingresadas('', $this->getPageState('producto'), '', $fechaConsulta, $uenp, 'Nuevo',$consultaProducto);
+            $ingresadas_instaladas = $ventas->Ingresadas('', $this->getPageState('producto'), '', $fechaConsulta, $uenp, 'Nuevo', $consultaProducto);
             foreach ($ingresadas_instaladas as $v) {
 
                 $cumplimiento = 0;
 
                 // Presupuesto por plaza
-                $presupuesto = round(FunsionesSoporte::get_Presupuesto_X_Plaza($v['PLAZA'], $uenp, $this->getPageState('producto'), date('Y'), date('n'),'',$consultaProducto));
+                $presupuesto = round(FunsionesSoporte::get_Presupuesto_X_Plaza($v['PLAZA'], $uenp, $this->getPageState('producto'), date('Y'), date('n'), '', $consultaProducto));
 
                 // Presupuesto de las ciudades que no aparecen como plazas
-                $presupuestoOtros = round(FunsionesSoporte::get_Presupuesto_X_Plaza('', $uenp, $this->getPageState('producto'), date('Y'), date('n'),'',$consultaProducto));
+                $presupuestoOtros = round(FunsionesSoporte::get_Presupuesto_X_Plaza('', $uenp, $this->getPageState('producto'), date('Y'), date('n'), '', $consultaProducto));
 
                 // Total de instaladas por plaza por mes
-                $totalInstaladasPlaza = $ventas->get_TotalInstaladasMes($this->getPageState('producto'), $uenp, 'Nuevo', '', $v['PLAZA'],$consultaProducto);
+                $totalInstaladasPlaza = $ventas->get_TotalInstaladasMes($this->getPageState('producto'), $uenp, 'Nuevo', '', $v['PLAZA'], $consultaProducto);
 
                 if ($presupuesto != 0)
                     $cumplimiento = ($totalInstaladasPlaza / $presupuesto) * 100;
@@ -143,7 +147,7 @@ class SiteController extends Controller {
                 $ventasTotales[] = array('PLAZA' => $v['PLAZA'],
                     'INGRESADAS' => $v['INGRESADAS'],
                     'INSTALADAS' => $v['INSTALADAS'],
-                    'TOTAL_PLAZA' => $totalInstaladasPlaza,
+                    'TOTAL_PLAZA' => number_format($totalInstaladasPlaza, '0', ',', '.'),
                     'PRESUPUESTO' => number_format($presupuesto, '0', ',', '.'),
                     'CUMPLIMIENTO' => number_format($cumplimiento, '0', ',', '.'));
             }
@@ -151,7 +155,7 @@ class SiteController extends Controller {
 
             ///---------COMIENZA LA CONSULTA DE LOS DATOS DE LAS CIUDADES QUE NO SON MOSTRADAS COMO PLAZAS.(OTROS)
             // Ingresadas/Instaladas de las ciudades que no aparecen como plazas
-            $ingresadasInstaladasTotalesOtros = $ventas->IngresadasOtros('', $this->getPageState('producto'), '', $fechaConsulta, $uenp, 'Nuevo',$consultaProducto);
+            $ingresadasInstaladasTotalesOtros = $ventas->IngresadasOtros('', $this->getPageState('producto'), '', $fechaConsulta, $uenp, 'Nuevo', $consultaProducto);
             $totalInstaladas = 0;
             $totalIngresadas = 0;
 
@@ -161,7 +165,7 @@ class SiteController extends Controller {
             }
 
             // Total instaladas en el mes para las ciudades que no aparecen como plaza
-            $instaladasTotalesOtrosMes = $ventas->IngresadasOtros('', $this->getPageState('producto'), '', '', $uenp, 'Nuevo',$consultaProducto);
+            $instaladasTotalesOtrosMes = $ventas->IngresadasOtros('', $this->getPageState('producto'), '', '', $uenp, 'Nuevo', $consultaProducto);
             foreach ($instaladasTotalesOtrosMes as $ventasOtros) {
                 $totalInstaladasOtrosMes += $ventasOtros['INSTALADAS'];
             }
@@ -180,8 +184,8 @@ class SiteController extends Controller {
             else
                 $numeroDias = "Últimos $numeroDias días Hasta el " . date('d-m-Y h:i', strtotime($fechaActualizacion));
 
-            if ($proyectadoCierre != 0)
-                $totalCumplimiento = ($totalInstaladasMesActual / $proyectadoCierre) * 100;
+            if ($totalPresupuestoPlazas != 0)
+                $totalCumplimiento = ($totalInstaladasMesActual / $totalPresupuestoPlazas) * 100;
 
             $arrayDatos = array(
                 'fechaactualizacion' => $fechaActualizacion,
@@ -211,8 +215,6 @@ class SiteController extends Controller {
                 $this->render('index', $arrayDatos);
             else
                 $this->renderPartial('plantillas/ventasGeneral', $arrayDatos);
-            
-            
         } catch (Exception $e) {
             $this->render('error', array('error' => "En este momento estamos actualizando la plataforma, en breve estaremos en linea.", 'detalle' => $e->getMessage()));
         }
@@ -230,12 +232,12 @@ class SiteController extends Controller {
     public function actionPresupuestos() {
         $this->render('ventas/presupuestos');
     }
-    
+
     public function actionDetallesPlaza() {
         $nombrePlaza = Yii::app()->getRequest()->getParam('plaza');
-        $cumplimiento = Yii::app()->getRequest()->getParam('cumplimiento');        
-        
-        $this->renderPartial('plantillas/detallesPlaza',array('nombrePlaza'=>$nombrePlaza,'cumplimiento'=>$cumplimiento));
+        $cumplimiento = Yii::app()->getRequest()->getParam('cumplimiento');
+
+        $this->renderPartial('plantillas/detallesPlaza', array('nombrePlaza' => $nombrePlaza, 'cumplimiento' => $cumplimiento));
     }
 
     /**

@@ -113,7 +113,8 @@ class Ventas {
         $numeroDiaActual = date('j', strtotime(date('Y-m-d')));
         
         $numeroDiaActual;
-        if ($numeroDiaActual <= 10) {
+        // Se muestra el presupuesto
+        if ($numeroDiaActual <= 10) { 
             $proyectadoCierre = new Presupuestos();
             $proyectadoCierre = $proyectadoCierre->get_Presupuesto($tipoElemento, $uen, date('Y'),date('n'),'',1,$consultaProducto);
         }
@@ -126,7 +127,7 @@ class Ventas {
         } else {
             $proyectadoCierre = $totalInstaladasMes + ($promedioInstaladasDiasHabiles * $numeroDiasHabilesFaltantes) + ($promedioInstaladasDiasFestivos * $numeroDiasFestivosFaltantes);
         }
-
+        
 //      $proyectadoCierre = $totalInstaladasMes + ($promedioInstaladasDiasHabiles * $numeroDiasHabilesFaltantes) + ($promedioInstaladasDiasFestivos * $numeroDiasFestivosFaltantes);
         return $proyectadoCierre;
     }

@@ -19,7 +19,7 @@ class SubProductos extends CFormModel {
             $subProductos = Yii::app()->db->createCommand()
                     ->select('*')
                     ->from('SUB_PRODUCTOS')
-                    ->where('CODIGO_PRODUCTO_FK=:producto_id', array(':producto_id' => $subProductoID))
+                    ->where("CODIGO_PRODUCTO_FK IN(SELECT * FROM FS_Split(:producto_id))", array(':producto_id' => $subProductoID))
                     ->order('DESCRIPCION ASC')
                     ->queryAll();
         } else {
@@ -32,5 +32,4 @@ class SubProductos extends CFormModel {
 
         return $subProductos;
     }
-
 }

@@ -1211,7 +1211,7 @@ select {
     border: 1px solid #cccccc;
 }
 
-select[multiple],
+/*select[multiple],*/
 select[size] {
     height: auto;
 }
