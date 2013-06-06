@@ -2022,8 +2022,9 @@ table {
 
 .table th,
 .table td {
-    padding: 8px;
-    line-height: 20px;
+    font-size: 12px;
+    padding: 6px;
+    line-height: 12px;
     text-align: left;
     vertical-align: top;
     border-top: 1px solid #dddddd;
