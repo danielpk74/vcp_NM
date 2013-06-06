@@ -2,6 +2,7 @@
 <div id="filtro">
     <hr>
     <h5  style="text-align: right">Ingresos/Instalaciones del día: <?php echo date('d-m-Y', strtotime($fechaConsulta)) ?></h5>
+    
     <table  class="table table-striped table-bordered table-condensed"> 
         <tr>
             <th style='text-align: center'>PLAZA</th>
@@ -14,7 +15,18 @@
 
         <?php foreach ($ventas as $venta) { ?>
             <tr>
-                <td><a id="plaza" href="#modalDetallesPlaza" role="button" data-toggle="modal" target="<?php echo $venta['CUMPLIMIENTO']?>"><?php echo FunsionesSoporte::QuitarAcentos($venta['PLAZA']); ?></a></td>
+                <td>
+                    <a id="plaza" href="#modalDetallesPlaza" role="button" 
+                       data-toggle="modal" 
+                       data-plaza="<?php echo FunsionesSoporte::QuitarAcentos($venta['PLAZA']) ?>" 
+                       data-cumplimiento="<?php echo $venta['CUMPLIMIENTO']?>" 
+                       data-uen="<?php echo $uenc ?>"
+                       data-producto="<?php echo $producto ?>" 
+                       data-consultaProducto="<?php echo $consultaProducto ?>" 
+                       onclick="detallePlaza(this.getAttribute('data-plaza'),this.getAttribute('data-cumplimiento'),this.getAttribute('data-uen'),this.getAttribute('data-producto'),this.getAttribute('data-consultaProducto'))">
+                           <?php echo FunsionesSoporte::QuitarAcentos($venta['PLAZA']); ?>
+                     </a>
+                </td>
 
                 <td style='text-align: right'><?php
                 echo CHtml::encode($venta['INGRESADAS']);
