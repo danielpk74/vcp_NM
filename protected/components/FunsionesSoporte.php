@@ -41,8 +41,8 @@ class FunsionesSoporte {
         $strSetValue .= "</dataset>";
         return $strSetValue;
     }
-    
-     /**
+
+    /**
      * Genera el string necesario para crear el grafico MSLine
      * @param string $titulo
      * @param string $subTitulo
@@ -74,9 +74,6 @@ class FunsionesSoporte {
 
         return $strXML;
     }
-    
-    
-    
 
     /**
      * Genera el string necesario para crear el grafico MSLine
@@ -197,14 +194,14 @@ class FunsionesSoporte {
      * @param date $fecha una fecha
      * @return string
      */
-    public static function get_NombreMes($fecha,$todos=false) {
-        if(!$todos)
+    public static function get_NombreMes($fecha, $todos = false) {
+        if (!$todos)
             $mes = date("m", strtotime($fecha));
 
         $meses = array('01' => 'Enero', '02' => 'Febrero', '03' => 'Marzo', '04' => 'Abril', '05' => 'Mayo', '06' => 'Junio',
             '07' => 'Julio', '08' => 'Agosto', '09' => 'Septiembre', '10' => 'Octubre', '11' => 'Noviembre', '12' => 'Diciembre');
 
-        if(!$todos)
+        if (!$todos)
             return $meses[$mes];
         else
             return $meses;
@@ -345,18 +342,19 @@ class FunsionesSoporte {
 
         return $cantidadPresupuesto;
     }
-    
-    public function generar_Cadena_Separada($array,$separadorInicial='_',$separadorFinal=',') {
-        $productos = explode("_", $productoID);
-            for ($i = 0; $i < Count($productos); $i++) {
-                if ($productos[$i] != "") {
-                    $producto .= $productos[$i];
-                    if ($i < Count($productos)-1)
-                        $producto.=",";
-                }
-            }
-    }
 
+    /**
+     * Devuelve el ultimo dia del mes consultado
+     * @param int $mes el mes del que se desea obtener el ultimo dia
+     * @param inte $anio el año del mes
+     * @return integer el ultimo dia del mes en numero ejemplo 31
+     */
+    public static function get_Ultimo_dia_Mes($mes,$anio) {
+         $mes = mktime( 0, 0, 0, $mes, 1, $anio ); 
+         setlocale('LC_ALL', 'co_CO');
+            
+         return intval(date("t",$mes));
+    }
 }
 
 ?>
