@@ -17,7 +17,10 @@ class FunsionesSoporte {
     public static function GenerarCategoryXMLChart($datos, $nombreCampo) {
         $strCategoryLabel = "<categories>";
         foreach ($datos as $dato) {
-            $strCategoryLabel .=" <category label='" . $dato[$nombreCampo] . "' /> ";
+            if(is_array($dato)) 
+                $strCategoryLabel .=" <category label='" . $dato[$nombreCampo] . "' /> ";
+            else
+                $strCategoryLabel .=" <category label='" . $dato. "' /> ";
         }
         $strCategoryLabel .="</categories>";
 
@@ -31,17 +34,25 @@ class FunsionesSoporte {
      * @param string $nombreCampo El nombre del campo que contiene el valor del DataSet, ejemplo el campo TOTAL_INGRESADAS => 20
      * @return string
      */
-    public static function GenerarValueXMLChart($datos, $nombreDataSet, $nombreCampo) {
-//      color='1D8BD1' anchorbordercolor='1D8BD1' anchorbgcolor='1D8BD1'
-        $strSetValue = "<dataset seriesname='$nombreDataSet' >";
-//        $strSetValue = "";
+    public static function GenerarValueXMLChart($datos, $nombreDataSet, $nombreCampo,$line=false,$color='') {
+//       color='1D8BD1' anchorbordercolor='1D8BD1' anchorbgcolor='1D8BD1'
+        
+        if($color!='')
+            $color = "color='$color'";
+        
+        // Si el tipo de grafico es combined, 
+        if($line) 
+            $strSetValue = "<dataset seriesName='$nombreDataSet' renderAs='Line'>";
+        else
+            $strSetValue = "<dataset seriesname='$nombreDataSet' $color>";
+
         foreach ($datos as $dato) {
             $strSetValue .= "<set value='" . $dato[$nombreCampo] . "' />";
         }
         $strSetValue .= "</dataset>";
         return $strSetValue;
     }
-
+    
     /**
      * Genera el string necesario para crear el grafico MSLine
      * @param string $titulo
@@ -54,26 +65,53 @@ class FunsionesSoporte {
      */
     public static function GenerarXML_ChartCombined($titulo, $subTitulo, $categorias, $dataSets, $TituloX = "", $TituloY = "") {
         $strXML .="<chart canvasBaseColor='D9E5F1' canvasBgColor='D9E5F1' showValues='0' caption='Total crimes for 2005-06' >";
-
+        
         // Categorias
         $strXML .= $categorias;
-
+        
         // DataSets
         $strXML .= $dataSets;
-
+        
         $strXML .= "<styles>";
         $strXML .="<definition>";
         $strXML . "<style blurY='5' Alpha='50' Color='8F8F8F' Distance='8' name='Shadow_0' type='Shadow'/>";
         $strXML .="</definition>";
-
+        
         $strXML .="<application>";
         $strXML .="<apply styles='Shadow_0' toObject='DATAPLOT'/>";
         $strXML .="</application>";
         $strXML .="</styles>";
         $strXML .="</chart>";
-
+        
         return $strXML;
     }
+    
+    
+    /**
+     * Genera el string necesario para crear el grafico MSLine
+     * @param string $titulo
+     * @param string $subTitulo
+     * @param array $categorias
+     * @param array $dataSets
+     * @param string $TituloX
+     * @param string $TituloY
+     * @return string XML para generar grafico FusionChart
+     */
+    public static function GenerarXML_ChartCombinedColumn($titulo, $subTitulo, $categorias, $dataSets) {
+        $strXML .="<chart showValues='0' caption='$titulo' numberPrefix='' xAxisName='Dias' yAxisName='$subTitulo' useRoundEdges='1' >";
+        
+            // Categorias
+            $strXML .= $categorias;
+
+            // DataSets
+            $strXML .= $dataSets;
+       
+        $strXML .="</chart>";
+        
+        return $strXML;
+    }
+    
+    
 
     /**
      * Genera el string necesario para crear el grafico MSLine
@@ -86,7 +124,7 @@ class FunsionesSoporte {
      * @return string XML para generar grafico FusionChart
      */
     public static function GenerarXML_Chart($titulo, $subTitulo, $categorias, $dataSets, $TituloX = "", $TituloY = "") {
-        $strXML .="<chart caption='$titulo' canvasborderalpha='0' subcaption='$subTitulo' linethickness='3' 
+        $strXML .="<chart palette='1' caption='$titulo' canvasborderalpha='0' subcaption='$subTitulo' linethickness='3' 
                    showvalues='1' formatnumberscale='0' anchorradius='3' divlinealpha='20' stack100percent='0'
                    divlinecolor='0' chartbottommargin='35' divlineisdashed='1' showalternatehgridcolor='0' 
                    alternatehgridalpha='0' alternatehgridcolor='CC3300' shadowalpha='40' labelstep='1' 
@@ -131,6 +169,18 @@ class FunsionesSoporte {
 
         return $strColorRange;
     }
+    
+    public static function GenerarXML_Combi2D2($titulo,$categorias,$dataSets) {
+
+        $strXML = "<chart palette='6' caption='$titulo' subCaption='' showValues='0' divLineDecimalPrecision='1' limitsDecimalPrecision='1' PYAxisName='Presupuesto' SYAxisName='' numberPrefix='' formatNumberScale='0' >";
+            $strXML .= $categorias;
+            $strXML .= $dataSets;    
+        $strXML .= "</chart>";
+
+        return $strXML;
+    }
+    
+    
 
     public static function GenerarXML_AngularGauge($valorMinimo = 0, $valorMaximo = 120, $valorDial = 0) {
 
@@ -354,6 +404,20 @@ class FunsionesSoporte {
          setlocale('LC_ALL', 'co_CO');
             
          return intval(date("t",$mes));
+    }
+    
+    public static function get_Porcentaje($numeroA,$numeroB,$numeroDecimales=1) {
+        if($numeroB != 0)
+            return number_format(($numeroA/$numeroB) * 100,$numeroDecimales,',','.');
+        else 
+            return 0;
+    }
+    
+    
+    public static function get_ColoresUne($indice) {
+        $colores = array('#cd0a0a','#aaa','#fed22f','#f89406');
+            
+        return $colores[$indice];
     }
 }
 

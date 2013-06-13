@@ -45,15 +45,17 @@
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
                             </a>
+                            
+                            <!--- INICIA MENU -->
                             <div class="nav-collapse collapse navbar-responsive-collapse">
                                 <ul class="nav">
-                                     <li><?php echo CHtml::linkButton('Inicio',array('submit'=>array('index')));?></li>
+                                    <!--<li><?php echo CHtml::linkButton('Retiros',array('submit'=>array('retiros')));?></li>-->
+                                    <li><?php echo CHtml::linkButton('Inicio',array('submit'=>array('index')));?></li>
                                     <li class="dropdown">
                                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Ventas <b class="caret"></b></a>
                                         <ul class="dropdown-menu">
                                              <li><?php echo CHtml::linkButton('Presupuestos',array('submit'=>array('Presupuestos')));?></li>
-                                             <li><?php echo CHtml::linkButton('Ventas Generales',array('submit'=>array('Presupuestos')));?></li>
-                                             <li><?php echo CHtml::linkButton('Cumplimientos','');?></li>
+                                             <li><?php echo CHtml::link('Ventas Generales',array('VentasGenerales'));?></li>
                                         </ul>
                                     </li>
                                     <li class="dropdown" style="display: none">
@@ -78,7 +80,10 @@
                                         </ul>
                                     </li>
                                 </ul>
-                            </div><!-- /.nav-collapse -->
+                            </div>
+                            <!--- TERMINA MENU -->
+                            
+                            
                         </div>
                     </div><!-- /navbar-inner -->
                 </div><!-- /navbar -->

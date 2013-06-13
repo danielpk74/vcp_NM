@@ -23,25 +23,13 @@ class SiteController extends Controller {
     }
 
     /**
-     * Actualiza la tabla y el grafico de ventas.
-     */
-    public function actionActualizarDetallesVentas() {
-        if (Yii::app()->request->isAjaxRequest) {
-            $productoID = Yii::app()->getRequest()->getParam('color');
-            $subProducto = new SubProductos();
-
-            if ($productoID != '') {
-                $subProductos = $subProducto->get_SubProductos($productoID);
-                $this->renderPartial('plantillas/ventasGeneral', array('subProductos' => $subProductos, 'subProducto_' => $subProducto));
-            }
-        }
-    }
-
-    /**
      * Action por defecto cuando se ingresa a la aplicacion.
      */
     public function actionIndex() {
         try {
+            
+            Usuarios::registrarUsuario($_SERVER["REMOTE_ADDR"], date('Y-m-d H:i:s'));
+            
             $fechaActualizacion = Configuracion::get_FechaActualizacion();
 
             $producto_ = new Productos();
@@ -77,7 +65,7 @@ class SiteController extends Controller {
 
                 if (Yii::app()->getRequest()->getParam('subproducto') == "" && Yii::app()->getRequest()->getParam('producto') == "") {
                     // Si no se realiza un filtro de ningun producto automaticamente tomara 4G
-                    $this->setPageState('producto', '4G');
+                    $this->setPageState('producto', '4G,4G FIJO');
                 } else {
                     // Si consulta solo por producto
                     if (Yii::app()->getRequest()->getParam('subproducto') == "") {
@@ -94,7 +82,7 @@ class SiteController extends Controller {
             // Si no es una peticion ajax, consultara automaticamente 4G
             else {
                 $subProductos = $subProducto->get_SubProductos('');
-                $this->setPageState('producto', '4G');
+                $this->setPageState('producto', '4G,4G FIJO');
             }
 
             $ventas = new Ventas();
@@ -123,7 +111,7 @@ class SiteController extends Controller {
 
             $proyectadoCierre = $ventas->get_ProyectadoMes($this->getPageState('producto'), $uenc, 'Nuevo', '', '', $consultaProducto);
 
-
+            // Consulta inicial/Consulta de evolucion diaria.
             if ($fecha == '') {
                 // --- Define si muestra los datos del dia anterior o del dia en curso
                 // Dia anterior
@@ -136,12 +124,8 @@ class SiteController extends Controller {
                     $fechaConsulta = date('Y-m-d');
                     $diaConsulta = "HOY";
                 }
-            } else {
-                if (date('A', strtotime($fechaActualizacion)) == 'AM' || date('Y-m-d', strtotime($fechaActualizacion)) != date('Y-m-d'))
-                    $fechaConsulta = date('Y-m-d', strtotime("-1 day", strtotime(date('Y-m-d'))));
-                else
-                    $fechaConsulta = date('Y-m-d', strtotime(($fecha)));
-
+            } else { // Consulta por mes
+                $fechaConsulta = $fecha;
                 $diaConsulta = "";
             }
 
@@ -250,24 +234,77 @@ class SiteController extends Controller {
         }
     }
 
-    public function actionActualizar() {
-        $Actualizar = new Actualizar();
-        $Actualizar->ActualizarTemporal();
+    /**
+     * visualiza el view de retiros
+     */
+    public function actionRetiros() {
+        try {
+            
+            var_dump($ventasMeses);
 
-        $fechaActualizacion = date('Y-m-d');
-
-        $this->render('actualizar', array('fechaactualizacion' => $fechaActualizacion));
+            $this->render('retiros/detalleRetiros');
+        } catch (Exception $e) {
+            $this->render('error', array('error' => "En este momento estamos actualizando la plataforma, en breve estaremos en linea.", 'detalle' => $e->getMessage()));
+        }
     }
 
+    /**
+     * visualiza el view de retiros
+     */
+    public function actionVentasGenerales() {
+        try {
+            $opcion = "Ingresos ";
+            $meses = FunsionesSoporte::get_NombreMes('', true);
+            
+            $presupuesto = new Presupuestos();
+            $presupuestoMeses = $presupuesto->get_Presupuesto('4G,4G FIJO','', 2013, '', '',2,'1');
+            
+            $ventas = new Ventas();
+            $instaladas = $ventas->get_InstaladasTotales_X_Mes('', '4G,4G FIJO', '', '', '', 'Nuevo', '1');
+            $ingresadas = $ventas->get_IngresadasTotales_X_Mes('', '4G,4G FIJO', '', '', '', 'Nuevo', '1');
+            $anuladas = $ventas->get_Anuladas_X_Mes('', '4G,4G FIJO', '', '', '', 'Nuevo', '1');
+            $ventasRegional = $ventas->get_IngresadasTotales_X_Mes_X_Regional(7, '4G,4G FIJO', '', '', '', 'Nuevo', '1');
+            
+            // Generamos las fechas de la categoria del grafico
+            $fecha = "";
+            foreach ($ventasRegional as $ventas) {
+                if ($fecha != $ventas['FECHA_INGRESO']) {
+                    $fecha = $ventas['FECHA_INGRESO'];
+                    $arrayFechas[] = array('FECHA_INGRESO' => $fecha);
+                }
+            }
+            
+            // Genera el array requerido para el tipo de grafico utilizado
+            $ventasRegional = RegionalesController::get_Ventas_CombinedColumn($ventasRegional);
+            
+            $this->render('ventas/ventasGenerales', array('meses' => $meses,
+                                                          'presupuesto'=>$presupuestoMeses,
+                                                          'instaladas'=>$instaladas,
+                                                          'ingresadas'=>$ingresadas,
+                                                          'anuladas'=>$anuladas,
+                                                          'fechas'=>$arrayFechas,
+                                                          'ventasRegional'=>$ventasRegional,
+                                                          'opcion'=>$opcion));
+        } catch (Exception $e) {
+            $this->render('error', array('error' => "En este momento estamos actualizando la plataforma, en breve estaremos en linea.", 'detalle' => $e->getMessage()));
+        }
+    }
+
+    /**
+     * visualiza el view de presupuestos
+     */
     public function actionPresupuestos() {
         $this->render('ventas/presupuestos');
     }
 
+    /**
+     * visualiza el view de detalles por plaza
+     */
     public function actionDetallesPlaza() {
         $nombrePlaza = Yii::app()->getRequest()->getParam('plaza');
 
         $ventas = new Ventas();
-        $ventasCanal = $ventas->get_Instaladas_Canales_Mes(Yii::app()->getRequest()->getParam('producto'), Yii::app()->getRequest()->getParam('uen'), $nombrePlaza, 'Nuevo', Yii::app()->getRequest()->getParam('consultaProducto'));
+        $ventasCanal = $ventas->get_Instaladas_Canales_Mes(Yii::app()->getRequest()->getParam('producto'), Yii::app()->getRequest()->getParam('uen'), $nombrePlaza, 'Nuevo', Yii::app()->getRequest()->getParam('consultaProducto'), Yii::app()->getRequest()->getParam('fechaConsulta'));
 
         $this->renderPartial('plantillas/detallesPlaza', array('nombrePlaza' => $nombrePlaza, 'cumplimiento' => Yii::app()->getRequest()->getParam('cumplimiento'), 'ventasCanal' => $ventasCanal));
     }

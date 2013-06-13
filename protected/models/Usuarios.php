@@ -20,7 +20,7 @@ class Usuarios extends CFormModel {
         $usuarios = Yii::app()->db->createCommand()
                 ->select('*')
                 ->from('USUARIOS')
-                ->where('USUARIO_ID =:username',array(':username'=>$username))
+                ->where('USUARIO_ID =:username', array(':username' => $username))
                 ->queryAll();
 
         return $usuarios;
@@ -57,4 +57,11 @@ class Usuarios extends CFormModel {
             return false;
     }
 
+    public static function registrarUsuario($codigoUsuarioFk, $fechaIngreso) {
+        $command = Yii::app()->db->createCommand();
+        $command->insert('USUARIOS_LOG_INGRESO', array(
+            'CODIGO_USUARIO_FK' => $codigoUsuarioFk,
+            'FECHA_INGRESO' => $fechaIngreso,
+        ));
+    }
 }

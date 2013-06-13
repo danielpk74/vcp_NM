@@ -23,7 +23,8 @@
                        data-uen="<?php echo $uenc ?>"
                        data-producto="<?php echo $producto ?>" 
                        data-consultaProducto="<?php echo $consultaProducto ?>" 
-                       onclick="detallePlaza(this.getAttribute('data-plaza'),this.getAttribute('data-cumplimiento'),this.getAttribute('data-uen'),this.getAttribute('data-producto'),this.getAttribute('data-consultaProducto'))">
+                       data-fechaConsulta="<?php echo $fechaConsulta ?>" 
+                       onclick="detallePlaza(this.getAttribute('data-plaza'),this.getAttribute('data-cumplimiento'),this.getAttribute('data-uen'),this.getAttribute('data-producto'),this.getAttribute('data-consultaProducto'),this.getAttribute('data-fechaConsulta'))">
                            <?php echo FunsionesSoporte::QuitarAcentos($venta['PLAZA']); ?>
                      </a>
                 </td>

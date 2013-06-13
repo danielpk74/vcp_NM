@@ -63,7 +63,7 @@ class Ventas {
      * Devuelve el numero de pedidos ingresados en el mes actual
      * @return string numero de ingresados
      */
-    public function get_TotalIngresadasMes($tipoElemento, $uen = '', $tipoSolicitud = 'Nuevo', $tipoDia = '', $plaza = '',$mes, $consultaProducto = '') {
+    public function get_TotalIngresadasMes($tipoElemento, $uen = '', $tipoSolicitud = 'Nuevo', $tipoDia = '', $plaza = '', $mes, $consultaProducto = '') {
         $ventasIngresadasMes = Yii::app()->db->createCommand("SP_Ingresadas_Instaladas_X_Mes '1','$tipoElemento','$uen','$tipoSolicitud','$tipoDia','$plaza','$mes','$consultaProducto'")->queryScalar();
         return $ventasIngresadasMes;
     }
@@ -72,7 +72,7 @@ class Ventas {
      * Devuelve el numero de pedidos instalados en el mes actual
      * @return string numero de instalados
      */
-    public function get_TotalInstaladasMes($tipoElemento, $uen = '', $tipoSolicitud = 'Nuevo', $tipoDia = '', $plaza = '',$mes, $consultaProducto = '') {
+    public function get_TotalInstaladasMes($tipoElemento, $uen = '', $tipoSolicitud = 'Nuevo', $tipoDia = '', $plaza = '', $mes, $consultaProducto = '') {
         $ventasInstaladasMes = Yii::app()->db->createCommand("SP_Ingresadas_Instaladas_X_Mes '2','$tipoElemento','$uen','$tipoSolicitud','$tipoDia','$plaza','$mes','$consultaProducto'")->queryScalar();
         return $ventasInstaladasMes;
     }
@@ -154,9 +154,68 @@ class Ventas {
      * @param type $consultaProducto
      * @return string numero de ingresados
      */
-    public function get_Instaladas_Canales_Mes($tipoElemento, $uen = '', $plaza = '', $tipoSolicitud = 'Nuevo', $consultaProducto = '') {
-        $ventasIngresadasMes = Yii::app()->db->createCommand("SP_Instaladas_Ingresadas_Canal '3','$tipoElemento','$uen','$plaza','$tipoSolicitud','$consultaProducto'")->queryAll();
+    public function get_Instaladas_Canales_Mes($tipoElemento, $uen = '', $plaza = '', $tipoSolicitud = 'Nuevo', $consultaProducto = '', $fechaConsulta = '') {
+        $ventasIngresadasMes = Yii::app()->db->createCommand("SP_Instaladas_Ingresadas_Canal '3','$tipoElemento','$uen','$plaza','$tipoSolicitud','$consultaProducto','$fechaConsulta'")->queryAll();
         return $ventasIngresadasMes;
+    }
+
+    /**
+     * Obtiene el numero de pedidos instalados por plaza agrupado por fecha, partiendo desde 
+     * el numero de dias enviados por parametros, hasta la fecha actual.
+     * @param integer $dias el numero de dias desde que se debe traer el historial
+     * @return array con los datos de los ingresos agrupados por fecha
+     */
+    public function get_InstaladasTotales_X_Mes($dias, $tipoElemento, $plaza = '', $fecha = '', $uen = '', $tipoSolicitud = 'Nuevo', $consultaProducto = '') {
+        $ventas = Yii::app()->db->createCommand("SP_Consultas_Ingresos_Retiros '5','$dias','$tipoElemento','$plaza','$fecha','$uen','$tipoSolicitud','$consultaProducto'")->queryAll();
+        return $ventas;
+    }
+
+    /**
+     * Obtiene el numero de pedidos ingresadas por meses
+     * @param type $dias
+     * @param type $tipoElemento
+     * @param type $plaza
+     * @param type $fecha
+     * @param type $uen
+     * @param type $tipoSolicitud
+     * @param type $consultaProducto
+      @return array con los datos de los ingresos agrupados por fecha
+     */
+    public function get_IngresadasTotales_X_Mes($dias, $tipoElemento, $plaza = '', $fecha = '', $uen = '', $tipoSolicitud = 'Nuevo', $consultaProducto = '') {
+        $ventas = Yii::app()->db->createCommand("SP_Consultas_Ingresos_Retiros '6','$dias','$tipoElemento','$plaza','$fecha','$uen','$tipoSolicitud','$consultaProducto'")->queryAll();
+        return $ventas;
+    }
+    
+    /**
+     * Obtiene el numero de pedidos ingresadas por meses
+     * @param type $dias
+     * @param type $tipoElemento
+     * @param type $plaza
+     * @param type $fecha
+     * @param type $uen
+     * @param type $tipoSolicitud
+     * @param type $consultaProducto
+      @return array con los datos de los ingresos agrupados por fecha
+     */
+    public function get_Anuladas_X_Mes($dias, $tipoElemento, $plaza = '', $fecha = '', $uen = '', $tipoSolicitud = 'Nuevo', $consultaProducto = '') {
+        $ventas = Yii::app()->db->createCommand("SP_Consultas_Anuladas '1','$dias','$tipoElemento','$plaza','$fecha','$uen','$tipoSolicitud','$consultaProducto'")->queryAll();
+        return $ventas;
+    }
+    
+    /**
+     * Obtiene el numero de pedidos ingresadas por meses
+     * @param type $dias
+     * @param type $tipoElemento
+     * @param type $plaza
+     * @param type $fecha
+     * @param type $uen
+     * @param type $tipoSolicitud
+     * @param type $consultaProducto
+      @return array con los datos de los ingresos agrupados por fecha
+     */
+    public function get_IngresadasTotales_X_Mes_X_Regional($dias, $tipoElemento, $plaza = '', $fecha = '', $uen = '', $tipoSolicitud = 'Nuevo', $consultaProducto = '') {
+        $ventas = Yii::app()->db->createCommand("SP_Consultas_Regional '1','$dias','$tipoElemento','$plaza','$fecha','$uen','$tipoSolicitud','$consultaProducto'")->queryAll();
+        return $ventas;
     }
 }
 

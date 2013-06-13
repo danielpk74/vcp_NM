@@ -46,11 +46,11 @@ require_once ('/protected/components/FusionCharts.php');
         $("select").multiselect();
     })
 
-    function detallePlaza(plaza, cumplimiento, uen, producto,consultaProducto)
+    function detallePlaza(plaza, cumplimiento, uen, producto,consultaProducto,fechaConsulta)
     {
-        jQuery.ajax({'type': 'POST', 'url': '<?php echo CController::createUrl('Site/DetallesPlaza'); ?>', 'data': {'plaza': plaza, 'cumplimiento': cumplimiento, 'uen': uen, 'producto': producto, 'consultaProducto': consultaProducto}, 'success': function(data) {
+        jQuery.ajax({'type': 'POST', 'url': '<?php echo CController::createUrl('Site/DetallesPlaza'); ?>', 'data': {'plaza': plaza, 'cumplimiento': cumplimiento, 'uen': uen, 'producto': producto, 'consultaProducto': consultaProducto, 'fechaConsulta': fechaConsulta}, 'success': function(data) {
                 $('#modalDetallesPlaza').html(data);
-            }, 'cache': false});
+        }, 'cache': false});
     }
 
     function actualizarSelect(idSelectOrigen, idSelecDetino)
@@ -76,7 +76,7 @@ require_once ('/protected/components/FusionCharts.php');
     }
 </script>
 
-<h4>Estado Actual de Ventas - <?php echo "última Actualización " . date('d-m-Y h:i', strtotime($fechaactualizacion)) ?> </h4>
+<h5>Estado Actual de Ventas - <?php echo "última Actualización " . date('d-m-Y h:i', strtotime($fechaactualizacion)) ?> </h5>
 <hr>
 
 <?php
@@ -114,7 +114,7 @@ require_once ('/protected/components/FusionCharts.php');
 
 <h5 style="text-align: right"><?php echo CHtml::ajaxButton('FILTRAR', CController::createUrl('Site/Index'), $option, array('name' => 'btnDetallesVentas', 'class' => 'btn btn-mini')); ?></h5>
 <div id="detallesVentas" >    
-    <?php require_once ('/plantillas/ventasGeneral.php'); ?>    
+    <?php require_once ('ventasGeneral.php'); ?>    
 </div>
 
 <!-- Modal -->

@@ -6290,3 +6290,9 @@ body.loading .ajaxmodal {
 .table tr:hover {
     background-color: #FFF6BF;
 }
+
+.une {
+/*    background-color: #C00;*/
+    background:transparent url(../images/barra.jpg);
+    color:white;
+}
