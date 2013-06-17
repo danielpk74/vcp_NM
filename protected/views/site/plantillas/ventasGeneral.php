@@ -12,7 +12,7 @@
             <th style='text-align: center'>PRESUPUESTO MES</th>                
             <th style='text-align: center'>CUMPLIMIENTO</th>      
         </tr>
-
+        
         <?php foreach ($ventas as $venta) { ?>
             <tr>
                 <td>

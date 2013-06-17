@@ -8,9 +8,9 @@ require_once ('/protected/components/FusionCharts.php');
 
 <script type="text/javascript">
     $().ready(function() {
-        $('#productos').multiselect({multiple: true, height: 140, minWidth: 180, noneSelectedText: '--Producto--'});
-        $('#sub_productos').multiselect({height: 140, minWidth: 180, noneSelectedText: '--Sub Producto--'});
-        $('#uen').multiselect({height: 140, minWidth: 180, noneSelectedText: '--UEN--'});
+        $('#productos').multiselect({multiple: true, height: 140, minWidth: 185, noneSelectedText: '--Producto--'});
+        $('#sub_productos').multiselect({height: 140, minWidth: 185, noneSelectedText: '--Sub Producto--'});
+        $('#uen').multiselect({height: 140, minWidth: 185, noneSelectedText: '--UEN--'});
       
         $('#cbo_periodo').multiselect({
             multiple: false,
@@ -59,7 +59,7 @@ require_once ('/protected/components/FusionCharts.php');
             $('#' + idSelecDetino).multiselect("destroy");
             $("select#" + idSelecDetino).empty();
             $("select#" + idSelecDetino).append(j);
-            $('#' + idSelecDetino).multiselect({height: 140, minWidth: 180, noneSelectedText: '--Sub Producto--'});
+            $('#' + idSelecDetino).multiselect({height: 140, minWidth: 185, noneSelectedText: '--Sub Producto--'});
 
             if ($(idSelectOrigen).val() != "") {
                 $('#' + idSelecDetino).multiselect("enable");

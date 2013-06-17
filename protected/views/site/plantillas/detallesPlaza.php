@@ -74,12 +74,10 @@
                     <div style=" height: 500px;  font-size: 12px; overflow: auto; " >
                         <table  class="table table-striped table-bordered table-condensed" > 
                             <tr>
-                                <th style='text-align: left'>CANAL</th>   
+                                <th style='text-align: left;height: auto;width: 500px\9'>CANAL</th>   
                                 <th style='text-align: left'>INGRESADAS</th>   
                             </tr>
                             
-                            
-
                             <?php 
                             foreach ($ventasCanal as $venta) { ?>
                                 <?php if($venta['INGRESADAS'] != 0) {?>

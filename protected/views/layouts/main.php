@@ -6,19 +6,18 @@
         <meta name="language" content="es"/>
 
         <link rel="shortcut icon" href="<?php echo Yii::app()->request->baseUrl; ?>/images/favicon.ico">
-
             <!-- blueprint CSS framework -->
             <!--<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/screen.css" media="screen, projection" />-->
             <!--<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/print.css" media="print" />-->
             <!-- [if IE] -->
-            <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/ie.css"  />
+            <!--<link rel="stylesheet" type="text/css" href="?php echo Yii::app()->request->baseUrl; ?>/css/ie.css"  />-->
             <!-- [endif] -->
 
 <!--        <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/main.css" />
             <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/form.css" />-->
             <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/bootstrap-responsive.css" />
             <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/bootstrap.css" />
-            
+
             <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/jquery.multiselect.css" />
             <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/jquery-ui.css" />
 
@@ -45,19 +44,20 @@
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
                             </a>
-                            
+
                             <!--- INICIA MENU -->
                             <div class="nav-collapse collapse navbar-responsive-collapse">
                                 <ul class="nav">
-                                    <!--<li><?php echo CHtml::linkButton('Retiros',array('submit'=>array('retiros')));?></li>-->
-                                    <li><?php echo CHtml::linkButton('Inicio',array('submit'=>array('index')));?></li>
+                                    <!--<li><?php echo CHtml::linkButton('Retiros', array('submit' => array('retiros'))); ?></li>-->
+                                    <li><?php echo CHtml::linkButton('Inicio', array('submit' => array('index'))); ?></li>
                                     <li class="dropdown">
                                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Ventas <b class="caret"></b></a>
                                         <ul class="dropdown-menu">
-                                             <li><?php echo CHtml::linkButton('Presupuestos',array('submit'=>array('Presupuestos')));?></li>
-                                             <li><?php echo CHtml::link('Ventas Generales',array('VentasGenerales'));?></li>
+                                            <li><?php echo CHtml::linkButton('Presupuestos', array('submit' => array('Presupuestos'))); ?></li>
+                                            <li><?php echo CHtml::link('Ventas Generales', array('VentasGenerales')); ?></li>
                                         </ul>
                                     </li>
+                                    
                                     <li class="dropdown" style="display: none">
                                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pedidos <b class="caret"></b></a>
                                         <ul class="dropdown-menu">
@@ -65,16 +65,52 @@
                                             <li><a href="#">Retiros</a></li>
                                         </ul>
                                     </li>
-                                     
+                                    
                                     <li class="dropdown">
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Descargar <b class="caret"></b></a>
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Descargas <b class="caret"></b></a>
                                         <ul class="dropdown-menu">
                                             <li><a id='detalles' href="<?php echo Yii::app()->request->baseUrl; ?>../../archivosdetalles/MOVILIDAD_4G_LTE_y_3G.xlsx"/>Detalles</a></li>
+                                            <li  class="dropdown-submenu">
+                                                <a href="#">Regional Centro</a>
+                                                <ul class="dropdown-menu">
+                                                    <li><a href="http://dcastamo/FACTURACION/4G/Facturacion_4G_MIGUEL.xlsx">Facturación</a></li>
+                                                    <li><a href="http://dcastamo/Ventas/Informe Regionales 4G.xlsm">Informe Regionales</a></li>
+                                                    <li><?php echo CHtml::link('Descargas Especificas', array('DescargasEspecificasRegionalCentro')); ?></li>
+                                                </ul>
+                                            </li>
+                                            
+                                            <li  class="dropdown-submenu">
+                                                <a href="#">Regional NorOccidente</a>
+<!--                                                <ul class="dropdown-menu">
+                                                    <li><a href="http://dcastamo/FACTURACION/4G/Facturacion_4G_MIGUEL.xlsx">Facturación</a></li>
+                                                    <li><a href="http://dcastamo/Ventas/Informe Regionales 4G.xlsm">Informe Regionales</a></li>
+                                                    <li><?php echo CHtml::link('Descargas Especificas', array('DescargasEspecificasRegionalCentro')); ?></li>
+                                                </ul>-->
+                                            </li>
+                                            
+                                            <li  class="dropdown-submenu">
+                                                <a href="#">Regional Norte</a>
+<!--                                                <ul class="dropdown-menu">
+                                                    <li><a href="http://dcastamo/FACTURACION/4G/Facturacion_4G_MIGUEL.xlsx">Facturación</a></li>
+                                                    <li><a href="http://dcastamo/Ventas/Informe Regionales 4G.xlsm">Informe Regionales</a></li>
+                                                    <li><?php echo CHtml::link('Descargas Especificas', array('DescargasEspecificasRegionalCentro')); ?></li>
+                                                </ul>-->
+                                            </li>
+                                            
+                                            <li  class="dropdown-submenu">
+                                                <a href="#">Regional Sur</a>
+<!--                                                <ul class="dropdown-menu">
+                                                    <li><a href="http://dcastamo/FACTURACION/4G/Facturacion_4G_MIGUEL.xlsx">Facturación</a></li>
+                                                    <li><a href="http://dcastamo/Ventas/Informe Regionales 4G.xlsm">Informe Regionales</a></li>
+                                                    <li><?php echo CHtml::link('Descargas Especificas', array('DescargasEspecificasRegionalCentro')); ?></li>
+                                                </ul>-->
+                                            </li>
+                                            
                                         </ul>
                                     </li>
-                                    
+
                                     <li class="dropdown" style="display: none">
-                                        <?php echo CHtml::linkButton('Actualizar',array('submit'=>array('Actualizar')));?>
+                                        <?php echo CHtml::linkButton('Actualizar', array('submit' => array('Actualizar'))); ?>
                                         <ul class="dropdown-menu">
                                             <li></li>
                                         </ul>
@@ -82,8 +118,6 @@
                                 </ul>
                             </div>
                             <!--- TERMINA MENU -->
-                            
-                            
                         </div>
                     </div><!-- /navbar-inner -->
                 </div><!-- /navbar -->

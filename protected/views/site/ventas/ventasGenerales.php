@@ -139,19 +139,6 @@ require_once ('/protected/components/FusionCharts.php');
 <hr>
 <br>
 
-<!-- COMIENZA INGRESOS POR REGIONAL -->
-<div class="tabbable"> <!-- Only required for left/right tabs -->
-  <ul class="nav nav-tabs">
-    <li class="active"><a href="#tab1" data-toggle="tab">Ingresadas</a></li>
-    <li><a href="#tab2" data-toggle="tab">Instaladas</a></li>
-  </ul>
-  <div class="tab-content">
-    <div id="detallesPlaza" class="tab-pane active" id="tab1">
+
       <?php require_once ('detallesRegional.php'); ?>    
-    </div>
-  </div>
-</div>
-
-
-<!-- TERMINA INGRESOS POR REGIONAL -->
-
+  

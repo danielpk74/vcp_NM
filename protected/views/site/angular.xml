@@ -1,20 +1,51 @@
-    <chart lowerLimit='0' upperLimit='100' lowerLimitDisplay='Bad' 
-           upperLimitDisplay='Good' gaugeStartAngle='180' gaugeEndAngle='0'
-           palette='1' numberSuffix='%' tickValueDistance='20' showValue='1' decimals='0' editMode='1'>
-        <colorRange>
-           <color minValue='0' maxValue='75' code='FF654F'/>
-           <color minValue='75' maxValue='90' code='F6BD0F'/>
-           <color minValue='90' maxValue='100' code='8BBA00'/>
-        </colorRange>
-   <dials>
-      <dial id='CS' value='92' rearExtension='10'/>
-   </dials>
-<styles>
-   <definition>
-      <style type='font' name='myValueFont' bgColor='F1f1f1' borderColor='999999' />
-   </definition>
-   <application>
-      <apply toObject='Value' styles='myValueFont' />
-   </application>
-</styles>
+<chart showValues='0' caption='Instaladas X Regional' numberPrefix='' xAxisName='Dias' yAxisName='Cantidad Instalada' useRoundEdges='1' >
+    <categories> 
+        <category label='2013-06-07' />  
+        <category label='2013-06-08' />  
+        <category label='2013-06-09' />  
+        <category label='2013-06-10' />  
+        <category label='2013-06-11' />  
+        <category label='2013-06-12' />  
+        <category label='2013-06-13' />  
+        <category label='2013-06-14' /> 
+    </categories>
+    <dataset seriesname='Centro' >
+        <set value='195' />
+        <set value='133' />
+        <set value='42' />
+        <set value='36' />
+        <set value='74' />
+        <set value='462' />
+        <set value='189' />
+        <set value='71' />
+    </dataset>
+    <dataset seriesname='NorOccidente' >
+        <set value='117' />
+        <set value='40' />
+        <set value='8' />
+        <set value='6' />
+        <set value='26' />
+        <set value='231' />
+        <set value='108' />
+        <set value='64' />
+    </dataset>
+    <dataset seriesname='Norte' >
+        <set value='72' />
+        <set value='48' />
+        <set value='8' />
+        <set value='9' />
+        <set value='24' />
+        <set value='105' />
+        <set value='68' />
+        <set value='39' />
+    </dataset>
+    <dataset seriesname='Sur' >
+        <set value='53' />
+        <set value='26' />
+        <set value='2' />
+        <set value='9' />
+        <set value='92' />
+        <set value='83' />
+        <set value='53' />
+    </dataset>
 </chart>

@@ -263,27 +263,40 @@ class SiteController extends Controller {
             $instaladas = $ventas->get_InstaladasTotales_X_Mes('', '4G,4G FIJO', '', '', '', 'Nuevo', '1');
             $ingresadas = $ventas->get_IngresadasTotales_X_Mes('', '4G,4G FIJO', '', '', '', 'Nuevo', '1');
             $anuladas = $ventas->get_Anuladas_X_Mes('', '4G,4G FIJO', '', '', '', 'Nuevo', '1');
-            $ventasRegional = $ventas->get_IngresadasTotales_X_Mes_X_Regional(7, '4G,4G FIJO', '', '', '', 'Nuevo', '1');
+            $ingresadasRegional = $ventas->get_IngresadasTotales_X_Mes_X_Regional(7, '4G,4G FIJO', '', '', '', 'Nuevo', '1');
+            $instaladasRegional = $ventas->get_InstaladasTotales_X_Mes_X_Regional(7, '4G,4G FIJO', '', '', '', 'Nuevo', '1');
             
             // Generamos las fechas de la categoria del grafico
-            $fecha = "";
-            foreach ($ventasRegional as $ventas) {
-                if ($fecha != $ventas['FECHA_INGRESO']) {
-                    $fecha = $ventas['FECHA_INGRESO'];
-                    $arrayFechas[] = array('FECHA_INGRESO' => $fecha);
+            $fechaIngreso = "";
+            foreach ($ingresadasRegional as $ventas) {
+                if ($fechaIngreso != $ventas['FECHA_INGRESO']) {
+                    $fechaIngreso = $ventas['FECHA_INGRESO'];
+                    $arrayFechasIngresos[] = array('FECHA_INGRESO' => $fechaIngreso);
+                }
+            }
+            
+            // Generamos las fechas de la categoria del grafico
+            $fechaInstalacion = "";
+            foreach ($instaladasRegional as $ventas) {
+                if ($fechaInstalacion != $ventas['FECHA_INSTALACION']) {
+                    $fechaInstalacion = $ventas['FECHA_INSTALACION'];
+                    $arrayFechasInstalaciones[] = array('FECHA_INSTALACION' => $fechaInstalacion);
                 }
             }
             
             // Genera el array requerido para el tipo de grafico utilizado
-            $ventasRegional = RegionalesController::get_Ventas_CombinedColumn($ventasRegional);
+            $ingresadasRegional = RegionalesController::get_Ventas_CombinedColumn($ingresadasRegional,'FECHA_INGRESO');
+            $instaladasRegional = RegionalesController::get_Ventas_CombinedColumn($instaladasRegional,'FECHA_INSTALACION');
             
             $this->render('ventas/ventasGenerales', array('meses' => $meses,
                                                           'presupuesto'=>$presupuestoMeses,
                                                           'instaladas'=>$instaladas,
                                                           'ingresadas'=>$ingresadas,
                                                           'anuladas'=>$anuladas,
-                                                          'fechas'=>$arrayFechas,
-                                                          'ventasRegional'=>$ventasRegional,
+                                                          'fechasIngresos'=>$arrayFechasIngresos,
+                                                          'fechasInstalaciones'=>$arrayFechasInstalaciones,
+                                                          'ingresadasRegional'=>$ingresadasRegional,
+                                                          'instaladasRegional'=>$instaladasRegional,
                                                           'opcion'=>$opcion));
         } catch (Exception $e) {
             $this->render('error', array('error' => "En este momento estamos actualizando la plataforma, en breve estaremos en linea.", 'detalle' => $e->getMessage()));
@@ -320,5 +333,9 @@ class SiteController extends Controller {
                 $this->render('error', $error);
         }
     }
-
+    
+    /***** Acciones de vistas de regionales *****/
+    public function actionDescargasEspecificasRegionalCentro() {
+        $this->render('regionales/descargasEspecificasCentro');
+    }
 }

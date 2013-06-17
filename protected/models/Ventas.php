@@ -79,22 +79,23 @@ class Ventas {
 
     /**
      * Calcula el numero de instalaciones aproximadas en las que cerrara el mes actual
+     * tipo dia: e - fin de semana , s -  semana/dia habil, f - festivos
      * @param string $tipoElemento
      * @param string $uen
      * @param string $tipoSolicitud
      * @return string
      */
     public static function get_ProyectadoMes($tipoElemento, $uen = '', $tipoSolicitud = '', $tipoDia = '', $plaza = '', $consultaProducto = '') {
-        $totalInstaladasMes = Yii::app()->db->createCommand("SP_Ingresadas_Instaladas_X_Mes '2','$tipoElemento','$uen','$tipoSolicitud','','$plaza','$consultaProducto'")->queryScalar();
+        $totalInstaladasMes = Yii::app()->db->createCommand("SP_Ingresadas_Instaladas_X_Mes '2','$tipoElemento','$uen','$tipoSolicitud','','$plaza','','$consultaProducto'")->queryScalar();
 
-        $totalInstaladasDiasHabiles = Yii::app()->db->createCommand("SP_Ingresadas_Instaladas_X_Mes '2','$tipoElemento','$uen','$tipoSolicitud','s','$plaza','$consultaProducto'")->queryScalar();
-        $totalInstaladasDiasFinSemana = Yii::app()->db->createCommand("SP_Ingresadas_Instaladas_X_Mes '2','$tipoElemento','$uen','$tipoSolicitud','e','$plaza','$consultaProducto'")->queryScalar();
-        $totalInstaladasDiasFestivos = Yii::app()->db->createCommand("SP_Ingresadas_Instaladas_X_Mes '2','$tipoElemento','$uen','$tipoSolicitud','f','$plaza','$consultaProducto'")->queryScalar();
+        $totalInstaladasDiasHabiles = Yii::app()->db->createCommand("SP_Ingresadas_Instaladas_X_Mes '2','$tipoElemento','$uen','$tipoSolicitud','s','$plaza','','$consultaProducto'")->queryScalar();
+        $totalInstaladasDiasFinSemana = Yii::app()->db->createCommand("SP_Ingresadas_Instaladas_X_Mes '2','$tipoElemento','$uen','$tipoSolicitud','e','$plaza','','$consultaProducto'")->queryScalar();
+        $totalInstaladasDiasFestivos = Yii::app()->db->createCommand("SP_Ingresadas_Instaladas_X_Mes '2','$tipoElemento','$uen','$tipoSolicitud','f','$plaza','','$consultaProducto'")->queryScalar();
 
-        $totalDiasHabiles = Yii::app()->db->createCommand("SP_Ingresadas_Instaladas_X_Mes '3','','','','s','$plaza','$consultaProducto'")->queryAll();
-        $totalDiasFinSemana = Yii::app()->db->createCommand("SP_Ingresadas_Instaladas_X_Mes '3','','','','e','$plaza','$consultaProducto'")->queryAll();
-        $totalDiasFestivos = Yii::app()->db->createCommand("SP_Ingresadas_Instaladas_X_Mes '3','','','','f','$plaza','$consultaProducto'")->queryAll();
-
+        $totalDiasHabiles = Yii::app()->db->createCommand("SP_Ingresadas_Instaladas_X_Mes '3','','','','s','$plaza','','$consultaProducto'")->queryAll();
+        $totalDiasFinSemana = Yii::app()->db->createCommand("SP_Ingresadas_Instaladas_X_Mes '3','','','','e','$plaza','','$consultaProducto'")->queryAll();
+        $totalDiasFestivos = Yii::app()->db->createCommand("SP_Ingresadas_Instaladas_X_Mes '3','','','','f','$plaza','','$consultaProducto'")->queryAll();
+        
         // Se suman los festivos y los fines de semana por sugerencia de Mauricio Cano, "el comportamiento es muy similar"
         $totalDiasFinSemana = $totalDiasFinSemana + $totalDiasFestivos;
 
@@ -215,6 +216,22 @@ class Ventas {
      */
     public function get_IngresadasTotales_X_Mes_X_Regional($dias, $tipoElemento, $plaza = '', $fecha = '', $uen = '', $tipoSolicitud = 'Nuevo', $consultaProducto = '') {
         $ventas = Yii::app()->db->createCommand("SP_Consultas_Regional '1','$dias','$tipoElemento','$plaza','$fecha','$uen','$tipoSolicitud','$consultaProducto'")->queryAll();
+        return $ventas;
+    }
+    
+    /**
+     * Obtiene el numero de pedidos ingresadas por meses
+     * @param type $dias
+     * @param type $tipoElemento
+     * @param type $plaza
+     * @param type $fecha
+     * @param type $uen
+     * @param type $tipoSolicitud
+     * @param type $consultaProducto
+      @return array con los datos de los ingresos agrupados por fecha
+     */
+    public function get_InstaladasTotales_X_Mes_X_Regional($dias, $tipoElemento, $plaza = '', $fecha = '', $uen = '', $tipoSolicitud = 'Nuevo', $consultaProducto = '') {
+        $ventas = Yii::app()->db->createCommand("SP_Consultas_Regional '2','$dias','$tipoElemento','$plaza','$fecha','$uen','$tipoSolicitud','$consultaProducto'")->queryAll();
         return $ventas;
     }
 }

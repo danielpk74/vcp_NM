@@ -17,10 +17,10 @@ class FunsionesSoporte {
     public static function GenerarCategoryXMLChart($datos, $nombreCampo) {
         $strCategoryLabel = "<categories>";
         foreach ($datos as $dato) {
-            if(is_array($dato)) 
+            if (is_array($dato))
                 $strCategoryLabel .=" <category label='" . $dato[$nombreCampo] . "' /> ";
             else
-                $strCategoryLabel .=" <category label='" . $dato. "' /> ";
+                $strCategoryLabel .=" <category label='" . $dato . "' /> ";
         }
         $strCategoryLabel .="</categories>";
 
@@ -34,14 +34,14 @@ class FunsionesSoporte {
      * @param string $nombreCampo El nombre del campo que contiene el valor del DataSet, ejemplo el campo TOTAL_INGRESADAS => 20
      * @return string
      */
-    public static function GenerarValueXMLChart($datos, $nombreDataSet, $nombreCampo,$line=false,$color='') {
+    public static function GenerarValueXMLChart($datos, $nombreDataSet, $nombreCampo, $line = false, $color = '') {
 //       color='1D8BD1' anchorbordercolor='1D8BD1' anchorbgcolor='1D8BD1'
-        
-        if($color!='')
+
+        if ($color != '')
             $color = "color='$color'";
-        
+
         // Si el tipo de grafico es combined, 
-        if($line) 
+        if ($line)
             $strSetValue = "<dataset seriesName='$nombreDataSet' renderAs='Line'>";
         else
             $strSetValue = "<dataset seriesname='$nombreDataSet' $color>";
@@ -52,7 +52,7 @@ class FunsionesSoporte {
         $strSetValue .= "</dataset>";
         return $strSetValue;
     }
-    
+
     /**
      * Genera el string necesario para crear el grafico MSLine
      * @param string $titulo
@@ -65,28 +65,27 @@ class FunsionesSoporte {
      */
     public static function GenerarXML_ChartCombined($titulo, $subTitulo, $categorias, $dataSets, $TituloX = "", $TituloY = "") {
         $strXML .="<chart canvasBaseColor='D9E5F1' canvasBgColor='D9E5F1' showValues='0' caption='Total crimes for 2005-06' >";
-        
+
         // Categorias
         $strXML .= $categorias;
-        
+
         // DataSets
         $strXML .= $dataSets;
-        
+
         $strXML .= "<styles>";
         $strXML .="<definition>";
         $strXML . "<style blurY='5' Alpha='50' Color='8F8F8F' Distance='8' name='Shadow_0' type='Shadow'/>";
         $strXML .="</definition>";
-        
+
         $strXML .="<application>";
         $strXML .="<apply styles='Shadow_0' toObject='DATAPLOT'/>";
         $strXML .="</application>";
         $strXML .="</styles>";
         $strXML .="</chart>";
-        
+
         return $strXML;
     }
-    
-    
+
     /**
      * Genera el string necesario para crear el grafico MSLine
      * @param string $titulo
@@ -99,19 +98,17 @@ class FunsionesSoporte {
      */
     public static function GenerarXML_ChartCombinedColumn($titulo, $subTitulo, $categorias, $dataSets) {
         $strXML .="<chart showValues='0' caption='$titulo' numberPrefix='' xAxisName='Dias' yAxisName='$subTitulo' useRoundEdges='1' >";
-        
-            // Categorias
-            $strXML .= $categorias;
 
-            // DataSets
-            $strXML .= $dataSets;
-       
+        // Categorias
+        $strXML .= $categorias;
+
+        // DataSets
+        $strXML .= $dataSets;
+
         $strXML .="</chart>";
-        
+
         return $strXML;
     }
-    
-    
 
     /**
      * Genera el string necesario para crear el grafico MSLine
@@ -169,18 +166,16 @@ class FunsionesSoporte {
 
         return $strColorRange;
     }
-    
-    public static function GenerarXML_Combi2D2($titulo,$categorias,$dataSets) {
+
+    public static function GenerarXML_Combi2D2($titulo, $categorias, $dataSets) {
 
         $strXML = "<chart palette='6' caption='$titulo' subCaption='' showValues='0' divLineDecimalPrecision='1' limitsDecimalPrecision='1' PYAxisName='Presupuesto' SYAxisName='' numberPrefix='' formatNumberScale='0' >";
-            $strXML .= $categorias;
-            $strXML .= $dataSets;    
+        $strXML .= $categorias;
+        $strXML .= $dataSets;
         $strXML .= "</chart>";
 
         return $strXML;
     }
-    
-    
 
     public static function GenerarXML_AngularGauge($valorMinimo = 0, $valorMaximo = 120, $valorDial = 0) {
 
@@ -322,7 +317,7 @@ class FunsionesSoporte {
      * @param intger $opcion Determina con que valor se van a completar los: 1 Instaladas, 2 Ingresadas
      * @return array Total Array con la cantidad de dias a completar.
      */
-    public static function CompletarDias($datosInstalaciones, $opcion, $numeroDias) {
+    public static function CompletarDias($datosInstalaciones, $opcion, $numeroDias, $regional = false) {
         // Como sql server no muestra los dias en lo que no hubo ingresos/instalaciones, se crean los 15 dias por defecto
         // y se muestran en el grafico con valor cero
         $dias = array();
@@ -335,40 +330,84 @@ class FunsionesSoporte {
         for ($i = $numeroDias; $i >= $hasta; $i--)
             $dias[] = date('Y-m-d', strtotime("-$i day", strtotime(date('Y-m-d'))));
 
-        if ($opcion == 1) {
-            foreach ($dias as $fecha) {
-                $arrayIndex = 0;
-                $esta = false;
-                foreach ($datosInstalaciones as $dato) {
-                    if ($fecha == $dato['FECHA_INSTALACION']) {
-                        $cantidad = $dato['TOTAL_INSTALADA'];
-                        $esta = true;
-                    }
+        if (!$regional) {
+            if ($opcion == 1) {
+                foreach ($dias as $fecha) {
+                    $arrayIndex = 0;
+                    $esta = false;
+                    foreach ($datosInstalaciones as $dato) {
+                        if ($fecha == $dato['FECHA_INSTALACION']) {
+                            $cantidad = $dato['TOTAL_INSTALADA'];
+                            $esta = true;
+                        }
 
-                    $arrayIndex++;
+                        $arrayIndex++;
+                    }
+                    if ($esta) {
+                        $Total[] = array('FECHA_INSTALACION' => self::get_NombreDia($fecha) . "-" . date('d-m', strtotime($fecha)), 'TOTAL_INSTALADA' => $cantidad);
+                    } else {
+                        $Total[] = array('TOTAL_INSTALADA' => self::get_NombreDia($fecha) . "-" . date('d-m', strtotime($fecha)), 'TOTAL_INSTALADA' => '0');
+                    }
                 }
-                if ($esta) {
-                    $Total[] = array('FECHA_INSTALACION' => self::get_NombreDia($fecha) . "-" . date('d-m', strtotime($fecha)), 'TOTAL_INSTALADA' => $cantidad);
-                } else {
-                    $Total[] = array('TOTAL_INSTALADA' => self::get_NombreDia($fecha) . "-" . date('d-m', strtotime($fecha)), 'TOTAL_INSTALADA' => '0');
+            } else {
+                foreach ($dias as $fecha) {
+                    $arrayIndex = 0;
+                    $esta = false;
+                    foreach ($datosInstalaciones as $dato) {
+                        if ($fecha == $dato['FECHA_INGRESO']) {
+                            $cantidad = $dato['TOTAL_INGRESADA'];
+                            $esta = true;
+                        }
+
+                        $arrayIndex++;
+                    }
+                    if ($esta) {
+                        $Total[] = array('FECHA_INGRESO' => self::get_NombreDia($fecha) . "-" . date('d-m', strtotime($fecha)), 'TOTAL_INGRESADA' => $cantidad);
+                    } else {
+                        $Total[] = array('TOTAL_INGRESADA' => self::get_NombreDia($fecha) . "-" . date('d-m', strtotime($fecha)), 'TOTAL_INGRESADA' => '0');
+                    }
                 }
             }
-        } else {
-            foreach ($dias as $fecha) {
-                $arrayIndex = 0;
-                $esta = false;
-                foreach ($datosInstalaciones as $dato) {
-                    if ($fecha == $dato['FECHA_INGRESO']) {
-                        $cantidad = $dato['TOTAL_INGRESADA'];
-                        $esta = true;
-                    }
+        }
+        
+        // COMPLETAR LOS DIAS PARA EL GRAFICO POR REGIONAL
+        else 
+        {
+            if ($opcion == 1) {
+                foreach ($dias as $fecha) {
+                    $arrayIndex = 0;
+                    $esta = false;
+                    foreach ($datosInstalaciones as $dato) {
+                        if ($fecha == $dato['FECHA_INSTALACION']) {
+                            $cantidad = $dato['CANTIDAD'];
+                            $esta = true;
+                        }
 
-                    $arrayIndex++;
+                        $arrayIndex++;
+                    }
+                    if ($esta) {
+                        $Total[] = array('FECHA_INSTALACION' => self::get_NombreDia($fecha) . "-" . date('d-m', strtotime($fecha)), 'CANTIDAD' => $cantidad);
+                    } else {
+                        $Total[] = array('CANTIDAD' => self::get_NombreDia($fecha) . "-" . date('d-m', strtotime($fecha)), 'CANTIDAD' => '0');
+                    }
                 }
-                if ($esta) {
-                    $Total[] = array('FECHA_INGRESO' => self::get_NombreDia($fecha) . "-" . date('d-m', strtotime($fecha)), 'TOTAL_INGRESADA' => $cantidad);
-                } else {
-                    $Total[] = array('FECHA_INGRESO' => self::get_NombreDia($fecha) . "-" . date('d-m', strtotime($fecha)), 'TOTAL_INGRESADA' => '0');
+            } else {
+                foreach ($dias as $fecha) {
+                    $arrayIndex = 0;
+                    $esta = false;
+                    foreach ($datosInstalaciones as $dato) {
+                        if ($fecha == $dato['FECHA_INGRESO']) {
+                            $cantidad = $dato['CANTIDAD'];
+                            $esta = true;
+                        }
+
+                        $arrayIndex++;
+                    }
+                    if ($esta) {
+                        $Total[] = array('FECHA_INGRESO' => self::get_NombreDia($fecha) . "-" . date('d-m', strtotime($fecha)), 'CANTIDAD' => $cantidad);
+                    } else {
+                        $Total[] = array('CANTIDAD' => self::get_NombreDia($fecha) . "-" . date('d-m', strtotime($fecha)), 'CANTIDAD' => '0');
+                    }
                 }
             }
         }
@@ -399,26 +438,27 @@ class FunsionesSoporte {
      * @param inte $anio el año del mes
      * @return integer el ultimo dia del mes en numero ejemplo 31
      */
-    public static function get_Ultimo_dia_Mes($mes,$anio) {
-         $mes = mktime( 0, 0, 0, $mes, 1, $anio ); 
-         setlocale('LC_ALL', 'co_CO');
-            
-         return intval(date("t",$mes));
+    public static function get_Ultimo_dia_Mes($mes, $anio) {
+        $mes = mktime(0, 0, 0, $mes, 1, $anio);
+        setlocale('LC_ALL', 'co_CO');
+
+        return intval(date("t", $mes));
     }
-    
-    public static function get_Porcentaje($numeroA,$numeroB,$numeroDecimales=1) {
-        if($numeroB != 0)
-            return number_format(($numeroA/$numeroB) * 100,$numeroDecimales,',','.');
-        else 
+
+    public static function get_Porcentaje($numeroA, $numeroB, $numeroDecimales = 1) {
+        if ($numeroB != 0)
+            return number_format(($numeroA / $numeroB) * 100, $numeroDecimales, ',', '.');
+        else
             return 0;
     }
-    
-    
+
     public static function get_ColoresUne($indice) {
-        $colores = array('#cd0a0a','#aaa','#fed22f','#f89406');
-            
+//        $colores = array('189FA8','97949C','EBCE71','A6441E');
+        $colores = array('36C0C7', 'D6D24D', '5AA348', 'A6441E');
+
         return $colores[$indice];
     }
+
 }
 
 ?>
