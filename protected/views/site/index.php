@@ -5,76 +5,8 @@ require_once ('/protected/components/FusionCharts.php');
 
 <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery-ui.js"></script>
 <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery.multiselect.js"></script>
+<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/filtros_ventas.js"></script>
 
-<script type="text/javascript">
-    $().ready(function() {
-        $('#productos').multiselect({multiple: true, height: 140, minWidth: 185, noneSelectedText: '--Producto--'});
-        $('#sub_productos').multiselect({height: 140, minWidth: 185, noneSelectedText: '--Sub Producto--'});
-        $('#uen').multiselect({height: 140, minWidth: 185, noneSelectedText: '--UEN--'});
-      
-        $('#cbo_periodo').multiselect({
-            multiple: false,
-            header: false,
-            height: 140,
-            minWidth:20,
-            selectedList: 0,
-            noneSelectedText: '--Periodo--'
-        });
-        
-        $('#meses').multiselect({
-            multiple: false,
-            header: false,
-            height: 140,
-            minWidth:20,
-            selectedList: 0,
-            noneSelectedText: '--Mes--'
-        });
-        
-        $('#productos').live('change', function() {
-            actualizarSelect("productos", "sub_productos");
-        });
-        
-        $("body").on({
-            ajaxStart: function() {
-                $(this).addClass("loading");
-            },
-            ajaxStop: function() {
-                $(this).removeClass("loading");
-            }
-        });
-
-        $("select").multiselect();
-    })
-
-    function detallePlaza(plaza, cumplimiento, uen, producto,consultaProducto,fechaConsulta)
-    {
-        jQuery.ajax({'type': 'POST', 'url': '<?php echo CController::createUrl('Site/DetallesPlaza'); ?>', 'data': {'plaza': plaza, 'cumplimiento': cumplimiento, 'uen': uen, 'producto': producto, 'consultaProducto': consultaProducto, 'fechaConsulta': fechaConsulta}, 'success': function(data) {
-                $('#modalDetallesPlaza').html(data);
-        }, 'cache': false});
-    }
-
-    function actualizarSelect(idSelectOrigen, idSelecDetino)
-    {
-        $.get("<?php echo CController::createUrl('Site/cargarSubProductos'); ?>", {producto: $('#productos').val(), ajax: 'true'}, function(j) {
-            $('#' + idSelecDetino).multiselect("destroy");
-            $("select#" + idSelecDetino).empty();
-            $("select#" + idSelecDetino).append(j);
-            $('#' + idSelecDetino).multiselect({height: 140, minWidth: 185, noneSelectedText: '--Sub Producto--'});
-
-            if ($(idSelectOrigen).val() != "") {
-                $('#' + idSelecDetino).multiselect("enable");
-                $('#uen').multiselect("enable");
-                $('#btnDetallesVentas').attr("disabled", false);
-            }
-            else {
-                $('#sub_productos').attr("disabled", true);
-                $('#cbo_periodo').attr("disabled", true);
-                $('#uen').attr("disabled", true);
-                $('#btnDetallesVentas').attr("disabled", true);
-            }
-        })
-    }
-</script>
 
 <h5>Estado Actual de Ventas - <?php echo "última Actualización " . date('d-m-Y h:i', strtotime($fechaactualizacion)) ?> </h5>
 <hr>

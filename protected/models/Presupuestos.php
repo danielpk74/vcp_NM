@@ -9,23 +9,25 @@ class Presupuestos extends CFormModel {
     
     /**
      * 
-     * @param type $tipoElemento
-     * @param type $uen
+     * @param string $tipoElemento
+     * @param string $uen
      * @param type $anio
      * @param type $mes
-     * @param type $plaza
+     * @param string $plaza
      * @param type $consulta_general
      * @param type $consultaProducto
-     * @return type
+     * @param string $regional
+     * @param string $plaza
+     * @return Array
      */
-    public function get_Presupuesto($tipoElemento, $uen = '', $anio = '', $mes = '', $plaza = '',$consulta_general='',$consultaProducto='') {
+    public function get_Presupuesto($tipoElemento, $uen = '', $anio = '', $mes = '', $plaza = '',$consulta_general='',$consultaProducto='',$regional='') {
         // Si se consulta un mes especifico retorna un escalar
         if($mes != '')
-            $presupuesto = Yii::app()->db->createCommand("SP_Presupuestos '$tipoElemento','$uen','$anio','$mes','$plaza','$consulta_general','$consultaProducto'")->queryScalar();
+            $presupuesto = Yii::app()->db->createCommand("SP_Presupuestos '$tipoElemento','$uen','$anio','$mes','$plaza','$consulta_general','$consultaProducto','$regional'")->queryScalar();
         
         // Si no se consulta un mes especifico agrupara el presupuesto por mes
         else
-            $presupuesto = Yii::app()->db->createCommand("SP_Presupuestos '$tipoElemento','$uen','$anio','$mes','$plaza','$consulta_general','$consultaProducto'")->queryAll();
+            $presupuesto = Yii::app()->db->createCommand("SP_Presupuestos '$tipoElemento','$uen','$anio','$mes','$plaza','$consulta_general','$consultaProducto','$regional'")->queryAll();
         
         return $presupuesto;
     }

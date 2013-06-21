@@ -53,7 +53,7 @@
                                     <li class="dropdown">
                                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Ventas <b class="caret"></b></a>
                                         <ul class="dropdown-menu">
-                                            <li><?php echo CHtml::linkButton('Presupuestos', array('submit' => array('Presupuestos'))); ?></li>
+                                            <!--<li><?php echo CHtml::linkButton('Presupuestos', array('submit' => array('Presupuestos'))); ?></li>-->
                                             <li><?php echo CHtml::link('Ventas Generales', array('VentasGenerales')); ?></li>
                                         </ul>
                                     </li>

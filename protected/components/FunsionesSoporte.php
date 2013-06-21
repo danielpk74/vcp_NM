@@ -240,12 +240,17 @@ class FunsionesSoporte {
      * @return string
      */
     public static function get_NombreMes($fecha, $todos = false) {
-        if (!$todos)
+        if (!$todos && strlen($fecha) > 2)
             $mes = date("m", strtotime($fecha));
 
         $meses = array('01' => 'Enero', '02' => 'Febrero', '03' => 'Marzo', '04' => 'Abril', '05' => 'Mayo', '06' => 'Junio',
             '07' => 'Julio', '08' => 'Agosto', '09' => 'Septiembre', '10' => 'Octubre', '11' => 'Noviembre', '12' => 'Diciembre');
-
+        
+        if(strlen($fecha) == 1)
+            $mes ="0".$fecha;
+        elseif(strlen($fecha) == 2)
+            $mes =$fecha;
+        
         if (!$todos)
             return $meses[$mes];
         else
@@ -427,7 +432,7 @@ class FunsionesSoporte {
      */
     public static function get_Presupuesto_X_Plaza($plaza, $uen, $tipoElemento, $anio, $mes, $consultaGeneral = '1', $consultaProducto = '') {
         $presupuesto = new Presupuestos();
-        $cantidadPresupuesto = $presupuesto->get_Presupuesto($tipoElemento, $uen, $anio, $mes, $plaza, $consultaGeneral, $consultaProducto);
+        $cantidadPresupuesto = $presupuesto->get_Presupuesto($tipoElemento, $uen, $anio, $mes, $plaza, $consultaGeneral, $consultaProducto,'');
 
         return $cantidadPresupuesto;
     }

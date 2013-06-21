@@ -71,10 +71,10 @@
 
                 <!-- TAB CANAL -->
                 <div class="tab-pane" id="canal">
-                    <div style=" height: 500px;  font-size: 12px; overflow: auto; " >
-                        <table  class="table table-striped table-bordered table-condensed" > 
+                    <div style=" height: 500px; width: 500px;font-size: 12px; overflow: auto; " >
+                        <table class="table table-striped table-bordered table-condensed" > 
                             <tr>
-                                <th style='text-align: left;height: auto;width: 500px\9'>CANAL</th>   
+                                <th style="text-align: left;height: auto;">CANAL</th>   
                                 <th style='text-align: left'>INGRESADAS</th>   
                             </tr>
                             
@@ -84,12 +84,11 @@
                                   <tr>
 
                                       <td><?php echo strtoupper(FunsionesSoporte::QuitarAcentos($venta['NOMBRE_CANAL'])); ?></td>
-                                     <td style='text-align: right'><?php echo CHtml::encode($venta['INGRESADAS']);?> </td>
+                                     <td style='text-align: center'><?php echo CHtml::encode($venta['INGRESADAS']);?> </td>
                                   </tr>   
                                   <?php } ?>
                             <?php } ?>
                          </table> 
-                        
                      </div>
                 </div>
         </div>
