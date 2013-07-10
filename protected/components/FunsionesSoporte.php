@@ -35,8 +35,6 @@ class FunsionesSoporte {
      * @return string
      */
     public static function GenerarValueXMLChart($datos, $nombreDataSet, $nombreCampo, $line = false, $color = '') {
-//       color='1D8BD1' anchorbordercolor='1D8BD1' anchorbgcolor='1D8BD1'
-
         if ($color != '')
             $color = "color='$color'";
 
@@ -245,12 +243,12 @@ class FunsionesSoporte {
 
         $meses = array('01' => 'Enero', '02' => 'Febrero', '03' => 'Marzo', '04' => 'Abril', '05' => 'Mayo', '06' => 'Junio',
             '07' => 'Julio', '08' => 'Agosto', '09' => 'Septiembre', '10' => 'Octubre', '11' => 'Noviembre', '12' => 'Diciembre');
-        
-        if(strlen($fecha) == 1)
-            $mes ="0".$fecha;
-        elseif(strlen($fecha) == 2)
-            $mes =$fecha;
-        
+
+        if (strlen($fecha) == 1)
+            $mes = "0" . $fecha;
+        elseif (strlen($fecha) == 2)
+            $mes = $fecha;
+
         if (!$todos)
             return $meses[$mes];
         else
@@ -374,10 +372,9 @@ class FunsionesSoporte {
                 }
             }
         }
-        
+
         // COMPLETAR LOS DIAS PARA EL GRAFICO POR REGIONAL
-        else 
-        {
+        else {
             if ($opcion == 1) {
                 foreach ($dias as $fecha) {
                     $arrayIndex = 0;
@@ -432,7 +429,7 @@ class FunsionesSoporte {
      */
     public static function get_Presupuesto_X_Plaza($plaza, $uen, $tipoElemento, $anio, $mes, $consultaGeneral = '1', $consultaProducto = '') {
         $presupuesto = new Presupuestos();
-        $cantidadPresupuesto = $presupuesto->get_Presupuesto($tipoElemento, $uen, $anio, $mes, $plaza, $consultaGeneral, $consultaProducto,'');
+        $cantidadPresupuesto = $presupuesto->get_Presupuesto($tipoElemento, $uen, $anio, $mes, $plaza, $consultaGeneral, $consultaProducto, '', '');
 
         return $cantidadPresupuesto;
     }
@@ -450,11 +447,61 @@ class FunsionesSoporte {
         return intval(date("t", $mes));
     }
 
+    /**
+     * Devuelve un porcentaje 
+     * @param integer $numeroA
+     * @param integer $numeroB
+     * @param integer $numeroDecimales
+     * @return float
+     */
     public static function get_Porcentaje($numeroA, $numeroB, $numeroDecimales = 1) {
         if ($numeroB != 0)
             return number_format(($numeroA / $numeroB) * 100, $numeroDecimales, ',', '.');
         else
             return 0;
+    }
+
+    /**
+     * Hay productos cuya venta comienza en un mes diferente a Enero, se completan los meses de hasta completar enero, 
+     * Si la venta comienza en Mayo, se completa Abril, Marzo, Febrero, Enero, con cantidades en cero.
+     * @param type $datos
+     * @return type
+     */
+    public static function get_CompletarMesesAtras($datos) {
+        if ($datos[0]['MES'] > 1)
+            for ($i = $datos[0]['MES']; $i > 1; $i--)
+                array_unshift($datos, array('MES' => $i - 1, 'CANTIDAD' => '0'));
+
+        return $datos;
+    }
+
+    /**
+     * Hay productos cuya venta comienza en un mes diferente a Enero, se completan los meses de hasta completar enero, 
+     * Si la venta comienza en Mayo, se completa Abril, Marzo, Febrero, Enero, con cantidades en cero.
+     * @param type $datos
+     * @return type
+     */
+    public static function get_CompletarMesesIntermedios($total, $datos,$campo) {
+        $instaladas2 = array();
+        for ($i = 0; $i < 12; $i++) {
+            $existe = false;
+//                echo ($i+1)."=>";
+            for ($j = 0; $j < Count($datos); $j++) {
+
+                // Si el mes existe en el array
+                if ($i + 1 == $datos[$j]["$campo"]) {
+                    $existe = true;
+                    $cantidad = $datos[$j]['CANTIDAD'];
+                }
+            }
+
+            if ($existe)
+                array_push($instaladas2, array("$campo" => ($i + 1), 'CANTIDAD' => $cantidad));
+            else
+                array_push($instaladas2, array("$campo" => ($i + 1), 'CANTIDAD' => 0));
+        }
+        
+         return $instaladas2;
     }
 
     public static function get_ColoresUne($indice) {
