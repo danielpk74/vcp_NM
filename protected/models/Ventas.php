@@ -7,22 +7,23 @@
  */
 class Ventas {
 
-   /**
-    * Devuelve todos los ingresos e instalaciones agrupados por plaza.
-    * <br>ejecuta el SP: SP_Consultas_Ingresos_Retiros
-    * @param type $dias
-    * @param type $tipoElemento
-    * @param type $plaza
-    * @param type $fecha
-    * @param type $uen
-    * @param type $tipoSolicitud
-    * @param type $consultaProducto
-    * @param type $mes
-    * @param type $regional
-    * @return type
-    */
-    public function Ingresadas($dias, $tipoElemento, $plaza = '', $fecha = '', $uen = '', $tipoSolicitud = 'Nuevo', $consultaProducto = '',$mes='',$regional='') {
-        $ventas = Yii::app()->db->createCommand("SP_Consultas_Ingresos_Retiros '3','$dias','$tipoElemento','$plaza','$fecha','$uen','$tipoSolicitud','$consultaProducto','$mes','$regional'")->queryAll();
+    /**
+     * Devuelve todos los ingresos e instalaciones agrupados por plaza.
+     * <br>ejecuta el SP: SP_Consultas_Ingresos_Retiros
+     * @param type $dias
+     * @param type $tipoElemento
+     * @param type $plaza
+     * @param type $fecha
+     * @param type $uen
+     * @param type $tipoSolicitud
+     * @param type $consultaProducto
+     * @param type $mes
+     * @param type $regional
+     * @param type $tipoCanal
+     * @return type
+     */
+    public function Ingresadas($dias, $tipoElemento, $plaza = '', $fecha = '', $uen = '', $tipoSolicitud = 'Nuevo', $consultaProducto = '', $mes = '', $regional = '', $anio = '', $tipoCanal = '') {
+        $ventas = Yii::app()->db->createCommand("SP_Consultas_Ingresos_Retiros '3','$dias','$tipoElemento','$plaza','$fecha','$uen','$tipoSolicitud','$consultaProducto','$mes','$regional','$anio','$tipoCanal'")->queryAll();
         return $ventas;
     }
 
@@ -38,10 +39,11 @@ class Ventas {
      * @param varchar $consultaProducto Tipos de Solicitud (Nuevo,Retiro)
      * @param integer $mes
      * @param integer $regional
+     * * @param type $tipoCanal
      * @return array
      */
-    public function IngresadasOtros($dias, $tipoElemento, $plaza = '', $fecha = '', $uen = '', $tipoSolicitud = 'Nuevo', $consultaProducto = '',$mes='',$regional='') {
-        $ventas = Yii::app()->db->createCommand("SP_Consultas_Ingresos_Retiros '4','$dias','$tipoElemento','$plaza','$fecha','$uen','$tipoSolicitud','$consultaProducto','$mes','$regional'")->queryAll();
+    public function IngresadasOtros($dias, $tipoElemento, $plaza = '', $fecha = '', $uen = '', $tipoSolicitud = 'Nuevo', $consultaProducto = '', $mes = '', $regional = '', $anio = '', $tipoCanal = '') {
+        $ventas = Yii::app()->db->createCommand("SP_Consultas_Ingresos_Retiros '4','$dias','$tipoElemento','$plaza','$fecha','$uen','$tipoSolicitud','$consultaProducto','$mes','$regional','$anio','$tipoCanal'")->queryAll();
         return $ventas;
     }
 
@@ -58,10 +60,11 @@ class Ventas {
      * @param integer $consultaProducto
      * @param integer $mes
      * @param integer $regional
+     * * @param type $tipoCanal
      * @return array con los datos de los ingresos agrupados por fecha
      */
-    public function get_Ingresadas($dias, $tipoElemento, $plaza = '', $fecha = '', $uen = '', $tipoSolicitud = 'Nuevo', $consultaProducto = '',$mes='',$regional='') {
-        $ventas = Yii::app()->db->createCommand("SP_Consultas_Ingresos_Retiros '1','$dias','$tipoElemento','$plaza','$fecha','$uen','$tipoSolicitud','$consultaProducto','$mes','$regional'")->queryAll();
+    public function get_Ingresadas($dias, $tipoElemento, $plaza = '', $fecha = '', $uen = '', $tipoSolicitud = 'Nuevo', $consultaProducto = '', $mes = '', $regional = '', $anio = '', $tipoCanal = '') {
+        $ventas = Yii::app()->db->createCommand("SP_Consultas_Ingresos_Retiros '1','$dias','$tipoElemento','$plaza','$fecha','$uen','$tipoSolicitud','$consultaProducto','$mes','$regional','$anio','$tipoCanal'")->queryAll();
         return $ventas;
     }
 
@@ -78,10 +81,11 @@ class Ventas {
      * @param type $consultaProducto
      * @param type $mes
      * @param type $regional
+     * * @param type $tipoCanal
      * @return array con los datos de los ingresos agrupados por fecha
      */
-    public function get_Instaladas($dias, $tipoElemento, $plaza = '', $fecha = '', $uen = '', $tipoSolicitud = 'Nuevo', $consultaProducto = '',$mes='',$regional='') {
-        $ventas = Yii::app()->db->createCommand("SP_Consultas_Ingresos_Retiros '2','$dias','$tipoElemento','$plaza','$fecha','$uen','$tipoSolicitud','$consultaProducto','$mes','$regional'")->queryAll();
+    public function get_Instaladas($dias, $tipoElemento, $plaza = '', $fecha = '', $uen = '', $tipoSolicitud = 'Nuevo', $consultaProducto = '', $mes = '', $regional = '', $anio = '', $tipoCanal = '') {
+        $ventas = Yii::app()->db->createCommand("SP_Consultas_Ingresos_Retiros '2','$dias','$tipoElemento','$plaza','$fecha','$uen','$tipoSolicitud','$consultaProducto','$mes','$regional','$anio','$tipoCanal'")->queryAll();
         return $ventas;
     }
 
@@ -96,8 +100,8 @@ class Ventas {
      * @param type $consultaProducto
      * @return string numero de ingresados
      */
-    public function get_TotalIngresadasMes($tipoElemento, $uen = '', $tipoSolicitud = 'Nuevo', $tipoDia = '', $plaza = '', $mes, $consultaProducto = '') {
-        $ventasIngresadasMes = Yii::app()->db->createCommand("SP_Ingresadas_Instaladas_X_Mes '1','$tipoElemento','$uen','$tipoSolicitud','$tipoDia','$plaza','$mes','$consultaProducto'")->queryScalar();
+    public function get_TotalIngresadasMes($tipoElemento, $uen = '', $tipoSolicitud = 'Nuevo', $tipoDia = '', $plaza = '', $mes, $consultaProducto = '', $tipoCanal = '') {
+        $ventasIngresadasMes = Yii::app()->db->createCommand("SP_Ingresadas_Instaladas_X_Mes '1','$tipoElemento','$uen','$tipoSolicitud','$tipoDia','$plaza','$mes','$consultaProducto','$tipoCanal'")->queryScalar();
         return $ventasIngresadasMes;
     }
 
@@ -105,33 +109,47 @@ class Ventas {
      * Devuelve el numero de pedidos instalados en el mes actual
      * @return string numero de instalados
      */
-    public function get_TotalInstaladasMes($tipoElemento, $uen = '', $tipoSolicitud = 'Nuevo', $tipoDia = '', $plaza = '', $mes, $consultaProducto = '') {
-        $ventasInstaladasMes = Yii::app()->db->createCommand("SP_Ingresadas_Instaladas_X_Mes '2','$tipoElemento','$uen','$tipoSolicitud','$tipoDia','$plaza','$mes','$consultaProducto'")->queryScalar();
+    public function get_TotalInstaladasMes($tipoElemento, $uen = '', $tipoSolicitud = 'Nuevo', $tipoDia = '', $plaza = '', $mes, $consultaProducto = '', $tipoCanal = '') {
+        $ventasInstaladasMes = Yii::app()->db->createCommand("SP_Ingresadas_Instaladas_X_Mes '2','$tipoElemento','$uen','$tipoSolicitud','$tipoDia','$plaza','$mes','$consultaProducto','$tipoCanal'")->queryScalar();
         return $ventasInstaladasMes;
     }
 
     /**
      * Calcula el numero de instalaciones aproximadas en las que cerrara el mes actual
      * tipo dia: e - fin de semana , s -  semana/dia habil, f - festivos
-     * @param string $tipoElemento
-     * @param string $uen
-     * @param string $tipoSolicitud
+     * 
+     * @param type $tipoElemento
+     * @param type $uen
+     * @param type $tipoSolicitud
+     * @param type $tipoDia
+     * @param type $plaza
+     * @param type $consultaProducto
      * @return string
      */
-    public static function get_ProyectadoMes($tipoElemento, $uen = '', $tipoSolicitud = '', $tipoDia = '', $plaza = '', $consultaProducto = '') {
-        $totalInstaladasMes = Yii::app()->db->createCommand("SP_Ingresadas_Instaladas_X_Mes '2','$tipoElemento','$uen','$tipoSolicitud','','$plaza','','$consultaProducto'")->queryScalar();
+    public static function get_ProyectadoMes($tipoElemento, $uen = '', $tipoSolicitud = '', $tipoDia = '', $plaza = '', $mes = '', $consultaProducto = '') {
 
-        $totalInstaladasDiasHabiles = Yii::app()->db->createCommand("SP_Ingresadas_Instaladas_X_Mes '2','$tipoElemento','$uen','$tipoSolicitud','s','$plaza','','$consultaProducto'")->queryScalar();
-        $totalInstaladasDiasFinSemana = Yii::app()->db->createCommand("SP_Ingresadas_Instaladas_X_Mes '2','$tipoElemento','$uen','$tipoSolicitud','e','$plaza','','$consultaProducto'")->queryScalar();
-        $totalInstaladasDiasFestivos = Yii::app()->db->createCommand("SP_Ingresadas_Instaladas_X_Mes '2','$tipoElemento','$uen','$tipoSolicitud','f','$plaza','','$consultaProducto'")->queryScalar();
-
-        $totalDiasHabiles = Yii::app()->db->createCommand("SP_Ingresadas_Instaladas_X_Mes '3','','','','s','$plaza','','$consultaProducto'")->queryAll();
-        $totalDiasFinSemana = Yii::app()->db->createCommand("SP_Ingresadas_Instaladas_X_Mes '3','','','','e','$plaza','','$consultaProducto'")->queryAll();
-        $totalDiasFestivos = Yii::app()->db->createCommand("SP_Ingresadas_Instaladas_X_Mes '3','','','','f','$plaza','','$consultaProducto'")->queryAll();
+        $numeroDiaActual = date('j', strtotime(date('Y-m-d')));
         
-        // Se suman los festivos y los fines de semana por sugerencia de Mauricio Cano, "el comportamiento es muy similar"
-        $totalDiasFinSemana = $totalDiasFinSemana + $totalDiasFestivos;
+        $mes = '';
+        if ($numeroDiaActual <= 8) 
+            $mes = (date('n', strtotime(date('Y-m-d')))) - 1;
+        else
+            $mes = (date('n', strtotime(date('Y-m-d')))); 
 
+        $totalInstaladasMes = Yii::app()->db->createCommand("SP_Ingresadas_Instaladas_X_Mes '2','$tipoElemento','$uen','$tipoSolicitud','','$plaza','$mes','$consultaProducto'")->queryScalar();
+
+        $totalInstaladasDiasHabiles = Yii::app()->db->createCommand("SP_Ingresadas_Instaladas_X_Mes '2','$tipoElemento','$uen','$tipoSolicitud','s','$plaza','$mes','$consultaProducto'")->queryScalar();
+        $totalInstaladasDiasFinSemana = Yii::app()->db->createCommand("SP_Ingresadas_Instaladas_X_Mes '2','$tipoElemento','$uen','$tipoSolicitud','e','$plaza','$mes','$consultaProducto'")->queryScalar();
+        $totalInstaladasDiasFestivos = Yii::app()->db->createCommand("SP_Ingresadas_Instaladas_X_Mes '2','$tipoElemento','$uen','$tipoSolicitud','f','$plaza','$mes','$consultaProducto'")->queryScalar();
+
+        $totalDiasHabiles = Yii::app()->db->createCommand("SP_Ingresadas_Instaladas_X_Mes '3','','','','s','$plaza','$mes','$consultaProducto'")->queryAll();
+        $totalDiasFinSemana = Yii::app()->db->createCommand("SP_Ingresadas_Instaladas_X_Mes '3','','','','e','$plaza','$mes','$consultaProducto'")->queryAll();
+        $totalDiasFestivos = Yii::app()->db->createCommand("SP_Ingresadas_Instaladas_X_Mes '3','','','','f','$plaza','$mes','$consultaProducto'")->queryAll();
+
+        // Se suman los festivos y los fines de semana por sugerencia de Mauricio Cano, "el comportamiento es muy similar"
+        $totalInstaladasDiasFinSemana = $totalInstaladasDiasFinSemana + $totalInstaladasDiasFestivos;
+        $totalDiasFinSemana = array_merge($totalDiasFinSemana,$totalDiasFestivos);
+       
         // Promedio de instalaciones en dias habiles
         if (Count($totalDiasHabiles) != 0)
             $promedioInstaladasDiasHabiles = $totalInstaladasDiasHabiles / Count($totalDiasHabiles);
@@ -143,51 +161,72 @@ class Ventas {
         $numeroDiasHabilesFaltantes = FunsionesSoporte::get_DiasFaltantesMes(1);
         $numeroDiasFestivosFaltantes = FunsionesSoporte::get_DiasFaltantesMes(2);
 
-        // Presupuesto Mensual
-        $numeroDiaActual = date('j', strtotime(date('Y-m-d')));
-
-        $numeroDiaActual;
         // Se muestra el presupuesto
-        if ($numeroDiaActual <= 10) {
-            $proyectadoCierre = new Presupuestos();
-            $proyectadoCierre = $proyectadoCierre->get_Presupuesto($tipoElemento, $uen, date('Y'), date('n'), '', 1, $consultaProducto,$regional);
-        }
-        // TotalInstaladas en el mes + promedio instalado en dias habiles * dias habiles faltantes + promedio instaladas en dias festivos y fines de semana * Dias festivos faltantes + total de pendientes(restando 25% de estos).
-        elseif ($numeroDiaActual >= 11 && $numeroDiaActual <= 26) {
+        if ($numeroDiaActual <= 8) {
             $ventas = new Ventas();
-            $totalPendientes = $ventas->TotalPendientes($tipoElemento, $uen, $tipoSolicitud, $consultaProducto,$plaza,$regional);
-            $totalPendientes = ($totalPendientes - ($totalPendientes * 0.25));
+            $totalPendientes = $ventas->TotalPendientes($tipoElemento, $uen, $tipoSolicitud, $consultaProducto, $plaza, $regional);
+            $totalPendientes = ($totalPendientes - ($totalPendientes * 0.20));
+            $proyectadoCierre = (($promedioInstaladasDiasHabiles * $numeroDiasHabilesFaltantes) + ($promedioInstaladasDiasFestivos * $numeroDiasFestivosFaltantes)) + $totalPendientes;
+        }
+
+        // TotalInstaladas en el mes + promedio instalado en dias habiles * dias habiles faltantes + promedio instaladas en dias festivos y fines de semana * Dias festivos faltantes + total de pendientes(restando 25% de estos).
+        elseif ($numeroDiaActual >= 9 && $numeroDiaActual <= 25) {
+            $ventas = new Ventas();
+            $totalPendientes = $ventas->TotalPendientes($tipoElemento, $uen, $tipoSolicitud, $consultaProducto, $plaza, $regional);
+            $totalPendientes = ($totalPendientes - ($totalPendientes * 0.20));
+            $proyectadoCierre = ($totalInstaladasMes + ($promedioInstaladasDiasHabiles * $numeroDiasHabilesFaltantes) + ($promedioInstaladasDiasFestivos * $numeroDiasFestivosFaltantes)) + $totalPendientes;
+//            echo $totalInstaladasMes . " - " . ($promedioInstaladasDiasHabiles * $numeroDiasHabilesFaltantes) . " - " . ($promedioInstaladasDiasFestivos * $numeroDiasFestivosFaltantes);
+        } elseif ($numeroDiaActual >= 26 && $numeroDiaActual <= 27) {
+            $ventas = new Ventas();
+            $totalPendientes = $ventas->TotalPendientes($tipoElemento, $uen, $tipoSolicitud, $consultaProducto, $plaza, $regional, '', '');
+            $totalPendientes = ($totalPendientes - ($totalPendientes * 0.70));
+            $proyectadoCierre = ($totalInstaladasMes + ($promedioInstaladasDiasHabiles * $numeroDiasHabilesFaltantes) + ($promedioInstaladasDiasFestivos * $numeroDiasFestivosFaltantes)) + $totalPendientes;
+        } elseif ($numeroDiaActual >= 28 && $numeroDiaActual <= 29) {
+            $ventas = new Ventas();
+            $totalPendientes = $ventas->TotalPendientes($tipoElemento, $uen, $tipoSolicitud, $consultaProducto, $plaza, $regional, '', '');
+            $totalPendientes = ($totalPendientes - ($totalPendientes * 0.80));
+            $proyectadoCierre = ($totalInstaladasMes + ($promedioInstaladasDiasHabiles * $numeroDiasHabilesFaltantes) + ($promedioInstaladasDiasFestivos * $numeroDiasFestivosFaltantes)) + $totalPendientes;
+        } elseif ($numeroDiaActual >= 30 && $numeroDiaActual <= 31) {
+            $ventas = new Ventas();
+            $totalPendientes = $ventas->TotalPendientes($tipoElemento, $uen, $tipoSolicitud, $consultaProducto, $plaza, $regional, '', '');
+            $totalPendientes = ($totalPendientes - ($totalPendientes * 0.90));
             $proyectadoCierre = ($totalInstaladasMes + ($promedioInstaladasDiasHabiles * $numeroDiasHabilesFaltantes) + ($promedioInstaladasDiasFestivos * $numeroDiasFestivosFaltantes)) + $totalPendientes;
         } else {
             $proyectadoCierre = $totalInstaladasMes + ($promedioInstaladasDiasHabiles * $numeroDiasHabilesFaltantes) + ($promedioInstaladasDiasFestivos * $numeroDiasFestivosFaltantes);
         }
 
-//      $proyectadoCierre = $totalInstaladasMes + ($promedioInstaladasDiasHabiles * $numeroDiasHabilesFaltantes) + ($promedioInstaladasDiasFestivos * $numeroDiasFestivosFaltantes);
         return $proyectadoCierre;
     }
 
     /**
-     * Devuelve el numero de ventas pendientes de instalacion
-     * @param string $tipoElemento
-     * @param string $uen
-     * @param string $tipoSolicitud
+     * Devuelve el numero de ventas pendientes de instalacion 
+     * @param type $tipoElemento
+     * @param type $uen
+     * @param type $tipoSolicitud
+     * @param type $consultaProducto
+     * @param type $plaza
+     * @param type $regional
+     * @param type $anio
+     * @param type $tipoCanal
      * @return string Con el numero de pedidos pendientes por gestionar
      */
-    public function TotalPendientes($tipoElemento, $uen = '', $tipoSolicitud = 'Nuevo', $consultaProducto = '', $plaza = '', $regional = '') {
-        $pendientes = Yii::app()->db->createCommand("SP_Total_Pendientes '1','$tipoElemento','$uen','$tipoSolicitud','$consultaProducto','$plaza','$regional'")->queryScalar();
+    public function TotalPendientes($tipoElemento, $uen = '', $tipoSolicitud = 'Nuevo', $consultaProducto = '', $plaza = '', $regional = '', $anio = '', $tipoCanal = '') {
+        $pendientes = Yii::app()->db->createCommand("SP_Total_Pendientes '1','$tipoElemento','$uen','$tipoSolicitud','$consultaProducto','$plaza','$regional','$anio','$tipoCanal'")->queryScalar();
         return $pendientes;
     }
-    
+
     /**
      * Devuelve el numero de ventas pendientes de instalacion agrupado por mes
      * @param type $tipoElemento
      * @param type $uen
      * @param type $tipoSolicitud
      * @param type $consultaProducto
+     * @param type $plaza
+     * @param type $regional
      * @return type
      */
-    public function TotalPendientes_X_Mes($tipoElemento, $uen = '', $tipoSolicitud = 'Nuevo', $consultaProducto = '', $plaza = '', $regional = '') {
-        $pendientes = Yii::app()->db->createCommand("SP_Total_Pendientes '2','$tipoElemento','$uen','$tipoSolicitud','$consultaProducto','$plaza','$regional'")->queryAll();
+    public function TotalPendientes_X_Mes($tipoElemento, $uen = '', $tipoSolicitud = 'Nuevo', $consultaProducto = '', $plaza = '', $regional = '', $anio = '', $tipoCanal = '') {
+        $pendientes = Yii::app()->db->createCommand("SP_Total_Pendientes '2','$tipoElemento','$uen','$tipoSolicitud','$consultaProducto','$plaza','$regional','$anio','$tipoCanal'")->queryAll();
         return $pendientes;
     }
 
@@ -216,10 +255,14 @@ class Ventas {
      * @param type $uen
      * @param type $tipoSolicitud
      * @param type $consultaProducto
+     * @param type $mes
+     * @param type $regional
+     * @param type $anio
+     * @param type $tipoCanal
      * @return array con los datos de los ingresos agrupados por fecha
      */
-    public function get_InstaladasTotales_X_Mes($dias, $tipoElemento, $plaza = '', $fecha = '', $uen = '', $tipoSolicitud = 'Nuevo', $consultaProducto = '',$mes='',$regional='') {
-        $ventas = Yii::app()->db->createCommand("SP_Consultas_Ingresos_Retiros '5','$dias','$tipoElemento','$plaza','$fecha','$uen','$tipoSolicitud','$consultaProducto','$mes','$regional'")->queryAll();
+    public function get_InstaladasTotales_X_Mes($dias, $tipoElemento, $plaza = '', $fecha = '', $uen = '', $tipoSolicitud = 'Nuevo', $consultaProducto = '', $mes = '', $regional = '', $anio = '', $tipoCanal = '') {
+        $ventas = Yii::app()->db->createCommand("SP_Consultas_Ingresos_Retiros '5','$dias','$tipoElemento','$plaza','$fecha','$uen','$tipoSolicitud','$consultaProducto','$mes','$regional','$anio','$tipoCanal'")->queryAll();
         return $ventas;
     }
 
@@ -235,13 +278,15 @@ class Ventas {
      * @param type $consultaProducto
      * @param type $mes
      * @param type $regional
-      @return array con los datos de los ingresos agrupados por fecha
+     * @param type $anio
+     * @param type $tipoCanal
+     * @return array con los datos de los ingresos agrupados por fecha
      */
-    public function get_IngresadasTotales_X_Mes($dias, $tipoElemento, $plaza = '', $fecha = '', $uen = '', $tipoSolicitud = 'Nuevo', $consultaProducto = '',$mes='',$regional='') {
-        $ventas = Yii::app()->db->createCommand("SP_Consultas_Ingresos_Retiros '6','$dias','$tipoElemento','$plaza','$fecha','$uen','$tipoSolicitud','$consultaProducto','$mes','$regional'")->queryAll();
+    public function get_IngresadasTotales_X_Mes($dias, $tipoElemento, $plaza = '', $fecha = '', $uen = '', $tipoSolicitud = 'Nuevo', $consultaProducto = '', $mes = '', $regional = '', $anio = '', $tipoCanal = '') {
+        $ventas = Yii::app()->db->createCommand("SP_Consultas_Ingresos_Retiros '6','$dias','$tipoElemento','$plaza','$fecha','$uen','$tipoSolicitud','$consultaProducto','$mes','$regional','$anio','$tipoCanal'")->queryAll();
         return $ventas;
     }
-    
+
     /**
      * Obtiene el numero de pedidos ingresadas por meses
      * @param type $dias
@@ -253,13 +298,38 @@ class Ventas {
      * @param type $consultaProducto
      * @param type $mes
      * @param type $regional
+     * @param type $anio
+     * @param type $tipoCanal
      * @return type
      */
-    public function get_Anuladas_X_Mes($dias, $tipoElemento, $plaza = '', $fecha = '', $uen = '', $tipoSolicitud = 'Nuevo', $consultaProducto = '',$mes='',$regional='') {
-        $ventas = Yii::app()->db->createCommand("SP_Consultas_Anuladas '1','$dias','$tipoElemento','$plaza','$fecha','$uen','$tipoSolicitud','$consultaProducto','$mes','$regional'")->queryAll();
+    public function get_Anuladas_X_Mes($dias, $tipoElemento, $plaza = '', $fecha = '', $uen = '', $tipoSolicitud = 'Nuevo', $consultaProducto = '', $mes = '', $regional = '', $anio = '', $tipoCanal = '') {
+        $ventas = Yii::app()->db->createCommand("SP_Consultas_Anuladas '1','$dias','$tipoElemento','$plaza','$fecha','$uen','$tipoSolicitud','$consultaProducto','$mes','$regional','$anio','$tipoCanal'")->queryAll();
         return $ventas;
     }
-    
+
+    /**
+     * Obtiene el numero de pedidos ingresadas por meses <br>
+     * Utiliza el SP_Consultas_Regional
+     * @param type $dias
+     * @param type $tipoElemento
+     * @param type $plaza
+     * @param type $fecha
+     * @param type $uen
+     * @param type $tipoSolicitud
+     * @param type $consultaProducto
+     * @param type $anio
+     * @param type $tipoCanal
+     * @return array con los datos de los ingresos agrupados por fecha
+     */
+    public function get_IngresadasTotales_X_Mes_X_Regional($dias, $tipoElemento, $plaza = '', $fecha = '', $uen = '', $tipoSolicitud = 'Nuevo', $consultaProducto = '', $mes = '', $anio = '', $tipoCanal = '') {
+        if ($dias != '')
+            $ventas = Yii::app()->db->createCommand("SP_Consultas_Regional '1','$dias','$tipoElemento','$plaza','$fecha','$uen','$tipoSolicitud','$consultaProducto','$mes','$anio','$tipoCanal'")->queryAll();
+        else
+            $ventas = Yii::app()->db->createCommand("SP_Consultas_Regional '3','$dias','$tipoElemento','$plaza','$fecha','$uen','$tipoSolicitud','$consultaProducto','$mes','$anio','$tipoCanal'")->queryAll();
+
+        return $ventas;
+    }
+
     /**
      * Obtiene el numero de pedidos ingresadas por meses
      * @param type $dias
@@ -269,33 +339,17 @@ class Ventas {
      * @param type $uen
      * @param type $tipoSolicitud
      * @param type $consultaProducto
+     * @param type $anio
+     * @param type $tipoCanal
       @return array con los datos de los ingresos agrupados por fecha
      */
-    public function get_IngresadasTotales_X_Mes_X_Regional($dias, $tipoElemento, $plaza = '', $fecha = '', $uen = '', $tipoSolicitud = 'Nuevo', $consultaProducto = '') {
-         if($dias != '')
-            $ventas = Yii::app()->db->createCommand("SP_Consultas_Regional '1','$dias','$tipoElemento','$plaza','$fecha','$uen','$tipoSolicitud','$consultaProducto'")->queryAll();
-         else 
-             $ventas = Yii::app()->db->createCommand("SP_Consultas_Regional '3','$dias','$tipoElemento','$plaza','$fecha','$uen','$tipoSolicitud','$consultaProducto'")->queryAll();
+    public function get_InstaladasTotales_X_Mes_X_Regional($dias, $tipoElemento, $plaza = '', $fecha = '', $uen = '', $tipoSolicitud = 'Nuevo', $consultaProducto = '', $anio = '', $tipoCanal = '') {
+        if ($dias != '')
+            $ventas = Yii::app()->db->createCommand("SP_Consultas_Regional '2','$dias','$tipoElemento','$plaza','$fecha','$uen','$tipoSolicitud','$consultaProducto','$anio','$tipoCanal'")->queryAll();
+        else
+            $ventas = Yii::app()->db->createCommand("SP_Consultas_Regional '4','$dias','$tipoElemento','$plaza','$fecha','$uen','$tipoSolicitud','$consultaProducto','$anio','$tipoCanal'")->queryAll();
         return $ventas;
     }
-    
-    /**
-     * Obtiene el numero de pedidos ingresadas por meses
-     * @param type $dias
-     * @param type $tipoElemento
-     * @param type $plaza
-     * @param type $fecha
-     * @param type $uen
-     * @param type $tipoSolicitud
-     * @param type $consultaProducto
-      @return array con los datos de los ingresos agrupados por fecha
-     */
-    public function get_InstaladasTotales_X_Mes_X_Regional($dias, $tipoElemento, $plaza = '', $fecha = '', $uen = '', $tipoSolicitud = 'Nuevo', $consultaProducto = '') {
-        if($dias != '')
-            $ventas = Yii::app()->db->createCommand("SP_Consultas_Regional '2','$dias','$tipoElemento','$plaza','$fecha','$uen','$tipoSolicitud','$consultaProducto'")->queryAll();
-        else 
-            $ventas = Yii::app()->db->createCommand("SP_Consultas_Regional '4','$dias','$tipoElemento','$plaza','$fecha','$uen','$tipoSolicitud','$consultaProducto'")->queryAll();
-        return $ventas;
-    }
+
 }
 
