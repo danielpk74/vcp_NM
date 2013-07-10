@@ -23,13 +23,25 @@ require_once ('/protected/components/FusionCharts.php');
 
     $option = array('type' => 'POST',
         'url' => CController::createUrl('Site/Index'),
-        'data' => array('producto' => "js:$('select#productos').val()", 'subproducto' => "js:$('select#sub_productos').val()", 'uen' => "js:$('select#uen').val()",'regional' => "js:$('select#regionales').val()",'plaza' => "js:$('select#plazas').val()"),
+        'data' => array('producto' => "js:$('select#productos').val()", 'subproducto' => "js:$('select#sub_productos').val()", 'uen' => "js:$('select#uen').val()",'regional' => "js:$('select#regionales').val()",'plaza' => "js:$('select#plazas').val()",'anio' => "js:$('select#anios').val()",'tipoCanal' => "js:$('select#tipo_canal').val()"),
         'update' => '#detallesVentas',
         'success' => 'function(data) {
-                                $(\'#detallesVentas\').html(data);
-                            }');
-    
-    echo CHtml::ajaxButton('FILTRAR', CController::createUrl('Site/ventasGenerales'), $option, array('name' => 'btnDetallesVentas', 'class' => 'btn btn-mini')); 
+            $(\'#detallesVentas\').html(data);
+        }');
+?>
+
+<select id="anios" name ="anios" multiple="false">
+    <?php  
+    for ($i=date('Y'); $i>=date('Y')-1; $i--) 
+        echo "<option value='$i'>$i</option>";
+    ?>
+</select>
+
+<?php 
+
+echo CHtml::activeDropDownList($tipocanalmodel, 'TIPO_CANAL', CHtml::listData($tiposCanales, 'CODIGO_TIPO_CANAL_PK', 'TIPO_CANAL'), array('name' => 'tipo_canal', 'multiple' => 'multiple'));     
+
+echo CHtml::ajaxButton('FILTRAR', CController::createUrl('Site/ventasGenerales'), $option, array('name' => 'btnDetallesVentas', 'class' => 'btn btn-mini')); 
 ?>
 <hr>
 
