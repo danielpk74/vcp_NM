@@ -57,11 +57,12 @@ class Usuarios extends CFormModel {
             return false;
     }
 
-    public static function registrarUsuario($codigoUsuarioFk, $fechaIngreso) {
+    public static function registrarUsuario($codigoUsuarioFk, $fechaIngreso,$modulo) {
         $command = Yii::app()->db->createCommand();
         $command->insert('USUARIOS_LOG_INGRESO', array(
             'CODIGO_USUARIO_FK' => $codigoUsuarioFk,
             'FECHA_INGRESO' => $fechaIngreso,
+            'MODULO_FK' => $modulo,
         ));
     }
 }
