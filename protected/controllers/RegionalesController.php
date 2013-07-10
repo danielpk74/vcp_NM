@@ -3,21 +3,7 @@
 class RegionalesController extends Controller {
 
     public static function get_Ventas_CombinedColumn($ventasRegional, $nombreCampo, $mensual = false) {
-        //// ARRAY FECHAS PARA LAS CATEGORIAS
-        $arrayVentasRegional = array();
-
-        /// ARRAY REGIONALES PARA GENERAR EL ARRAY FINAL DE LOS DATASET
-        $arrayRegionales = array();
-        $regional = "";
-        foreach ($ventasRegional as $ventas) {
-            if (!in_array(array('REGIONAL' => $ventas['REGIONAL']), $arrayRegionales)) {
-                $regional = $ventas['REGIONAL'];
-                $arrayRegionales[] = array('REGIONAL' => $regional);
-            }
-        }
-
-        sort($arrayRegionales);
-
+        $arrayRegionales = array(array('REGIONAL' => 'Centro'), array('REGIONAL' => 'NorOccidente'), array('REGIONAL' => 'Norte'), array('REGIONAL' => 'Sur'));
         $array3 = array();
         for ($i = 0; $i < Count($arrayRegionales); $i++) {
             $array2 = array();
@@ -34,10 +20,28 @@ class RegionalesController extends Controller {
                 else
                     $array2 = FunsionesSoporte::CompletarDias($array2, 1, 7, true);
             }
+            else {
+                if ($array2[0]["$nombreCampo"] > 1)
+                    array_unshift($array2, array("$nombreCampo" => ($array2[0]["$nombreCampo"] - 1), 'CANTIDAD' => '0'));
+                if ($array2[0]["$nombreCampo"] > 1)
+                    array_unshift($array2, array("$nombreCampo" => ($array2[0]["$nombreCampo"] - 1), 'CANTIDAD' => '0'));
+                if ($array2[0]["$nombreCampo"] > 1)
+                    array_unshift($array2, array("$nombreCampo" => ($array2[0]["$nombreCampo"] - 1), 'CANTIDAD' => '0'));
+                if ($array2[0]["$nombreCampo"] > 1)
+                    array_unshift($array2, array("$nombreCampo" => ($array2[0]["$nombreCampo"] - 1), 'CANTIDAD' => '0'));
+                if ($array2[0]["$nombreCampo"] > 1)
+                    array_unshift($array2, array("$nombreCampo" => ($array2[0]["$nombreCampo"] - 1), 'CANTIDAD' => '0'));
+                if ($array2[0]["$nombreCampo"] > 1)
+                    array_unshift($array2, array("$nombreCampo" => ($array2[0]["$nombreCampo"] - 1), 'CANTIDAD' => '0'));
+                if ($array2[0]["$nombreCampo"] > 1)
+                    array_unshift($array2, array("$nombreCampo" => ($array2[0]["$nombreCampo"] - 1), 'CANTIDAD' => '0'));
+
+                $array2 = FunsionesSoporte::get_CompletarMesesIntermedios($array2, $array2, $nombreCampo);
+            }
 
             $array3[] = array_merge(array('REGIONAL' => $arrayRegionales[$i]['REGIONAL']), $array2);
         }
-
         return $array3;
     }
 }
+
