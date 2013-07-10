@@ -37,16 +37,16 @@
                 foreach ($ingresadas as $ingresada) {
                     echo "<td>" . number_format($ingresada['CANTIDAD'], '0', ',', '.') . "</td>";
                     $ingresos[] = $ingresada['CANTIDAD'];
-                    $totalIngreadas += $ingresada['CANTIDAD'];
+                    $totalIngresadas += $ingresada['CANTIDAD'];
                 }
                 ?>
 
                 <?php
-                    for ($i = Count($ingresadas); $i <= 11; $i++)
-                        echo "<td>0</td>";
+                for ($i = Count($ingresadas); $i <= 11; $i++)
+                    echo "<td>0</td>";
                 ?>
 
-                <th><?php echo number_format($totalIngreadas, '0', ',', '.'); ?></th>
+                <th><?php echo number_format($totalIngresadas, '0', ',', '.'); ?></th>
 
             </tr>
 
@@ -59,6 +59,13 @@
                     echo "<td>" . number_format($presupuesto['CANTIDAD'], '0', ',', '.') . "</td>";
                     $presupuestos[] = $presupuesto['CANTIDAD'];
                     $totalPresupuesto += $presupuesto['CANTIDAD'];
+                }
+                ?>
+
+                <?php
+                if (Count($presupuesto) == 0) {
+                    for ($i = Count($presupuesto); $i <= 11; $i++)
+                        echo "<td>0</td>";
                 }
                 ?>
                 <th><?php echo number_format($totalPresupuesto, '0', ',', '.') ?></th>  
@@ -76,12 +83,12 @@
                 }
                 ?>
                 <?php
-                    for ($i = Count($ingresadas); $i <= 11; $i++)
-                        echo "<td>0</td>";
+                for ($i = Count($ingresadas); $i <= 11; $i++)
+                    echo "<td>0</td>";
                 ?>
                 <th><?php echo number_format($totalInstaladas, '0', ',', '.') ?></th>  
             </tr>
-            
+
             <tr>
                 <th scope="row">Pendientes</th>
                 <?php
@@ -94,8 +101,8 @@
                 }
                 ?>
                 <?php
-                    for ($i = Count($aPendientes); $i <= 11; $i++)
-                        echo "<td>0</td>";
+                for ($i = Count($aPendientes); $i <= 11; $i++)
+                    echo "<td>0</td>";
                 ?>
                 <th><?php echo number_format($totalPendientes, '0', ',', '.') ?></th>  
             </tr>
@@ -111,8 +118,8 @@
                 }
                 ?>
                 <?php
-                    for ($i = Count($ingresadas); $i <= 11; $i++)
-                        echo "<td>0</td>";
+                for ($i = count($anuladas); $i <= 11; $i++)
+                    echo "<td>0</td>";
                 ?>
                 <th><?php echo number_format($totalAnuladas, '0', ',', '.') ?></th>  
             </tr>
@@ -125,8 +132,8 @@
                 }
                 ?>
                 <?php
-                    for ($i = Count($ingresadas); $i <= 11; $i++)
-                        echo "<td>0</td>";
+                for ($i = Count($ingresadas); $i <= 11; $i++)
+                    echo "<td>0</td>";
                 ?>  
                 <th><?php echo FunsionesSoporte::get_Porcentaje($totalInstaladas, $totalPresupuesto, 1) . "%" ?></th>  
             </tr>
@@ -134,14 +141,14 @@
             <tr>
                 <th scope="row">Eficiencia</th>
                 <?php
-                    for ($i = 0; $i < Count($ingresos); $i++) {
-                        echo "<td>" . FunsionesSoporte::get_Porcentaje($instalaciones[$i], $ingresos[$i], 1) . "%</td>";
-                    }
+                for ($i = 0; $i < Count($ingresos); $i++) {
+                    echo "<td>" . FunsionesSoporte::get_Porcentaje($instalaciones[$i], $ingresos[$i], 1) . "%</td>";
+                }
                 ?>
 
                 <?php
-                    for ($i = Count($ingresadas); $i <= 11; $i++)
-                        echo "<td>0</td>";
+                for ($i = Count($ingresadas); $i <= 11; $i++)
+                    echo "<td>0</td>";
                 ?>
 
                 <th><?php echo FunsionesSoporte::get_Porcentaje($totalInstaladas, $totalIngreadas, 1) . "%" ?></th>  
@@ -152,6 +159,6 @@
     <br>
     <hr>
     <br>
-    
+
     <?php require_once ('detallesRegional.php'); ?>    
 </div>
