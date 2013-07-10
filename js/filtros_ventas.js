@@ -1,4 +1,6 @@
-$().ready(function() {
+ruta =  window.location.pathname;
+
+$().ready(function() {    
     $('#productos').multiselect({multiple: true, height: 140, minWidth: 185, noneSelectedText: '--Producto--'});
     $('#regionales').multiselect({multiple: true, height: 120, minWidth: 185, noneSelectedText: '--Regional--'});
     $('#plazas').multiselect({multiple: true, height: 120, minWidth: 185, noneSelectedText: '--Plaza--'});
@@ -42,8 +44,8 @@ function detallePlaza(plaza, cumplimiento, uen, producto, consultaProducto, fech
         var date = new Date();
         mes = date.getMonth(str[0], str[1] - 1, str[2]);
     }
-
-    jQuery.ajax({'type': 'POST', 'url': "/vcp_nuevosmercados/index.php?r=Site/DetallesPlaza", 'data': {'plaza': plaza, 'cumplimiento': cumplimiento, 'uen': uen, 'producto': producto, 'consultaProducto': consultaProducto, 'fechaConsulta': fechaConsulta, 'mes': mes}, 'success': function(data) {
+    
+    jQuery.ajax({'type': 'POST', 'url':ruta+"index.php?r=Site/DetallesPlaza", 'data': {'plaza': plaza, 'cumplimiento': cumplimiento, 'uen': uen, 'producto': producto, 'consultaProducto': consultaProducto, 'fechaConsulta': fechaConsulta, 'mes': mes}, 'success': function(data) {
         $('#modalDetallesPlaza').html(data);
     }, 'cache': false});
 }
@@ -51,7 +53,7 @@ function detallePlaza(plaza, cumplimiento, uen, producto, consultaProducto, fech
 // Actualiza el cbo de sub productos segun el subproducto seleccionado
 function actualizarSelectProductos(idSelectOrigen, idSelecDetino)
 {
-    $.get("/vcp_nuevosmercados/index.php?r=Site/cargarSubProductos", {producto: $('#productos').val(), ajax: 'true'}, function(j) {
+    $.get(ruta+"index.php?r=Site/cargarSubProductos", {producto: $('#productos').val(), ajax: 'true'}, function(j) {
         $('#' + idSelecDetino).multiselect("destroy");
         $("select#" + idSelecDetino).empty();
         $("select#" + idSelecDetino).append(j);
@@ -73,7 +75,7 @@ function actualizarSelectProductos(idSelectOrigen, idSelecDetino)
 // Actualiza el cbo de plazas segun la regional seleccionada
 function actualizarSelectRegionales(idSelectOrigen, idSelecDetino)
 {
-    $.get("/vcp_nuevosmercados/index.php?r=Site/CargarPlazas", {regional: $('#regionales').val(), ajax: 'true'}, function(j) {
+    $.get(ruta+"index.php?r=Site/CargarPlazas", {regional: $('#regionales').val(), ajax: 'true'}, function(j) {
         $('#' + idSelecDetino).multiselect("destroy");
         $("select#" + idSelecDetino).empty();
         $("select#" + idSelecDetino).append(j);
