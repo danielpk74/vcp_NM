@@ -58,6 +58,14 @@
                                         </ul>
                                     </li>
                                     
+                                    <li class="dropdown" style="display:none">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pendientes <b class="caret"></b></a>
+                                        <ul class="dropdown-menu">
+                                            <!--<li><?php echo CHtml::linkButton('Presupuestos', array('submit' => array('Presupuestos'))); ?></li>-->
+                                            <li><?php echo CHtml::link('Ventas Generales', array('VentasGenerales')); ?></li>
+                                        </ul>
+                                    </li>
+                                    
                                     <li class="dropdown" style="display: none">
                                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pedidos <b class="caret"></b></a>
                                         <ul class="dropdown-menu">
@@ -67,43 +75,23 @@
                                     </li>
                                     
                                     <li class="dropdown">
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Descargas <b class="caret"></b></a>
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Informes Regionales <b class="caret"></b></a>
                                         <ul class="dropdown-menu">
-                                            <li><a id='detalles' href="<?php echo Yii::app()->request->baseUrl; ?>../../archivosdetalles/MOVILIDAD_4G_LTE_y_3G.xlsx"/>Detalles</a></li>
-                                            <li  class="dropdown-submenu">
-                                                <a href="#">Regional Centro</a>
-                                                <ul class="dropdown-menu">
-                                                    <li><a href="http://dcastamo/FACTURACION/4G/Facturacion_4G_MIGUEL.xlsx">Facturación</a></li>
-                                                    <li><a href="http://dcastamo/Ventas/Informe Regionales 4G.xlsm">Informe Regionales</a></li>
-                                                    <li><?php echo CHtml::link('Descargas Especificas', array('DescargasEspecificasRegionalCentro')); ?></li>
-                                                </ul>
-                                            </li>
                                             
-                                            <li  class="dropdown-submenu">
-                                                <a href="#">Regional NorOccidente</a>
-<!--                                                <ul class="dropdown-menu">
-                                                    <li><a href="http://dcastamo/FACTURACION/4G/Facturacion_4G_MIGUEL.xlsx">Facturación</a></li>
-                                                    <li><a href="http://dcastamo/Ventas/Informe Regionales 4G.xlsm">Informe Regionales</a></li>
-                                                    <li><?php echo CHtml::link('Descargas Especificas', array('DescargasEspecificasRegionalCentro')); ?></li>
-                                                </ul>-->
+                                            <li>
+                                                <a href=" http://dcastamo/regional_centro/index.html">Regional Centro</a>
                                             </li>
-                                            
-                                            <li  class="dropdown-submenu">
+											
+					    <li>
                                                 <a href="#">Regional Norte</a>
-<!--                                                <ul class="dropdown-menu">
-                                                    <li><a href="http://dcastamo/FACTURACION/4G/Facturacion_4G_MIGUEL.xlsx">Facturación</a></li>
-                                                    <li><a href="http://dcastamo/Ventas/Informe Regionales 4G.xlsm">Informe Regionales</a></li>
-                                                    <li><?php echo CHtml::link('Descargas Especificas', array('DescargasEspecificasRegionalCentro')); ?></li>
-                                                </ul>-->
                                             </li>
                                             
-                                            <li  class="dropdown-submenu">
+                                            <li>
+                                                <a href="#">Regional NorOccidente</a>
+                                            </li>
+                                            
+                                            <li>
                                                 <a href="#">Regional Sur</a>
-<!--                                                <ul class="dropdown-menu">
-                                                    <li><a href="http://dcastamo/FACTURACION/4G/Facturacion_4G_MIGUEL.xlsx">Facturación</a></li>
-                                                    <li><a href="http://dcastamo/Ventas/Informe Regionales 4G.xlsm">Informe Regionales</a></li>
-                                                    <li><?php echo CHtml::link('Descargas Especificas', array('DescargasEspecificasRegionalCentro')); ?></li>
-                                                </ul>-->
                                             </li>
                                             
                                         </ul>
@@ -136,7 +124,7 @@
             <div class="clear"></div>
 
             <div id="footer">
-                Vicepresidencia de Nuevos Mercados - UNE Telecomunicaciones.<br/>
+                <label OnClick="ocultarIngresadas(this)"  >Vicepresidencia de Nuevos Mercados - UNE Telecomunicaciones.</label>
                 <?php echo Yii::powered(); ?> 
             </div><!-- footer -->
 
