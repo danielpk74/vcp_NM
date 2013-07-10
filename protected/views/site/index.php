@@ -7,8 +7,23 @@ require_once ('/protected/components/FusionCharts.php');
 <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery.multiselect.js"></script>
 <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/filtros_ventas.js"></script>
 
+<script type="text/javascript" >
+/// Esto esta hecho con el unico fin de pasar informe al señor Marc
+/// se hace a peticion del Señor Esteban 
+function ocultarIngresadas(objeto)
+{
+    $('th#datosIngresadas').hide();
+    $('th#datosIngresadas1').hide();
+    $('th#datosIngresadas2').hide();
+    
+    $('td#datosIngresadas').hide();
+    $('td#datosIngresadas1').hide();
+    $('td#datosIngresadas2').hide();
+}
+</script>
 
-<h5>Estado Actual de Ventas - <?php echo "última Actualización " . date('d-m-Y h:i', strtotime($fechaactualizacion)) ?> </h5>
+
+<h5 >Estado Actual de Ventas - <?php echo "última Actualización " . date('d-m-Y h:i', strtotime($fechaactualizacion)) ?> </h5>
 <hr>
 
 <?php
@@ -18,22 +33,25 @@ require_once ('/protected/components/FusionCharts.php');
 
 <?php
     echo CHtml::activeDropDownList($uenmodel, 'DESCRIPCION', CHtml::listData($uens, 'CODIGO_UEN_PK', 'DESCRIPCION'), array('name' => 'uen', 'enabled' => false, 'multiple' => 'multiple'));
+    
+    echo CHtml::activeDropDownList($tipocanalmodel, 'TIPO_CANAL', CHtml::listData($tiposCanales, 'CODIGO_TIPO_CANAL_PK', 'TIPO_CANAL'), array('name' => 'tipo_canal', 'multiple' => 'multiple'));     
 
     $option = array('type' => 'POST',
         'url' => CController::createUrl('Site/Index'),
-        'data' => array('producto' => "js:$('select#productos').val()", 'subproducto' => "js:$('select#sub_productos').val()", 'uen' => "js:$('select#uen').val()", 'periodo' => 'js:cbo_periodo.value', 'fecha' => 'js:meses.value'),
+        'data' => array('producto' => "js:$('select#productos').val()", 'subproducto' => "js:$('select#sub_productos').val()", 'uen' => "js:$('select#uen').val()", 'periodo' => 'js:cbo_periodo.value', 'fecha' => 'js:meses.value','tipoCanal' => "js:$('select#tipo_canal').val()"),
         'update' => '#detallesVentas',
         'success' => 'function(data) {
                                 $(\'#detallesVentas\').html(data);
                             }');
 ?>
+
+<br><br>
+
 <select id="cbo_periodo" name="cbo_periodo" >
     <option value="7">Ultimos 7 días</option>
     <option value="15" selected="true">Ultimos 15 días</option>
     <option value="30">Ultimos 30 días</option>
 </select>
-
-<!--<h5 style="text-align: right"><input type="text" id="fecha" class="span2" name="fecha" placeholder="Fecha Consulta" style="float: left"/> </h5>--> 
 
 <select id="meses" name="meses">
     <option value="">Ninguno</option>
