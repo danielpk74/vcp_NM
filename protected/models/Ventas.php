@@ -243,6 +243,20 @@ class Ventas {
         $ventasIngresadasMes = Yii::app()->db->createCommand("SP_Instaladas_Ingresadas_Canal '3','$tipoElemento','$uen','$plaza','$tipoSolicitud','$consultaProducto','$fechaConsulta'")->queryAll();
         return $ventasIngresadasMes;
     }
+    
+    /**
+     * Devuelve el numero de pedidos ingresados en el mes actual
+     * @param type $tipoElemento
+     * @param type $uen
+     * @param type $plaza
+     * @param type $tipoSolicitud
+     * @param type $consultaProducto
+     * @return string numero de ingresados
+     */
+    public function get_Instaladas_Canales_Homologado_Mes($tipoElemento, $uen = '', $plaza = '', $tipoSolicitud = 'Nuevo', $consultaProducto = '', $fechaConsulta = '') {
+        $ventasIngresadasMes = Yii::app()->db->createCommand("SP_Instaladas_Ingresadas_Canal '4','$tipoElemento','$uen','$plaza','$tipoSolicitud','$consultaProducto','$fechaConsulta'")->queryAll();
+        return $ventasIngresadasMes;
+    }
 
     /**
      * Obtiene el numero de pedidos instalados por plaza agrupado por fecha, partiendo desde 

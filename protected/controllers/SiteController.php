@@ -138,7 +138,7 @@ class SiteController extends Controller {
                 $ventasInstaladas = $ventas->get_Instaladas($fecha, $this->getPageState('producto'), '', '', $uenc, 'Nuevo', $consultaProducto, $mes, '', '', $tipoCanal);
             }
 
-            $proyectadoCierre = $ventas->get_ProyectadoMes($this->getPageState('producto'), $uenc, 'Nuevo', '', '','', $consultaProducto);
+            $proyectadoCierre = $ventas->get_ProyectadoMes($this->getPageState('producto'), $uenc, 'Nuevo', '', '', '', $consultaProducto);
 
             // Consulta inicial/Consulta de evolucion diaria.
             if ($fecha == '') {
@@ -285,6 +285,51 @@ class SiteController extends Controller {
     /**
      * visualiza el view de retiros
      */
+    public function actionPendientes() {
+        try {
+            
+            $consultaProducto = '1';
+            
+            if (Yii::app()->getRequest()->getParam('subproducto') == "" && Yii::app()->getRequest()->getParam('producto') == "") {
+                // Si no se realiza un filtro de ningun producto automaticamente tomara 4G
+                $this->setPageState('producto', '4G,4G FIJO');
+            } else {
+                // Si consulta solo por producto
+                if (Yii::app()->getRequest()->getParam('subproducto') == "") {
+                    $this->setPageState('producto', implode(",", Yii::app()->getRequest()->getParam('producto')));
+                }
+                // Consulta por subproducto
+                else {
+                    $this->setPageState('producto', implode(",", Yii::app()->getRequest()->getParam('subproducto')));
+                    $consultaProducto = '';
+                }
+            }
+
+            $arrayRegionales = FunsionesSoporte::get_Regionales();
+
+            $pendientes = new Pendientes();
+            $pendientesRegionales = $pendientes->get_Pendientes_X_Regional($this->getPageState('producto'),$uen,'Nuevo', $consultaProducto,  $plaza, $regional, $anio, $tipoCanal);
+            $pendientesPlazas = $pendientes->get_Pendientes_X_Plazas($this->getPageState('producto'),$uen,'Nuevo', $consultaProducto,  $plaza, $regional, $anio, $tipoCanal);
+            $pendientesResponsables = $pendientes->get_Pendientes_X_Responsables($this->getPageState('producto'),$uen,'Nuevo', $consultaProducto,  $plaza, $regional, $anio, $tipoCanal);
+            $pendientesProductos = $pendientes->get_Pendientes_X_Productos($this->getPageState('producto'),$uen,'Nuevo', $consultaProducto,  $plaza, $regional, $anio, $tipoCanal);
+            $totalPendientes = $pendientes->TotalPendientes($this->getPageState('producto'),$uen,'Nuevo', $consultaProducto,  $plaza, $regional, $anio, $tipoCanal);
+            
+            
+            $this->render('pendientes/detallesPendientes', array('productos'=>$this->getPageState('producto'),
+                            'arrayRegionales' => $arrayRegionales,
+                            'totalPendientes' => $totalPendientes,
+                            'pendientesRegionales' => $pendientesRegionales,
+                            'pendientesResponsables' => $pendientesResponsables,
+                            'pendientesProductos' => $pendientesProductos,
+                            'pendientesPlazas' => $pendientesPlazas   ));
+        } catch (Exception $e) {
+            $this->render('error', array('error' => "En este momento estamos actualizando la plataforma, en breve estaremos en linea.", 'detalle' => $e->getMessage()));
+        }
+    }
+
+    /**
+     * visualiza el view de retiros
+     */
     public function actionVentasGenerales() {
 
         $uenc = "";
@@ -386,20 +431,16 @@ class SiteController extends Controller {
 
             // Si hay meses sin registros.
             $total = $ingresadas > $instaladas ? $ingresadas : $instaladas;
-            $ingresadas = FunsionesSoporte::get_CompletarMesesIntermedios($total, $ingresadas,'MES');
-            $instaladas = FunsionesSoporte::get_CompletarMesesIntermedios($total, $instaladas,'MES');
-            $anuladas = FunsionesSoporte::get_CompletarMesesIntermedios($total, $anuladas,'MES');
-            $pendientes = FunsionesSoporte::get_CompletarMesesIntermedios($total, $pendientes,'MES');
-            $presupuestoMeses = FunsionesSoporte::get_CompletarMesesIntermedios($total, $presupuestoMeses,'MES');
+            $ingresadas = FunsionesSoporte::get_CompletarMesesIntermedios($total, $ingresadas, 'MES', $anio);
+            $instaladas = FunsionesSoporte::get_CompletarMesesIntermedios($total, $instaladas, 'MES', $anio);
+            $anuladas = FunsionesSoporte::get_CompletarMesesIntermedios($total, $anuladas, 'MES', $anio);
+            $pendientes = FunsionesSoporte::get_CompletarMesesIntermedios($total, $pendientes, 'MES', $anio);
+            $presupuestoMeses = FunsionesSoporte::get_CompletarMesesIntermedios($total, $presupuestoMeses, 'MES', '');
 
             // Fin termina el complemento de los meses para la primera grafica---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
             //Total por Regional x Dias para el grafico de columnas combinadas ---------------------------------------------------------------------------------------------------------------------------------------------
             // Solo se genera el grafico combinado cuando se consulta el año actual.
-
-            
-            
             //COMIENZA PARA LAS COLUMNAS COMBINADAS
-            
             //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
             // Total por Regional x Mes para el grafico de columnas combinadas -------------------------------------------------------------------------------------------------------------------------------------------
             $ingresadasRegionalxMes = $ventas->get_IngresadasTotales_X_Mes_X_Regional('', $this->getPageState('producto'), '', '', $uenc, 'Nuevo', $consultaProducto, $mes, $anio, $tipoCanal);
@@ -432,8 +473,8 @@ class SiteController extends Controller {
                 }
 
                 // Genera el array requerido para el tipo de grafico utilizado
-                $ingresadasRegional = RegionalesController::get_Ventas_CombinedColumn($ingresadasRegional, 'FECHA_INGRESO');
-                $instaladasRegional = RegionalesController::get_Ventas_CombinedColumn($instaladasRegional, 'FECHA_INSTALACION');
+                $ingresadasRegional = RegionalesController::get_Ventas_CombinedColumn($ingresadasRegional, 'FECHA_INGRESO', false, $anio);
+                $instaladasRegional = RegionalesController::get_Ventas_CombinedColumn($instaladasRegional, 'FECHA_INSTALACION', false, $anio);
             }
             /// Fin generar arrar de columnas combinadas por dias.
             // Generamos las fechas de la categoria del grafico - este va por meses (Actualmente meses del año en curso)
@@ -456,13 +497,11 @@ class SiteController extends Controller {
                 }
             }
 
-            $ingresadasRegionalxMes = RegionalesController::get_Ventas_CombinedColumn($ingresadasRegionalxMes, 'FECHA_INGRESO', true);
-            $instaladasRegionalxMes = RegionalesController::get_Ventas_CombinedColumn($instaladasRegionalxMes, 'FECHA_INSTALACION', true);
-            
-            
+            $ingresadasRegionalxMes = RegionalesController::get_Ventas_CombinedColumn($ingresadasRegionalxMes, 'FECHA_INGRESO', true, $anio);
+            $instaladasRegionalxMes = RegionalesController::get_Ventas_CombinedColumn($instaladasRegionalxMes, 'FECHA_INSTALACION', true, $anio);
+
+
 //            var_dump($instaladasRegionalxMes);
-
-
 //             var_dump($instaladasRegionalxMes);
 
             $arrayDatos = array(
@@ -521,10 +560,16 @@ class SiteController extends Controller {
         $ventas = new Ventas();
         $ventasCanal = $ventas->get_Instaladas_Canales_Mes($param->getParam('producto'), $param->getParam('uen'), $nombrePlaza, 'Nuevo', $param->getParam('consultaProducto'), $param->getParam('fechaConsulta'));
 
+        $ventasCanalHomologado = $ventas->get_Instaladas_Canales_Homologado_Mes($param->getParam('producto'), $param->getParam('uen'), $nombrePlaza, 'Nuevo', $param->getParam('consultaProducto'), $param->getParam('fechaConsulta'));
+
         $ejecutivos = new Ejecutivos();
         $ejecutivos = $ejecutivos->get_Ingresadas_Instaladas($param->getParam('producto'), 'Nuevo', $nombrePlaza, $param->getParam('fechaConsulta'), $param->getParam('uen'), $param->getParam('consultaProducto'), $param->getParam('mes'), '', date('Y'));
 
-        $this->renderPartial('plantillas/detallesPlaza', array('nombrePlaza' => $nombrePlaza, 'cumplimiento' => Yii::app()->getRequest()->getParam('cumplimiento'), 'ventasCanal' => $ventasCanal, 'ejecutivos' => $ejecutivos));
+        $this->renderPartial('plantillas/detallesPlaza', array('nombrePlaza' => $nombrePlaza,
+            'cumplimiento' => Yii::app()->getRequest()->getParam('cumplimiento'),
+            'ventasCanal' => $ventasCanal,
+            'ejecutivos' => $ejecutivos,
+            'ventasCanalHomologado' => $ventasCanalHomologado));
     }
 
     /**

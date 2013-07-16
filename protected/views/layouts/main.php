@@ -32,7 +32,7 @@
 
             <div id="header">
                     <!--<div id="logo"><?php echo CHtml::encode(Yii::app()->name); ?></div>-->
-                <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/logovcp.png" width="100%" style="margin-top: 10px;"/>
+                <center><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/logovcp.png" width="100%" /></center>
             </div><!-- header -->
 
             <div>
@@ -58,11 +58,10 @@
                                         </ul>
                                     </li>
                                     
-                                    <li class="dropdown" style="display:none">
+                                    <li class="dropdown">
                                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pendientes <b class="caret"></b></a>
                                         <ul class="dropdown-menu">
-                                            <!--<li><?php echo CHtml::linkButton('Presupuestos', array('submit' => array('Presupuestos'))); ?></li>-->
-                                            <li><?php echo CHtml::link('Ventas Generales', array('VentasGenerales')); ?></li>
+                                            <li><?php echo CHtml::linkButton('Detalles Pendientes', array('submit' => array('Pendientes'))); ?></li>
                                         </ul>
                                     </li>
                                     

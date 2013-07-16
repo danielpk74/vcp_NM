@@ -174,6 +174,14 @@ class FunsionesSoporte {
 
         return $strXML;
     }
+    
+    public static function GenerarXML_Pie2D($dataSets,$titulo) {
+        $strXML ="<chart caption='$titulo' showPercentageInLabel='1' showValues='1' showLabels='0' showLegend='1'>";
+          $strXML .=  $dataSets;
+         $strXML.= "</chart>";
+
+        return $strXML;
+    }
 
     public static function GenerarXML_AngularGauge($valorMinimo = 0, $valorMaximo = 120, $valorDial = 0) {
 
@@ -481,11 +489,17 @@ class FunsionesSoporte {
      * @param type $datos
      * @return type
      */
-    public static function get_CompletarMesesIntermedios($total, $datos,$campo) {
+    public static function get_CompletarMesesIntermedios($total, $datos,$campo,$anio) {
+        
+        if($anio != '')
+            $hasta = $anio == date('Y') ? date('n'):12;
+        else
+            $hasta = 12;
+        
         $instaladas2 = array();
-        for ($i = 0; $i < 12; $i++) {
+//        for ($i = 0; $i < count($total); $i++) {
+        for ($i = 0; $i < $hasta; $i++) {
             $existe = false;
-//                echo ($i+1)."=>";
             for ($j = 0; $j < Count($datos); $j++) {
 
                 // Si el mes existe en el array
@@ -500,15 +514,39 @@ class FunsionesSoporte {
             else
                 array_push($instaladas2, array("$campo" => ($i + 1), 'CANTIDAD' => 0));
         }
-        
-         return $instaladas2;
+
+        return $instaladas2;
     }
 
+    /**
+     * Devuelve un array con los codigos de los subproductos que pertenecen al producto enviado por parametro
+     * @param integer $codgigoProductoPk El codigo del producto a buscar
+     * @return array Cadena de string separadas por comas
+     */
+    public static function get_StringSubProductos($arrayCodigoProducto) {
+        $subProductos = new SubProductos();
+        $subProductos = $subProductos->get_SubProductos(implode(",", $arrayCodigoProducto));
+
+        foreach ($subProductos as $subpro)
+            $sub[] = $subpro['CODIGO_SUB_PRODUCTO_PK'];
+        
+        return $sub;
+    }
+    
     public static function get_ColoresUne($indice) {
-//        $colores = array('189FA8','97949C','EBCE71','A6441E');
         $colores = array('36C0C7', 'D6D24D', '5AA348', 'A6441E');
 
         return $colores[$indice];
+    }
+    
+    /**
+     * Devuelve un array con las regionales, el array esta ordenado A-Z
+     * @return array
+     */
+     public static function get_Regionales()
+    {
+         $arrayRegionales = array(array('REGIONAL' => 'Centro'), array('REGIONAL' => 'NorOccidente'), array('REGIONAL' => 'Norte'), array('REGIONAL' => 'Sur'));
+         return $arrayRegionales;
     }
 
 }

@@ -11,8 +11,10 @@ class SubProductos extends CFormModel {
     public $DESCRIPCION;
 
     /**
-     * Consulta la tabla productos
-     * @return type
+     * Devuelve todos los subproductos de un producto enviado por parametro,
+     * o todos los productos si no se envia parametros
+     * @param type $subProductoID
+     * @return array
      */
     public function get_SubProductos($subProductoID) {
       if ($subProductoID != '') {

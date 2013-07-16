@@ -33,9 +33,49 @@
                 <!-- TAB CANAL -->
                 <div class="tab-pane" id="canal">
                     <div style=" height: 500px; width: 500px;font-size: 12px; overflow: auto; " >
+                        
                         <table class="table table-striped table-bordered table-condensed" > 
                             <tr>
-                                <th style="text-align: left;height: auto;">CANAL</th>   
+                                <th style="text-align: left;height: auto;">CANAL HOMOLOGADO</th>   
+                                <th style='text-align: left'>INGRESADAS</th>  
+                                <th style='text-align: left'>INSTALADAS</th>  
+                            </tr>
+                            
+                            <?php 
+                            $totalIngresadas = 0;
+                            $totalInstaladas = 0;
+                            $canales = 0;
+                            foreach ($ventasCanalHomologado as $venta) { ?>
+                                <?php if($venta['INGRESADAS'] != 0) {?>
+                                  <tr>
+                                     <td><?php echo strtoupper(FunsionesSoporte::QuitarAcentos($venta['CANAL_HOMOLOGADO'])); ?></td>
+                                     <td style='text-align: center'><?php 
+                                            echo CHtml::encode($venta['INGRESADAS']);
+                                            $totalIngresadas+= $venta['INGRESADAS'];
+                                            $canales++;
+                                            ?> 
+                                            
+                                     </td>
+                                     <td style='text-align: center'><?php 
+                                            echo CHtml::encode($venta['INSTALADAS']);
+                                                $totalInstaladas +=$venta['INSTALADAS'];
+                                            ?> 
+                                     </td>
+                                  </tr>   
+                                  <?php } ?>
+                            <?php } ?>
+                                  <td style='text-align: left'><b><?php echo $canales . " CANALES"; ?> </b></td>
+                                  <td style='text-align: left'><b><?php echo "TOTAL ". $totalIngresadas;?> </b></td>
+                                  <td style='text-align: left'><b><?php echo "TOTAL ".$totalInstaladas;?> </b></td>
+                         </table> 
+                        
+                        
+                        
+                        <hr>
+                        
+                        <table class="table table-striped table-bordered table-condensed" > 
+                            <tr>
+                                <th style="text-align: left;height: auto;">NOMBRE DEL CANAL</th>   
                                 <th style='text-align: left'>INGRESADAS</th>  
                                 <th style='text-align: left'>INSTALADAS</th>  
                             </tr>

@@ -10,7 +10,7 @@ require_once ('/protected/components/FusionCharts.php');
 <script type="text/javascript" >
 /// Esto esta hecho con el unico fin de pasar informe al señor Marc
 /// se hace a peticion del Señor Esteban 
-function ocultarIngresadas(objeto)
+function ocultarIngresadas()
 {
     $('th#datosIngresadas').hide();
     $('th#datosIngresadas1').hide();
