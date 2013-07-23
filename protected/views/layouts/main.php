@@ -65,6 +65,14 @@
                                         </ul>
                                     </li>
                                     
+                                     
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Retiros <b class="caret"></b></a>
+                                        <ul class="dropdown-menu">
+                                            <li><?php echo CHtml::linkButton('Detalles Retiros', array('submit' => array('Retiros'))); ?></li>
+                                        </ul>
+                                    </li>
+                                    
                                     <li class="dropdown" style="display: none">
                                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pedidos <b class="caret"></b></a>
                                         <ul class="dropdown-menu">
