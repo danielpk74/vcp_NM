@@ -262,6 +262,22 @@ class FunsionesSoporte {
         else
             return $meses;
     }
+    
+    /**
+     * Devuelve los dias del mes
+     * @param integer $mes
+     * @param integer $anio
+     * @return array
+     */
+    public static function get_DiasMes($mes,$anio)
+    {
+        $ultimoDiaMes = self::get_Ultimo_dia_Mes($mes, $anio);
+        
+        for ($i=1;$i<=$ultimoDiaMes;$i++)
+            $arrayDias[] = $i;
+        
+        return $arrayDias;
+    }
 
     /**
      * Determina el numero de dias que faltan para terminar el mes actual
@@ -491,6 +507,7 @@ class FunsionesSoporte {
      */
     public static function get_CompletarMesesIntermedios($total, $datos,$campo,$anio) {
         
+        // Si se esta consultando el año actual tomara los 
         if($anio != '')
             $hasta = $anio == date('Y') ? date('n'):12;
         else
