@@ -22,6 +22,10 @@ class SiteController extends Controller {
         }
     }
 
+    public function actionGenerarExcel() {
+        PendientesController::generarExcel();
+    }
+
     /**
      * Carga al dropdownlist los subproductos pertenecientes a un producto enviado por parametro
      */
@@ -47,7 +51,6 @@ class SiteController extends Controller {
      */
     public function actionIndex() {
         try {
-
             $fechaActualizacion = Configuracion::get_FechaActualizacion();
 
             $subProducto = new SubProductos();
@@ -144,7 +147,6 @@ class SiteController extends Controller {
             if ($fecha == '') {
                 // --- Define si muestra los datos del dia anterior o del dia en curso
                 // Dia anterior
-
 
                 if (date('A', strtotime($fechaActualizacion)) == 'AM' || date('Y-m-d', strtotime($fechaActualizacion)) != date('Y-m-d')) {
                     $fechaConsulta = date('Y-m-d', strtotime("-1 day", strtotime(date('Y-m-d'))));
@@ -276,7 +278,11 @@ class SiteController extends Controller {
      */
     public function actionRetiros() {
         try {
-            $this->render('retiros/detalleRetiros');
+            $arrayDatos = RetirosController::actionRetirosGeneral($this);
+            if (!Yii::app()->request->isAjaxRequest)
+                $this->render('retiros/retiros', $arrayDatos);
+            else
+                $this->renderPartial('plantillas/detallesRetiros', $arrayDatos);
         } catch (Exception $e) {
             $this->render('error', array('error' => "En este momento estamos actualizando la plataforma, en breve estaremos en linea.", 'detalle' => $e->getMessage()));
         }
@@ -287,9 +293,9 @@ class SiteController extends Controller {
      */
     public function actionPendientes() {
         try {
-            
+
             $consultaProducto = '1';
-            
+
             if (Yii::app()->getRequest()->getParam('subproducto') == "" && Yii::app()->getRequest()->getParam('producto') == "") {
                 // Si no se realiza un filtro de ningun producto automaticamente tomara 4G
                 $this->setPageState('producto', '4G,4G FIJO');
@@ -308,20 +314,116 @@ class SiteController extends Controller {
             $arrayRegionales = FunsionesSoporte::get_Regionales();
 
             $pendientes = new Pendientes();
-            $pendientesRegionales = $pendientes->get_Pendientes_X_Regional($this->getPageState('producto'),$uen,'Nuevo', $consultaProducto,  $plaza, $regional, $anio, $tipoCanal);
-            $pendientesPlazas = $pendientes->get_Pendientes_X_Plazas($this->getPageState('producto'),$uen,'Nuevo', $consultaProducto,  $plaza, $regional, $anio, $tipoCanal);
-            $pendientesResponsables = $pendientes->get_Pendientes_X_Responsables($this->getPageState('producto'),$uen,'Nuevo', $consultaProducto,  $plaza, $regional, $anio, $tipoCanal);
-            $pendientesProductos = $pendientes->get_Pendientes_X_Productos($this->getPageState('producto'),$uen,'Nuevo', $consultaProducto,  $plaza, $regional, $anio, $tipoCanal);
-            $totalPendientes = $pendientes->TotalPendientes($this->getPageState('producto'),$uen,'Nuevo', $consultaProducto,  $plaza, $regional, $anio, $tipoCanal);
-            
-            
-            $this->render('pendientes/detallesPendientes', array('productos'=>$this->getPageState('producto'),
-                            'arrayRegionales' => $arrayRegionales,
-                            'totalPendientes' => $totalPendientes,
-                            'pendientesRegionales' => $pendientesRegionales,
-                            'pendientesResponsables' => $pendientesResponsables,
-                            'pendientesProductos' => $pendientesProductos,
-                            'pendientesPlazas' => $pendientesPlazas   ));
+            $pendientesRegionales = $pendientes->get_Pendientes_X_Regional($this->getPageState('producto'), $uen, 'Nuevo', $consultaProducto, $plaza, $regional, $anio, $tipoCanal);
+            $pendientesPlazas = $pendientes->get_Pendientes_X_Plazas($this->getPageState('producto'), $uen, 'Nuevo', $consultaProducto, $plaza, $regional, $anio, $tipoCanal);
+            $pendientesResponsables = $pendientes->get_Pendientes_X_Responsables($this->getPageState('producto'), $uen, 'Nuevo', $consultaProducto, $plaza, $regional, $anio, $tipoCanal);
+            $pendientesProductos = $pendientes->get_Pendientes_X_Productos($this->getPageState('producto'), $uen, 'Nuevo', $consultaProducto, $plaza, $regional, $anio, $tipoCanal);
+            $totalPendientes = $pendientes->TotalPendientes($this->getPageState('producto'), $uen, 'Nuevo', $consultaProducto, $plaza, $regional, $anio, $tipoCanal);
+            $totalPendientesLineas = $pendientes->get_Pendientes_X_Responsables_Linea($this->getPageState('producto'), $uen, 'Nuevo', $consultaProducto, $plaza, $regional, $anio, $tipoCanal);
+
+//            var_dump($totalPendientesLineas);
+
+            $totalPCanalLogistica = 0;
+            $totalPRehusadosNM = 0;
+            $totalPOficinaNM = 0;
+            $totalPendientesOtros = 0;
+
+            $total4G_RehusadoNM = 0;
+            $total4G_OficinaNM = 0;
+            $total4GLTE = 0;
+
+            foreach ($totalPendientesLineas as $total) {
+                $logistica = false;
+                $nuevoM = false;
+                $otros = false;
+
+                // PENDIENTES LOGISTICA
+                if ($total['TIPO_ENTREGA'] == 'Canal On Line' && $total['RESPONSABLE'] == 'Logistica') {
+                    $totalPCanalLogistica += $total['CANTIDAD'];
+                    $logistica = true;
+                }
+
+                if ($total['TIPO_ENTREGA'] == 'Correo Certificado' && $total['RESPONSABLE'] == 'Logistica') {
+                    $totalPCanalLogistica += $total['CANTIDAD'];
+                    $logistica = true;
+                }
+
+                if ($logistica == true) {
+                    if ($total['LINEA'] == '4G')
+                        $total4G_Logistica+= $total['CANTIDAD'];
+                    else
+                        $total4GLTE_Logistica+= $total['CANTIDAD'];
+                }
+                // FIN PENDIENTES LOGISTICA
+                // PENDIENTES NUEVOS MERCADOS
+                if ($total['TIPO_ENTREGA'] == 'Correo Certificado' && $total['RESPONSABLE'] == 'Rehusados') {
+                    $totalPRehusadosNM += $total['CANTIDAD'];
+
+                    // Conteo por responsable x producto
+                    if ($total['LINEA'] == '4G')
+                        $total4G_RehusadoNM+= $total['CANTIDAD'];
+                    else
+                        $total4GLTE_RehusadosNM+= $total['CANTIDAD'];
+                    $nuevoM = true;
+                }
+
+                if ($total['TIPO_ENTREGA'] == 'Oficina' && $total['RESPONSABLE'] == 'Logistica') {
+                    $totalPOficinaNM += $total['CANTIDAD'];
+
+                    // Conteo por responsable x producto
+                    if ($total['LINEA'] == '4G')
+                        $total4G_OficinaNM+= $total['CANTIDAD'];
+                    else
+                        $total4GLTE_OficinaNM+= $total['CANTIDAD'];
+
+                    $nuevoM = true;
+                }
+                // FIN PENDIENTES NUEVOS MERCADOS
+                // PENDIENTES OTROS
+                if ($total['TIPO_ENTREGA'] == 'Correo Certificado' && $total['RESPONSABLE'] == 'Credito/Cartera/Fraudes') {
+                    $totalPendientesOtros += $total['CANTIDAD'];
+                    $otros = true;
+                }
+
+                if ($total['TIPO_ENTREGA'] == 'Oficina' && $total['RESPONSABLE'] == 'Credito/Cartera/Fraudes') {
+                    $totalPendientesOtros += $total['CANTIDAD'];
+                    $otros = true;
+                }
+
+                if ($total['TIPO_ENTREGA'] == 'Canal On Line' && $total['RESPONSABLE'] == 'Credito/Cartera/Fraudes') {
+                    $totalPendientesOtros += $total['CANTIDAD'];
+                    $otros = true;
+                }
+                // FIN PENDIENTES OTROS
+                // TOTALIZAMOS POR PRODUCTO x RESPONSABLE
+
+                if ($otros == true) {
+                    if ($total['LINEA'] == '4G')
+                        $total4G_Otros+= $total['CANTIDAD'];
+                    else
+                        $total4GLTE_Otros+= $total['CANTIDAD'];
+                }
+            }
+
+            $this->render('pendientes/detallesPendientes', array('productos' => $this->getPageState('producto'),
+                'arrayRegionales' => $arrayRegionales,
+                'totalPCanalLogistica' => $totalPCanalLogistica,
+                'totalPRehusadosNM' => $totalPRehusadosNM,
+                'totalPOficinaNM' => $totalPOficinaNM,
+                'totalPendientesOtros' => $totalPendientesOtros,
+                'total4G_Logistica' => $total4G_Logistica,
+                'total4GLTE_Logistica' => $total4GLTE_Logistica,
+                'total4G_OficinaNM' => $total4G_OficinaNM,
+                'total4GLTE_OficinaNM' => $total4GLTE_OficinaNM,
+                'total4G_RehusadoNM' => $total4G_RehusadoNM,
+                'total4GLTE_RehusadosNM' => $total4GLTE_RehusadosNM,
+                'total4G_Otros' => $total4G_Otros,
+                'total4GLTE_Otros' => $total4GLTE_Otros,
+                'totalPendientes' => $totalPendientes,
+                'pendientesRegionales' => $pendientesRegionales,
+                'pendientesResponsables' => $pendientesResponsables,
+                'pendientesProductos' => $pendientesProductos,
+                'pendientesPlazas' => $pendientesPlazas));
         } catch (Exception $e) {
             $this->render('error', array('error' => "En este momento estamos actualizando la plataforma, en breve estaremos en linea.", 'detalle' => $e->getMessage()));
         }
