@@ -70,6 +70,24 @@ class Pendientes {
      * @param type $tipoCanal
      * @return type
      */
+    public function get_Pendientes_X_Responsables_Linea($tipoElemento,$uen = '', $tipoSolicitud = 'Nuevo', $consultaProducto = '1',  $plaza = '', $regional = '', $anio = '', $tipoCanal = '') {
+        $pendientes = Yii::app()->db->createCommand("SP_Total_Pendientes '7','$tipoElemento','$uen','$tipoSolicitud','$consultaProducto','$plaza','$regional','$anio','$tipoCanal'")->queryAll();
+        return $pendientes;
+    }
+    
+    /**
+     * Devuelve todos los Pendientes por regional
+     * <br>ejecuta el SP: SP_Consultas_Ingresos_Retiros
+     * @param type $tipoElemento
+     * @param type $plaza
+     * @param type $uen
+     * @param type $tipoSolicitud
+     * @param type $consultaProducto
+     * @param type $mes
+     * @param type $regional
+     * @param type $tipoCanal
+     * @return type
+     */
     public function get_Pendientes_X_Productos($tipoElemento,$uen = '', $tipoSolicitud = 'Nuevo', $consultaProducto = '1',  $plaza = '', $regional = '', $anio = '', $tipoCanal = '') {
         $pendientes = Yii::app()->db->createCommand("SP_Total_Pendientes '5','$tipoElemento','$uen','$tipoSolicitud','$consultaProducto','$plaza','$regional','$anio','$tipoCanal'")->queryAll();
         return $pendientes;
